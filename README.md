@@ -35,6 +35,21 @@ export const links: LinksFunction = () => {
   { rel: "stylesheet", href: kontaktStyle },
 }
 
+Du kan ikke gøre dette under componenter desværre.
+
+Så du kan kun indsætte alt dette under routes/ så hvis du laver en faq udner routes, skal du indsætte:
+
+```export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: navBarStyle },
+  { rel: "stylesheet", href: footerStyle },
+  { rel: "stylesheet", href: heroStyle },
+  { rel: "stylesheet", href: galleryStyle },
+  { rel: "stylesheet", href: searchbarStyle },
+   { rel: "stylesheet", href: faqStyle },
+];
+};
+```
+
 > **Warning**  
 > The `@remix-run/vercel` runtime adapter has been deprecated in favor of out of
 > the box Vercel functionality and will be removed in Remix v2.  
