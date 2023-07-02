@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import "../styles/components/hero.css";
 
 function Hero() {
   return (

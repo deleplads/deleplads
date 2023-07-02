@@ -5,39 +5,26 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import ResetIcon from '@mui/icons-material/RestartAlt';
-import "../styles/components/searchbar.css";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import ResetIcon from "@mui/icons-material/RestartAlt";
 
 function SearchBar() {
   const [age, setAge] = React.useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setAge(event.target.value);
   };
 
-  function BasicTextFields() {
-    return (
-      <Box
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="standard-basic" label="Standard" variant="standard" />
-      </Box>
-    );
-  }
-
   return (
     <div className="SearchBar">
-    <TextField id="outlined-basic" label="Søg efter område" variant="outlined" sx={{ minWidth: "35%" }}/>
-      <Box sx={{ minWidth: '15%' }}>
+      <TextField
+        id="outlined-basic"
+        label="Søg efter område"
+        variant="outlined"
+        sx={{ minWidth: "35%" }}
+      />
+      <Box sx={{ minWidth: "15%" }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Region</InputLabel>
           <Select
@@ -55,7 +42,7 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: '15%' }}>
+      <Box sx={{ minWidth: "15%" }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Kommune</InputLabel>
           <Select
@@ -71,7 +58,7 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: '10%' }}>
+      <Box sx={{ minWidth: "10%" }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Ugedag</InputLabel>
           <Select
@@ -87,7 +74,7 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: '10%' }}>
+      <Box sx={{ minWidth: "10%" }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Tidsrum</InputLabel>
           <Select
@@ -103,7 +90,9 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      <Button variant="outlined" startIcon={<ResetIcon />}>Nulstil</Button>
+      <Button variant="outlined" startIcon={<ResetIcon />}>
+        Nulstil
+      </Button>
     </div>
   );
 }

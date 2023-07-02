@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import BasicCard from "./Cards";
-import "../styles/components/gallery.css";
 
 function Gallery() {
   return (

@@ -1,5 +1,6 @@
-import styles from "./app.css";
+import styles from "../app/styles/app.css";
 import type { LinksFunction } from "@remix-run/node";
+import global from "../app/styles/global.css";
 import {
   Links,
   LiveReload,
@@ -10,9 +11,11 @@ import {
 } from "@remix-run/react";
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: styles }];
+  return [
+    { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: global },
+  ];
 };
-
 
 export default function App() {
   return (
