@@ -3,18 +3,27 @@
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
-    "dev": "remix dev",
+    "dev": "concurrently \"npm run sass\" \"remix dev\"",
+    "sass": "sass --watch app/:app/ && sass --watch app/styles/components/:app/styles/components/",
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.5",
+    "@mui/styled-engine-sc": "^5.12.0",
     "@remix-run/css-bundle": "^1.18.1",
     "@remix-run/node": "^1.18.1",
     "@remix-run/react": "^1.18.1",
     "@remix-run/vercel": "^1.18.1",
     "@vercel/node": "^2.10.3",
     "isbot": "^3.6.8",
+    "node-sass": "^9.0.0",
+    "postcss": "8.4.24",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.18.1",
@@ -22,7 +31,9 @@
     "@remix-run/serve": "^1.18.1",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "concurrently": "^8.2.0",
     "eslint": "^8.38.0",
+    "sass": "^1.63.6",
     "typescript": "^5.0.4"
   },
   "engines": {

@@ -1,0 +1,15 @@
+.Gallery {
+  display: flex;
+  justify-content: center;
+  background: white;
+  padding-bottom: 175px;
+}
+.Gallery .GalleryInner {
+  width: 1440px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+}
+
+/*# sourceMappingURL=gallery.css.map */

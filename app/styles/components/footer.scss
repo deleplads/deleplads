@@ -1,0 +1,52 @@
+.Footer {
+  background: white;
+  width: 100% !important;
+  height: auto;
+  border: 1px solid rgba(29, 140, 242, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333333;
+  .FooterInner {
+    padding: 100px 0;
+    width: 1440px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 0px;
+    .FooterColumn {
+      display: flex;
+      flex-direction: column;
+      h6 {
+        font-weight: 700;
+      }
+      h6,
+      a {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  hr {
+    color: rgba(29, 140, 242, 0.2);
+    height: 1px;
+    width: 1440px;
+  }
+
+  .FooterBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1440px;
+    padding: 50px 0;
+    font-size: 14px;
+    span {
+      display: flex;
+      a:first-of-type {
+        margin: 0 30px;
+      }
+    }
+  }
+}

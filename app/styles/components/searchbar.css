@@ -1,0 +1,9 @@
+.SearchBar {
+  width: 1440px;
+  margin: 0 auto 25px auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=searchbar.css.map */

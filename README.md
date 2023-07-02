@@ -1,3 +1,40 @@
+# HOW TO!!!!
+Du skal køre følgende:
+
+npm install
+
+npm install -g sass
+
+npm run dev
+
+Måden du for css til at virke, er at du bruger følgende logik inder under routes:
+```
+import navBarStyle from "../styles/components/navbar.css";
+import heroStyle from "../styles/components/hero.css";
+import footerStyle from "../styles/components/footer.css";
+import galleryStyle from "../styles/components/gallery.css";
+import searchbarStyle from "../styles/components/searchbar.css";
+
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: navBarStyle },
+  { rel: "stylesheet", href: footerStyle },
+  { rel: "stylesheet", href: heroStyle },
+  { rel: "stylesheet", href: galleryStyle },
+  { rel: "stylesheet", href: searchbarStyle },
+];
+};
+```
+
+Det vil sige du skal inde i routen Kontakt som jeg har lavet indsætte følgende:
+import kontaktStyle from '../styles/components/kontakt.css'
+
+og tilføje inde i.
+export const links: LinksFunction = () => {
+    ...
+  { rel: "stylesheet", href: kontaktStyle },
+}
+
 > **Warning**  
 > The `@remix-run/vercel` runtime adapter has been deprecated in favor of out of
 > the box Vercel functionality and will be removed in Remix v2.  
