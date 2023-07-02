@@ -19,6 +19,8 @@
 }
 .NavigationBar .InnerNavigationBar .items a {
   margin: 0 15px;
+  text-decoration: none;
+  color: #425466;
 }
 .NavigationBar .InnerNavigationBar Button:first-of-type {
   margin-right: 15px;
@@ -44,7 +46,6 @@
 
 .Hero {
   width: 100%;
-  background: white;
   color: #333333;
   display: flex;
   justify-content: center;
@@ -53,23 +54,29 @@
   height: auto;
   width: 1440px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 75px;
-  padding: 175px 0px;
+  padding: 125px 0px;
 }
 .Hero .HeroInner h1 {
   text-align: center;
   font-size: 64px;
   line-height: 72px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.12px;
   font-family: "Poppins", sans-serif;
+  color: #0b3558;
+  margin-bottom: 15px;
 }
-.Hero .HeroInner span {
-  background: linear-gradient(to right, #007FEF 0%, #00DDD9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.Hero .HeroInner p {
+  color: #476788;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+}
+.Hero .HeroInner Button {
+  margin: 0 7.5px;
 }
 
 .Gallery {
@@ -116,6 +123,8 @@
 .Footer .FooterInner .FooterColumn a {
   font-size: 16px;
   margin-bottom: 20px;
+  text-decoration: none;
+  color: #425466;
 }
 .Footer hr {
   color: rgba(29, 140, 242, 0.2);
@@ -130,11 +139,41 @@
   padding: 50px 0;
   font-size: 14px;
 }
+.Footer .FooterBottom a {
+  text-decoration: none;
+  color: #425466;
+}
 .Footer .FooterBottom span {
   display: flex;
 }
 .Footer .FooterBottom span a:first-of-type {
   margin: 0 30px;
+}
+
+.privacy {
+  padding: 200px 0px 125px 0px;
+  width: 1440px;
+  margin: 0 auto;
+}
+.privacy h1 {
+  color: #0b3558;
+  font-size: 64px;
+}
+.privacy p {
+  color: #425466;
+}
+
+.cookies {
+  padding: 200px 0px 125px 0px;
+  width: 1440px;
+  margin: 0 auto;
+}
+.cookies h1 {
+  color: #0b3558;
+  font-size: 64px;
+}
+.cookies p {
+  color: #425466;
 }
 
 /*# sourceMappingURL=global.css.map */

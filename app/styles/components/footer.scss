@@ -25,6 +25,8 @@
       a {
         font-size: 16px;
         margin-bottom: 20px;
+        text-decoration: none;
+        color: #425466;
       }
     }
   }
@@ -42,6 +44,10 @@
     width: 1440px;
     padding: 50px 0;
     font-size: 14px;
+    a {
+      text-decoration: none;
+      color: #425466;
+    }
     span {
       display: flex;
       a:first-of-type {

@@ -90,7 +90,11 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      <Button variant="outlined" startIcon={<ResetIcon />}>
+      <Button
+        variant="outlined"
+        startIcon={<ResetIcon />}
+        sx={{ textTransform: "Capitalize" }}
+      >
         Nulstil
       </Button>
     </div>

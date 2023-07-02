@@ -34,11 +34,8 @@ function Footer() {
         </div>
         <div className="FooterColumn">
           <h6>Legal</h6>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
+          <a href="privacy-policy">Persondatapolitik</a>
+          <a href="cookies">Cookieindstillinger</a>
         </div>
         <div className="FooterColumn">
           <h6>Resourcer</h6>
@@ -53,8 +50,8 @@ function Footer() {
       <div className="FooterBottom">
         <p>Copyright</p>
         <span>
-          <a href="#">Privatlivspolitik</a>
-          <a href="#">Cookieindstillinger</a>
+          <a href="privacy-policy">Persondatapolitik</a>
+          <a href="cookies">Cookie indstillinger</a>
         </span>
       </div>
     </section>
