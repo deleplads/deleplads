@@ -19,6 +19,7 @@
     "@remix-run/vercel": "^1.18.1",
     "@vercel/node": "^2.10.3",
     "isbot": "^3.6.8",
+    "mui-image": "^1.0.7",
     "node-sass": "^9.0.0",
     "postcss": "8.4.24",
     "react": "^18.2.0",

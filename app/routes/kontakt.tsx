@@ -6,7 +6,7 @@ import Kontakt from "~/pages/Kontakt";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: "Deleplads.dk - Kontakt os" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };

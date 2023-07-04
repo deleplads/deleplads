@@ -1,5 +1,4 @@
 "use client";
-import * as React from "react";
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -21,37 +20,32 @@ function Footer() {
         <div className="FooterColumn">
           <h6>Overblik</h6>
           <a href="/">Forside</a>
-          <a href="#">Parkeringspladser</a>
-          <a href="#">FAQ</a>
+          <a href="#">Priser</a>
           <a href="#">Blog</a>
-          <a href="#">Kontakt</a>
+          <a href="#">FAQ</a>
+          
         </div>
         <div className="FooterColumn">
           <h6>Produkt</h6>
-          <a href="#">Lejere</a>
-          <a href="#">Udlejere</a>
-          <a href="#">Grøn omstilling</a>
+          <a href="#">Leje</a>
+          <a href="#">Udleje</a>
         </div>
         <div className="FooterColumn">
           <h6>Legal</h6>
           <a href="privacy-policy">Persondatapolitik</a>
-          <a href="cookies">Cookieindstillinger</a>
+          <a href="cookies">Cookiepolitik</a>
         </div>
         <div className="FooterColumn">
           <h6>Resourcer</h6>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
-          <a href="#">Menupunkt</a>
+          <a href="#">Kontakt os</a>
+          <a href="#">Mediesæt</a>
         </div>
       </div>
-      <hr />
       <div className="FooterBottom">
-        <p>Copyright</p>
+        <p>Copyright © Deleplads.dk 2023</p>
         <span>
           <a href="privacy-policy">Persondatapolitik</a>
-          <a href="cookies">Cookie indstillinger</a>
+          <a href="cookies">Cookiepolitik</a>
         </span>
       </div>
     </section>

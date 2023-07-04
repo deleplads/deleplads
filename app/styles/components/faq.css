@@ -1,0 +1,18 @@
+.faq {
+  padding: 125px 0px 125px 0px;
+  width: 1440px;
+  margin: 0 auto;
+}
+.faq h1 {
+  color: #0b3558;
+  font-size: 64px;
+}
+.faq h2 {
+  color: #0b3558;
+  font-size: 32px;
+}
+.faq p {
+  color: #425466;
+}
+
+/*# sourceMappingURL=faq.css.map */

@@ -1,11 +1,11 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
+import FAQ from "../components/faq";
 import Footer from "../components/Footer";
-import Privacy from "../components/privacy"
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Deleplads.dk - Persondatapolitik" },
+    { title: "Deleplads.dk - Ofte stillede spørgsmål" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
@@ -14,7 +14,7 @@ export default function Index() {
   return (
     <main>
       <Navbar></Navbar>
-      <Privacy></Privacy>
+      <FAQ></FAQ>
       <Footer></Footer>
     </main>
   );

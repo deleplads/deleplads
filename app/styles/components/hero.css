@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 125px 0px;
+  padding: 125px 0px 125px 0px;
 }
 .Hero .HeroInner h1 {
   text-align: center;
@@ -31,6 +31,37 @@
 }
 .Hero .HeroInner Button {
   margin: 0 7.5px;
+}
+.Hero .HeroInner .HeroSignUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #476788;
+}
+.Hero .HeroInner .HeroSignUp .hr-seperator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.Hero .HeroInner .HeroSignUp .hr-seperator hr {
+  width: 200px;
+  background: #e5e5e5;
+  opacity: 0.25;
+}
+.Hero .HeroInner .HeroSignUp .hr-seperator p {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.Hero .HeroInner .HeroSignUp p {
+  font-size: 14px;
+}
+.Hero .HeroInner .HeroSignUp a {
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  color: #006bff;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=hero.css.map */

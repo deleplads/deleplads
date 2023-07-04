@@ -7,7 +7,7 @@ import SearchBar from "~/components/SearchBar";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: "Deleplads.dk" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };

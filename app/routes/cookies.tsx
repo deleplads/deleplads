@@ -5,7 +5,7 @@ import Cookies from "../components/cookies"
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: "Deleplads.dk - Cookiepolitik" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };

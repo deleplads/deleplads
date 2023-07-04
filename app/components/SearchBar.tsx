@@ -21,7 +21,6 @@ function SearchBar() {
       <TextField
         id="outlined-basic"
         label="Søg efter område"
-        variant="outlined"
         sx={{ minWidth: "35%" }}
       />
       <Box sx={{ minWidth: "15%" }}>
@@ -91,9 +90,9 @@ function SearchBar() {
         </FormControl>
       </Box>
       <Button
-        variant="outlined"
+        variant="contained"
         startIcon={<ResetIcon />}
-        sx={{ textTransform: "Capitalize" }}
+        sx={{ textTransform: "Capitalize", background: "#006bff", fontSize: "16px" }}
       >
         Nulstil
       </Button>
