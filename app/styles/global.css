@@ -159,6 +159,14 @@
   color: #0b3558;
   font-size: 64px;
 }
+.privacy h5 {
+  font-size: 24px;
+  margin: 0;
+}
+.privacy h6 {
+  font-size: 20px;
+  margin: 0;
+}
 .privacy p {
   color: #425466;
 }

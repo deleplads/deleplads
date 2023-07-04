@@ -20,7 +20,7 @@ function Footer() {
         </div>
         <div className="FooterColumn">
           <h6>Overblik</h6>
-          <a href="#">Forside</a>
+          <a href="/">Forside</a>
           <a href="#">Parkeringspladser</a>
           <a href="#">FAQ</a>
           <a href="#">Blog</a>
