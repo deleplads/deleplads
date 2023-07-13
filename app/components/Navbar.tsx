@@ -1,9 +1,20 @@
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
-import AlertTitle from '@mui/material/AlertTitle';
+import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import { useState } from "react";
+import ChevronDown from "../components/icons/ChevronDown";
 
 function Navbar() {
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const handleOpenUserMenu = (event: any) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   return (
     <>
@@ -18,16 +29,68 @@ function Navbar() {
           <a href="/">Deleplads.dk</a>
           <div className="items">
             <a href="/">Forside</a>
-            <a href="#">Leje og udleje</a>
+            <div
+              onClick={handleOpenUserMenu}
+              style={{ display: "flex", margin: "0 15px", cursor: "pointer" }}
+            >
+              <span>Leje og udleje</span>
+              <div
+                style={{
+                  height: "16px",
+                  width: "16px",
+                  color: "#425466",
+                  marginLeft: "5px",
+                  marginTop: "2.5px",
+                }}
+              >
+                <ChevronDown></ChevronDown>
+              </div>
+            </div>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Leje</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Udleje</Typography>
+              </MenuItem>
+            </Menu>
             <a href="#">Priser</a>
             <a href="#">Blog</a>
             <a href="/faq">FAQ</a>
           </div>
           <span>
-            <Button variant="text">Tilmeld</Button>
+            <Button
+              variant="outlined"
+              href="/sign-up"
+              sx={{
+                marginRight: "15px",
+                textTransform: "Capitalize",
+                background: "white",
+                fontWeight: "500",
+                fontSize: "16px",
+                padding: "6px 16px"
+              }}
+            >
+              Tilmeld
+            </Button>
             <Button
               variant="contained"
-              href="#contained-buttons"
+              href="/sign-in"
               sx={{
                 textTransform: "Capitalize",
                 background: "#006bff",

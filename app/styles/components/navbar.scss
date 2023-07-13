@@ -6,7 +6,7 @@
   justify-content: center;
   border-bottom: 1px solid #e5e5e5;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   // margin-top: 62px;
 
   .InnerNavigationBar {
@@ -17,7 +17,12 @@
     align-items: center;
     justify-content: space-between;
 
-    .items a {
+    .items {
+      display: flex;
+      color: #425466;
+    }
+
+    .items a, MenuItem {
       margin: 0 15px;
       text-decoration: none;
       color: #425466;

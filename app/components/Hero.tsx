@@ -11,9 +11,8 @@ function Hero() {
     >
       <div className="HeroInner">
         <h1>
-          {/* Leje og udlejning af<br></br>
-          <span>private parkeringspladser</span> */}
-          Tjen penge med din<br></br>egen parkeringsplads
+          Tjen penge på din<br></br>
+          egen parkeringsplads
         </h1>
         <p>
           Leje og udleje private parkeringspladser — nemt, hurtigt og billigt.
@@ -23,12 +22,40 @@ function Hero() {
         <div className="HeroSignUp">
           <p>Tilmeld dig gratis med Google eller Microsoft</p>
           <span>
-            <Button variant="outlined" size="large" sx={{ textTransform: "capitalize", padding: "10px 60px", fontWeight: "700", color: "#0b3558", borderColor: "#e5e5e5" }} >
-              <Box component="img" sx={{ height: 25, width: 25, marginRight: "10px" }} src="../../google.png"/>
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{
+                textTransform: "capitalize",
+                padding: "10px 60px",
+                fontWeight: "700",
+                color: "#0b3558",
+                borderColor: "#e5e5e5",
+              }}
+            >
+              <Box
+                component="img"
+                sx={{ height: 25, width: 25, marginRight: "10px" }}
+                src="../../google.png"
+              />
               Google
             </Button>
-            <Button variant="outlined" size="large" sx={{ textTransform: "capitalize", padding: "10px 60px", fontWeight: "700", color: "#0b3558", borderColor: "#e5e5e5" }} >
-              <Box component="img" sx={{ height: 25, width: 25, marginRight: "10px" }} src="../../microsoft.png"/>
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{
+                textTransform: "capitalize",
+                padding: "10px 60px",
+                fontWeight: "700",
+                color: "#0b3558",
+                borderColor: "#e5e5e5",
+              }}
+            >
+              <Box
+                component="img"
+                sx={{ height: 25, width: 25, marginRight: "10px" }}
+                src="../../microsoft.png"
+              />
               Microsoft
             </Button>
           </span>

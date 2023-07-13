@@ -72,3 +72,16 @@
     // }
   }
 }
+
+.ChangingText:before {
+  content: 'Tjen penge på din';
+    font-size: 60px;
+    animation-name: head;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes head {
+  33% {font-size:60px; opacity:1; content: "Udlej din egen"}
+  66% {font-size:60px; opacity:1; content: "Find en billig"}
+}

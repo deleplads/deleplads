@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .NavigationBar {
   height: 75px;
   width: 100%;
@@ -6,7 +7,7 @@
   justify-content: center;
   border-bottom: 1px solid #e5e5e5;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
@@ -16,7 +17,11 @@
   align-items: center;
   justify-content: space-between;
 }
-.NavigationBar .InnerNavigationBar .items a {
+.NavigationBar .InnerNavigationBar .items {
+  display: flex;
+  color: #425466;
+}
+.NavigationBar .InnerNavigationBar .items a, .NavigationBar .InnerNavigationBar MenuItem {
   margin: 0 15px;
   text-decoration: none;
   color: #425466;
@@ -117,6 +122,26 @@
   font-size: 14px;
 }
 
+.ChangingText:before {
+  content: "Tjen penge på din";
+  font-size: 60px;
+  animation-name: head;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes head {
+  33% {
+    font-size: 60px;
+    opacity: 1;
+    content: "Udlej din egen";
+  }
+  66% {
+    font-size: 60px;
+    opacity: 1;
+    content: "Find en billig";
+  }
+}
 .Gallery {
   display: flex;
   justify-content: center;
@@ -188,6 +213,8 @@
   padding: 200px 0px 125px 0px;
   width: 1440px;
   margin: 0 auto;
+  color: #425466;
+  font-size: 16px;
 }
 .privacy h1 {
   color: #0b3558;
@@ -236,6 +263,18 @@
 }
 .faq p {
   color: #425466;
+}
+
+#sign-in-container {
+  padding: 175px 0 150px 0;
+  background: transparent;
+  z-index: 1;
+}
+
+#sign-up-container {
+  padding: 175px 0 150px 0;
+  background: transparent;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=global.css.map */

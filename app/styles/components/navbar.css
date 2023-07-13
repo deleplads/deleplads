@@ -6,7 +6,7 @@
   justify-content: center;
   border-bottom: 1px solid #e5e5e5;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
@@ -16,7 +16,11 @@
   align-items: center;
   justify-content: space-between;
 }
-.NavigationBar .InnerNavigationBar .items a {
+.NavigationBar .InnerNavigationBar .items {
+  display: flex;
+  color: #425466;
+}
+.NavigationBar .InnerNavigationBar .items a, .NavigationBar .InnerNavigationBar MenuItem {
   margin: 0 15px;
   text-decoration: none;
   color: #425466;

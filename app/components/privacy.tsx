@@ -4,7 +4,6 @@ function Privacy() {
   return (
     <section className="privacy">
       <h1>Persondatapolitik</h1>
-      <p>
         Sidst opdateret: 4. Juli, 2023 (Version 1.0.0)
         <br></br><br></br>
         <h5>Dataansvarlig</h5>
@@ -162,7 +161,6 @@ function Privacy() {
         Du har ret til at indgive en klage til Datatilsynet, hvis du er utilfreds med den måde, vi behandler dine personoplysninger på. Du finder Datatilsynets kontaktoplysninger på <a href="www.datatilsynet.dk">www.datatilsynet.dk</a>.
         <br></br><br></br>
         Vi vil generelt opfordre dig til at læse mere om GDPR, så du er opdateret på reglerne.
-      </p>
     </section>
   );
 }
