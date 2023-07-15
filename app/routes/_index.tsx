@@ -1,9 +1,10 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
+import type { V2_MetaFunction} from "@remix-run/node";
 import Footer from "~/components/Footer";
 import Gallery from "~/components/Gallery";
 import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
 import SearchBar from "~/components/SearchBar";
+
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -11,6 +12,7 @@ export const meta: V2_MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
+
 
 export default function Index() {
   return (

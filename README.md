@@ -1,4 +1,7 @@
 # HOW TO!!!!
+
+npx supabase gen types typescript --project-id slotgmexnyekacixnhyc > db_types.ts
+
 Du skal køre følgende:
 
 npm install

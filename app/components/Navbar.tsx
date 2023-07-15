@@ -4,9 +4,13 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
+import { useOutletContext, useNavigate } from "@remix-run/react";
+import type { SupabaseOutletContext } from "~/root";
 
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
+ 
 
   const handleOpenUserMenu = (event: any) => {
     setAnchorElUser(event.currentTarget);
@@ -14,6 +18,14 @@ function Navbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const { supabase, session } = useOutletContext<SupabaseOutletContext>();
+  const currentSession = session ?? null;
+
+  const handleSubmit = async () => {
+    await supabase.auth.signOut();
+    navigate('/');
   };
 
   return (
@@ -73,34 +85,52 @@ function Navbar() {
             <a href="#">Blog</a>
             <a href="/faq">FAQ</a>
           </div>
-          <span>
-            <Button
-              variant="outlined"
-              href="/sign-up"
-              sx={{
-                marginRight: "15px",
-                textTransform: "Capitalize",
-                background: "white",
-                fontWeight: "500",
-                fontSize: "16px",
-                padding: "6px 16px"
-              }}
-            >
-              Tilmeld
-            </Button>
-            <Button
-              variant="contained"
-              href="/sign-in"
-              sx={{
-                textTransform: "Capitalize",
-                background: "#006bff",
-                fontWeight: "500",
-                fontSize: "16px",
-              }}
-            >
-              Log ind
-            </Button>
-          </span>
+          {currentSession ? (
+            <span>
+              <Button
+                onClick={handleSubmit}
+                variant="contained"
+                sx={{
+                  textTransform: "Capitalize",
+                  background: "#006bff",
+                  fontWeight: "500",
+                  fontSize: "16px",
+                  color: "white !important",
+                }}
+              >
+                Log ud
+              </Button>
+            </span>
+          ) : (
+            <span>
+              <Button
+                variant="outlined"
+                href="/sign-up"
+                sx={{
+                  marginRight: "15px",
+                  textTransform: "Capitalize",
+                  background: "white",
+                  fontWeight: "500",
+                  fontSize: "16px",
+                  padding: "6px 16px",
+                }}
+              >
+                Tilmeld
+              </Button>
+              <Button
+                variant="contained"
+                href="/sign-in"
+                sx={{
+                  textTransform: "Capitalize",
+                  background: "#006bff",
+                  fontWeight: "500",
+                  fontSize: "16px",
+                }}
+              >
+                Log ind
+              </Button>
+            </span>
+          )}
         </div>
       </div>
     </>
