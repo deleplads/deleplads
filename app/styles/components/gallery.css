@@ -7,9 +7,34 @@
 .Gallery .GalleryInner {
   width: 1440px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 25px;
   grid-row-gap: 25px;
+}
+
+.avaliability {
+  display: flex;
+  gap: 10px;
+}
+.avaliability .day {
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avaliability .ledig {
+  background: #006bff;
+  color: white;
+}
+.avaliability .ikke-ledig {
+  background: #e5e5e5;
+}
+
+.bonus-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=gallery.css.map */

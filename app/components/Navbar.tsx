@@ -63,13 +63,12 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Leje</Typography>
+                <a href="/leje">Leje</a>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Udleje</Typography>
+                <a href="/udleje">Udleje</a>
               </MenuItem>
             </Menu>
-            <a href="#">Priser</a>
             <a href="#">Blog</a>
             <a href="/faq">FAQ</a>
           </div>
@@ -83,7 +82,8 @@ function Navbar() {
                 background: "white",
                 fontWeight: "500",
                 fontSize: "16px",
-                padding: "6px 16px"
+                padding: "6px 16px",
+                border: "1px solid #e5e5e5",
               }}
             >
               Tilmeld

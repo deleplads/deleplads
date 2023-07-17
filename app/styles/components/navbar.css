@@ -19,8 +19,14 @@
 .NavigationBar .InnerNavigationBar .items {
   display: flex;
   color: #425466;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 374px;
+  position: absolute;
 }
-.NavigationBar .InnerNavigationBar .items a, .NavigationBar .InnerNavigationBar MenuItem {
+.NavigationBar .InnerNavigationBar .items a,
+.NavigationBar .InnerNavigationBar MenuItem {
   margin: 0 15px;
   text-decoration: none;
   color: #425466;

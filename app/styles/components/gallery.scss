@@ -1,13 +1,38 @@
 .Gallery {
+  display: flex;
+  justify-content: center;
+  background: white;
+  padding-bottom: 175px;
+  .GalleryInner {
+    width: 1440px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+  }
+}
+
+.avaliability {
+  display: flex;
+  gap: 10px;
+  .day {
+    height: 25px;
+    width: 25px;
     display: flex;
     justify-content: center;
-    background: white;
-    padding-bottom: 175px;
-    .GalleryInner {
-        width: 1440px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 25px;
-        grid-row-gap: 25px;
-    }
+    align-items: center;
+  }
+  .ledig {
+    background: #006bff;
+    color: white;
+  }
+  .ikke-ledig {
+    background: #e5e5e5;
+  }
+}
+
+.bonus-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

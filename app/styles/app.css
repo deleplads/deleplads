@@ -4,6 +4,7 @@
 @tailwind utilities;
 * {
   font-family: "Poppins", sans-serif;
+  color: #0b3558;
 }
 
 body {
@@ -27,7 +28,12 @@ body {
 }
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 /*# sourceMappingURL=app.css.map */

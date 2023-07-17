@@ -11,8 +11,7 @@ function Hero() {
     >
       <div className="HeroInner">
         <h1>
-          Tjen penge på din<br></br>
-          egen parkeringsplads
+          Leje og udlejning af<br></br>private parkeringspladser
         </h1>
         <p>
           Leje og udleje private parkeringspladser — nemt, hurtigt og billigt.
