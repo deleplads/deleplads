@@ -1,4 +1,4 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
 import Footer from "~/components/Footer";
 import Gallery from "~/components/Gallery";
 import Hero from "~/components/Hero";
