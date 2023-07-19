@@ -9,7 +9,6 @@ import type { SupabaseOutletContext } from "~/root";
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const navigate = useNavigate();
- 
 
   const handleOpenUserMenu = (event: any) => {
     setAnchorElUser(event.currentTarget);
@@ -24,14 +23,16 @@ function Navbar() {
 
   const handleSubmit = async () => {
     await supabase.auth.signOut();
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <>
       <div className="NavigationBar">
         <div className="InnerNavigationBar">
-          <a href="/" style={{ fontWeight: "700" }}>Deleplads.dk</a>
+          <a href="/" style={{ fontWeight: "700" }}>
+            Deleplads.dk
+          </a>
           <div className="items">
             <a href="/">Forside</a>
             <div
@@ -83,11 +84,13 @@ function Navbar() {
                 onClick={handleSubmit}
                 variant="contained"
                 sx={{
-                  textTransform: "Capitalize",
-                  background: "#006bff",
-                  fontWeight: "500",
-                  fontSize: "16px",
-                  color: "white !important",
+                  textTransform: "initial",
+                  fontWeight: "700",
+                  fontSize: "14px",
+                  padding: "6px 16px",
+                  background: "#FF2455",
+                  borderRadius: "100px",
+                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
                 }}
               >
                 Log ud
@@ -96,15 +99,13 @@ function Navbar() {
           ) : (
             <span>
               <Button
-                variant="outlined"
                 href="/sign-up"
                 sx={{
                   marginRight: "15px",
                   textTransform: "Capitalize",
                   background: "white",
-                  fontWeight: "500",
-                  fontSize: "16px",
-                  padding: "6px 16px",
+                  fontWeight: "700",
+                  fontSize: "14px",
                 }}
               >
                 Tilmeld
@@ -113,10 +114,11 @@ function Navbar() {
                 variant="contained"
                 href="/sign-in"
                 sx={{
-                  textTransform: "Capitalize",
-                  background: "#006bff",
-                  fontWeight: "500",
-                  fontSize: "16px",
+                  textTransform: "initial",
+                  fontWeight: "700",
+                  fontSize: "14px",
+                  padding: "6px 16px",
+                  background: "#FF2455",
                   borderRadius: "100px",
                   boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
                 }}
