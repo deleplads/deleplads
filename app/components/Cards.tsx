@@ -1,11 +1,9 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
 
 const bull = (
   <Box
@@ -18,26 +16,34 @@ const bull = (
 
 export default function BasicCard() {
   return (
-    <Card sx={{ minWidth: '275', border: "1px solid #e5e5e5", boxShadow: "none" }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <a href="#" style={{ textDecoration: "none" }}>
+      <Card sx={{ minWidth: "275", border: "none", boxShadow: "none" }}>
+        <CardContent sx={{ padding: "0" }}>
+          <Box
+            sx={{ width: "100%" }}
+            component="img"
+            src="../../parkeringsplads.jpg"
+          />
+          <div className="avaliability">
+            <p className="day ledig">M</p>
+            <p className="day ikke-ledig">T</p>
+            <p className="day ledig">O</p>
+            <p className="day ledig">T</p>
+            <p className="day ikke-ledig">F</p>
+            <p className="day ledig">L</p>
+            <p className="day ledig">S</p>
+          </div>
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            Log ind og få vist adressen
+          </Typography>
+          <Typography sx={{ mt: 1.5 }} color="text.secondary">
+            København
+          </Typography>
+          <Typography sx={{ mt: 1.5 }} color="text.secondary">
+            17,75 / time
+          </Typography>
+        </CardContent>
+      </Card>
+    </a>
   );
 }

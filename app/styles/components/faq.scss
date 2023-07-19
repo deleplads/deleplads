@@ -1,16 +1,48 @@
 .faq {
-    padding: 125px 0px 125px 0px;
-    width: 1440px;
-margin: 0 auto;
-    h1 {
-        color: #0b3558;
-        font-size: 64px;
-    }
-    h2 {
-        color: #0b3558;
-        font-size: 32px;
-    }
-    p {
-        color: #425466;
-    }
+  padding: 125px 0px 125px 0px;
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    color: #0b3558;
+    font-size: 64px;
+    padding-bottom: 100px;
+  }
+  h2 {
+    color: #0b3558;
+    padding: 50px 0;
+    font-size: 40px;
+    margin: 0;
+  }
+  p {
+    color: #425466;
+  }
+}
+
+.faq-accordions {
+  text-align: left !important;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  .MuiAccordionSummary-root {
+    padding: 20px 30px !important;
+    border: 1px solid #e5e5e5;
+    box-shadow: none !important;
+  }
+  #panel1a-content,
+  #panel2a-content,
+  #panel3a-content,
+  #panel4a-content,
+  #panel5a-content,
+  #panel6a-content {
+    padding: 25px 0px 20px 0px !important;
+    padding-left: 20px !important;
+    margin: 0;
+    width: auto;
+    display: flex;
+  }
 }

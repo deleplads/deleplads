@@ -1,6 +1,5 @@
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
@@ -30,15 +29,9 @@ function Navbar() {
 
   return (
     <>
-      {/* <Box sx={{ width: "100%", position: "fixed", zIndex: "100" }}>
-          <Alert severity="info" sx={{ height: "50px", display: "flex", alignItems: "center" }}>
-            <AlertTitle sx={{ margin: "0" }}>Info</AlertTitle>
-          </Alert> 
-      </Box> */}
-
       <div className="NavigationBar">
         <div className="InnerNavigationBar">
-          <a href="/">Deleplads.dk</a>
+          <a href="/" style={{ fontWeight: "700" }}>Deleplads.dk</a>
           <div className="items">
             <a href="/">Forside</a>
             <div
@@ -75,13 +68,12 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Leje</Typography>
+                <a href="/leje">Leje</a>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Udleje</Typography>
+                <a href="/udleje">Udleje</a>
               </MenuItem>
             </Menu>
-            <a href="#">Priser</a>
             <a href="#">Blog</a>
             <a href="/faq">FAQ</a>
           </div>
@@ -125,6 +117,8 @@ function Navbar() {
                   background: "#006bff",
                   fontWeight: "500",
                   fontSize: "16px",
+                  borderRadius: "100px",
+                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
                 }}
               >
                 Log ind
@@ -133,6 +127,25 @@ function Navbar() {
           )}
         </div>
       </div>
+
+      {/* <Box sx={{ width: "100%", zIndex: "100" }}>
+        <div style={{ width: "100%", background: "#0b3558" }}> 
+          <Alert
+            color="info"
+            sx={{
+              height: "65px",
+              display: "flex",
+              alignItems: "center",
+              background: "#0b3558",
+              color: "white",
+              width: "1340px",
+              margin: "0 auto"
+            }}
+          >
+            <AlertTitle sx={{ margin: "0" }}>Info</AlertTitle>
+          </Alert>
+        </div>
+      </Box> */}
     </>
   );
 }

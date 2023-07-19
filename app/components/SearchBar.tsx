@@ -90,12 +90,18 @@ function SearchBar() {
         </FormControl>
       </Box>
       <Button
-        variant="contained"
         startIcon={<ResetIcon />}
-        sx={{ textTransform: "Capitalize", background: "#006bff", fontSize: "16px" }}
-      >
-        Nulstil
-      </Button>
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "cemter",
+          backgroundPosition: "center center",
+          background: "transparent",
+          border: "1px solid #e5e5e5",
+          fontSize: "16px",
+        }}
+      ></Button>
     </div>
   );
 }
