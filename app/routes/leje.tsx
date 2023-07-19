@@ -26,7 +26,7 @@ export default function udleje() {
       </section>
       <LejeTimeline></LejeTimeline>
       <section className="udleje-questions">
-        <h2>Hyppige spørgsmål for udlejere</h2>
+        <h2>Hyppige spørgsmål for lejere</h2>
         <div className="udleje-accordions">
           <Accordion>
             <AccordionSummary

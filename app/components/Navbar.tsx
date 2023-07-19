@@ -1,6 +1,5 @@
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
@@ -18,15 +17,9 @@ function Navbar() {
 
   return (
     <>
-      {/* <Box sx={{ width: "100%", position: "fixed", zIndex: "100" }}>
-          <Alert severity="info" sx={{ height: "50px", display: "flex", alignItems: "center" }}>
-            <AlertTitle sx={{ margin: "0" }}>Info</AlertTitle>
-          </Alert> 
-      </Box> */}
-
       <div className="NavigationBar">
         <div className="InnerNavigationBar">
-          <a href="/">Deleplads.dk</a>
+          <a href="/" style={{ fontWeight: "700" }}>Deleplads.dk</a>
           <div className="items">
             <a href="/">Forside</a>
             <div
@@ -74,28 +67,38 @@ function Navbar() {
           </div>
           <span>
             <Button
-              variant="outlined"
               href="/sign-up"
               sx={{
                 marginRight: "15px",
                 textTransform: "Capitalize",
                 background: "white",
-                fontWeight: "500",
-                fontSize: "16px",
-                padding: "6px 16px",
-                border: "1px solid #e5e5e5",
+                fontWeight: "700",
+                fontSize: "14px",
               }}
             >
               Tilmeld
             </Button>
+
+            {/* fontWeight: "500",
+                fontSize: "16px",
+                padding: "6px 16px",
+                box-shadow: "rgba(0, 0, 0, 0.12) 0px 20px 40px 0px",
+                borderRadius: "1000000000px",
+                color: "white",
+                fontWeight: 700 */}
+
             <Button
               variant="contained"
               href="/sign-in"
               sx={{
-                textTransform: "Capitalize",
-                background: "#006bff",
-                fontWeight: "500",
-                fontSize: "16px",
+                textTransform: "initial",
+                fontWeight: "700",
+                fontSize: "14px",
+                padding: "6px 16px",
+                background: "#FF2455",
+                borderRadius: "100px",
+                boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
+                
               }}
             >
               Log ind
@@ -103,6 +106,25 @@ function Navbar() {
           </span>
         </div>
       </div>
+
+      {/* <Box sx={{ width: "100%", zIndex: "100" }}>
+        <div style={{ width: "100%", background: "#0b3558" }}> 
+          <Alert
+            color="info"
+            sx={{
+              height: "65px",
+              display: "flex",
+              alignItems: "center",
+              background: "#0b3558",
+              color: "white",
+              width: "1340px",
+              margin: "0 auto"
+            }}
+          >
+            <AlertTitle sx={{ margin: "0" }}>Info</AlertTitle>
+          </Alert>
+        </div>
+      </Box> */}
     </>
   );
 }

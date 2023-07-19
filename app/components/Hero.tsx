@@ -2,6 +2,7 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // import Background from '../../public/test2.png';
 
 function Hero() {
@@ -15,10 +16,22 @@ function Hero() {
         </h1>
         <p>
           Leje og udleje private parkeringspladser — nemt, hurtigt og billigt.
-          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, maxime<br></br>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis. */}
         </p>
-        <div className="HeroSignUp">
+        <span>
+          <Button
+            sx={{
+              textTransform: "initial",
+              padding: "10px 60px",
+              fontWeight: "700",
+              color: "#0b3558",
+              borderColor: "#e5e5e5",
+            }}
+          >
+            <Box />
+            Tilmeld dig gratis <ArrowForwardIcon></ArrowForwardIcon>
+          </Button>
+        </span>
+        {/* <div className="HeroSignUp">
           <p>Tilmeld dig gratis med Google eller Microsoft</p>
           <span>
             <Button
@@ -64,7 +77,7 @@ function Hero() {
             <hr />
           </div>
           <a href="#">Tilmeld dig med e-mail.</a>
-        </div>
+        </div> */}
       </div>
     </section>
   );
