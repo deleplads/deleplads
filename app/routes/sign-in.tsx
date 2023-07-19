@@ -50,7 +50,9 @@ export default function SignIn() {
         password: password.toString(),
       });
 
-      navigate("/");
+      navigate("/", {
+        state: { message: "Successfully logged in!" },
+      });
     }
   };
 

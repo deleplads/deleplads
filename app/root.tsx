@@ -66,9 +66,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <main>
-          <Outlet context={{ supabase, session }} />
-        </main>
+        <Outlet context={{ supabase, session }} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

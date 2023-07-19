@@ -4,7 +4,9 @@ import Gallery from "~/components/Gallery";
 import Hero from "~/components/Hero";
 import Navbar from "~/components/Navbar";
 import SearchBar from "~/components/SearchBar";
-
+import toast, { Toaster } from 'react-hot-toast';
+import { useLocation } from "@remix-run/react";
+import { useEffect } from "react";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -15,13 +17,23 @@ export const meta: V2_MetaFunction = () => {
 
 
 export default function Index() {
+  const location = useLocation();
+  const message = location.state?.message;
+
+  useEffect(() => {
+    if (message) {
+      toast.success(message);
+    }
+  }, [message]);
+
   return (
-    <main>
+    <>
+      <Toaster position="top-right"/>
       <Navbar></Navbar>
       <Hero></Hero>
       <SearchBar></SearchBar>
       <Gallery></Gallery>
       <Footer></Footer>
-    </main>
+    </>
   );
 }
