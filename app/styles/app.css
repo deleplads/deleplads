@@ -4,9 +4,19 @@
 @tailwind utilities;
 * {
   font-family: 'Manrope', sans-serif;
+  color: #476788;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #0b3558;
+}
 
+p, a, .ListItem {
+  color: #476788;
+}
 
 /* @font-face {
   font-family: "Kayak";

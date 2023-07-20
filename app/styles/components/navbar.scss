@@ -4,16 +4,18 @@
   background: white;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5 !important;
   z-index: 1000;
+  margin-bottom: 1px;
 
   .InnerNavigationBar {
     height: inherit;
     width: 1340px;
-    background: inherit;
+    background: white;
     display: inherit;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5 !important;
 
     .items {
       display: flex;
@@ -44,5 +46,71 @@
       text-decoration: none;
       color: #425466;
     }
+  }
+  .MenuToggle {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+// Mobile media query
+
+@media only screen and (max-width: 600px) {
+  .NavigationBar {
+    height: 75px;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 1000;
+    padding: 0 16px;
+
+    .InnerNavigationBar {
+      height: inherit;
+      width: 1340px;
+      background: inherit;
+      display: inherit;
+      align-items: center;
+      justify-content: space-between;
+
+      .items {
+        display: flex;
+        color: #425466;
+        left: 0; // Sindssygt jank, skal fikses på et senere tidspunkt
+        right: 0; // Sindssygt jank, skal fikses på et senere tidspunkt
+        margin: auto; // Sindssygt jank, skal fikses på et senere tidspunkt
+        width: 374px; // Sindssygt jank, skal fikses på et senere tidspunkt
+        position: absolute; // Sindssygt jank, skal fikses på et senere tidspunkt
+      }
+
+      .items a,
+      MenuItem {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #425466;
+      }
+
+      Button:first-of-type {
+        margin-right: 15px;
+      }
+
+      Button {
+        text-transform: capitalize !important;
+        font-size: 16px;
+      }
+      a:nth-child(1) {
+        text-decoration: none;
+        color: #425466;
+      }
+    }
+  }
+
+  .MobileMenuNavigation {
+    display: none;
+  }
+  .MenuToggle {
+    display: block !important;
+    visibility: visible !important;
   }
 }

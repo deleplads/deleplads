@@ -37,4 +37,14 @@
   justify-content: space-between;
 }
 
+@media only screen and (max-width: 600px) {
+  .Gallery {
+    padding: 0 16px 100px 16px;
+  }
+  .Gallery .GalleryInner {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+}
+
 /*# sourceMappingURL=gallery.css.map */
