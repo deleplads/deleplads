@@ -34,13 +34,10 @@ function Footer() {
         <div className="FooterColumn">
           <h6>Overblik</h6>
           <a href="/">Forside</a>
-          <a href="#">Blog</a>
-          <a href="/faq">FAQ</a>
-        </div>
-        <div className="FooterColumn">
-          <h6>Produkt</h6>
           <a href="/leje">Leje</a>
           <a href="/udleje">Udleje</a>
+          <a href="#">Blog</a>
+          <a href="/faq">FAQ</a>
         </div>
         <div className="FooterColumn">
           <h6>Legal</h6>
