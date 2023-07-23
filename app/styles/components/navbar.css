@@ -4,16 +4,18 @@
   background: white;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5 !important;
   z-index: 1000;
+  margin-bottom: 1px;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
-  width: 1340px;
-  background: inherit;
+  width: 1140px;
+  background: white;
   display: inherit;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #e5e5e5 !important;
 }
 .NavigationBar .InnerNavigationBar .items {
   display: flex;
@@ -40,6 +42,64 @@
 .NavigationBar .InnerNavigationBar a:nth-child(1) {
   text-decoration: none;
   color: #425466;
+}
+.NavigationBar .MenuToggle {
+  display: none;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .NavigationBar {
+    height: 75px;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 1000;
+    padding: 0 16px;
+  }
+  .NavigationBar .InnerNavigationBar {
+    height: inherit;
+    width: 1140px;
+    background: inherit;
+    display: inherit;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .NavigationBar .InnerNavigationBar .items {
+    display: flex;
+    color: #425466;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 374px;
+    position: absolute;
+  }
+  .NavigationBar .InnerNavigationBar .items a,
+  .NavigationBar .InnerNavigationBar MenuItem {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #425466;
+  }
+  .NavigationBar .InnerNavigationBar Button:first-of-type {
+    margin-right: 15px;
+  }
+  .NavigationBar .InnerNavigationBar Button {
+    text-transform: capitalize !important;
+    font-size: 16px;
+  }
+  .NavigationBar .InnerNavigationBar a:nth-child(1) {
+    text-decoration: none;
+    color: #425466;
+  }
+  .MobileMenuNavigation {
+    display: none;
+  }
+  .MenuToggle {
+    display: block !important;
+    visibility: visible !important;
+  }
 }
 
 /*# sourceMappingURL=navbar.css.map */
