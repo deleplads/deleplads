@@ -4,9 +4,59 @@ import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
 import { Box } from "@mui/material";
+import { slide as BurgerMenu } from "react-burger-menu";
 
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  var styles = {
+    bmBurgerButton: {
+      position: "relative",
+      width: "26px",
+      height: "15px",
+    },
+    bmBurgerBars: {
+      background: "grey",
+    },
+    bmBurgerBarsHover: {
+      background: "#a90000",
+    },
+    bmCrossButton: {
+      height: "24px",
+      width: "24px",
+    },
+    bmCross: {
+      background: "#bdc3c7",
+    },
+    bmMenuWrap: {
+      position: "fixed",
+      height: "100vh",
+      width: "100vw",
+      top: "0",
+    },
+    bmMenu: {
+      display: "flex",
+      flexDirection: "column",
+      background: "white",
+      padding: "2em 1.5em 0",
+      fontSize: "1.15em",
+    },
+    bmMorphShape: {
+      fill: "#373a47",
+    },
+    bmItemList: {
+      color: "#b8b7ad",
+      padding: "0.8em",
+    },
+    bmItem: {
+      marginBottom: "25px",
+      textDecoration: "none",
+      fontWeight: "700",
+    },
+    bmOverlay: {
+      background: "rgba(0, 0, 0, 0.3)",
+    },
+  };
 
   const handleOpenUserMenu = (event: any) => {
     setAnchorElUser(event.currentTarget);
@@ -16,6 +66,16 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const [isOpen, setisOpen] = useState({ menuOpen: false });
+
+  const handleState = (state: any): void => {
+    setisOpen(state);
+  };
+
+  const closeMenu = (): void => {
+    setisOpen({ menuOpen: false });
+  };
+
   return (
     <>
       <div className="NavigationBar">
@@ -23,13 +83,35 @@ function Navbar() {
           <a href="/" style={{ fontWeight: "700" }}>
             Deleplads.dk
           </a>
-          <div className="MenuToggle">
-            <Box
-              sx={{ width: "100%" }}
-              component="img"
-              src="../../hamburger.png"
-            />
-          </div>
+          <BurgerMenu
+            className="MenuToggle"
+            right
+            styles={styles}
+            isOpen={isOpen.menuOpen}
+            onStateChange={(state) => handleState(state)}
+          >
+            <a id="home" className="menu-item" href="/">
+              Forside
+            </a>
+            <a id="about" className="menu-item" href="/leje">
+              Leje
+            </a>
+            <a id="contact" className="menu-item" href="/udleje">
+              Udleje
+            </a>
+            <a id="contact" className="menu-item" href="/blog">
+              Blog
+            </a>
+            <a id="contact" className="menu-item" href="/FAQ">
+              FAQ
+            </a>
+            <a id="contact" className="menu-item" href="/sign-up">
+              Tilmeld
+            </a>
+            <a id="contact" className="menu-item" href="/sign-in">
+              Log ind
+            </a>
+          </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
               <a href="/">Forside</a>
