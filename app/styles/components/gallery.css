@@ -5,9 +5,10 @@
   padding-bottom: 175px;
 }
 .Gallery .GalleryInner {
-  width: 1140px;
+  width: 1240px;
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 25px;
   grid-row-gap: 25px;
 }

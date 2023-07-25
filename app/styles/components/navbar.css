@@ -1,28 +1,29 @@
 .NavigationBar {
-  height: 75px;
-  width: 100%;
+  height: 85px;
   background: white;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #e5e5e5 !important;
   z-index: 1000;
   margin-bottom: 1px;
+  position: fixed;
+  width: 100%;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
-  width: 1140px;
-  background: white;
+  width: 1240px;
+  background: transparent;
   display: inherit;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e5e5 !important;
 }
 .NavigationBar .InnerNavigationBar .items {
   display: flex;
   color: #425466;
-  left: 0;
-  right: 0;
-  margin: auto;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
   width: 374px;
   position: absolute;
 }
@@ -35,15 +36,12 @@
 .NavigationBar .InnerNavigationBar Button:first-of-type {
   margin-right: 15px;
 }
-.NavigationBar .InnerNavigationBar Button {
-  text-transform: capitalize !important;
-  font-size: 16px;
-}
 .NavigationBar .InnerNavigationBar a:nth-child(1) {
   text-decoration: none;
   color: #425466;
 }
-.NavigationBar .MenuToggle, .NavigationBar .bm-burger-button {
+.NavigationBar .MenuToggle,
+.NavigationBar .bm-burger-button {
   display: none;
   visibility: hidden;
 }
@@ -96,7 +94,8 @@
   .MobileMenuNavigation {
     display: none;
   }
-  .MenuToggle, .bm-burger-button {
+  .MenuToggle,
+  .bm-burger-button {
     display: block !important;
     visibility: visible !important;
   }
