@@ -15,10 +15,10 @@ import Navbar from "~/components/Navbar";
 import Footer from "../components/Footer";
 import { useNavigate, useOutletContext } from "@remix-run/react";
 import type { SupabaseOutletContext } from "~/root";
+import { Toaster, toast } from "react-hot-toast";
 
 // function Copyright(props: any) {
 //   return (
-<<<<<<< HEAD
 //     <Typography
 //       variant="body2"
 //       color="text.secondary"
@@ -34,26 +34,11 @@ import type { SupabaseOutletContext } from "~/root";
 //     </Typography>
 //   );
 // }
-=======
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
->>>>>>> main
 
 export default function SignIn() {
   const { supabase } = useOutletContext<SupabaseOutletContext>();
   const navigate = useNavigate();
-
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -61,19 +46,21 @@ export default function SignIn() {
     const password = data.get("password");
 
     if (email && password) {
-      await supabase.auth.signInWithPassword({
+      const response = await supabase.auth.signInWithPassword({
         email: email.toString(),
         password: password.toString(),
       });
-
-      navigate("/", {
-        state: { message: "Successfully logged in!" },
-      });
+      if (response.error) {
+        toast.error(response.error.message);
+      } else {
+        navigate("/");
+      }
     }
   };
 
   return (
     <>
+    <Toaster position="top-right"/>
       <Navbar></Navbar>
       <Container id="sign-in-container" component="main" maxWidth="xs">
         <CssBaseline />

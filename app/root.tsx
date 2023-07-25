@@ -10,7 +10,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database, Json } from "db_types";
 import createServerSupabase from "utils/supabase.server";
@@ -52,10 +52,6 @@ export default function App() {
   const [supabase] = useState(() =>
     createBrowserClient<Database>(env.SUPABASE_URL!, env.SUPABASE_ANON_KEY!)
   );
-
-  useEffect(() => {
-    supabase.auth.getSession().then((session) => console.log());
-  }, []);
 
   return (
     <html lang="en">
