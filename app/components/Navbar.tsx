@@ -3,17 +3,14 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
-<<<<<<< HEAD
 import { useOutletContext, useNavigate } from "@remix-run/react";
 import type { SupabaseOutletContext } from "~/root";
-=======
-import { Box } from "@mui/material";
 import { slide as BurgerMenu } from "react-burger-menu";
->>>>>>> main
 
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const navigate = useNavigate();
+  const [isOpen, setisOpen] = useState({ menuOpen: false });
 
   var styles = {
     bmBurgerButton: {
@@ -72,204 +69,190 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-<<<<<<< HEAD
   const { supabase, session } = useOutletContext<SupabaseOutletContext>();
   const currentSession = session ?? null;
 
   const handleSubmit = async () => {
     await supabase.auth.signOut();
     navigate("/");
-=======
-  const [isOpen, setisOpen] = useState({ menuOpen: false });
+  }
 
-  const handleState = (state: any): void => {
-    setisOpen(state);
-  };
 
-  const closeMenu = (): void => {
-    setisOpen({ menuOpen: false });
->>>>>>> main
-  };
+    const handleState = (state: any): void => {
+      setisOpen(state);
+    };
+  
 
-  return (
-    <>
-      <div className="NavigationBar">
-        <div className="InnerNavigationBar">
-          <a href="/" style={{ fontWeight: "700" }}>
-            Deleplads.dk
-          </a>
-<<<<<<< HEAD
-          <div className="items">
-            <a href="/">Forside</a>
-            <div
-              onClick={handleOpenUserMenu}
-              style={{ display: "flex", margin: "0 15px", cursor: "pointer" }}
+    return (
+      <>
+        <div className="NavigationBar">
+          <div className="InnerNavigationBar">
+            <a href="/" style={{ fontWeight: "700" }}>
+              Deleplads.dk
+            </a>
+            <BurgerMenu
+              className="MenuToggle"
+              right
+              styles={styles}
+              isOpen={isOpen.menuOpen}
+              onStateChange={(state) => handleState(state)}
             >
-              <span>Leje og udleje</span>
-=======
-          <BurgerMenu
-            className="MenuToggle"
-            right
-            styles={styles}
-            isOpen={isOpen.menuOpen}
-            onStateChange={(state) => handleState(state)}
-          >
-            <a id="home" className="menu-item" href="/">
-              Forside
-            </a>
-            <a id="about" className="menu-item" href="/leje">
-              Leje
-            </a>
-            <a id="contact" className="menu-item" href="/udleje">
-              Udleje
-            </a>
-            <a id="contact" className="menu-item" href="/blog">
-              Blog
-            </a>
-            <a id="contact" className="menu-item" href="/FAQ">
-              FAQ
-            </a>
-            <a id="contact" className="menu-item" href="/sign-up">
-              Tilmeld
-            </a>
-            <a id="contact" className="menu-item" href="/sign-in">
-              Log ind
-            </a>
-          </BurgerMenu>
-          <div className="MobileMenuNavigation">
-            <div className="items">
-              <a href="/">Forside</a>
->>>>>>> main
-              <div
-                onClick={handleOpenUserMenu}
-                style={{ display: "flex", margin: "0 15px", cursor: "pointer" }}
-              >
-                <span>Leje og udleje</span>
+              <a id="home" className="menu-item" href="/">
+                Forside
+              </a>
+              <a id="about" className="menu-item" href="/leje">
+                Leje
+              </a>
+              <a id="contact" className="menu-item" href="/udleje">
+                Udleje
+              </a>
+              <a id="contact" className="menu-item" href="/blog">
+                Blog
+              </a>
+              <a id="contact" className="menu-item" href="/FAQ">
+                FAQ
+              </a>
+              <a id="contact" className="menu-item" href="/sign-up">
+                Tilmeld
+              </a>
+              <a id="contact" className="menu-item" href="/sign-in">
+                Log ind
+              </a>
+            </BurgerMenu>
+            <div className="MobileMenuNavigation">
+              <div className="items">
+                <a href="/">Forside</a>
                 <div
+                  onClick={handleOpenUserMenu}
                   style={{
-                    height: "16px",
-                    width: "16px",
-                    color: "#425466",
-                    marginLeft: "5px",
-                    marginTop: "2.5px",
+                    display: "flex",
+                    margin: "0 15px",
+                    cursor: "pointer",
                   }}
                 >
-                  <ChevronDown></ChevronDown>
+                  <span>Leje og udleje</span>
+                  <div
+                    style={{
+                      height: "16px",
+                      width: "16px",
+                      color: "#425466",
+                      marginLeft: "5px",
+                      marginTop: "2.5px",
+                    }}
+                  >
+                    <ChevronDown></ChevronDown>
+                  </div>
                 </div>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <a href="/leje">Leje</a>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <a href="/udleje">Udleje</a>
+                  </MenuItem>
+                </Menu>
+                <a href="#">Blog</a>
+                <a href="/faq">FAQ</a>
               </div>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <a href="/leje">Leje</a>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <a href="/udleje">Udleje</a>
-                </MenuItem>
-              </Menu>
-              <a href="#">Blog</a>
-              <a href="/faq">FAQ</a>
-            </div>
-            <span>
-              <Button
-                href="/sign-up"
-                sx={{
-                  marginRight: "15px",
-                  textTransform: "Capitalize",
-                  background: "white",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                }}
-              >
-                Tilmeld
-              </Button>
+              <span>
+                <Button
+                  href="/sign-up"
+                  sx={{
+                    marginRight: "15px",
+                    textTransform: "Capitalize",
+                    background: "white",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                  }}
+                >
+                  Tilmeld
+                </Button>
 
-              <Button
-                variant="contained"
-                href="/sign-in"
-                sx={{
-                  textTransform: "initial",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  padding: "6px 16px",
-                  background: "#FF2455",
-                  borderRadius: "100px",
-                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
-                }}
-              >
-                Log ind
-              </Button>
-            </span>
+                <Button
+                  variant="contained"
+                  href="/sign-in"
+                  sx={{
+                    textTransform: "initial",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    padding: "6px 16px",
+                    background: "#FF2455",
+                    borderRadius: "100px",
+                    boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
+                  }}
+                >
+                  Log ind
+                </Button>
+              </span>
+            </div>
+            {currentSession ? (
+              <span>
+                <Button
+                  onClick={handleSubmit}
+                  variant="contained"
+                  sx={{
+                    textTransform: "initial",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    padding: "6px 16px",
+                    background: "#FF2455",
+                    borderRadius: "100px",
+                    boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
+                  }}
+                >
+                  Log ud
+                </Button>
+              </span>
+            ) : (
+              <span>
+                <Button
+                  href="/sign-up"
+                  sx={{
+                    marginRight: "15px",
+                    textTransform: "Capitalize",
+                    background: "white",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                  }}
+                >
+                  Tilmeld
+                </Button>
+                <Button
+                  variant="contained"
+                  href="/sign-in"
+                  sx={{
+                    textTransform: "initial",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    padding: "6px 16px",
+                    background: "#FF2455",
+                    borderRadius: "100px",
+                    boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
+                  }}
+                >
+                  Log ind
+                </Button>
+              </span>
+            )}
           </div>
-<<<<<<< HEAD
-          {currentSession ? (
-            <span>
-              <Button
-                onClick={handleSubmit}
-                variant="contained"
-                sx={{
-                  textTransform: "initial",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  padding: "6px 16px",
-                  background: "#FF2455",
-                  borderRadius: "100px",
-                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
-                }}
-              >
-                Log ud
-              </Button>
-            </span>
-          ) : (
-            <span>
-              <Button
-                href="/sign-up"
-                sx={{
-                  marginRight: "15px",
-                  textTransform: "Capitalize",
-                  background: "white",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                }}
-              >
-                Tilmeld
-              </Button>
-              <Button
-                variant="contained"
-                href="/sign-in"
-                sx={{
-                  textTransform: "initial",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  padding: "6px 16px",
-                  background: "#FF2455",
-                  borderRadius: "100px",
-                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
-                }}
-              >
-                Log ind
-              </Button>
-            </span>
-          )}
-=======
->>>>>>> main
         </div>
-      </div>
-    </>
-  );
-}
+      </>
+    );
+  }
 
 export default Navbar;
