@@ -1,8 +1,11 @@
 .SearchBar {
-  width: 1140px;
-  margin: 0 auto 25px auto;
+  width: 1240px;
+  height: 100px;
+  margin: 0 auto;
   padding: 0;
   display: flex;
+  gap: 20px;
+  align-items: center;
   justify-content: space-between;
 }
 

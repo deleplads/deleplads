@@ -177,12 +177,6 @@ function Navbar() {
                 href="/sign-in"
                 sx={{
                   textTransform: "initial",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  padding: "6px 16px",
-                  background: "#FF2455",
-                  borderRadius: "100px",
-                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
                 }}
               >
                 Log ind

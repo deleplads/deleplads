@@ -2,7 +2,7 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // import Background from '../../public/test2.png';
 
 function Hero() {
@@ -11,73 +11,12 @@ function Hero() {
       className="Hero" /*style={{ background: `url(${Background})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", margin: "0 auto", backgroundPosition: "center 75px" }}*/
     >
       <div className="HeroInner">
-        <h1>
-          Leje og udlejning af<br></br>private parkeringspladser
-        </h1>
+        <h1>Udnyt din parkeringsplads</h1>
         <p>
-          Leje og udleje private parkeringspladser — nemt, hurtigt og billigt.
+          Leje og udlejning af private parkeringspladser, nemt, hurtigt og
+          billigt.
         </p>
-        <span>
-          <Button
-            sx={{
-              textTransform: "initial",
-              padding: "10px 60px",
-              fontWeight: "700",
-              color: "#0b3558",
-              borderColor: "#e5e5e5",
-            }}
-          >
-            <Box />
-            Tilmeld dig gratis <ArrowForwardIcon></ArrowForwardIcon>
-          </Button>
-        </span>
-        {/* <div className="HeroSignUp">
-          <p>Tilmeld dig gratis med Google eller Microsoft</p>
-          <span>
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                textTransform: "capitalize",
-                padding: "10px 60px",
-                fontWeight: "700",
-                color: "#0b3558",
-                borderColor: "#e5e5e5",
-              }}
-            >
-              <Box
-                component="img"
-                sx={{ height: 25, width: 25, marginRight: "10px" }}
-                src="../../google.png"
-              />
-              Google
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                textTransform: "capitalize",
-                padding: "10px 60px",
-                fontWeight: "700",
-                color: "#0b3558",
-                borderColor: "#e5e5e5",
-              }}
-            >
-              <Box
-                component="img"
-                sx={{ height: 25, width: 25, marginRight: "10px" }}
-                src="../../microsoft.png"
-              />
-              Microsoft
-            </Button>
-          </span>
-          <div className="hr-seperator">
-            <hr />
-            <p>Eller</p>
-            <hr />
-          </div>
-          <a href="#">Tilmeld dig med e-mail.</a>
-        </div> */}
+        <Button variant="contained" size="large" href="#" sx={{textTransform: "initial"}}>Tilmeld gratis</Button>
       </div>
     </section>
   );
