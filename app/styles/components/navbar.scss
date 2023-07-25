@@ -47,7 +47,7 @@
       color: #425466;
     }
   }
-  .MenuToggle {
+  .MenuToggle, .bm-burger-button {
     display: none;
     visibility: hidden;
   }
@@ -109,7 +109,7 @@
   .MobileMenuNavigation {
     display: none;
   }
-  .MenuToggle {
+  .MenuToggle, .bm-burger-button {
     display: block !important;
     visibility: visible !important;
   }
