@@ -7,6 +7,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Box, Button } from "@mui/material";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -19,15 +20,15 @@ export default function udleje() {
   return (
     <main>
       <Navbar></Navbar>
-      <section className="udleje">
+      <section className="leje">
         <h1>
           Find billig parkering,<br></br>hvor som helst
         </h1>
       </section>
       <LejeTimeline></LejeTimeline>
-      <section className="udleje-questions">
+      <section className="leje-questions">
         <h2>Hyppige spørgsmål for lejere</h2>
-        <div className="udleje-accordions">
+        <div className="leje-accordions">
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -124,6 +125,21 @@ export default function udleje() {
               </Typography>
             </AccordionDetails>
           </Accordion>
+          
+        </div>
+        
+      </section>
+      <section className="leje-content">
+        <div className="inner">
+        <div className="leje-content-text">
+          <h1>Tom plads?<br></br> Store gevinster.
+          </h1>
+          <p>
+          Udnyt din tomme parkeringsplads til at tjene penge.
+          </p>
+          <Button className="leje-content-button" href="/sign-up">Tilmeld dig gratis</Button>
+        </div>
+        <Box component="img" className="leje-content-image" src="../../custom-mockup.png" />
         </div>
       </section>
       <Footer></Footer>

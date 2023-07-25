@@ -3,12 +3,66 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
+<<<<<<< HEAD
 import { useOutletContext, useNavigate } from "@remix-run/react";
 import type { SupabaseOutletContext } from "~/root";
+=======
+import { Box } from "@mui/material";
+import { slide as BurgerMenu } from "react-burger-menu";
+>>>>>>> main
 
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const navigate = useNavigate();
+
+  var styles = {
+    bmBurgerButton: {
+      position: "relative",
+      width: "26px",
+      height: "15px",
+    },
+    bmBurgerBars: {
+      background: "grey",
+    },
+    bmBurgerBarsHover: {
+      background: "#a90000",
+    },
+    bmCrossButton: {
+      height: "24px",
+      width: "24px",
+    },
+    bmCross: {
+      background: "#bdc3c7",
+    },
+    bmMenuWrap: {
+      position: "fixed",
+      height: "100vh",
+      width: "100vw",
+      top: "0",
+    },
+    bmMenu: {
+      display: "flex",
+      flexDirection: "column",
+      background: "white",
+      padding: "2em 1.5em 0",
+      fontSize: "1.15em",
+    },
+    bmMorphShape: {
+      fill: "#373a47",
+    },
+    bmItemList: {
+      color: "#b8b7ad",
+      padding: "0.8em",
+    },
+    bmItem: {
+      marginBottom: "25px",
+      textDecoration: "none",
+      fontWeight: "700",
+    },
+    bmOverlay: {
+      background: "rgba(0, 0, 0, 0.3)",
+    },
+  };
 
   const handleOpenUserMenu = (event: any) => {
     setAnchorElUser(event.currentTarget);
@@ -18,12 +72,23 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+<<<<<<< HEAD
   const { supabase, session } = useOutletContext<SupabaseOutletContext>();
   const currentSession = session ?? null;
 
   const handleSubmit = async () => {
     await supabase.auth.signOut();
     navigate("/");
+=======
+  const [isOpen, setisOpen] = useState({ menuOpen: false });
+
+  const handleState = (state: any): void => {
+    setisOpen(state);
+  };
+
+  const closeMenu = (): void => {
+    setisOpen({ menuOpen: false });
+>>>>>>> main
   };
 
   return (
@@ -33,6 +98,7 @@ function Navbar() {
           <a href="/" style={{ fontWeight: "700" }}>
             Deleplads.dk
           </a>
+<<<<<<< HEAD
           <div className="items">
             <a href="/">Forside</a>
             <div
@@ -40,44 +106,115 @@ function Navbar() {
               style={{ display: "flex", margin: "0 15px", cursor: "pointer" }}
             >
               <span>Leje og udleje</span>
+=======
+          <BurgerMenu
+            className="MenuToggle"
+            right
+            styles={styles}
+            isOpen={isOpen.menuOpen}
+            onStateChange={(state) => handleState(state)}
+          >
+            <a id="home" className="menu-item" href="/">
+              Forside
+            </a>
+            <a id="about" className="menu-item" href="/leje">
+              Leje
+            </a>
+            <a id="contact" className="menu-item" href="/udleje">
+              Udleje
+            </a>
+            <a id="contact" className="menu-item" href="/blog">
+              Blog
+            </a>
+            <a id="contact" className="menu-item" href="/FAQ">
+              FAQ
+            </a>
+            <a id="contact" className="menu-item" href="/sign-up">
+              Tilmeld
+            </a>
+            <a id="contact" className="menu-item" href="/sign-in">
+              Log ind
+            </a>
+          </BurgerMenu>
+          <div className="MobileMenuNavigation">
+            <div className="items">
+              <a href="/">Forside</a>
+>>>>>>> main
               <div
-                style={{
-                  height: "16px",
-                  width: "16px",
-                  color: "#425466",
-                  marginLeft: "5px",
-                  marginTop: "2.5px",
+                onClick={handleOpenUserMenu}
+                style={{ display: "flex", margin: "0 15px", cursor: "pointer" }}
+              >
+                <span>Leje og udleje</span>
+                <div
+                  style={{
+                    height: "16px",
+                    width: "16px",
+                    color: "#425466",
+                    marginLeft: "5px",
+                    marginTop: "2.5px",
+                  }}
+                >
+                  <ChevronDown></ChevronDown>
+                </div>
+              </div>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <a href="/leje">Leje</a>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <a href="/udleje">Udleje</a>
+                </MenuItem>
+              </Menu>
+              <a href="#">Blog</a>
+              <a href="/faq">FAQ</a>
+            </div>
+            <span>
+              <Button
+                href="/sign-up"
+                sx={{
+                  marginRight: "15px",
+                  textTransform: "Capitalize",
+                  background: "white",
+                  fontWeight: "700",
+                  fontSize: "14px",
                 }}
               >
-                <ChevronDown></ChevronDown>
-              </div>
-            </div>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <a href="/leje">Leje</a>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <a href="/udleje">Udleje</a>
-              </MenuItem>
-            </Menu>
-            <a href="#">Blog</a>
-            <a href="/faq">FAQ</a>
+                Tilmeld
+              </Button>
+
+              <Button
+                variant="contained"
+                href="/sign-in"
+                sx={{
+                  textTransform: "initial",
+                  fontWeight: "700",
+                  fontSize: "14px",
+                  padding: "6px 16px",
+                  background: "#FF2455",
+                  borderRadius: "100px",
+                  boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
+                }}
+              >
+                Log ind
+              </Button>
+            </span>
           </div>
+<<<<<<< HEAD
           {currentSession ? (
             <span>
               <Button
@@ -127,27 +264,10 @@ function Navbar() {
               </Button>
             </span>
           )}
+=======
+>>>>>>> main
         </div>
       </div>
-
-      {/* <Box sx={{ width: "100%", zIndex: "100" }}>
-        <div style={{ width: "100%", background: "#0b3558" }}> 
-          <Alert
-            color="info"
-            sx={{
-              height: "65px",
-              display: "flex",
-              alignItems: "center",
-              background: "#0b3558",
-              color: "white",
-              width: "1340px",
-              margin: "0 auto"
-            }}
-          >
-            <AlertTitle sx={{ margin: "0" }}>Info</AlertTitle>
-          </Alert>
-        </div>
-      </Box> */}
     </>
   );
 }

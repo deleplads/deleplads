@@ -1,0 +1,25 @@
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media only screen and (min-width: 600px) {
+  .ProfileMenuSettings {
+    width: 1000px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 2.5%;
+  }
+  .ProfileMenuSettingsMobile {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .ProfileMenuSettings {
+    width: 100%;
+    padding: 50px 16px;
+    box-sizing: border-box;
+  }
+  .ProfileMenuSettingsDesktop {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=profile.css.map */

@@ -19,6 +19,7 @@ import { toast, Toaster } from "react-hot-toast";
 
 // function Copyright(props: any) {
 //   return (
+<<<<<<< HEAD
 //     <Typography
 //       variant="body2"
 //       color="text.secondary"
@@ -34,6 +35,21 @@ import { toast, Toaster } from "react-hot-toast";
 //     </Typography>
 //   );
 // }
+=======
+//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://mui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
+
+// TODO remove, this demo shouldn't need to reset the theme.
+const defaultTheme = createTheme();
+>>>>>>> main
 
 export default function SignUp() {
   const { supabase } = useOutletContext<SupabaseOutletContext>();

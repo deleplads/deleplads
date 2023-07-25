@@ -1,4 +1,4 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
 import UdlejeTimeline from "~/components/UdlejeTimeline";
 import Footer from "../components/Footer";

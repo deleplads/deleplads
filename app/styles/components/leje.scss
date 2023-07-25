@@ -1,4 +1,4 @@
-.udleje {
+.leje {
   padding: 125px 0px 125px 0px;
   width: 1140px;
   margin: 0 auto;
@@ -23,16 +23,57 @@
   }
 }
 
+.leje-content {
+  margin-top: 125px;
+  .inner {
+    width: 1140px;
+    height: 486px;
+    background: #FF4451;
+    border-radius: 24px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 0px 75px;
+    position: relative;
+    h1 {
+      font-size: 40px;
+      color: white;
+      font-weight: 700;
+    }
+    p {
+      font-size: 20px;
+      color: white;
+      margin: 30px 0 40px 0;
+    }
+    .leje-content-button {
+      padding: 20px 40px;
+      background: white;
+      color: black;
+      font-size: 20px;
+      text-transform: initial;
+    }
+  }
+  .leje-content-image {
+    width: 365px;
+    height: auto;
+    position: absolute;
+    right: 75px;
+    bottom: 0;
+  }
+}
+
 // Alt herunder skal flyttes i en seperat fil til styling for timeline komponentet
 
 .timeline {
-  width: 1040px;
+  width: 1440px;
   margin: 0 auto;
   position: relative;
 
   .timeline-content-block {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 100px 0;
     div {
       display: flex;
@@ -42,11 +83,9 @@
     }
     h2 {
       color: #0b3558;
-      font-size: 24px;
     }
     p {
       color: #425466;
-      font-size: 18px;
     }
     img {
       width: auto;
@@ -81,7 +120,7 @@
   }
 }
 
-.udleje-questions {
+.leje-questions {
   width: 1000px;
   margin: 0 auto;
   padding-bottom: 125px;
@@ -93,7 +132,7 @@
   }
 }
 
-.udleje-accordions {
+.leleje-accordions {
   width: 1000px;
   margin: 0 auto;
   display: flex;

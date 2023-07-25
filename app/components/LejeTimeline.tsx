@@ -15,14 +15,14 @@ function UdlejeTimeline() {
         <div>
           <h2>Opret en konto</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-            suscipit obcaecati fugiat iusto aperiam tempore?
+            For at få adgang til at leje parkeringspladser, skal du først
+            oprette en konto. På den måde kan udlejerne vide, hvem du er.
           </p>
         </div>
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="../../2024.png" />
       </section>
       <section className="timeline-content-block">
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="../../2024.png" />
         <div>
           <h2>Lorem ipsum dolor sit amet.</h2>
           <p>
@@ -39,10 +39,10 @@ function UdlejeTimeline() {
             suscipit obcaecati fugiat iusto aperiam tempore?
           </p>
         </div>
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="../../2024.png" />
       </section>
       <section className="timeline-content-block">
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="../../2024.png" />
         <div>
           <h2>Lorem ipsum dolor sit amet.</h2>
           <p>
@@ -59,7 +59,7 @@ function UdlejeTimeline() {
             suscipit obcaecati fugiat iusto aperiam tempore?
           </p>
         </div>
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="../../2024.png" />
       </section>
     </main>
   );

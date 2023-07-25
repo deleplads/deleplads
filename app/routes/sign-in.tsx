@@ -18,6 +18,7 @@ import type { SupabaseOutletContext } from "~/root";
 
 // function Copyright(props: any) {
 //   return (
+<<<<<<< HEAD
 //     <Typography
 //       variant="body2"
 //       color="text.secondary"
@@ -33,6 +34,21 @@ import type { SupabaseOutletContext } from "~/root";
 //     </Typography>
 //   );
 // }
+=======
+//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://mui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
+
+// TODO remove, this demo shouldn't need to reset the theme.
+const defaultTheme = createTheme();
+>>>>>>> main
 
 export default function SignIn() {
   const { supabase } = useOutletContext<SupabaseOutletContext>();
