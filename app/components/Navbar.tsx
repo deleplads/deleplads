@@ -114,12 +114,12 @@ function Navbar() {
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-              <a href="/">Forside</a>
+              <a href="/">Find en parkeringsplads</a>
               <div
                 onClick={handleOpenUserMenu}
                 style={{ display: "flex", margin: "0 15px", cursor: "pointer" }}
               >
-                <span>Leje og udleje</span>
+                <span>Sådan virker det</span>
                 <div
                   style={{
                     height: "16px",

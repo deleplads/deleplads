@@ -14,7 +14,7 @@ const bull = (
 
 export default function BasicCard() {
   return (
-    <a href="#" style={{ textDecoration: "none" }}>
+    <a href="/parkeringsplads" style={{ textDecoration: "none" }}>
       <Card sx={{ minWidth: "275", border: "none", boxShadow: "none" }}>
         <CardContent sx={{ padding: "0" }}>
           <Box
@@ -23,10 +23,10 @@ export default function BasicCard() {
             src="../../parkeringsplads.jpg"
           />
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            Østervang 30
+            Ll. Blovstrødvej
           </Typography>
           <Typography sx={{ mt: 1.5 }} color="text.secondary">
-            København
+            3450 Allerød
           </Typography>
           <Typography sx={{ mt: 1.5 }} color="text.secondary">
             17,75 / time
