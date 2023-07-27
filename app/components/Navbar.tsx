@@ -1,13 +1,25 @@
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
-import { Box } from "@mui/material";
+import { useOutletContext, useNavigate } from "@remix-run/react";
+import type { SupabaseOutletContext } from "~/root";
 import { slide as BurgerMenu } from "react-burger-menu";
+import { Avatar } from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import type { Session } from "@supabase/supabase-js";
+import type { Profile } from "db_types";
+
+interface LoaderData {
+  profile: Profile[];
+}
 
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
+  const [isOpen, setisOpen] = useState({ menuOpen: false });
+
 
   var styles = {
     bmBurgerButton: {
@@ -66,14 +78,32 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const [isOpen, setisOpen] = useState({ menuOpen: false });
+  const { supabase, session } = useOutletContext<SupabaseOutletContext>();
+  const [currentSession, setCurrentSession] = useState<Session | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState<LoaderData | undefined>();
+
+  
+  useEffect(() => {
+    const fetchSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      const { data: profile } = await supabase.from("profiles").select();
+      if (profile) {
+        setProfile({ profile });
+      } 
+      setCurrentSession(data?.session ?? null);
+      setLoading(false);
+    };
+    fetchSession();
+  }, [session, supabase, supabase.auth]);
+
+  const handleSubmit = async () => {
+    await supabase.auth.signOut();
+    navigate("/sign-in");
+  };
 
   const handleState = (state: any): void => {
     setisOpen(state);
-  };
-
-  const closeMenu = (): void => {
-    setisOpen({ menuOpen: false });
   };
 
   return (
@@ -117,7 +147,11 @@ function Navbar() {
               <a href="/">Find en parkeringsplads</a>
               <div
                 onClick={handleOpenUserMenu}
-                style={{ display: "flex", margin: "0 15px", cursor: "pointer" }}
+                style={{
+                  display: "flex",
+                  margin: "0 15px",
+                  cursor: "pointer",
+                }}
               >
                 <span>Sådan virker det</span>
                 <div
@@ -158,30 +192,59 @@ function Navbar() {
               <a href="#">Blog</a>
               <a href="/faq">FAQ</a>
             </div>
-            <span>
-              <Button
-                href="/sign-up"
-                sx={{
-                  marginRight: "15px",
-                  textTransform: "Capitalize",
-                  background: "white",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                }}
-              >
-                Tilmeld
-              </Button>
-
-              <Button
+            {loading ? (
+              <div></div>
+            ) : currentSession ? (
+              <span className="LogOutMenu">
+                <div className="profileView">
+                  <span>{profile?.profile[0].first_name} {profile?.profile[0].last_name}</span>
+                </div>
+                <Avatar
+                  sx={{ m: 1, bgcolor: "white", height: "30px" }}
+                >
+                  <LockOutlinedIcon />
+                </Avatar>
+                <Button
+                  onClick={handleSubmit}
+                  variant="contained"
+                  sx={{
+                    textTransform: "initial",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    padding: "6px 16px",
+                    background: "#FF2455",
+                    borderRadius: "100px",
+                    boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
+                  }}
+                >
+                  Log ud
+                </Button>
+              </span>
+            ) : (
+              <span>
+                <Button
+                  href="/sign-up"
+                  sx={{
+                    marginRight: "15px",
+                    textTransform: "Capitalize",
+                    background: "white",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                  }}
+                >
+                  Tilmeld
+                </Button>
+                <Button
                 variant="contained"
                 href="/sign-in"
                 sx={{
                   textTransform: "initial",
                 }}
               >
-                Log ind
-              </Button>
-            </span>
+                  Log ind
+                </Button>
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -13,13 +13,16 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export default function Index() {
+ 
+  
+
   return (
-    <main>
+    <>
       <Navbar></Navbar>
       <Hero></Hero>
       <SearchBar></SearchBar>
       <Gallery></Gallery>
       <Footer></Footer>
-    </main>
+    </>
   );
 }

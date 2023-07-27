@@ -47,6 +47,10 @@
   visibility: hidden;
 }
 
+.LogOutMenu {
+  display: flex;
+}
+
 @media only screen and (max-width: 600px) {
   .NavigationBar {
     height: 75px;
