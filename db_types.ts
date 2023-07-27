@@ -6,6 +6,13 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
+export type Profile = {
+  created_at: string | null
+  first_name: string
+  id: string
+  last_name: string
+}
+
 export interface Database {
   public: {
     Tables: {

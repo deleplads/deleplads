@@ -9,11 +9,17 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import { Avatar } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import type { Session } from "@supabase/supabase-js";
+import type { Profile } from "db_types";
+
+interface LoaderData {
+  profile: Profile[];
+}
 
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const navigate = useNavigate();
   const [isOpen, setisOpen] = useState({ menuOpen: false });
+
 
   var styles = {
     bmBurgerButton: {
@@ -75,15 +81,21 @@ function Navbar() {
   const { supabase, session } = useOutletContext<SupabaseOutletContext>();
   const [currentSession, setCurrentSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState<LoaderData | undefined>();
 
+  
   useEffect(() => {
     const fetchSession = async () => {
       const { data } = await supabase.auth.getSession();
+      const { data: profile } = await supabase.from("profiles").select();
+      if (profile) {
+        setProfile({ profile });
+      } 
       setCurrentSession(data?.session ?? null);
       setLoading(false);
     };
     fetchSession();
-  }, [session, supabase.auth]);
+  }, [session, supabase, supabase.auth]);
 
   const handleSubmit = async () => {
     await supabase.auth.signOut();
@@ -184,6 +196,9 @@ function Navbar() {
               <div></div>
             ) : currentSession ? (
               <span className="LogOutMenu">
+                <div className="profileView">
+                  <span>{profile?.profile[0].first_name} {profile?.profile[0].last_name}</span>
+                </div>
                 <Avatar
                   sx={{ m: 1, bgcolor: "white", height: "30px" }}
                 >
