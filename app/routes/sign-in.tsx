@@ -1,66 +1,88 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Navbar from '~/components/Navbar';
-import Footer from '../components/Footer'
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Navbar from "~/components/Navbar";
+import Footer from "../components/Footer";
+import { useNavigate, useOutletContext } from "@remix-run/react";
+import type { SupabaseOutletContext } from "~/root";
+import { Toaster, toast } from "react-hot-toast";
 
 // function Copyright(props: any) {
 //   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
+//     <Typography
+//       variant="body2"
+//       color="text.secondary"
+//       align="center"
+//       {...props}
+//     >
+//       {"Copyright © "}
 //       <Link color="inherit" href="https://mui.com/">
 //         Your Website
-//       </Link>{' '}
+//       </Link>{" "}
 //       {new Date().getFullYear()}
-//       {'.'}
+//       {"."}
 //     </Typography>
 //   );
 // }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const { supabase } = useOutletContext<SupabaseOutletContext>();
+  const navigate = useNavigate();
+  
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get("email");
+    const password = data.get("password");
+
+    if (email && password) {
+      const response = await supabase.auth.signInWithPassword({
+        email: email.toString(),
+        password: password.toString(),
+      });
+      if (response.error) {
+        toast.error(response.error.message);
+      } else {
+        navigate("/");
+      }
+    }
   };
 
   return (
     <>
-    <Navbar></Navbar>
-    <ThemeProvider theme={defaultTheme}>
+    <Toaster position="top-right"/>
+      <Navbar></Navbar>
       <Container id="sign-in-container" component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Log ind
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin="normal"
               required
@@ -108,8 +130,7 @@ export default function SignIn() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
-    <Footer></Footer>
+      <Footer></Footer>
     </>
   );
 }
