@@ -16,14 +16,16 @@ function Hero() {
           Leje og udlejning af private parkeringspladser, nemt, hurtigt og
           billigt.
         </p>
-        <Button
+
+        {/* <Button
           variant="contained"
           size="large"
           href="/sign-up"
           sx={{ textTransform: "initial" }}
         >
           Tilmeld gratis
-        </Button>
+        </Button> */}
+        <Box component="img" src="../../hero-image.jpg" className="HeroImage"/>
       </div>
     </section>
   );
