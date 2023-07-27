@@ -1,10 +1,11 @@
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media only screen and (min-width: 600px) {
   .ProfileMenuSettings {
-    width: 1000px;
-    margin: 50px auto;
+    width: 1240px;
+    padding: 185px 0 200px 0;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 20% 77.5%;
     column-gap: 2.5%;
   }
   .ProfileMenuSettingsMobile {

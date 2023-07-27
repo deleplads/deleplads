@@ -7,10 +7,12 @@
   align-items: center;
   color: #333333;
   box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 .Footer .FooterInner {
   padding: 100px 0;
-  width: 1140px;
+  width: 1240px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -35,7 +37,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1140px;
+  width: 1240px;
   padding: 50px 0;
   font-size: 16px;
   border-top: 1px solid #e5e5e5;

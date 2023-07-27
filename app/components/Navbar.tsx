@@ -144,7 +144,7 @@ function Navbar() {
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-              <a href="/">Forside</a>
+              <a href="/">Find en parkeringsplads</a>
               <div
                 onClick={handleOpenUserMenu}
                 style={{
@@ -153,7 +153,7 @@ function Navbar() {
                   cursor: "pointer",
                 }}
               >
-                <span>Leje og udleje</span>
+                <span>Sådan virker det</span>
                 <div
                   style={{
                     height: "16px",
@@ -235,18 +235,12 @@ function Navbar() {
                   Tilmeld
                 </Button>
                 <Button
-                  variant="contained"
-                  href="/sign-in"
-                  sx={{
-                    textTransform: "initial",
-                    fontWeight: "700",
-                    fontSize: "14px",
-                    padding: "6px 16px",
-                    background: "#FF2455",
-                    borderRadius: "100px",
-                    boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
-                  }}
-                >
+                variant="contained"
+                href="/sign-in"
+                sx={{
+                  textTransform: "initial",
+                }}
+              >
                   Log ind
                 </Button>
               </span>

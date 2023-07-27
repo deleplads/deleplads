@@ -1,29 +1,31 @@
 .NavigationBar {
-  height: 75px;
-  width: 100%;
-  background: white;
+  height: 85px;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #e5e5e5 !important;
   z-index: 1000;
   margin-bottom: 1px;
+  position: fixed;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
-  width: 1140px;
-  background: white;
+  width: 1240px;
+  background: transparent;
   display: inherit;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e5e5 !important;
 }
 .NavigationBar .InnerNavigationBar .items {
   display: flex;
   color: #425466;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 374px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: auto;
   position: absolute;
 }
 .NavigationBar .InnerNavigationBar .items a,
@@ -35,15 +37,12 @@
 .NavigationBar .InnerNavigationBar Button:first-of-type {
   margin-right: 15px;
 }
-.NavigationBar .InnerNavigationBar Button {
-  text-transform: capitalize !important;
-  font-size: 16px;
-}
 .NavigationBar .InnerNavigationBar a:nth-child(1) {
   text-decoration: none;
   color: #425466;
 }
-.NavigationBar .MenuToggle, .NavigationBar .bm-burger-button {
+.NavigationBar .MenuToggle,
+.NavigationBar .bm-burger-button {
   display: none;
   visibility: hidden;
 }
@@ -100,16 +99,20 @@
   .MobileMenuNavigation {
     display: none;
   }
-  .MenuToggle, .bm-burger-button {
+  .MenuToggle,
+  .bm-burger-button {
     display: block !important;
     visibility: visible !important;
   }
 }
 .SearchBar {
-  width: 1140px;
-  margin: 0 auto 25px auto;
+  width: 1240px;
+  height: 100px;
+  margin: 0 auto;
   padding: 0;
   display: flex;
+  gap: 20px;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -125,7 +128,6 @@
 
 .Hero {
   width: 100%;
-  color: #333333;
   display: flex;
   justify-content: center;
 }
@@ -135,7 +137,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 125px 0px 125px 0px;
+  padding: 190px 0 75px 0px;
   margin: 0 auto;
   text-align: center;
 }
@@ -152,53 +154,8 @@
   color: #476788;
   font-size: 20px;
   line-height: 28px;
-  margin-bottom: 50px;
-}
-.Hero .HeroInner .HeroSignUp {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #476788;
-}
-.Hero .HeroInner .HeroSignUp .hr-seperator {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-.Hero .HeroInner .HeroSignUp .hr-seperator hr {
-  width: 200px;
-  background: #e5e5e5;
-  opacity: 0.25;
-}
-.Hero .HeroInner .HeroSignUp .hr-seperator p {
-  font-size: 14px;
-  text-transform: uppercase;
-}
-.Hero .HeroInner .HeroSignUp p {
-  font-size: 14px;
-}
-.Hero .HeroInner .HeroSignUp a {
-  display: inline-block;
-  width: auto;
-  text-decoration: none;
-  color: #006bff;
-  font-size: 14px;
-}
-.Hero Button {
-  padding: 22px 42px;
-  background: #ff2455;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 20px 40px 0px;
-  border-radius: 20px;
-  color: white;
-  margin: 0 10px;
-  font-weight: 700;
-  font-size: 18px;
-  transition: all ease-in 0.1s;
-}
-.Hero Button:hover {
-  background: #ff2455 !important;
-  scale: 0.95;
+  padding: 0;
+  margin: 20px 0 40px 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -223,9 +180,10 @@
   padding-bottom: 175px;
 }
 .Gallery .GalleryInner {
-  width: 1140px;
+  width: 1240px;
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 25px;
   grid-row-gap: 25px;
 }
@@ -273,10 +231,12 @@
   align-items: center;
   color: #333333;
   box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 .Footer .FooterInner {
   padding: 100px 0;
-  width: 1140px;
+  width: 1240px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -301,7 +261,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1140px;
+  width: 1240px;
   padding: 50px 0;
   font-size: 16px;
   border-top: 1px solid #e5e5e5;
@@ -756,10 +716,11 @@
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media only screen and (min-width: 600px) {
   .ProfileMenuSettings {
-    width: 1000px;
-    margin: 50px auto;
+    width: 1240px;
+    padding: 185px 0 200px 0;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 20% 77.5%;
     column-gap: 2.5%;
   }
   .ProfileMenuSettingsMobile {
@@ -776,6 +737,227 @@
     display: none;
   }
 }
+.ParkingSpot {
+  padding: 185px 0 200px 0;
+  margin: 0 auto;
+  width: 1240px;
+  display: grid;
+  grid-template-columns: 62.5% 35%;
+  column-gap: 2.5%;
+  grid-template-rows: repeat(2, 1fr, auto);
+  font-size: 16px;
+  line-height: 150%;
+}
+.ParkingSpot .ParkingSpotInformationHeader {
+  margin-bottom: 50px;
+  grid-area: 1/1/2/3;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1240px;
+}
+.ParkingSpot .ParkingSpotInformationHeader h1 {
+  font-size: 32px;
+}
+.ParkingSpot .ParkingSpotInformationHeader p {
+  margin-top: 8px;
+}
+.ParkingSpot .ParkingSpotInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+  grid-auto-rows: max-content;
+}
+.ParkingSpot .ParkingSpotInformation :first-child {
+  gap: 0;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee .Avatar {
+  height: 80px;
+  width: 80px;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation {
+  display: flex;
+  flex-direction: column;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation h2,
+.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation a:nth-child(1) {
+  font-size: 24px;
+  text-decoration: none;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span {
+  display: flex;
+  align-items: center;
+  margin: 2.5px 0;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span .Rating {
+  font-size: 20px;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span p {
+  margin-left: 8px;
+  font-size: 16px;
+}
+.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation a:nth-child(2) {
+  font-size: 16px;
+  text-decoration: none;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability h2,
+.ParkingSpot .ParkingSpotInformation .ParkingSpotLocation h2,
+.ParkingSpot .ParkingSpotInformation .ParkingSpotTerms h2,
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText h2 {
+  margin-bottom: 16px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability .MuiDateCalendar-root {
+  display: contents !important;
+}
+.ParkingSpot .ParkingSpotBooking {
+  position: relative;
+}
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions {
+  position: sticky;
+  border: 1px solid #e5e5e5;
+  width: inherit;
+  top: 205px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions span {
+  display: flex;
+  gap: 10px;
+}
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions .price,
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions a {
+  text-align: center;
+}
+.ParkingSpot .ParkingSpotMobileBooking {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .ParkingSpot {
+    padding: 140px 16px 0px 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .ParkingSpot .ParkingSpotBooking {
+    display: none;
+  }
+  .ParkingSpot .ParkingSpotMobileBooking {
+    display: block;
+    position: sticky !important;
+    bottom: 0;
+    background: white;
+    margin: 0 -16px;
+    padding: 16px;
+    border-top: 1px solid #e5e5e5;
+  }
+}
+.Dashboard {
+  padding: 185px 0 200px 0;
+  width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 20% 77.5%;
+  column-gap: 2.5%;
+}
+.Dashboard .DashboardMenu {
+  position: relative;
+}
+.Dashboard .DashboardMenu .DashboardMenuInner {
+  position: sticky;
+  top: 125px;
+}
+.Dashboard .DashboardOverview h1 {
+  margin: 16px 0 32px 0;
+}
+.Dashboard #DashboardOverviewAnalytics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 25px;
+}
+.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics {
+  border: 1px solid #e5e5e5;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics p {
+  font-size: 16px;
+}
+.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics h3 {
+  padding: 25px 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics .up {
+  color: #26c051;
+}
+.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics .down {
+  color: #c76363;
+}
+.Dashboard #DashboardParkingSpotsOverview {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+}
+.Dashboard #DashboardParkingSpotsOverview .DashboardParkingSpot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  padding: 25px;
+}
+.Dashboard #DashboardParkingSpotsOverview .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.Dashboard #DashboardParkingSpotsOverview .header h2 {
+  font-size: 24px;
+}
+.Dashboard #DashboardTransactionHistory {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.Dashboard #DashboardTransactionHistory h2 {
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+.Dashboard #DashboardTransactionHistory .DashboardTransaction {
+  border: 1px solid #e5e5e5;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.Dashboard #DashboardTransactionHistory .DashboardTransaction span {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+}
+
 .angry-grid {
   display: grid;
   box-sizing: border-box;
