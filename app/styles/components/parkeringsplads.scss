@@ -1,0 +1,135 @@
+.ParkingSpot {
+  padding: 140px 0 200px 0;
+  margin: 0 auto;
+  width: 1240px;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: repeat(2, 1fr, auto);
+  column-gap: 25px;
+  font-size: 16px;
+  line-height: 150%;
+
+  .ParkingSpotInformationHeader {
+    margin-bottom: 50px;
+    grid-area: 1 / 1 / 2 / 3;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1240px;
+    h1 {
+      font-size: 32px;
+    }
+    p {
+      margin-top: 8px;
+    }
+  }
+
+  .ParkingSpotInformation {
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+    grid-auto-rows: max-content;
+    :first-child {
+      gap: 0;
+    }
+    .Rentee {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      .Avatar {
+        height: 80px;
+        width: 80px;
+      }
+      .RenteeInformation {
+        display: flex;
+        flex-direction: column;
+        h2,
+        a:nth-child(1) {
+          font-size: 24px;
+          text-decoration: none;
+        }
+        span {
+          display: flex;
+          align-items: center;
+          margin: 2.5px 0; // what the fuck is going on here...
+          .Rating {
+            font-size: 20px;
+          }
+          p {
+            margin-left: 8px;
+            font-size: 16px;
+          }
+        }
+        a:nth-child(2) {
+          font-size: 16px;
+          text-decoration: none;
+        }
+      }
+    }
+    .ParkingSpotAvaliability h2,
+    .ParkingSpotLocation h2,
+    .ParkingSpotTerms h2,
+    .ParkingSpotText h2 {
+      margin-bottom: 16px;
+    }
+    .ParkingSpotAvaliability {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      .MuiDateCalendar-root {
+        display: contents !important;
+      }
+    }
+  }
+
+  .ParkingSpotBooking {
+    position: relative;
+    .ParkingSpotBookingOptions {
+      position: sticky;
+      border: 1px solid #e5e5e5;
+      width: inherit;
+      top: 205px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      span {
+        display: flex;
+        gap: 10px;
+      }
+      .price,
+      a {
+        text-align: center;
+      }
+    }
+  }
+
+  .ParkingSpotMobileBooking {
+    display: none;
+  }
+}
+
+// Footer media query
+
+@media only screen and (max-width: 600px) {
+  .ParkingSpot {
+    padding: 140px 16px 0px 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .ParkingSpotBooking {
+      display: none; // Skjuler desktop booking
+    }
+    .ParkingSpotMobileBooking {
+      display: block;
+      position: sticky !important;
+      bottom: 0;
+      background: white;
+      margin: 0 -16px;
+      padding: 16px;
+      border-top: 1px solid #e5e5e5;
+    }
+  }
+}
