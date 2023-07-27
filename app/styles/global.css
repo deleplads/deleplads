@@ -19,7 +19,7 @@
 }
 .NavigationBar .InnerNavigationBar .items {
   display: flex;
-  color: #425466;
+  color: #2d2d34;
   left: 50%;
   top: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
@@ -32,14 +32,11 @@
 .NavigationBar .InnerNavigationBar MenuItem {
   margin: 0 15px;
   text-decoration: none;
-  color: #425466;
-}
-.NavigationBar .InnerNavigationBar Button:first-of-type {
-  margin-right: 15px;
+  color: #2d2d34;
 }
 .NavigationBar .InnerNavigationBar a:nth-child(1) {
   text-decoration: none;
-  color: #425466;
+  color: #2d2d34;
 }
 .NavigationBar .MenuToggle,
 .NavigationBar .bm-burger-button {
@@ -151,7 +148,7 @@
   padding: 0;
 }
 .Hero .HeroInner p {
-  color: #476788;
+  color: #2d2d34;
   font-size: 20px;
   line-height: 28px;
   padding: 0;

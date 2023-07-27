@@ -4,18 +4,18 @@
 @tailwind utilities;
 * {
   font-family: 'Urbanist', sans-serif;
-  color: #476788;
+  color: #2d2d34;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #0b3558;
+  color: #1d1d1f !important;
 }
 
-p, a, .ListItem {
-  color: #476788;
+p {
+  color: #2d2d34 !important;
 }
 
 /* @font-face {

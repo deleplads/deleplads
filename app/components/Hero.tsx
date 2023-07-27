@@ -17,15 +17,21 @@ function Hero() {
           billigt.
         </p>
 
-        {/* <Button
+        <Button
           variant="contained"
           size="large"
           href="/sign-up"
-          sx={{ textTransform: "initial" }}
+          sx={{
+            textTransform: "initial",
+            borderRadius: "8px",
+            padding: "14px 28px",
+            fontSize: "17px",
+            fontWeight: "600",
+          }}
         >
           Tilmeld gratis
-        </Button> */}
-        <Box component="img" src="../../hero-image.jpg" className="HeroImage"/>
+        </Button>
+        {/* <Box component="img" src="../../hero-image.jpg" className="HeroImage"/> */}
       </div>
     </section>
   );

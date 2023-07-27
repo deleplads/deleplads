@@ -6,7 +6,7 @@ import ChevronDown from "../components/icons/ChevronDown";
 import { useOutletContext, useNavigate } from "@remix-run/react";
 import type { SupabaseOutletContext } from "~/root";
 import { slide as BurgerMenu } from "react-burger-menu";
-import { Avatar } from "@mui/material";
+import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import type { Session } from "@supabase/supabase-js";
 import type { Profile } from "db_types";
@@ -19,7 +19,6 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const navigate = useNavigate();
   const [isOpen, setisOpen] = useState({ menuOpen: false });
-
 
   var styles = {
     bmBurgerButton: {
@@ -83,14 +82,13 @@ function Navbar() {
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<LoaderData | undefined>();
 
-  
   useEffect(() => {
     const fetchSession = async () => {
       const { data } = await supabase.auth.getSession();
       const { data: profile } = await supabase.from("profiles").select();
       if (profile) {
         setProfile({ profile });
-      } 
+      }
       setCurrentSession(data?.session ?? null);
       setLoading(false);
     };
@@ -99,7 +97,7 @@ function Navbar() {
 
   const handleSubmit = async () => {
     await supabase.auth.signOut();
-    navigate("/sign-in");
+    navigate("/");
   };
 
   const handleState = (state: any): void => {
@@ -196,29 +194,43 @@ function Navbar() {
               <div></div>
             ) : currentSession ? (
               <span className="LogOutMenu">
-                <div className="profileView">
-                  <span>{profile?.profile[0].first_name} {profile?.profile[0].last_name}</span>
-                </div>
-                <Avatar
-                  sx={{ m: 1, bgcolor: "white", height: "30px" }}
-                >
-                  <LockOutlinedIcon />
-                </Avatar>
-                <Button
-                  onClick={handleSubmit}
-                  variant="contained"
-                  sx={{
-                    textTransform: "initial",
-                    fontWeight: "700",
-                    fontSize: "14px",
-                    padding: "6px 16px",
-                    background: "#FF2455",
-                    borderRadius: "100px",
-                    boxShadow: "rgba(0, 0, 0, 0.12) 0px 10px 20px 0px",
-                  }}
-                >
-                  Log ud
-                </Button>
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: "45px" }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    <MenuItem>
+                      <a href="/#">Opret udlejning</a>
+                    </MenuItem>
+                    <MenuItem>
+                      <a href="/dashboard">Mit overblik</a>
+                    </MenuItem>
+                    <MenuItem>
+                      <a href="/profile">Konto</a>
+                    </MenuItem>
+                    <MenuItem onClick={handleSubmit}>Log ud</MenuItem>
+                  </Menu>
+                </Box>
               </span>
             ) : (
               <span>
@@ -235,12 +247,12 @@ function Navbar() {
                   Tilmeld
                 </Button>
                 <Button
-                variant="contained"
-                href="/sign-in"
-                sx={{
-                  textTransform: "initial",
-                }}
-              >
+                  variant="contained"
+                  href="/sign-in"
+                  sx={{
+                    textTransform: "initial",
+                  }}
+                >
                   Log ind
                 </Button>
               </span>
