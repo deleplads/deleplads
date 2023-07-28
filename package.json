@@ -4,7 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "concurrently \"npm run sass\" \"remix dev\"",
-    "sass": "sass --watch app/:app/",
+    "sass": "sass --watch app/styles/scss:app/styles/css",
     "typecheck": "tsc"
   },
   "dependencies": {

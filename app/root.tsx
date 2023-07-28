@@ -1,6 +1,6 @@
 import styles from "../app/styles/app.css";
 import { json, type LinksFunction, type LoaderArgs } from "@remix-run/node";
-import global from "../app/styles/global.css";
+import global from "../app/styles/css/global.css";
 import {
   Links,
   LiveReload,

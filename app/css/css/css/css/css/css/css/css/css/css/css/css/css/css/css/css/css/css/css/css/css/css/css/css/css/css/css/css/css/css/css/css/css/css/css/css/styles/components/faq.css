@@ -1,0 +1,57 @@
+.faq {
+  padding: 125px 0px 125px 0px;
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.faq h1 {
+  color: #0b3558;
+  font-size: 64px;
+  padding-bottom: 100px;
+}
+
+.faq h2 {
+  color: #0b3558;
+  padding: 50px 0;
+  font-size: 40px;
+  margin: 0;
+}
+
+.faq p {
+  color: #425466;
+}
+
+.faq-accordions {
+  text-align: left !important;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.faq-accordions .MuiAccordionSummary-root {
+  padding: 20px 30px !important;
+  border: 1px solid #e5e5e5;
+  box-shadow: none !important;
+}
+
+.faq-accordions #panel1a-content,
+.faq-accordions #panel2a-content,
+.faq-accordions #panel3a-content,
+.faq-accordions #panel4a-content,
+.faq-accordions #panel5a-content,
+.faq-accordions #panel6a-content {
+  padding: 25px 0px 20px 0px !important;
+  padding-left: 20px !important;
+  margin: 0;
+  width: auto;
+  display: flex;
+}
+
+
+
+/*# sourceMappingURL=faq.css.map */
