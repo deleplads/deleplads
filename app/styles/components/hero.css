@@ -23,11 +23,15 @@
   padding: 0;
 }
 .Hero .HeroInner p {
-  color: #476788;
+  color: #2d2d34;
   font-size: 20px;
   line-height: 28px;
   padding: 0;
   margin: 20px 0 40px 0;
+}
+.Hero .HeroInner .HeroImage {
+  width: 1240px;
+  margin-top: 50px;
 }
 
 @media only screen and (max-width: 600px) {

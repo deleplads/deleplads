@@ -19,7 +19,7 @@
 
     .items {
       display: flex;
-      color: #425466;
+      color: #2d2d34;
       left: 50%;
       top: 50%;
       -webkit-transform: translateX(-50%) translateY(-50%);
@@ -33,15 +33,11 @@
     MenuItem {
       margin: 0 15px;
       text-decoration: none;
-      color: #425466;
-    }
-
-    Button:first-of-type {
-      margin-right: 15px;
+      color: #2d2d34;
     }
     a:nth-child(1) {
       text-decoration: none;
-      color: #425466;
+      color: #2d2d34;
     }
   }
   .MenuToggle,
