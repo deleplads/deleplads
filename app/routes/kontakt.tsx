@@ -11,7 +11,7 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function Index() {
+export default function Kontakt() {
   return (
     <main>
       <Navbar></Navbar>

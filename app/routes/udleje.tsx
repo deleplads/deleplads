@@ -15,7 +15,7 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function udleje() {
+export default function Udleje() {
   return (
     <main>
       <Navbar></Navbar>

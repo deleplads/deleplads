@@ -16,7 +16,7 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function udleje() {
+export default function Leje() {
   return (
     <main>
       <Navbar></Navbar>
