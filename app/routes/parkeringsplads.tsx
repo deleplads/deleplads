@@ -1,24 +1,31 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import type {
+  SelectChangeEvent} from "@mui/material";
 import {
   Avatar,
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
+  FormGroup,
   InputLabel,
   MenuItem,
-  Rating,
   Select,
-  SelectChangeEvent,
 } from "@mui/material";
 import { DateCalendar, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import Flag from '@mui/icons-material/Flag';
-import IosShare from '@mui/icons-material/IosShare';
+import AddRoadOutlined from '@mui/icons-material/AddRoadOutlined';
+import GarageOutlined from '@mui/icons-material/GarageOutlined';
+import PersonOutlined from '@mui/icons-material/PersonOutlined';
+import VpnKeyOffOutlined from '@mui/icons-material/VpnKeyOffOutlined';
+
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -46,7 +53,6 @@ export default function Parkeringsplads() {
             size="large"
             href="#"
             sx={{ textTransform: "initial", height: "fit-content" }}
-            startIcon={<IosShare />}
           >
             Del
           </Button>
@@ -55,28 +61,41 @@ export default function Parkeringsplads() {
           <Box
             sx={{ aspectRatio: "16 / 9", backgroundSize: "cover" }}
             component="img"
-            src="../../parkeringsplads.jpg"
+            src="../../parkeringsplads2.jpg"
           />
-          <div className="Rentee">
-            <Avatar className="Avatar" alt="Remy Sharp" src="" />
-            <div className="RenteeInformation">
-              <h2>
-                Udlejes af <a href="#">Nicolas</a>
-              </h2>
+          <h2>Information</h2>
+          <div className="ParkingSpotInformationDetails">
+            <div className="ParkingSpotDetails">
+              <PersonOutlined sx={{ fontSize: "30px", color: "red" }} />
               <span>
-                <Rating
-                  className="Rating"
-                  name="read-only"
-                  value={0}
-                  readOnly
-                />
-                <p>0 anmeldelser</p>
+                <h4>Privat person</h4>
+                <p>Parkeringsplads udlejes af en privat ejer.</p>
               </span>
-              <a href="#">Send en besked</a>
+            </div>
+            <div className="ParkingSpotDetails">
+              <AddRoadOutlined sx={{ fontSize: "30px", color: "red" }} />
+              <span>
+                <h4>Gadetilgængelig</h4>
+                <p>Indkørsel til parkeringspladsen fra gaden.</p>
+              </span>
+            </div>
+            <div className="ParkingSpotDetails">
+              <GarageOutlined sx={{ fontSize: "30px", color: "red" }} />
+              <span>
+                <h4>Carport</h4>
+                <p>Parkeringspladsen har tilknyttet carport.</p>
+              </span>
+            </div>
+            <div className="ParkingSpotDetails">
+              <VpnKeyOffOutlined sx={{ fontSize: "30px", color: "red" }} />
+              <span>
+                <h4>Ingen kode</h4>
+                <p>Ingen behov for kode ved parkering.</p>
+              </span>
             </div>
           </div>
           <div className="ParkingSpotAvaliability">
-            <h2>Tidstilgængelighed</h2>
+            <h2>Tilgængelighed</h2>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar defaultValue={dayjs("2022-04-17")} disabled />
             </LocalizationProvider>
@@ -90,11 +109,13 @@ export default function Parkeringsplads() {
             />
           </div>
           <div className="ParkingSpotText">
-            <h2>Nicolas siger</h2>
-            <p>
-              Parkeringspladsen ligger inde i gården. Min nabo Erna råber af alt
-              og alle, så tag dig ikke af hende.
-            </p>
+            <h2>Udlejerinformation</h2>
+            <div className="Rentee">
+              <Avatar className="Avatar" alt="Remy Sharp" src="" />
+              <div className="RenteeInformation">
+                <a href="#">Nicolas</a>
+              </div>
+            </div>
           </div>
           <div className="ParkingSpotTerms">
             <h2>Regler og betingelser</h2>
@@ -113,7 +134,10 @@ export default function Parkeringsplads() {
         <div className="ParkingSpotBooking">
           <div className="ParkingSpotBookingOptions">
             <h2>Lej denne parkeringsplads</h2>
-            <p>* Vær venligst opmærksom på, at den eksakte adresse først oplyses, når betalingen er modtaget.</p>
+            <p>
+              * Vær venligst opmærksom på, at den eksakte adresse først oplyses,
+              når betalingen er modtaget.
+            </p>
             <Box sx={{ minWidth: "20%" }}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">
@@ -159,14 +183,31 @@ export default function Parkeringsplads() {
             >
               Rapportér problem
             </Button>
-            <a href="#">Regler og vilkår gælder</a>
+            <FormGroup
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <FormControlLabel control={<Checkbox />} label="" />
+              <p style={{ fontSize: "14px !important" }}>
+                Jeg har læst og accepterer <a href="#">handelsbetingelserne</a>
+              </p>
+            </FormGroup>
           </div>
         </div>
 
         <div className="ParkingSpotMobileBooking">
-          <Button variant="contained" size="large" href="#" sx={{width: "100%", textTransform: "initial"}}>Bestil</Button>
+          <Button
+            variant="contained"
+            size="large"
+            href="#"
+            sx={{ width: "100%", textTransform: "initial" }}
+          >
+            Bestil
+          </Button>
         </div>
-
       </section>
       <Footer></Footer>
     </>

@@ -31,40 +31,6 @@
 .ParkingSpot .ParkingSpotInformation :first-child {
   gap: 0;
 }
-.ParkingSpot .ParkingSpotInformation .Rentee {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .Avatar {
-  height: 80px;
-  width: 80px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation {
-  display: flex;
-  flex-direction: column;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation h2,
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation a:nth-child(1) {
-  font-size: 24px;
-  text-decoration: none;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span {
-  display: flex;
-  align-items: center;
-  margin: 2.5px 0;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span .Rating {
-  font-size: 20px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span p {
-  margin-left: 8px;
-  font-size: 16px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation a:nth-child(2) {
-  font-size: 16px;
-  text-decoration: none;
-}
 .ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability h2,
 .ParkingSpot .ParkingSpotInformation .ParkingSpotLocation h2,
 .ParkingSpot .ParkingSpotInformation .ParkingSpotTerms h2,
@@ -79,6 +45,37 @@
 }
 .ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability .MuiDateCalendar-root {
   display: contents !important;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+  margin-top: -25px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails .ParkingSpotDetails {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee {
+  margin-top: 25px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 10px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .Avatar {
+  height: 50px;
+  width: 50px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation a {
+  font-size: 20px;
+  text-decoration: none;
 }
 .ParkingSpot .ParkingSpotBooking {
   position: relative;
@@ -103,6 +100,11 @@
 }
 .ParkingSpot .ParkingSpotMobileBooking {
   display: none;
+}
+
+.MuiFormControlLabel-root {
+  margin: 0 0 0 -12px !important;
+  padding: 0 !important;
 }
 
 @media only screen and (max-width: 600px) {
