@@ -341,43 +341,31 @@
     margin: 0px;
   }
 }
-.privacy {
-  padding: 200px 0px 125px 0px;
-  width: 1140px;
+.documentation {
+  padding: 185px 0px 200px 0px;
+  width: 1240px;
   margin: 0 auto;
-  color: #425466;
   font-size: 16px;
 }
-.privacy h1 {
-  color: #0b3558;
+.documentation h1 {
   font-size: 64px;
 }
-.privacy h5 {
+.documentation h5 {
   font-size: 24px;
   margin: 0;
 }
-.privacy h6 {
+.documentation h6 {
   font-size: 20px;
   margin: 0;
 }
-.privacy p {
-  color: #425466;
+.documentation h5, .documentation h6 {
+  margin-top: 50px;
 }
-.privacy a {
+.documentation p {
+  line-height: 150%;
+}
+.documentation a {
   color: #006bff;
-}
-
-.cookies {
-  padding: 200px 0px 125px 0px;
-  width: 1140px;
-  margin: 0 auto;
-}
-.cookies h1 {
-  color: #0b3558;
-  font-size: 64px;
-}
-.cookies p {
-  color: #425466;
 }
 
 .faq {
@@ -771,40 +759,6 @@
 .ParkingSpot .ParkingSpotInformation :first-child {
   gap: 0;
 }
-.ParkingSpot .ParkingSpotInformation .Rentee {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .Avatar {
-  height: 80px;
-  width: 80px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation {
-  display: flex;
-  flex-direction: column;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation h2,
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation a:nth-child(1) {
-  font-size: 24px;
-  text-decoration: none;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span {
-  display: flex;
-  align-items: center;
-  margin: 2.5px 0;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span .Rating {
-  font-size: 20px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation span p {
-  margin-left: 8px;
-  font-size: 16px;
-}
-.ParkingSpot .ParkingSpotInformation .Rentee .RenteeInformation a:nth-child(2) {
-  font-size: 16px;
-  text-decoration: none;
-}
 .ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability h2,
 .ParkingSpot .ParkingSpotInformation .ParkingSpotLocation h2,
 .ParkingSpot .ParkingSpotInformation .ParkingSpotTerms h2,
@@ -819,6 +773,37 @@
 }
 .ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability .MuiDateCalendar-root {
   display: contents !important;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+  margin-top: -25px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails .ParkingSpotDetails {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee {
+  margin-top: 25px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 10px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .Avatar {
+  height: 50px;
+  width: 50px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation a {
+  font-size: 20px;
+  text-decoration: none;
 }
 .ParkingSpot .ParkingSpotBooking {
   position: relative;
@@ -843,6 +828,11 @@
 }
 .ParkingSpot .ParkingSpotMobileBooking {
   display: none;
+}
+
+.MuiFormControlLabel-root {
+  margin: 0 0 0 -12px !important;
+  padding: 0 !important;
 }
 
 @media only screen and (max-width: 600px) {

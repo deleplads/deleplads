@@ -1,0 +1,28 @@
+.documentation {
+  padding: 185px 0px 200px 0px;
+  width: 1240px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+.documentation h1 {
+  font-size: 64px;
+}
+.documentation h5 {
+  font-size: 24px;
+  margin: 0;
+}
+.documentation h6 {
+  font-size: 20px;
+  margin: 0;
+}
+.documentation h5, .documentation h6 {
+  margin-top: 50px;
+}
+.documentation p {
+  line-height: 150%;
+}
+.documentation a {
+  color: #006bff;
+}
+
+/*# sourceMappingURL=documentation.css.map */
