@@ -1,20 +1,32 @@
+// Pages
+
+@import "./pages/cookies.scss";
+@import "./pages/dashboard.scss";
+@import "./pages/kontakt.scss";
+@import "./pages/leje.scss";
+@import "./pages/parkeringsplads.scss";
+@import "./pages/profile.scss";
+@import "./pages/sign-in.scss";
+@import "./pages/sign-up.scss";
+@import "./pages/privacy.scss";
+@import "./pages/udleje.scss";
+
+// Components
+
 @import "./components/navbar.scss";
 @import "./components/searchbar.scss";
-@import "./components/kontakt.scss";
 @import "./components/hero.scss";
 @import "./components/gallery.scss";
 @import "./components/footer.scss";
-@import "./components/privacy.scss";
-@import "./components/cookies.scss";
-@import "./components/faq.scss";
-@import "./components/sign-in.scss";
-@import "./components/sign-up.scss";
-@import "./components/leje.scss";
-@import "./components/udleje.scss";
-@import "./components/profile.scss";
-@import "./components/parkeringsplads.scss";
-@import "./components/dashboard.scss";
+@import "./components/calltoaction.scss";
+@import "./components/lejeExplainer.scss";
+
+// FAQ's
+
+@import "./components/faqs/faq.scss";
+@import "./components/faqs/faq-leje.scss";
+@import "./components/faqs/faq-udleje.scss";
 
 // Profile edit page
 
-@import "./components/ProfileSettings/EditProfile.scss"
+@import "./components/ProfileSettings/EditProfile.scss";

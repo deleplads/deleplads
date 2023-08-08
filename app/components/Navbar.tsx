@@ -7,7 +7,6 @@ import { useOutletContext, useNavigate } from "@remix-run/react";
 import type { SupabaseOutletContext } from "~/root";
 import { slide as BurgerMenu } from "react-burger-menu";
 import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import type { Session } from "@supabase/supabase-js";
 import type { Profile } from "db_types";
 
@@ -108,9 +107,12 @@ function Navbar() {
     <>
       <div className="NavigationBar">
         <div className="InnerNavigationBar">
-          <a href="/" style={{ fontWeight: "700" }}>
-            Deleplads.dk
+          <a href="/" style={{ fontWeight: "700"}}>
+            <Box component="img" src="../../Wolt_logo_black.png" className="NavImage"/>
           </a>
+
+          {/* Burger menu til mobilvisning */}
+
           <BurgerMenu
             className="MenuToggle"
             right
@@ -118,6 +120,9 @@ function Navbar() {
             isOpen={isOpen.menuOpen}
             onStateChange={(state) => handleState(state)}
           >
+            <a className="menu-item MLogo" href="/">
+              Deleplads.dk
+            </a>
             <a id="home" className="menu-item" href="/">
               Forside
             </a>
@@ -133,10 +138,10 @@ function Navbar() {
             <a id="contact" className="menu-item" href="/FAQ">
               FAQ
             </a>
-            <a id="contact" className="menu-item" href="/sign-up">
+            <a id="contact" className="menu-item MButton1" href="/sign-up">
               Tilmeld
             </a>
-            <a id="contact" className="menu-item" href="/sign-in">
+            <a id="contact" className="menu-item MButton2" href="/sign-in">
               Log ind
             </a>
           </BurgerMenu>
@@ -199,7 +204,7 @@ function Navbar() {
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar
                         alt="Remy Sharp"
-                        src="/static/images/avatar/2.jpg"
+                        src="../../profile-picture-placeholder.jpg"
                       />
                     </IconButton>
                   </Tooltip>

@@ -1,6 +1,5 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
-import LejeTimeline from "~/components/LejeTimeline";
 import Footer from "../components/Footer";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -8,6 +7,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box, Button } from "@mui/material";
+import CallToAction from "~/components/CallToAction";
+import Check from "@mui/icons-material/Check";
+import LejeExplainer from "~/components/LejeExplainer";
+import FAQLeje from "~/components/FaqLeje";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -20,128 +23,115 @@ export default function Leje() {
   return (
     <main>
       <Navbar></Navbar>
+
       <section className="leje">
         <h1>
           Find billig parkering,<br></br>hvor som helst
         </h1>
+        <Button
+          variant="contained"
+          sx={{
+            marginTop: "35px",
+            textTransform: "initial",
+            width: "fit-content",
+            fontSize: "18px",
+            fontWeight: "700",
+          }}
+          size="large"
+          href="/sign-up"
+        >
+          Tilmeld dig gratis
+        </Button>
       </section>
-      <LejeTimeline></LejeTimeline>
-      <section className="leje-questions">
-        <h2>Hyppige spørgsmål for lejere</h2>
-        <div className="leje-accordions">
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography>Accordion 1</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Accordion 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Accordion 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Accordion 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Accordion 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Accordion 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          
-        </div>
-        
-      </section>
-      <section className="leje-content">
+
+      <section className="lejeExplainer-1">
         <div className="inner">
-        <div className="leje-content-text">
-          <h1>Tom plads?<br></br> Store gevinster.
-          </h1>
-          <p>
-          Udnyt din tomme parkeringsplads til at tjene penge.
-          </p>
-          <Button className="leje-content-button" href="/sign-up">Tilmeld dig gratis</Button>
-        </div>
-        <Box component="img" className="leje-content-image" src="../../custom-mockup.png" />
+          <div>
+            <h1>Find privat udlejede parkeringspladser</h1>
+            <ul>
+              <li>
+                <Check sx={{ fontSize: "20px", marginRight: "8px" }} />
+                Billigere end traditionelle parkeringsmuligheder
+              </li>
+              <li>
+                <Check sx={{ fontSize: "20px", marginRight: "8px" }} />
+                Altid tilgængelige parkeringspladser døgnet rundt
+              </li>
+
+              <li>
+                <Check sx={{ fontSize: "20px", marginRight: "8px" }} />
+                Nem og sikker betaling mellem lejer og udlejer
+              </li>
+              <Button
+                variant="contained"
+                sx={{
+                  marginTop: "35px",
+                  textTransform: "initial",
+                  fontSize: "18px",
+                  fontWeight: "700",
+                }}
+                size="large"
+                href="/"
+              >
+                Se parkeringspladser
+              </Button>
+            </ul>
+          </div>
+          <Box
+            component="img"
+            src="../../14-test.png"
+            className="ExplainerImage"
+          />
         </div>
       </section>
+
+      <LejeExplainer></LejeExplainer>
+
+      <section className="lejeExplainer-2">
+        <div className="inner">
+          <div>
+            <h1>Find privat udlejede parkeringspladser</h1>
+            <ul>
+              <li>
+                <Check sx={{ fontSize: "20px", marginRight: "8px" }} />
+                Billigere end almindelige parkeringspladser
+              </li>
+              <li>
+                <Check sx={{ fontSize: "20px", marginRight: "8px" }} />
+                Altid tilgængelige parkeringspladser døgnet rundt
+              </li>
+
+              <li>
+                <Check sx={{ fontSize: "20px", marginRight: "8px" }} />
+                Nem og sikker betaling mellem lejer og udlejer
+              </li>
+              <Button
+                variant="contained"
+                sx={{
+                  marginTop: "35px",
+                  textTransform: "initial",
+                  fontSize: "18px",
+                  fontWeight: "700",
+                }}
+                size="large"
+                href="/"
+              >
+                Se parkeringspladser
+              </Button>
+            </ul>
+          </div>
+          <Box
+            component="img"
+            src="../../14-test.png"
+            className="ExplainerImage"
+          />
+        </div>
+      </section>
+
+      <FAQLeje></FAQLeje>
+
+      <CallToAction></CallToAction>
+
       <Footer></Footer>
     </main>
   );

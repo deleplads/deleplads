@@ -1,8 +1,5 @@
 "use client";
-import * as React from "react";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import SearchBar from "./SearchBar";
 // import Background from '../../public/test2.png';
 
 function Hero() {
@@ -11,8 +8,9 @@ function Hero() {
       className="Hero" /*style={{ background: `url(${Background})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", margin: "0 auto", backgroundPosition: "center 75px" }}*/
     >
       <div className="HeroInner">
-        <h1>Udnyt din parkeringsplads</h1>
-        <p>
+        <h1>Lej private parkeringspladser</h1>
+        <SearchBar></SearchBar>
+        {/* <p>
           Leje og udlejning af private parkeringspladser, nemt, hurtigt og
           billigt.
         </p>
@@ -30,7 +28,7 @@ function Hero() {
           }}
         >
           Tilmeld gratis
-        </Button>
+        </Button> */}
         {/* <Box component="img" src="../../hero-image.jpg" className="HeroImage"/> */}
       </div>
     </section>

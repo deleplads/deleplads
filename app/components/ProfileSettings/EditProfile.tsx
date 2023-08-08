@@ -238,7 +238,11 @@ function EditProfile() {
           >
             Billede
           </InputLabel>
-          <Avatar className="Avatar" alt="Remy Sharp" src="" />
+          <Avatar
+            className="Avatar"
+            alt="Remy Sharp"
+            src="../../profile-picture-placeholder.jpg"
+          />
           <span>
             <Button variant="outlined">Vælg fil</Button>
             <p></p>

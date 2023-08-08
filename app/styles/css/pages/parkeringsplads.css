@@ -1,0 +1,139 @@
+.ParkingSpot {
+  padding: 185px 0 200px 0;
+  margin: 0 auto;
+  width: 1240px;
+  display: grid;
+  grid-template-columns: 62.5% 35%;
+  column-gap: 2.5%;
+  grid-template-rows: repeat(2, 1fr, auto);
+  font-size: 16px;
+  line-height: 150%;
+}
+.ParkingSpot .ParkingSpotInformationHeader {
+  margin-bottom: 50px;
+  grid-area: 1/1/2/3;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1240px;
+}
+.ParkingSpot .ParkingSpotInformationHeader h1 {
+  font-size: 32px;
+}
+.ParkingSpot .ParkingSpotInformationHeader p {
+  margin-top: 8px;
+}
+.ParkingSpot .ParkingSpotInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+  grid-auto-rows: max-content;
+}
+.ParkingSpot .ParkingSpotInformation :first-child {
+  gap: 0;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability h2,
+.ParkingSpot .ParkingSpotInformation .ParkingSpotLocation h2,
+.ParkingSpot .ParkingSpotInformation .ParkingSpotTerms h2,
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText h2 {
+  margin-bottom: 16px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability .MuiDateCalendar-root {
+  display: contents !important;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+  margin-top: -25px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails .ParkingSpotDetails {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee {
+  margin-top: 25px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 10px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .Avatar {
+  height: 50px;
+  width: 50px;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation a {
+  font-size: 20px;
+  text-decoration: none;
+}
+.ParkingSpot .ParkingSpotBooking {
+  position: relative;
+}
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions {
+  position: sticky;
+  border: 1px solid #e5e5e5;
+  width: inherit;
+  top: 205px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions span {
+  display: flex;
+  gap: 10px;
+}
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions .price,
+.ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions a {
+  text-align: center;
+}
+.ParkingSpot .ParkingSpotMobileBooking {
+  display: none;
+}
+
+.MuiFormControlLabel-root {
+  margin: 0 0 0 -12px !important;
+  padding: 0 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .ParkingSpot {
+    padding: 140px 16px 0px 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .ParkingSpot .ParkingSpotBooking {
+    display: none;
+  }
+  .ParkingSpot .ParkingSpotMobileBooking {
+    display: block;
+    position: sticky !important;
+    bottom: 0;
+    background: white;
+    margin: 0 -16px;
+    padding: 16px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .ParkingSpot .ParkingSpotInformationDetails {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .ParkingSpot .ParkingSpotInformationDetails .ParkingSpotDetails {
+    margin-bottom: 25px;
+  }
+}
+
+/*# sourceMappingURL=parkeringsplads.css.map */

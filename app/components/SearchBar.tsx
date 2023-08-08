@@ -17,12 +17,13 @@ function SearchBar() {
 
   return (
     <div className="SearchBar">
-      <Box sx={{ minWidth: "20%" }}>
+      <Box>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Onsdag d. 25/07</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
+            className="DateSelector"
             value={age}
             label="Age"
             onChange={handleChange}
@@ -37,16 +38,16 @@ function SearchBar() {
       </Box>
       <TextField
         id="outlined-basic"
+        className="AreaSelector"
         label="Søg efter område"
-        sx={{ minWidth: "35%" }}
       />
-      fra
-      <Box sx={{ minWidth: "10%" }}>
+      <Box>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">12:00</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
+            className="StartTimeSelector"
             value={age}
             label="Age"
             onChange={handleChange}
@@ -57,13 +58,13 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      til
-      <Box sx={{ minWidth: "10%" }}>
+      <Box>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">13:00</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
+            className="EndTimeSelector"
             value={age}
             label="Age"
             onChange={handleChange}
@@ -74,8 +75,8 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      <Button variant="contained" size="large" href="#" sx={{ textTransform: "initial" }}>
-        Søg parkering
+      <Button className="SearchButton" variant="contained" size="large" href="#" sx={{ textTransform: "initial" }}>
+        Søg
       </Button>
     </div>
   );

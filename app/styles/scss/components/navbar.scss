@@ -45,6 +45,9 @@
     display: none;
     visibility: hidden;
   }
+  .NavImage {
+    height: 30px;
+  }
 }
 
 
@@ -93,10 +96,7 @@
         margin-right: 15px;
       }
 
-      Button {
-        text-transform: capitalize !important;
-        font-size: 16px;
-      }
+      
       a:nth-child(1) {
         text-decoration: none;
         color: #425466;
@@ -111,5 +111,39 @@
   .bm-burger-button {
     display: block !important;
     visibility: visible !important;
+  }
+  .bm-menu {
+    padding: 16px !important;
+  }
+  .MenuToggle {
+    position: relative;
+    .MLogo {
+      margin-bottom: 50px !important;
+    }
+    .bm-cross-button {
+      top: 15px !important;
+      right: 10px !important;
+    }
+    .MButton1 {
+      position: absolute;
+      background: white;
+      color: #1976d2;
+      left: 16px;
+      right: 16px;
+      bottom: 0;
+      padding: 20px 40px;
+      text-align: center;
+      border: 1px solid #1976d2;
+    }
+    .MButton2 {
+      position: absolute;
+      background: #1976d2;
+      color: white;
+      left: 16px;
+      right: 16px;
+      bottom: 85px;
+      padding: 20px 40px;
+      text-align: center;
+    }
   }
 }

@@ -1,0 +1,149 @@
+// X-Small devices (portrait phones, less than 600px)
+
+@media only screen and (max-width: 600px) {
+  .CallToAction {
+    background: #f7f7f7;
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    .inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        font-size: 38px;
+        font-weight: 900;
+      }
+      p {
+        font-size: 20px;
+        margin: 20px 0 30px 0;
+      }
+      .CallToActionButton {
+        font-weight: 700;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+
+@media only screen and (min-width: 767.98px) {
+  .CallToAction {
+    background: #f7f7f7;
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    .inner {
+      width: 1240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        font-size: 50px;
+        font-weight: 900;
+      }
+      p {
+        font-size: 20px;
+        margin: 20px 0 30px 0;
+      }
+      .CallToActionButton {
+        font-weight: 700;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, less than 992px)
+
+@media only screen and (min-width: 991.98px) {
+  .CallToAction {
+    background: #f7f7f7;
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    .inner {
+      width: 1240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        font-size: 50px;
+        font-weight: 900;
+      }
+      p {
+        font-size: 20px;
+        margin: 20px 0 30px 0;
+      }
+      .CallToActionButton {
+        font-weight: 700;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+// Large devices (desktops, less than 1200px)
+
+@media only screen and (min-width: 1199.98px) {
+  .CallToAction {
+    background: #f7f7f7;
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    .inner {
+      width: 1240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        font-size: 50px;
+        font-weight: 900;
+      }
+      p {
+        font-size: 20px;
+        margin: 20px 0 30px 0;
+      }
+      .CallToActionButton {
+        font-weight: 700;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+// X-Large devices (large desktops, less than 1400px)
+
+@media only screen and (min-width: 1399.98px) {
+  .CallToAction {
+    background: #f7f7f7;
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    .inner {
+      width: 1240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        font-size: 50px;
+        font-weight: 900;
+      }
+      p {
+        font-size: 20px;
+        margin: 20px 0 30px 0;
+      }
+      .CallToActionButton {
+        font-weight: 700;
+        font-size: 18px;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import type {
-  SelectChangeEvent} from "@mui/material";
+import type { SelectChangeEvent } from "@mui/material";
 import {
   Avatar,
   Box,
@@ -20,12 +19,12 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import type { ReactNode } from "react";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import Flag from '@mui/icons-material/Flag';
-import AddRoadOutlined from '@mui/icons-material/AddRoadOutlined';
-import GarageOutlined from '@mui/icons-material/GarageOutlined';
-import PersonOutlined from '@mui/icons-material/PersonOutlined';
-import VpnKeyOffOutlined from '@mui/icons-material/VpnKeyOffOutlined';
-
+import Flag from "@mui/icons-material/Flag";
+import AddRoadOutlined from "@mui/icons-material/AddRoadOutlined";
+import GarageOutlined from "@mui/icons-material/GarageOutlined";
+import PersonOutlined from "@mui/icons-material/PersonOutlined";
+import VpnKeyOffOutlined from "@mui/icons-material/VpnKeyOffOutlined";
+import CallToAction from "~/components/CallToAction";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -209,6 +208,7 @@ export default function Parkeringsplads() {
           </Button>
         </div>
       </section>
+      <CallToAction></CallToAction>
       <Footer></Footer>
     </>
   );
