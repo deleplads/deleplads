@@ -14,58 +14,67 @@ interface LoaderData {
   profile: Profile[];
 }
 
+var styles = {
+  bmBurgerButton: {
+    position: "relative",
+    width: "26px",
+    height: "15px",
+  },
+  bmBurgerBars: {
+    background: "grey",
+  },
+  bmBurgerBarsHover: {
+    background: "#a90000",
+  },
+  bmCrossButton: {
+    height: "24px",
+    width: "24px",
+  },
+  bmCross: {
+    background: "#bdc3c7",
+  },
+  bmMenuWrap: {
+    position: "fixed",
+    height: "100vh",
+    width: "100vw",
+    top: "0",
+  },
+  bmMenu: {
+    display: "flex",
+    flexDirection: "column",
+    background: "white",
+    padding: "2em 1.5em 0",
+    fontSize: "1.15em",
+  },
+  bmMorphShape: {
+    fill: "#373a47",
+  },
+  bmItemList: {
+    color: "#b8b7ad",
+    padding: "0.8em",
+  },
+  bmItem: {
+    marginBottom: "25px",
+    textDecoration: "none",
+    fontWeight: "700",
+  },
+  bmOverlay: {
+    background: "rgba(0, 0, 0, 0.3)",
+  },
+};
+
 function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorRentning, setAnchorRentning] = useState(null);
   const navigate = useNavigate();
   const [isOpen, setisOpen] = useState({ menuOpen: false });
 
-  var styles = {
-    bmBurgerButton: {
-      position: "relative",
-      width: "26px",
-      height: "15px",
-    },
-    bmBurgerBars: {
-      background: "grey",
-    },
-    bmBurgerBarsHover: {
-      background: "#a90000",
-    },
-    bmCrossButton: {
-      height: "24px",
-      width: "24px",
-    },
-    bmCross: {
-      background: "#bdc3c7",
-    },
-    bmMenuWrap: {
-      position: "fixed",
-      height: "100vh",
-      width: "100vw",
-      top: "0",
-    },
-    bmMenu: {
-      display: "flex",
-      flexDirection: "column",
-      background: "white",
-      padding: "2em 1.5em 0",
-      fontSize: "1.15em",
-    },
-    bmMorphShape: {
-      fill: "#373a47",
-    },
-    bmItemList: {
-      color: "#b8b7ad",
-      padding: "0.8em",
-    },
-    bmItem: {
-      marginBottom: "25px",
-      textDecoration: "none",
-      fontWeight: "700",
-    },
-    bmOverlay: {
-      background: "rgba(0, 0, 0, 0.3)",
-    },
+  const handleOpenRentingMenu = (event: any) => {
+    setAnchorRentning(event.currentTarget);
+  };
+
+  const handleClosRentingMenu = () => {
+    setAnchorRentning(null);
   };
 
   const handleOpenUserMenu = (event: any) => {
@@ -110,9 +119,11 @@ function Navbar() {
           <a href="/" style={{ fontWeight: "700"}}>
             <Box component="img" src="../../Wolt_logo_black.png" className="NavImage"/>
           </a>
-
-          {/* Burger menu til mobilvisning */}
-
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            </IconButton>
+          </Tooltip>
           <BurgerMenu
             className="MenuToggle"
             right
@@ -149,7 +160,7 @@ function Navbar() {
             <div className="items">
               <a href="/">Find en parkeringsplads</a>
               <div
-                onClick={handleOpenUserMenu}
+                onClick={handleOpenRentingMenu}
                 style={{
                   display: "flex",
                   margin: "0 15px",
@@ -172,7 +183,7 @@ function Navbar() {
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
-                anchorEl={anchorElUser}
+                anchorEl={anchorRentning}
                 anchorOrigin={{
                   vertical: "top",
                   horizontal: "right",
@@ -182,13 +193,13 @@ function Navbar() {
                   vertical: "top",
                   horizontal: "right",
                 }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
+                open={Boolean(anchorRentning)}
+                onClose={handleClosRentingMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem>
                   <a href="/leje">Leje</a>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem>
                   <a href="/udleje">Udleje</a>
                 </MenuItem>
               </Menu>
