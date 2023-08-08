@@ -3,5 +3,8 @@
   background: transparent;
   z-index: 1;
 }
+#sign-up-container .MuiFormControlLabel-label {
+  font-size: 14px;
+}
 
 /*# sourceMappingURL=sign-up.css.map */

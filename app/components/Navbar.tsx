@@ -9,7 +9,7 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
 import type { Session } from "@supabase/supabase-js";
 import type { Profile } from "db_types";
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from "react-responsive";
 
 interface LoaderData {
   profile: Profile[];
@@ -65,7 +65,7 @@ var styles = {
 };
 
 function Navbar() {
-  const tablet = useMediaQuery({ query: '(max-width: 600px)' })
+  const tablet = useMediaQuery({ query: "(max-width: 600px)" });
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorRentning, setAnchorRentning] = useState(null);
   const navigate = useNavigate();
@@ -76,15 +76,15 @@ function Navbar() {
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setScrolledPastTop(true);
-      } else if(window.scrollY <= 75) {
+      } else if (window.scrollY <= 85) {
         setScrolledPastTop(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -133,18 +133,30 @@ function Navbar() {
 
   return (
     <>
-      <div className={`NavigationBar ${scrolledPastTop ? "NavbarDropShadow" : ""}`}>
+      <div
+        className={`NavigationBar ${scrolledPastTop ? "NavbarDropShadow" : ""}`}
+      >
         <div className="InnerNavigationBar">
-          <a href="/" style={{ fontWeight: "700"}}>
-            <Box component="img" src="../../Wolt_logo_black.png" className="NavImage"/>
+          <a href="/" style={{ fontWeight: "700" }}>
+            <Box
+              component="img"
+              src="../../Wolt_logo_black.png"
+              className="NavImage"
+            />
           </a>
-          {
-            tablet ? <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar sx={{width: 20}} alt="Remy Sharp" src="../../profile-picture-placeholder.jpg" />
-            </IconButton>
-          </Tooltip> : <></>
-          }
+          {tablet ? (
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  sx={{ width: "40px", height: "40px" }}
+                  alt="Remy Sharp"
+                  src="../../profile-picture-placeholder.jpg"
+                />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <></>
+          )}
           <BurgerMenu
             className="MenuToggle"
             right
@@ -216,12 +228,17 @@ function Navbar() {
                 }}
                 open={Boolean(anchorRentning)}
                 onClose={handleClosRentingMenu}
+                disableScrollLock={true}
               >
                 <MenuItem>
-                  <a href="/leje">Leje</a>
+                  <a href="/leje" style={{ textDecoration: "none" }}>
+                    Leje
+                  </a>
                 </MenuItem>
                 <MenuItem>
-                  <a href="/udleje">Udleje</a>
+                  <a href="/udleje" style={{ textDecoration: "none" }}>
+                    Udleje
+                  </a>
                 </MenuItem>
               </Menu>
               <a href="#">Blog</a>
@@ -255,17 +272,29 @@ function Navbar() {
                     }}
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
+                    disableScrollLock={true}
                   >
                     <MenuItem>
-                      <a href="/#">Opret udlejning</a>
+                      <a href="/#" style={{ textDecoration: "none" }}>
+                        Opret udlejning
+                      </a>
                     </MenuItem>
                     <MenuItem>
-                      <a href="/dashboard">Mit overblik</a>
+                      <a href="/dashboard" style={{ textDecoration: "none" }}>
+                        Mit overblik
+                      </a>
                     </MenuItem>
                     <MenuItem>
-                      <a href="/profile">Konto</a>
+                      <a href="/profile" style={{ textDecoration: "none" }}>
+                        Konto
+                      </a>
                     </MenuItem>
-                    <MenuItem onClick={handleSubmit}>Log ud</MenuItem>
+                    <MenuItem
+                      onClick={handleSubmit}
+                      style={{ textDecoration: "none" }}
+                    >
+                      Log ud
+                    </MenuItem>
                   </Menu>
                 </Box>
               </span>
@@ -277,7 +306,6 @@ function Navbar() {
                     marginRight: "15px",
                     textTransform: "Capitalize",
                     background: "white",
-                    fontWeight: "700",
                     fontSize: "14px",
                   }}
                 >

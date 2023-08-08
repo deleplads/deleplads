@@ -423,6 +423,9 @@
   background: transparent;
   z-index: 1;
 }
+#sign-up-container .MuiFormControlLabel-label {
+  font-size: 14px;
+}
 
 .privacy {
   padding: 200px 0px 125px 0px;
@@ -604,6 +607,7 @@
 }
 .NavigationBar .InnerNavigationBar .items a,
 .NavigationBar .InnerNavigationBar MenuItem {
+  text-decoration: none;
   margin: 0 15px;
   text-decoration: none;
   color: #2d2d34;
@@ -724,7 +728,9 @@
 .SearchBar .MuiTextField-root,
 .SearchBar .AreaSelector,
 .SearchBar .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  width: -moz-available;
   width: -webkit-fill-available;
+  width: fill-available;
 }
 .SearchBar .SearchButton {
   padding: 14px 60px;
@@ -1122,7 +1128,7 @@
     border-bottom: 1px solid #e5e5e5;
   }
   .Footer .FooterInner {
-    padding: 100px 0;
+    padding: 50px 0 100px 0;
     width: 1240px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1149,7 +1155,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 1240px;
-    padding: 50px 0;
+    padding: 50px 0 0 0;
     font-size: 16px;
     border-top: 1px solid #e5e5e5;
   }

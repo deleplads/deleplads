@@ -35,6 +35,7 @@
 }
 .NavigationBar .InnerNavigationBar .items a,
 .NavigationBar .InnerNavigationBar MenuItem {
+  text-decoration: none;
   margin: 0 15px;
   text-decoration: none;
   color: #2d2d34;
