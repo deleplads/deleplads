@@ -567,6 +567,12 @@
   display: flex;
 }
 
+.NavbarDropShadow {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E5E5E5;
+  transition: transform linear 0.5s;
+}
+
 .NavigationBar {
   height: 85px;
   display: flex;
@@ -575,8 +581,7 @@
   margin-bottom: 1px;
   position: fixed;
   width: 100%;
-  background: white;
-  border-bottom: 1px solid #e5e5e5;
+  background: transparent;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;

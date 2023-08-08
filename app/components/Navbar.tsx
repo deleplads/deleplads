@@ -9,6 +9,7 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
 import type { Session } from "@supabase/supabase-js";
 import type { Profile } from "db_types";
+import { useMediaQuery } from 'react-responsive'
 
 interface LoaderData {
   profile: Profile[];
@@ -64,10 +65,28 @@ var styles = {
 };
 
 function Navbar() {
+  const tablet = useMediaQuery({ query: '(max-width: 600px)' })
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorRentning, setAnchorRentning] = useState(null);
   const navigate = useNavigate();
   const [isOpen, setisOpen] = useState({ menuOpen: false });
+  const [scrolledPastTop, setScrolledPastTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolledPastTop(true);
+      } else if(window.scrollY <= 75) {
+        setScrolledPastTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleOpenRentingMenu = (event: any) => {
     setAnchorRentning(event.currentTarget);
@@ -114,16 +133,18 @@ function Navbar() {
 
   return (
     <>
-      <div className="NavigationBar">
+      <div className={`NavigationBar ${scrolledPastTop ? "NavbarDropShadow" : ""}`}>
         <div className="InnerNavigationBar">
           <a href="/" style={{ fontWeight: "700"}}>
             <Box component="img" src="../../Wolt_logo_black.png" className="NavImage"/>
           </a>
-          <Tooltip title="Open settings">
+          {
+            tablet ? <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar sx={{width: 20}} alt="Remy Sharp" src="../../profile-picture-placeholder.jpg" />
             </IconButton>
-          </Tooltip>
+          </Tooltip> : <></>
+          }
           <BurgerMenu
             className="MenuToggle"
             right

@@ -17,7 +17,7 @@ import {
 import { DateCalendar, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import type { ReactNode } from "react";
+import { useState, type ReactNode, useEffect } from "react";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import Flag from "@mui/icons-material/Flag";
 import AddRoadOutlined from "@mui/icons-material/AddRoadOutlined";
@@ -38,6 +38,25 @@ export default function Parkeringsplads() {
     throw new Error("Function not implemented.");
   }
 
+  const [scrolledPastTop, setScrolledPastTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        setScrolledPastTop(true);
+      } else if(window.scrollY <= 180) {
+        setScrolledPastTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  
   return (
     <>
       <Navbar></Navbar>
@@ -101,11 +120,16 @@ export default function Parkeringsplads() {
           </div>
           <div className="ParkingSpotLocation">
             <h2>Cirka placering af parkeringsplads</h2>
-            <Box
-              sx={{ width: "100%", marginTop: "16px" }}
-              component="img"
-              src="../../googlemapsplaceholder.jpg"
-            />
+            <iframe
+              title="SHIT"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.579493914321!2d12.536347670690457!3d55.65536410407578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46525381652cfd11%3A0x6496d86f15f53006!2sEngelbert-Petersens%20Bageri!5e0!3m2!1sda!2sdk!4v1691516861738!5m2!1sda!2sdk"
+              width="100%"
+              height="450"
+              style={{border: 0}}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
           <div className="ParkingSpotText">
             <h2>Udlejerinformation</h2>
