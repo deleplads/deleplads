@@ -12,7 +12,7 @@
 
 .NavigationBar .InnerNavigationBar {
   height: inherit;
-  width: 1240px;
+  width: 1080px;
   background: transparent;
   display: inherit;
   align-items: center;
@@ -108,7 +108,7 @@
   }
 }
 .SearchBar {
-  width: 1240px;
+  width: 1080px;
   height: 100px;
   margin: 0 auto;
   padding: 0;
@@ -164,7 +164,7 @@
 }
 
 .Hero .HeroInner .HeroImage {
-  width: 1240px;
+  width: 1080px;
   margin-top: 50px;
 }
 
@@ -191,7 +191,7 @@
 }
 
 .Gallery .GalleryInner {
-  width: 1240px;
+  width: 1080px;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -251,7 +251,7 @@
 
 .Footer .FooterInner {
   padding: 100px 0;
-  width: 1240px;
+  width: 1080px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -280,7 +280,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1240px;
+  width: 1080px;
   padding: 50px 0;
   font-size: 16px;
   border-top: 1px solid #e5e5e5;
@@ -779,7 +779,7 @@
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media only screen and (min-width: 600px) {
   .ProfileMenuSettings {
-    width: 1240px;
+    width: 1080px;
     padding: 185px 0 200px 0;
     margin: 0 auto;
     display: grid;
@@ -803,7 +803,7 @@
 .ParkingSpot {
   padding: 185px 0 200px 0;
   margin: 0 auto;
-  width: 1240px;
+  width: 1080px;
   display: grid;
   grid-template-columns: 62.5% 35%;
   column-gap: 2.5%;
@@ -817,7 +817,7 @@
   grid-area: 1/1/2/3;
   display: flex;
   justify-content: space-between;
-  max-width: 1240px;
+  max-width: 1080px;
 }
 
 .ParkingSpot .ParkingSpotInformationHeader h1 {
@@ -951,7 +951,7 @@
 }
 .Dashboard {
   padding: 185px 0 200px 0;
-  width: 1240px;
+  width: 1080px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 20% 77.5%;

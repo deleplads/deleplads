@@ -1,7 +1,7 @@
 .ParkingSpot {
   padding: 185px 0 200px 0;
   margin: 0 auto;
-  width: 1240px;
+  width: 1080px;
   display: grid;
   grid-template-columns: 62.5% 35%;
   column-gap: 2.5%;
@@ -15,7 +15,7 @@
   grid-area: 1/1/2/3;
   display: flex;
   justify-content: space-between;
-  max-width: 1240px;
+  max-width: 1080px;
 }
 
 .ParkingSpot .ParkingSpotInformationHeader h1 {
