@@ -17,24 +17,6 @@ import { useNavigate, useOutletContext } from "@remix-run/react";
 import type { SupabaseOutletContext } from "~/root";
 import { toast, Toaster } from "react-hot-toast";
 
-// function Copyright(props: any) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
-
 export default function SignUp() {
   const { supabase } = useOutletContext<SupabaseOutletContext>();
   const navigate = useNavigate();
@@ -83,7 +65,6 @@ export default function SignUp() {
   return (
     <>
       <Toaster position="top-right" />
-      <Navbar></Navbar>
       <Container id="sign-up-container" component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -91,14 +72,17 @@ export default function SignUp() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            background: "white",
+            padding: "25px",
+            border: "1px solid #e5e5e5",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Tilmeld
-          </Typography>
+          <Box
+            component="img"
+            src="../../Wolt_logo_black.png"
+            className="NavImage"
+            sx={{ height: "40px" }}
+          />
           <Box
             component="form"
             noValidate
@@ -150,6 +134,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
+                  sx={{ fontSize: "14px" }}
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
@@ -161,13 +146,13 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, textTransform: "initial", fontSize: "16px" }}
             >
               Tilmeld
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/sign-in" variant="body2">
                   Har du allerede en konto? Log ind
                 </Link>
               </Grid>
@@ -175,7 +160,6 @@ export default function SignUp() {
           </Box>
         </Box>
       </Container>
-      <Footer></Footer>
     </>
   );
 }

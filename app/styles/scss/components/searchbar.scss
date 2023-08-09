@@ -12,7 +12,9 @@
   .MuiTextField-root,
   .AreaSelector,
   .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+    width: -moz-available;
     width: -webkit-fill-available;
+    width: fill-available;
   }
   .SearchButton {
     padding: 14px 60px;

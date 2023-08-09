@@ -38,7 +38,7 @@ import { Toaster, toast } from "react-hot-toast";
 export default function SignIn() {
   const { supabase } = useOutletContext<SupabaseOutletContext>();
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -60,8 +60,7 @@ export default function SignIn() {
 
   return (
     <>
-    <Toaster position="top-right"/>
-      <Navbar></Navbar>
+      <Toaster position="top-right" />
       <Container id="sign-in-container" component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -69,14 +68,17 @@ export default function SignIn() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            background: "white",
+            padding: "25px",
+            border: "1px solid #e5e5e5",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Log ind
-          </Typography>
+          <Box
+            component="img"
+            src="../../Wolt_logo_black.png"
+            className="NavImage"
+            sx={{ height: "40px" }}
+          />
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -111,7 +113,7 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, textTransform: "initial", fontSize: "16px" }}
             >
               Log ind
             </Button>
@@ -122,7 +124,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/sign-up" variant="body2">
                   {"Har du ikke en konto? Tilmeld dig"}
                 </Link>
               </Grid>
@@ -130,7 +132,6 @@ export default function SignIn() {
           </Box>
         </Box>
       </Container>
-      <Footer></Footer>
     </>
   );
 }
