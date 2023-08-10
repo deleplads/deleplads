@@ -144,7 +144,10 @@ function Navbar() {
               className="NavImage"
             />
           </a>
-          {tablet ? (
+
+          {/* Virker ikke */}
+
+          {/* {tablet ? (
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
@@ -156,7 +159,7 @@ function Navbar() {
             </Tooltip>
           ) : (
             <></>
-          )}
+          )} */}
           <BurgerMenu
             className="MenuToggle"
             right
