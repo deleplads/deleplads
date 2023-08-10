@@ -2,14 +2,16 @@
   display: flex;
   justify-content: center;
   background: white;
-  padding: 75px 0 175px 0;
+  padding: 25px 0 100px 0;
   .GalleryInner {
-    width: 1240px;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 25px;
-    grid-row-gap: 25px;
+    width: 1080px;
+    span {
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 25px;
+      grid-row-gap: 25px;
+    }
   }
 }
 

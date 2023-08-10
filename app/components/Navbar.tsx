@@ -305,8 +305,7 @@ function Navbar() {
                   sx={{
                     marginRight: "15px",
                     textTransform: "Capitalize",
-                    background: "white",
-                    fontSize: "14px",
+                    background: "transparent",
                   }}
                 >
                   Tilmeld
@@ -316,6 +315,8 @@ function Navbar() {
                   href="/sign-in"
                   sx={{
                     textTransform: "initial",
+                    fontWeight: "600",
+                    background: "#635bff",
                   }}
                 >
                   Log ind

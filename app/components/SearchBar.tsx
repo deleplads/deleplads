@@ -75,9 +75,9 @@ function SearchBar() {
           </Select>
         </FormControl>
       </Box>
-      <Button className="SearchButton" variant="contained" size="large" href="#" sx={{ textTransform: "initial" }}>
+      {/* <Button className="SearchButton" variant="contained" size="large" href="#" sx={{ textTransform: "initial" }}>
         Søg
-      </Button>
+      </Button> */}
     </div>
   );
 }

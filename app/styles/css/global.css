@@ -13,7 +13,7 @@
 
 .Dashboard {
   padding: 185px 0 200px 0;
-  width: 1240px;
+  width: 1080px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 20% 77.5%;
@@ -145,7 +145,7 @@
   align-items: center;
 }
 .lejeExplainer-1 .inner {
-  width: 1240px;
+  width: 1080px;
   display: flex;
   align-items: center;
   gap: 200px;
@@ -180,7 +180,7 @@
   align-items: center;
 }
 .lejeExplainer-2 .inner {
-  width: 1240px;
+  width: 1080px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -254,7 +254,7 @@
 .ParkingSpot {
   padding: 185px 0 200px 0;
   margin: 0 auto;
-  width: 1240px;
+  width: 1080px;
   display: grid;
   grid-template-columns: 62.5% 35%;
   column-gap: 2.5%;
@@ -267,7 +267,7 @@
   grid-area: 1/1/2/3;
   display: flex;
   justify-content: space-between;
-  max-width: 1240px;
+  max-width: 1080px;
 }
 .ParkingSpot .ParkingSpotInformationHeader h1 {
   font-size: 32px;
@@ -391,7 +391,7 @@
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media only screen and (min-width: 600px) {
   .ProfileMenuSettings {
-    width: 1240px;
+    width: 1080px;
     padding: 185px 0 200px 0;
     margin: 0 auto;
     display: grid;
@@ -588,7 +588,7 @@
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
-  width: 1240px;
+  width: 1080px;
   background: transparent;
   display: inherit;
   align-items: center;
@@ -714,14 +714,14 @@
   }
 }
 .SearchBar {
-  width: 1240px;
+  width: 1080px;
   height: 100px;
-  margin: 0 auto !important;
   padding: 0;
   display: flex;
   align-items: center;
   box-sizing: border-box;
   gap: 10px;
+  margin: 0 0 25px 0 !important;
 }
 .SearchBar .MuiBox-root,
 .SearchBar .MuiFormControl-root,
@@ -771,39 +771,38 @@
 }
 .Hero {
   width: 100%;
+  height: 675px;
   display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #e5e5e5;
+  justify-content: left;
 }
 .Hero .HeroInner {
   height: auto;
-  width: 1240px;
+  width: 1080px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 190px 0 125px 0px;
+  justify-content: space-between;
   margin: 0 auto;
-  text-align: center;
+  padding-top: 85px;
 }
 .Hero .HeroInner h1 {
   font-size: 60px;
-  line-height: 72px;
+  line-height: 120%;
   font-weight: 700;
-  letter-spacing: 0.12px;
+  letter-spacing: -1px;
   color: #0b3558;
   margin: 0 0 15px 0;
   padding: 0;
 }
 .Hero .HeroInner p {
   color: #2d2d34;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 28px;
   padding: 0;
   margin: 20px 0 40px 0;
 }
 .Hero .HeroInner .HeroImage {
-  width: 1240px;
-  margin-top: 50px;
+  height: 475px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -831,13 +830,15 @@
   display: flex;
   justify-content: center;
   background: white;
-  padding: 75px 0 175px 0;
+  padding: 25px 0 100px 0;
 }
 .Gallery .GalleryInner {
-  width: 1240px;
+  width: 1080px;
+}
+.Gallery .GalleryInner span {
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 25px;
   grid-row-gap: 25px;
 }
@@ -1017,7 +1018,7 @@
   }
   .Footer .FooterInner {
     padding: 100px 0;
-    width: 1240px;
+    width: 1080px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -1042,7 +1043,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1240px;
+    width: 1080px;
     padding: 50px 0;
     font-size: 16px;
     border-top: 1px solid #e5e5e5;
@@ -1073,7 +1074,7 @@
   }
   .Footer .FooterInner {
     padding: 100px 0;
-    width: 1240px;
+    width: 1080px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -1098,7 +1099,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1240px;
+    width: 1080px;
     padding: 50px 0;
     font-size: 16px;
     border-top: 1px solid #e5e5e5;
@@ -1129,7 +1130,7 @@
   }
   .Footer .FooterInner {
     padding: 50px 0 100px 0;
-    width: 1240px;
+    width: 1080px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -1154,7 +1155,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1240px;
+    width: 1080px;
     padding: 50px 0 0 0;
     font-size: 16px;
     border-top: 1px solid #e5e5e5;
@@ -1174,7 +1175,7 @@
 }
 @media only screen and (max-width: 600px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
@@ -1201,13 +1202,13 @@
 }
 @media only screen and (min-width: 767.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1228,13 +1229,13 @@
 }
 @media only screen and (min-width: 991.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1255,13 +1256,13 @@
 }
 @media only screen and (min-width: 1199.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1282,13 +1283,13 @@
 }
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1313,7 +1314,7 @@
   justify-content: center;
 }
 .LejeExplainer .inner {
-  width: 1240px;
+  width: 1080px;
 }
 .LejeExplainer .inner .header {
   display: flex;
@@ -1395,7 +1396,7 @@
 }
 .FAQLeje .inner {
   padding: 100px 0;
-  width: 1240px;
+  width: 1080px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

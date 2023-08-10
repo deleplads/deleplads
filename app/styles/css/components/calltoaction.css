@@ -1,6 +1,6 @@
 @media only screen and (max-width: 600px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
@@ -27,13 +27,13 @@
 }
 @media only screen and (min-width: 767.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,13 +54,13 @@
 }
 @media only screen and (min-width: 991.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,13 +81,13 @@
 }
 @media only screen and (min-width: 1199.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,13 +108,13 @@
 }
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
-    background: #f7f7f7;
+    background: #F6F9FC;
     padding: 150px 0;
     display: flex;
     justify-content: center;
   }
   .CallToAction .inner {
-    width: 1240px;
+    width: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: center;
