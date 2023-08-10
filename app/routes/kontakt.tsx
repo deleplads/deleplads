@@ -1,21 +1,91 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
 import Footer from "../components/Footer";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Box, Button } from "@mui/material";
+import CallToAction from "~/components/CallToAction";
+import Check from "@mui/icons-material/Check";
+import LejeExplainer from "~/components/LejeExplainer";
+import FAQLeje from "~/components/FaqLeje";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Deleplads.dk - Kontakt os" },
+    { title: "Deleplads.dk - Leje" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
 
-export default function Kontakt() {
+export default function Leje() {
   return (
     <main>
       <Navbar></Navbar>
-      <Hero></Hero>
-      <Kontakt></Kontakt>
+
+      <section className="kontakt">
+        <div className="inner">
+          <div className="information">
+            <h1>Hvordan kan vi hjælpe dig?</h1>
+            <p>
+              Du meget velkommen til at kontakte os med dine idéer, input eller
+              spørgsmål! Vi sidder altid klar, til at hjælpe dig. Vi glæder os
+              til at høre fra dig, og svarer som regel indenfor et par timer.
+            </p>
+          </div>
+          <div className="message">
+            <span>
+              <div className="message-contents">
+                <label htmlFor="#">Fornavn</label>
+                <input type="text" placeholder="Indtast dit fornavn" required />
+              </div>
+              <div className="message-contents">
+                <label htmlFor="#">Efternavn</label>
+                <input type="text" placeholder="Indtast dit efternavn" />
+              </div>
+            </span>
+            <span>
+              <div className="message-contents">
+                <label htmlFor="#">E-mail</label>
+                <input type="text" placeholder="Indtast din e-mail adresse" />
+              </div>
+              <div className="message-contents">
+                <label htmlFor="#">Telefon</label>
+                <input type="text" placeholder="Indtast dit telefonnummer" />
+              </div>
+            </span>
+            <div className="message-contents">
+              <label htmlFor="#">Din besked</label>
+              <textarea
+                name=""
+                id=""
+                placeholder="Indtast din besked"
+              ></textarea>
+            </div>
+            <p>
+              Ved at klikke på send bekræfter du, at du giver samtykke til
+              behandlingen af dine personlige oplysninger i overensstemmelse med
+              vores&nbsp;
+              <a href="/privacy-policy">privatlivspolitik</a>.
+            </p>
+            <Button
+              variant="contained"
+              size="large"
+              href="/sign-up"
+              sx={{
+                textTransform: "initial",
+                borderRadius: "8px",
+                fontWeight: "600",
+                background: "#635bff",
+              }}
+            >
+              Send
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <Footer></Footer>
     </main>
   );

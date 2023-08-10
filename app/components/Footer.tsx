@@ -41,12 +41,16 @@ function Footer() {
         </div>
         <div className="FooterColumn">
           <h6>Legal</h6>
-          <a href="privacy-policy">Persondatapolitik</a>
-          <a href="cookies">Cookiepolitik</a>
+          <a href="/privacy-policy">Persondatapolitik</a>
+          <a href="/cookies">Cookiepolitik</a>
+          <a href="/handelsbetingelser">Handelsbetingelser</a>
+          <a href="#">Regler og vilkår</a>
         </div>
         <div className="FooterColumn">
           <h6>Resourcer</h6>
-          <a href="#">Kontakt os</a>
+          <a href="/kontakt">Kontakt os</a>
+          <a href="#">Vejledninger</a>
+          <a href="#">Sitemap</a>
         </div>
       </div>
       <div className="FooterBottom">
