@@ -56,6 +56,15 @@ export default function Leje() {
               </div>
             </span>
             <div className="message-contents">
+            <label htmlFor="#">Henvendelsestype</label>
+              <select name="cars" id="cars">
+                <option value="volvo">Generelle spørgsmål</option>
+                <option value="saab">Ris og ros</option>
+                <option value="mercedes">Fejl på siden</option>
+                <option value="audi">Salgshenvendelse</option>
+              </select>
+            </div>
+            <div className="message-contents">
               <label htmlFor="#">Din besked</label>
               <textarea
                 name=""
@@ -65,8 +74,7 @@ export default function Leje() {
             </div>
             <p>
               Ved at klikke på send bekræfter du, at du giver samtykke til
-              behandlingen af dine personlige oplysninger i overensstemmelse med
-              vores&nbsp;
+              behandlingen af dine personlige oplysninger, som det fremgår af vores&nbsp;
               <a href="/privacy-policy">privatlivspolitik</a>.
             </p>
             <Button

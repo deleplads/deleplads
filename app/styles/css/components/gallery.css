@@ -1,7 +1,7 @@
 .Gallery {
   display: flex;
   justify-content: center;
-  background: white;
+  background: #F6F9FC;
   padding: 25px 0 100px 0;
 }
 .Gallery .GalleryInner {
