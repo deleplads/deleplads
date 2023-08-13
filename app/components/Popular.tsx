@@ -1,7 +1,7 @@
 "use client";
 import BasicCard from "./Cards";
 
-function popular() {
+function Popular() {
   return (
     <section className="popular">
       <div className="popularInner">
@@ -18,4 +18,4 @@ function popular() {
     </section>
   );
 }
-export default popular;
+export default Popular;

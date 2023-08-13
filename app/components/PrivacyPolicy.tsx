@@ -1,6 +1,6 @@
 "use client";
 
-function Privacy() {
+function PrivacyPolicy() {
   return (
     <section className="privacy">
       <h1>Persondatapolitik</h1>
@@ -165,4 +165,4 @@ function Privacy() {
   );
 }
 
-export default Privacy;
+export default PrivacyPolicy;
