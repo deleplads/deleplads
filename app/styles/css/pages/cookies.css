@@ -1,14 +1,27 @@
 .cookies {
   padding: 200px 0px 125px 0px;
-  width: 1140px;
+  width: 1080px;
   margin: 0 auto;
+  color: #425466;
+  font-size: 16px;
 }
 .cookies h1 {
   color: #0b3558;
   font-size: 64px;
 }
+.cookies h5 {
+  font-size: 24px;
+  margin: 0;
+}
+.cookies h6 {
+  font-size: 20px;
+  margin: 0;
+}
 .cookies p {
   color: #425466;
+}
+.cookies a {
+  color: #006bff;
 }
 
 /*# sourceMappingURL=cookies.css.map */

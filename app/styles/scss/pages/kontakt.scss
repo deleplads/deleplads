@@ -23,6 +23,7 @@
       flex-direction: column;
       padding: 32px;
       border: 1px solid #e5e5e5;
+      border-radius: 8px;
       span {
         display: flex;
         flex-direction: row;
@@ -46,7 +47,7 @@
           font-size: 14px;
           font-family: "Poppins", sans-serif;
         }
-        input {
+        input, select {
           padding: 16px 10px;
           border: 1px solid #e5e5e5;
           border-radius: 4px;
@@ -63,7 +64,7 @@
       p {
         font-size: 14px;
         line-height: 150%;
-        margin: 32px 0;
+        margin: 12px 0 24px 0;
       }
       a:nth-child(1) {
         color: #006bff;

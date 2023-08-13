@@ -10,8 +10,7 @@ function Hero() {
             Leje og udleje<br></br>af private<br></br>parkeringspladser
           </h1>
           <p>
-            Leje og udlejning af private parkeringspladser, nemt, hurtigt og
-            billigt.
+            Her kan du leje eller udleje parkeringspladser, til attratiktive priser.
           </p>
           <Button
             variant="contained"
@@ -28,7 +27,8 @@ function Hero() {
             Tilmeld gratis
           </Button>
         </span>
-        <Box component="img" src="../../clay.png" className="HeroImage" />
+        <Box component="img" src="../../hero-image-mobile.jpg" className="HeroImage" />
+        <Box component="img" src="../../hero-image-desktop.jpg" className="rekt" />
       </div>
     </section>
   );
