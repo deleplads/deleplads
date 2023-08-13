@@ -27,8 +27,8 @@ function Hero() {
             Tilmeld gratis
           </Button>
         </span>
-        {/* <Box component="img" src="../../hero-image-mobile.jpg" className="HeroImage" />
-        <Box component="img" src="../../hero-image-desktop.jpg" className="rekt" /> */}
+        <Box component="img" src="../../hero-image-mobile.jpg" className="HeroImage" />
+        <Box component="img" src="../../hero-image-desktop.jpg" className="rekt" />
       </div>
     </section>
   );
