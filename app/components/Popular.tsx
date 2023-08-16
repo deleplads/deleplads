@@ -1,12 +1,11 @@
 "use client";
 import BasicCard from "./Cards";
-import SearchBar from "./SearchBar";
 
-function Gallery() {
+function Popular() {
   return (
-    <section className="Gallery">
-      <div className="GalleryInner">
-        <SearchBar></SearchBar>
+    <section className="popular">
+      <div className="popularInner">
+        <h1>Populære parkeringspladser</h1>
         <span>
           <BasicCard></BasicCard>
           <BasicCard></BasicCard>
@@ -19,4 +18,4 @@ function Gallery() {
     </section>
   );
 }
-export default Gallery;
+export default Popular;
