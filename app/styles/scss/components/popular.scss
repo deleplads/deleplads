@@ -1,0 +1,16 @@
+.popular {
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+  padding: 100px 0 100px 0;
+  .popularInner {
+    width: 1080px;
+    span {
+      padding: 50px 0 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 25px;
+      grid-row-gap: 25px;
+    }
+  }
+}
