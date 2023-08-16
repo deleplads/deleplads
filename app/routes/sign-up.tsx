@@ -29,7 +29,9 @@ export default function SignUp() {
     const firstName = data.get("firstName");
     const lastName = data.get("lastName");
 
-    if (email && password && firstName && lastName) {
+
+    
+    if (email && password && firstName && lastName) {      
       const { data, error: signUpError } = await supabase.auth.signUp({
         email: email.toString(),
         password: password.toString(),
@@ -45,13 +47,13 @@ export default function SignUp() {
           },
         ]);
 
-        if (profileError) {
+        if (profileError) {  
           // Handle error, maybe show the user that we couldn't create the profile
           toast.error("Error creating profile!");
           console.error("Error creating profile:", profileError);
         } else {
           // Profile created, navigate to home or dashboard page
-          navigate("/", {
+          navigate("/sign-in", {
             state: { message: "Successfully signed up and logged in!" },
           });
         }
