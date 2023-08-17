@@ -304,25 +304,25 @@ function Navbar() {
             ) : (
               <span>
                 <Button
-                  href="/sign-up"
+                  href="/sign-in"
                   sx={{
                     marginRight: "15px",
                     textTransform: "Capitalize",
                     background: "transparent",
                   }}
                 >
-                  Tilmeld
+                  Log ind
                 </Button>
                 <Button
                   variant="contained"
-                  href="/sign-in"
+                  href="/sign-up"
                   sx={{
                     textTransform: "initial",
                     fontWeight: "600",
                     background: "#635bff",
                   }}
                 >
-                  Log ind
+                  Tilmeld
                 </Button>
               </span>
             )}

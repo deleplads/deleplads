@@ -7,11 +7,11 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-function FAQLeje() {
+function FAQGeneral() {
   return (
     <section className="FAQLeje">
       <div className="inner">
-        <h1>Spørgsmål og svar for lejere</h1>
+        <h1>Generelle spørgsmål</h1>
         <div className="questions">
           <Accordion>
             <AccordionSummary
@@ -99,4 +99,4 @@ function FAQLeje() {
   );
 }
 
-export default FAQLeje;
+export default FAQGeneral;

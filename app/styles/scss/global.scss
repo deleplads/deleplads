@@ -10,6 +10,7 @@
 @import "./pages/privacy.scss";
 @import "./pages/udleje.scss";
 @import "./pages/kontakt.scss";
+@import "./pages/faq.scss";
 
 // Components
 
@@ -24,9 +25,10 @@
 
 // FAQ's
 
-@import "./components/faqs/faq.scss";
+
 @import "./components/faqs/faq-leje.scss";
 @import "./components/faqs/faq-udleje.scss";
+@import "./components/faqs/faq-general.scss";
 
 // Profile edit page
 
