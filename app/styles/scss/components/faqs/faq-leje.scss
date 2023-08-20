@@ -2,11 +2,12 @@
   display: flex;
   justify-content: center;
   .inner {
-    padding: 100px 0;
+    padding: 0;
     width: 1080px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 175px;
     h1 {
       font-size: 40px;
       font-weight: 800;
@@ -15,7 +16,7 @@
     .questions {
       width: 605px;
       p {
-        font-size: 22px !important;
+        font-size: 18px !important;
       }
     }
     #panel1a-header,
@@ -28,10 +29,6 @@
       border: none;
       padding: 16px 0;
       font-size: 22px;
-      color: red;
-      p {
-        color: red;
-      }
     }
   }
 }

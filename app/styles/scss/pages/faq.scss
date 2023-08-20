@@ -1,5 +1,5 @@
-.faq {
-  padding: 125px 0px 125px 0px;
+.FAQHeader {
+  padding: 185px 0;
   width: 1000px;
   margin: 0 auto;
   display: flex;
@@ -7,18 +7,29 @@
   justify-content: center;
   text-align: center;
   h1 {
-    color: #0b3558;
     font-size: 64px;
-    padding-bottom: 100px;
-  }
-  h2 {
+    line-height: 120%;
+    font-weight: 700;
+    letter-spacing: -1px;
     color: #0b3558;
-    padding: 50px 0;
-    font-size: 40px;
-    margin: 0;
+    margin: 0 0 8px 0;
+    padding: 0;
   }
+
   p {
-    color: #425466;
+    color: #2d2d34;
+    font-size: 18px;
+    line-height: 36px;
+    padding: 0;
+    margin: 20px 0 30px 0;
+  }
+  .caption {
+    color: #635bff;
+    font-family: "Gilroy", sans-serif !important;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
   }
 }
 
