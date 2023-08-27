@@ -1,118 +1,117 @@
-.udleje {
-  padding: 125px 0px 125px 0px;
-  width: 1140px;
+.rent {
+  padding: 185px 0;
+  width: 1080px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  color: #0b3558 !important;
+  align-items: center;
+  text-align: center;
 }
-.udleje h1 {
+.rent h1 {
   text-align: center;
   font-size: 64px;
   line-height: 72px;
   font-weight: 700;
-  letter-spacing: 0.12px;
-  color: #0b3558;
-  margin-bottom: 15px;
+  margin: 12px 0 16px 0;
 }
-.udleje h2 {
-  color: #0b3558 !important;
-  font-size: 32px;
-}
-.udleje p {
-  color: #425466;
-}
-
-.timeline {
-  width: 1040px;
-  margin: 0 auto;
-  position: relative;
-}
-.timeline .timeline-content-block {
-  display: flex;
-  justify-content: space-between;
-  margin: 100px 0;
-}
-.timeline .timeline-content-block div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 400px;
-}
-.timeline .timeline-content-block h2 {
-  color: #0b3558;
-  font-size: 24px;
-}
-.timeline .timeline-content-block p {
-  color: #425466;
+.rent p {
   font-size: 18px;
+  margin: 0 0 32px 0;
+  line-height: 200%;
 }
-.timeline .timeline-content-block img {
-  width: auto;
-  height: 500px;
+.rent .caption {
+  color: #635bff;
+  font-family: "Gilroy", sans-serif !important;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
 }
-
-.line {
-  border-left: 1px solid #e5e5e5;
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.line .line-number {
-  height: 50px;
-  width: 50px;
+.rent .wrapper {
+  width: 730px;
+  margin: 32px auto 0 auto;
+  background: rgb(213, 200, 249);
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: 1px solid #e5e5e5;
-  margin-left: -28px;
-  background: white;
-  outline: 20px solid white;
-  border-radius: 25%;
-  font-weight: 700;
-  color: #0b3558;
-  box-shadow: "rgba(0, 0, 0, 0.12) 0px 20px 40px 0px";
+  padding: 35px 0;
+  border-radius: 24px;
+}
+.rent .wrapper .dashboard-illustration {
+  width: 880px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: rgba(34, 14, 65, 0.04) 0px 8px 12px -8px, rgba(34, 14, 65, 0.4) 0px 120px 120px -80px;
 }
 
-.udleje-questions {
-  width: 1000px;
+.step-by-step {
+  width: 1080px;
   margin: 0 auto;
-  padding-bottom: 125px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.step-by-step h1 {
+  font-size: 40px;
+}
+.step-by-step ul li {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 500px;
+  margin-bottom: 32px;
+}
+.step-by-step ul li span {
+  font-size: 45px;
+  color: #635bff;
+  font-weight: 700;
+  font-family: "Gilroy", sans-serif !important;
+  user-select: none;
+}
+.step-by-step ul li p {
+  font-size: 18px;
+  line-height: 200%;
+}
+
+.highlight {
+  width: 1080px;
+  margin: 0 auto;
+  margin: 175px auto;
   text-align: center;
 }
-.udleje-questions h2 {
-  padding: 50px 0;
-  font-size: 40px;
-  color: #0b3558;
+.highlight .inner h2 {
+  font-size: 48px;
+  line-height: 120%;
+  margin: 12px 0 16px 0;
 }
-
-.udleje-accordions {
-  width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+.highlight .inner p {
+  font-size: 18px;
+  line-height: 200%;
+  margin: 0 0 64px 0;
 }
-.udleje-accordions .MuiAccordionSummary-root {
-  padding: 20px 30px !important;
-  border: 1px solid #e5e5e5;
-  box-shadow: none !important;
-}
-.udleje-accordions #panel1a-content,
-.udleje-accordions #panel2a-content,
-.udleje-accordions #panel3a-content,
-.udleje-accordions #panel4a-content,
-.udleje-accordions #panel5a-content,
-.udleje-accordions #panel6a-content {
-  padding: 25px 0px 20px 0px !important;
-  padding-left: 20px !important;
+.highlight .inner .caption {
+  color: #635bff;
+  font-family: "Gilroy", sans-serif !important;
   margin: 0;
-  width: auto;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+}
+.highlight .inner .wrapper {
+  width: 730px;
+  margin: 32px auto 0 auto;
+  background: rgb(213, 200, 249);
   display: flex;
+  justify-content: center;
+  padding: 35px 0;
+  border-radius: 24px;
+}
+.highlight .inner .wrapper .dashboard-illustration {
+  width: 880px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: rgba(34, 14, 65, 0.04) 0px 8px 12px -8px, rgba(34, 14, 65, 0.4) 0px 120px 120px -80px;
 }
 
 /*# sourceMappingURL=udleje.css.map */

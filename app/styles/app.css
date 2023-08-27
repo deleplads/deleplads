@@ -1,99 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');@tailwind components;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 * {
-  color: #2d2d34;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #1d1d1f !important;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #0e0b3d !important;
+  font-weight: 700 !important;
+  font-family: "Gilroy", sans-serif;
 }
 
-p, a, span {
+p {
   color: #2d2d34;
-  font-family: 'Urbanist', sans-serif !important;
+  font-family: "Urbanist", sans-serif !important;
+  line-height: 150%;
 }
 
-/* @font-face {
-  font-family: "Kayak";
-  src: local("Kayak"), url(../fonts/Kayak-Sans-Light.otf) format("opentype");
-  font-weight: 300;
+span {
+  color: #2d2d34;
+  font-family: "Urbanist", sans-serif !important;
+}
+
+ul,
+li {
+  color: #2d2d34;
+  font-family: "Urbanist", sans-serif !important;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+a {
+  color: #2d2d34;
+  font-family: "Urbanist", sans-serif !important;
 }
 
 @font-face {
-  font-family: "Kayak";
-  src: local("Kayak"), url(../fonts/Kayak-Sans-Regular.otf) format("opentype");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Kayak";
-  src: local("Kayak"), url(../fonts/Kayak-Sans-Bold.otf) format("opentype");
-  font-weight: 700;
-} */
-
-@font-face {
-  font-family: "Thiccboi";
-  src: local("Thiccboi"), url(../fonts/THICCCBOI-Thin.ttf) format("truetype");
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-Thin.ttf) format("truetype");
   font-weight: 100;
 }
 
 @font-face {
-  font-family: "Thiccboi";
-  src: local("Thiccboi"), url(../fonts/THICCCBOI-Light.ttf) format("truetype");
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-UltraLight.ttf) format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-Light.ttf) format("truetype");
   font-weight: 300;
 }
 
 @font-face {
-  font-family: 'Thiccboi';
-  src: local('Thiccboi'), url(../fonts/THICCCBOI-Regular.ttf) format('truetype');
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-Regular.ttf) format("truetype");
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: "Thiccboi";
-  src: local("Thiccboi"), url(../fonts/THICCCBOI-Medium.ttf) format("truetype");
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-Medium.ttf) format("truetype");
   font-weight: 500;
 }
 
 @font-face {
-  font-family: "Thiccboi";
-  src: local("Thiccboi"), url(../fonts/THICCCBOI-SemiBold.ttf) format("truetype");
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-SemiBold.ttf) format("truetype");
   font-weight: 600;
 }
 
 @font-face {
-  font-family: 'Thiccboi';
-  src: local('Thiccboi'), url(../fonts/THICCCBOI-Bold.ttf) format('truetype');
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-Bold.ttf) format("truetype");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Thiccboi';
-  src: local('Thiccboi'), url(../fonts/THICCCBOI-ExtraBold.ttf) format('truetype');
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-ExtraBold.ttf) format("truetype");
   font-weight: 800;
 }
 
 @font-face {
-  font-family: "Thiccboi";
-  src: local("Thiccboi"), url(../fonts/THICCCBOI-Black.ttf) format("truetype");
+  font-family: "Gilroy";
+  src: url(../fonts/Gilroy-Black.ttf) format("truetype");
   font-weight: 900;
-}
-
-@font-face {
-  font-family: "Thiccboi";
-  src: local("Thiccboi"), url(../fonts/THICCCBOI-ThicccAF.ttf) format("truetype");
-  font-weight: 950;
 }
 
 body {
   background: white !important;
-  color: #425466;
   margin: 0;
 }
 
@@ -119,5 +124,3 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-/*# sourceMappingURL=app.css.map */

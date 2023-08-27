@@ -83,28 +83,28 @@ export default function Parkeringsplads() {
           <h2>Information</h2>
           <div className="ParkingSpotInformationDetails">
             <div className="ParkingSpotDetails">
-              <PersonOutlined sx={{ fontSize: "30px", color: "red" }} />
+              <PersonOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
               <span>
                 <h4>Privat person</h4>
                 <p>Parkeringsplads udlejes af en privat ejer.</p>
               </span>
             </div>
             <div className="ParkingSpotDetails">
-              <AddRoadOutlined sx={{ fontSize: "30px", color: "red" }} />
+              <AddRoadOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
               <span>
                 <h4>Gadetilgængelig</h4>
                 <p>Indkørsel til parkeringspladsen fra gaden.</p>
               </span>
             </div>
             <div className="ParkingSpotDetails">
-              <GarageOutlined sx={{ fontSize: "30px", color: "red" }} />
+              <GarageOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
               <span>
                 <h4>Carport</h4>
                 <p>Parkeringspladsen har tilknyttet carport.</p>
               </span>
             </div>
             <div className="ParkingSpotDetails">
-              <VpnKeyOffOutlined sx={{ fontSize: "30px", color: "red" }} />
+              <VpnKeyOffOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
               <span>
                 <h4>Ingen kode</h4>
                 <p>Ingen behov for kode ved parkering.</p>

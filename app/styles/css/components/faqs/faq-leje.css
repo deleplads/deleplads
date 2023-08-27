@@ -3,11 +3,12 @@
   justify-content: center;
 }
 .FAQLeje .inner {
-  padding: 100px 0;
+  padding: 0;
   width: 1080px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 175px;
 }
 .FAQLeje .inner h1 {
   font-size: 40px;
@@ -18,7 +19,7 @@
   width: 605px;
 }
 .FAQLeje .inner .questions p {
-  font-size: 22px !important;
+  font-size: 18px !important;
 }
 .FAQLeje .inner #panel1a-header,
 .FAQLeje .inner #panel2a-header,
@@ -30,15 +31,6 @@
   border: none;
   padding: 16px 0;
   font-size: 22px;
-  color: red;
-}
-.FAQLeje .inner #panel1a-header p,
-.FAQLeje .inner #panel2a-header p,
-.FAQLeje .inner #panel3a-header p,
-.FAQLeje .inner #panel4a-header p,
-.FAQLeje .inner #panel5a-header p,
-.FAQLeje .inner .MuiPaper-root p {
-  color: red;
 }
 
 /*# sourceMappingURL=faq-leje.css.map */
