@@ -8,55 +8,73 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Navbar from "~/components/Navbar";
-import Footer from "../components/Footer";
-import { useNavigate, useOutletContext } from "@remix-run/react";
-import type { SupabaseOutletContext } from "~/root";
-import { Toaster, toast } from "react-hot-toast";
+import { useActionData, useNavigate } from "@remix-run/react";
+import { Renderable, Toast, Toaster, ValueFunction, toast } from "react-hot-toast";
+import { login } from '../../utils/auth.server'
+import { validateEmail } from "../../utils/validators.server";
+import type { ActionFunction} from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useEffect, useState } from "react";
 
-// function Copyright(props: any) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
+export const action: ActionFunction = async ({ request }) => {
+  const form = await request.formData();
+  
+  const email = form.get("email");
+  const password = form.get("password");
+  
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string"
+  ) {
+    return json({ error: `Invalid Form Data`, form: action }, { status: 400 });
+  }
+  const errors = {
+    email: validateEmail(email),
+  };
+
+  if (Object.values(errors).some(Boolean))
+    return json(
+      { errors, fields: { email, password }, form: action },
+      { status: 400 }
+    );
+
+    return await login({ email, password })
+};
+
+
 
 export default function SignIn() {
-  const { supabase } = useOutletContext<SupabaseOutletContext>();
-  const navigate = useNavigate();
+  const actionData = useActionData();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const email = data.get("email");
-    const password = data.get("password");
-
-    if (email && password) {
-      const response = await supabase.auth.signInWithPassword({
-        email: email.toString(),
-        password: password.toString(),
-      });
-      if (response.error) {
-        toast.error(response.error.message);
-      } else {
-        navigate("/");
-      }
-    }
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    field: string
+  ) => {
+    setFormData((form) => ({ ...form, [field]: event.target.value }));
   };
+
+
+  const [formError, setFormError] = useState(actionData?.error || '');
+  const [errors, setErrors] = useState(actionData?.errors || '');
+
+
+  useEffect(() => {
+    // Check for formError and show toast if it exists
+    if (formError) {
+      toast.error(formError);
+    }
+
+    // Check for errors (assuming it's an array of error messages)
+    if (errors && errors.length > 0) {
+      errors.forEach((error: Renderable | ValueFunction<Renderable, Toast>) => toast.error(error));
+    }
+  }, [formError, errors]);
+
 
   return (
     <>
@@ -72,7 +90,7 @@ export default function SignIn() {
             padding: "25px",
             border: "1px solid #e5e5e5",
           }}
-        >
+        > 
           <Box
             component="img"
             src="../../Wolt_logo_black.png"
@@ -81,7 +99,7 @@ export default function SignIn() {
           />
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            method="POST"
             noValidate
             sx={{ mt: 1 }}
           >
@@ -93,6 +111,9 @@ export default function SignIn() {
               label="E-mail adresse"
               name="email"
               autoComplete="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange(e, "email")}
+              error={errors?.email}
               autoFocus
             />
             <TextField
@@ -104,6 +125,8 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={formData.password}
+              onChange={(e) => handleInputChange(e, "password")}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
