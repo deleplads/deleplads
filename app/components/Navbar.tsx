@@ -272,7 +272,7 @@ function Navbar() {
                       <Avatar
                         sx={{ width: "40px", height: "40px" }}
                         alt="Remy Sharp"
-                        src="../../profile-picture-placeholder.jpg"
+                        src="./profile-picture-placeholder.jpg"
                       />
                     </IconButton>
                   </Tooltip>
