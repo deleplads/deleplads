@@ -10,9 +10,34 @@ import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
 import type { Session } from "@supabase/supabase-js";
 import type { Profile } from "db_types";
 import { useMediaQuery } from "react-responsive";
+import { toast } from "react-hot-toast";
+
+// const TabletDiv = (tablet: any ) => {
+
+//   const [anchorElUser, setAnchorElUser] = useState(null);
+ 
+//   const handleOpenUserMenu = (event: any) => {
+//     setAnchorElUser(event.currentTarget);
+//   };
+
+//   const handleCloseUserMenu = () => {
+//     setAnchorElUser(null);
+//   };
+//   return tablet ? (
+//     <Tooltip title="Open settings">
+//       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+//         <Avatar
+//           sx={{ width: "40px", height: "40px" }}
+//           alt="Remy Sharp"
+//           src="../../profile-picture-placeholder.jpg"
+//         />
+//       </IconButton>
+//     </Tooltip>
+//   ) : null;
+// };
 
 interface LoaderData {
-  profile: Profile[];
+  profile: Profile;
 }
 
 var styles = {
@@ -104,28 +129,34 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const { supabase, session } = useOutletContext<SupabaseOutletContext>();
-  const [currentSession, setCurrentSession] = useState<Session | null>(null);
+  const { profile } = useOutletContext<SupabaseOutletContext>();
+  // const [currentSession, setCurrentSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState<LoaderData | undefined>();
+  const [userProfile, setProfile] = useState<LoaderData | undefined>();
 
   useEffect(() => {
     const fetchSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      const { data: profile } = await supabase.from("profiles").select();
-      if (profile) {
-        setProfile({ profile });
-      }
-      setCurrentSession(data?.session ?? null);
+      setProfile(profile);
       setLoading(false);
     };
     fetchSession();
-  }, [session, supabase, supabase.auth]);
+  }, [profile]);
 
   const handleSubmit = async () => {
-    await supabase.auth.signOut();
-    navigate("/");
+    const response = await fetch('/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  
+    if (response.ok) {
+     navigate("/");
+    } else {
+      toast.error("Error logging out");
+    }
   };
+  
 
   const handleState = (state: any): void => {
     setisOpen(state);
@@ -144,22 +175,6 @@ function Navbar() {
               className="NavImage"
             />
           </a>
-
-          {/* Virker ikke */}
-
-          {/* {tablet ? (
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  sx={{ width: "40px", height: "40px" }}
-                  alt="Remy Sharp"
-                  src="../../profile-picture-placeholder.jpg"
-                />
-              </IconButton>
-            </Tooltip>
-          ) : (
-            <></>
-          )} */}
           <BurgerMenu
             className="MenuToggle"
             right
@@ -249,12 +264,13 @@ function Navbar() {
             </div>
             {loading ? (
               <div></div>
-            ) : currentSession ? (
+            ) :userProfile ? (
               <span className="LogOutMenu">
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar
+                        sx={{ width: "40px", height: "40px" }}
                         alt="Remy Sharp"
                         src="../../profile-picture-placeholder.jpg"
                       />

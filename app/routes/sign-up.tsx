@@ -1,5 +1,4 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -8,60 +7,95 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Footer from "~/components/Footer";
-import Navbar from "~/components/Navbar";
-import { useNavigate, useOutletContext } from "@remix-run/react";
-import type { SupabaseOutletContext } from "~/root";
-import { toast, Toaster } from "react-hot-toast";
+import { useActionData, useNavigate } from "@remix-run/react";
+
+import type {
+  Renderable,
+  Toast,
+  ValueFunction} from "react-hot-toast";
+import {
+  toast,
+  Toaster
+} from "react-hot-toast";
+import {   register } from "../../utils/auth.server";
+import type { ActionFunction} from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useEffect, useState } from "react";
+import {
+  validateEmail,
+  validateName,
+  validatePassword,
+} from "utils/validators.server";
+
+export const action: ActionFunction = async ({ request }) => {
+  const form = await request.formData();
+
+  const email = form.get("email");
+  const password = form.get("password");
+  const firstName = form.get("firstName");
+  const lastName = form.get("lastName");
+
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    typeof firstName !== "string" ||
+    typeof lastName !== "string"
+  ) {
+    return json({ error: `Invalid Form Data`, form: action }, { status: 400 });
+  }
+  const errors = {
+    email: validateEmail(email),
+    password: validatePassword(password),
+    firstName: validateName((firstName as string) || ""),
+    lastName: validateName((lastName as string) || ""),
+  };
+
+  if (Object.values(errors).some(Boolean))
+    return json(
+      {
+        errors,
+        fields: { email, password, firstName, lastName },
+        form: action,
+      },
+      { status: 400 }
+    );
+    
+    return await register({ email, password, firstName, lastName })
+};
 
 export default function SignUp() {
-  const { supabase } = useOutletContext<SupabaseOutletContext>();
-  const navigate = useNavigate();
+  const actionData = useActionData();
+  console.log("SignUp rendered");
+  
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+  });
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const email = data.get("email");
-    const password = data.get("password");
-    const firstName = data.get("firstName");
-    const lastName = data.get("lastName");
-
-    if (email && password && firstName && lastName) {
-      const { data, error: signUpError } = await supabase.auth.signUp({
-        email: email.toString(),
-        password: password.toString(),
-      });
-
-      if (data) {
-        // User signed in, now let's create the profile in the 'profiles' table
-        const { error: profileError } = await supabase.from("profiles").insert([
-          {
-            id: data.user?.id,
-            first_name: firstName.toString(),
-            last_name: lastName.toString(),
-          },
-        ]);
-
-        if (profileError) {
-          // Handle error, maybe show the user that we couldn't create the profile
-          toast.error("Error creating profile!");
-          console.error("Error creating profile:", profileError);
-        } else {
-          // Profile created, navigate to home or dashboard page
-          navigate("/", {
-            state: { message: "Successfully signed up and logged in!" },
-          });
-        }
-      } else if (signUpError) {
-        // handle error, maybe show the user that we couldn't sign up
-        toast.error("Error signing up!");
-        console.error("Error signing up:", signUpError.message);
-      }
-    }
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    field: string
+  ) => {
+    setFormData((form: any) => ({ ...form, [field]: event.target.value }));
   };
+
+  useEffect(() => {
+    // Check for formError and show toast if it exists
+    if (actionData?.error) {
+      toast.error(actionData.error);
+    }
+
+    // Check for errors (assuming it's an array of error messages)
+    if (actionData?.errors) {
+      actionData.errors.forEach((error: Renderable | ValueFunction<Renderable, Toast>) =>
+        toast.error(error)
+      );
+    }
+  }, [actionData]);
+
   return (
     <>
       <Toaster position="top-right" />
@@ -83,12 +117,7 @@ export default function SignUp() {
             className="NavImage"
             sx={{ height: "40px" }}
           />
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-          >
+          <Box component="form" noValidate method="POST" sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -98,6 +127,7 @@ export default function SignUp() {
                   fullWidth
                   id="firstName"
                   label="Fornavn"
+                  onChange={(e) => handleInputChange(e, "firstName")}
                   autoFocus
                 />
               </Grid>
@@ -108,6 +138,7 @@ export default function SignUp() {
                   id="lastName"
                   label="Efternavn"
                   name="lastName"
+                  onChange={(e) => handleInputChange(e, "lastName")}
                   autoComplete="family-name"
                 />
               </Grid>
@@ -118,6 +149,7 @@ export default function SignUp() {
                   id="email"
                   label="E-mail addresse"
                   name="email"
+                  onChange={(e) => handleInputChange(e, "email")}
                   autoComplete="email"
                 />
               </Grid>
@@ -129,6 +161,7 @@ export default function SignUp() {
                   label="Kodeord"
                   type="password"
                   id="password"
+                  onChange={(e) => handleInputChange(e, "password")}
                   autoComplete="new-password"
                 />
               </Grid>

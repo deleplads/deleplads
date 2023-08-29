@@ -107,7 +107,7 @@ export default function VerticalLinearStepper() {
             </Box>
             <Box
               component="img"
-              src="../../empty-placeholder.png"
+              src="../empty-placeholder.png"
               className="ExplainerImage"
             />
           </div>
