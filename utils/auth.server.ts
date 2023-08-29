@@ -123,7 +123,7 @@ export async function register(user: RegisterForm) {
   if (!newUser) {
     return json(
       {
-        error: `Something went wrong trying to create a new user.`,
+        error: `Something went wrong trying to create a new user. `,
         fields: { email: user.email, password: user.password },
       },
       { status: 400 }
