@@ -171,7 +171,7 @@ function Navbar() {
           <a href="/" style={{ fontWeight: "700" }}>
             <Box
               component="img"
-              src="../../Wolt_logo_black.png"
+              src="./Wolt_logo_black.png"
               className="NavImage"
             />
           </a>

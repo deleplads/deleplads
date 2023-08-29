@@ -74,7 +74,7 @@ export default function Leje() {
           </div>
           <Box
             component="img"
-            src="../../14-test.png"
+            src="./14-test.png"
             className="ExplainerImage"
           />
         </div>
@@ -117,7 +117,7 @@ export default function Leje() {
           </div>
           <Box
             component="img"
-            src="../../14-test.png"
+            src="./14-test.png"
             className="ExplainerImage"
           />
         </div>
