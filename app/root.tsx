@@ -41,8 +41,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function App() {
   const  {user, profile } = useLoaderData();
-
-  console.log(profile);
   
   return (
     <html lang="en">
