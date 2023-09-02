@@ -28,7 +28,7 @@ export default function Udleje() {
         <div className="wrapper">
           <Box
             component="img"
-            src="../../dashboard-illustration.svg"
+            src="./dashboard-illustration.svg"
             className="dashboard-illustration"
           />
         </div>
