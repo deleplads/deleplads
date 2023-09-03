@@ -170,10 +170,12 @@ function Navbar() {
         <div className="InnerNavigationBar">
           <a href="/" style={{ fontWeight: "700" }}>
             <Box
-              component="img"
-              src="./Wolt_logo_black.png"
+              component="div"
+              
               className="NavImage"
-            />
+            >
+               Deleplads
+            </Box>
           </a>
           <BurgerMenu
             className="MenuToggle"
