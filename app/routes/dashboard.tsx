@@ -1,5 +1,4 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {
   Avatar,
@@ -28,7 +27,6 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar></Navbar>
       <section className="Dashboard">
         <div className="DashboardMenu">
           <Box className="DashboardMenuInner">

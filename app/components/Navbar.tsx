@@ -3,7 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useEffect, useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
-import { useOutletContext, useNavigate } from "@remix-run/react";
+import { useOutletContext, useNavigate, Link } from "@remix-run/react";
 import type { SupabaseOutletContext } from "~/root";
 import { slide as BurgerMenu } from "react-burger-menu";
 import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
@@ -89,7 +89,7 @@ var styles = {
   },
 };
 
-function Navbar() {
+function Navbar(profile: any) {
   const tablet = useMediaQuery({ query: "(max-width: 600px)" });
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorRentning, setAnchorRentning] = useState(null);
@@ -129,7 +129,7 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const { profile } = useOutletContext<SupabaseOutletContext>();
+  // const { profile } = useOutletContext<SupabaseOutletContext>();
   // const [currentSession, setCurrentSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [userProfile, setProfile] = useState<LoaderData | undefined>();
@@ -168,7 +168,7 @@ function Navbar() {
         className={`NavigationBar ${scrolledPastTop ? "NavbarDropShadow" : ""}`}
       >
         <div className="InnerNavigationBar">
-          <a href="/" style={{ fontWeight: "700" }}>
+        <Link to={"/"} style={{ fontWeight: "700" }}>
             <Box
               component="div"
               
@@ -176,7 +176,7 @@ function Navbar() {
             >
                Deleplads
             </Box>
-          </a>
+          </Link>
           <BurgerMenu
             className="MenuToggle"
             right
@@ -184,34 +184,34 @@ function Navbar() {
             isOpen={isOpen.menuOpen}
             onStateChange={(state) => handleState(state)}
           >
-            <a className="menu-item MLogo" href="/">
-              Deleplads.dk
-            </a>
-            <a id="home" className="menu-item" href="/">
+            <Link to={"/"} className="menu-item MLogo">
+                 Deleplads.dk
+            </Link>
+            <Link to={"/"} id="home" className="menu-item">
               Forside
-            </a>
-            <a id="about" className="menu-item" href="/leje">
+            </Link>
+            <Link to={"/leje"} id="about" className="menu-item">
               Leje
-            </a>
-            <a id="contact" className="menu-item" href="/udleje">
+            </Link>
+            <Link to={"/udleje"} id="contact" className="menu-item">
               Udleje
-            </a>
-            <a id="contact" className="menu-item" href="/blog">
+            </Link>
+            <Link to={"/blog"} id="contact" className="menu-item">
               Blog
-            </a>
-            <a id="contact" className="menu-item" href="/FAQ">
+            </Link>
+            <Link to={"/FAQ"} id="contact" className="menu-item">
               FAQ
-            </a>
-            <a id="contact" className="menu-item MButton1" href="/sign-up">
+            </Link>
+            <Link to={"/sign-up"} id="contact" className="menu-item MButton1">
               Tilmeld
-            </a>
-            <a id="contact" className="menu-item MButton2" href="/sign-in">
+            </Link>
+            <Link to={"/sign-in"} id="contact" className="menu-item MButton2">
               Log ind
-            </a>
+            </Link>
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-              <a href="/">Find en parkeringsplads</a>
+            <Link to={"/"}>Find en parkeringsplads</Link>
               <div
                 onClick={handleOpenRentingMenu}
                 style={{
@@ -251,18 +251,18 @@ function Navbar() {
                 disableScrollLock={true}
               >
                 <MenuItem>
-                  <a href="/leje" style={{ textDecoration: "none" }}>
+                <Link to={"/leje"} style={{ textDecoration: "none" }}>
                     Leje
-                  </a>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                  <a href="/udleje" style={{ textDecoration: "none" }}>
+                <Link to={"/udleje"} style={{ textDecoration: "none" }}>
                     Udleje
-                  </a>
+                  </Link>
                 </MenuItem>
               </Menu>
-              <a href="#">Blog</a>
-              <a href="/faq">FAQ</a>
+              <Link to={"/blog"}>Blog</Link>
+              <Link to={"/faq"}>FAQ</Link>
             </div>
             {loading ? (
               <div></div>

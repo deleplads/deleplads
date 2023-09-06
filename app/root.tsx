@@ -13,6 +13,7 @@ import {
 import { getUser } from "utils/auth.server";
 import { Debug } from "utils/debug.server";
 import type { Profile } from "db_types";
+import Navbar from "./components/Navbar";
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -51,7 +52,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet context={{profile}}/>
+        <header>
+          <Navbar profile={profile}></Navbar>
+        </header>
+        <Outlet/>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

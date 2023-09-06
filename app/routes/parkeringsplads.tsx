@@ -58,7 +58,6 @@ export default function Parkeringsplads() {
 
   return (
     <>
-      <Navbar></Navbar>
       <section className="ParkingSpot">
         <div className="ParkingSpotInformationHeader">
           <span>

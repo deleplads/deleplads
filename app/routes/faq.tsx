@@ -16,7 +16,6 @@ export const meta: V2_MetaFunction = () => {
 export default function Faq() {
   return (
     <main>
-      <Navbar></Navbar>
       <section className="FAQHeader">
         <p className="caption">Har du brug for hjælp?</p>
         <h1>Hyppige spørgsmål og svar 🤔</h1>

@@ -3,7 +3,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Navbar from "~/components/Navbar";
 import Footer from "../components/Footer";
 import type { SetStateAction} from "react";
 import React, { useState } from "react";
@@ -22,8 +21,6 @@ export default function Profile() {
 
   return (
     <>
-      <Navbar></Navbar>
-
       <Tabs
         value={value}
         onChange={handleChange}
