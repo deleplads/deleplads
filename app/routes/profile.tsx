@@ -3,12 +3,12 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Navbar from "~/components/Navbar";
 import Footer from "../components/Footer";
-import { SetStateAction, useState } from "react";
+import type { SetStateAction} from "react";
+import React, { useState } from "react";
 import EditProfile from "~/components/ProfileSettings/EditProfile";
 import { Tab, Tabs } from "@mui/material";
-import React from "react";
+
 
 export default function Profile() {
   const [age, setAge] = useState("");
@@ -21,8 +21,6 @@ export default function Profile() {
 
   return (
     <>
-      <Navbar></Navbar>
-
       <Tabs
         value={value}
         onChange={handleChange}

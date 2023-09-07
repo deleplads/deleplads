@@ -19,10 +19,10 @@ function UdlejeTimeline() {
             suscipit obcaecati fugiat iusto aperiam tempore?
           </p>
         </div>
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="./phone-mu.png" />
       </section>
       <section className="timeline-content-block">
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="./phone-mu.png" />
         <div>
           <h2>Lorem ipsum dolor sit amet.</h2>
           <p>
@@ -39,10 +39,10 @@ function UdlejeTimeline() {
             suscipit obcaecati fugiat iusto aperiam tempore?
           </p>
         </div>
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="./phone-mu.png" />
       </section>
       <section className="timeline-content-block">
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="./phone-mu.png" />
         <div>
           <h2>Lorem ipsum dolor sit amet.</h2>
           <p>
@@ -59,7 +59,7 @@ function UdlejeTimeline() {
             suscipit obcaecati fugiat iusto aperiam tempore?
           </p>
         </div>
-        <Box component="img" src="../../phone-mu.png" />
+        <Box component="img" src="./phone-mu.png" />
       </section>
     </main>
   );

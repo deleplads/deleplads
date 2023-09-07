@@ -16,7 +16,7 @@ export const meta: V2_MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <Navbar></Navbar>
+      
       <Hero></Hero>
       <Gallery></Gallery>
       <Popular></Popular>

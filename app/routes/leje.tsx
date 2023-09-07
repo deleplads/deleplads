@@ -1,11 +1,6 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box, Button } from "@mui/material";
 import CallToAction from "~/components/CallToAction";
 import Check from "@mui/icons-material/Check";
@@ -79,7 +74,7 @@ export default function Leje() {
           </div>
           <Box
             component="img"
-            src="../../14-test.png"
+            src="./14-test.png"
             className="ExplainerImage"
           />
         </div>
@@ -122,7 +117,7 @@ export default function Leje() {
           </div>
           <Box
             component="img"
-            src="../../14-test.png"
+            src="./14-test.png"
             className="ExplainerImage"
           />
         </div>

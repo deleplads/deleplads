@@ -241,7 +241,7 @@ function EditProfile() {
           <Avatar
             className="Avatar"
             alt="Remy Sharp"
-            src="../../profile-picture-placeholder.jpg"
+            src="./profile-picture-placeholder.jpg"
           />
           <span>
             <Button variant="outlined">Vælg fil</Button>

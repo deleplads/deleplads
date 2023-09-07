@@ -58,7 +58,6 @@ export default function Parkeringsplads() {
 
   return (
     <>
-      <Navbar></Navbar>
       <section className="ParkingSpot">
         <div className="ParkingSpotInformationHeader">
           <span>
@@ -78,7 +77,7 @@ export default function Parkeringsplads() {
           <Box
             sx={{ aspectRatio: "16 / 9", backgroundSize: "cover" }}
             component="img"
-            src="../../parkeringsplads2.jpg"
+            src="./parkeringsplads2.png"
           />
           <h2>Information</h2>
           <div className="ParkingSpotInformationDetails">
