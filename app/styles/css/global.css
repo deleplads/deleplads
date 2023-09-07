@@ -723,6 +723,35 @@
   display: flex;
 }
 
+.rental {
+  margin: 0 auto;
+  height: 100vh;
+  padding: 0;
+  width: 1080px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+}
+.rental .rental-navigation {
+  height: 85px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e5e5e5;
+}
+.rental .rental-navigation .inner {
+  width: 1080px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
     background: #F6F9FC;

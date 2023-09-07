@@ -1,0 +1,28 @@
+.rental {
+  margin: 0 auto;
+  height: 100vh;
+  padding: 0;
+  width: 1080px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  .rental-navigation {
+    height: 85px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: auto;
+    right: auto;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e5e5e5;
+    .inner {
+      width: 1080px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
