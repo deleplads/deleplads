@@ -1,0 +1,28 @@
+.filtration {
+    margin: 85px 0 0 0;
+    width: 100%;
+    height: 85px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background: white;
+    .inner {
+        width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 16px;
+        .search {
+            display: flex;
+            gap: 16px;
+        }
+        span {
+            display: flex;
+            gap: 16px;
+        }
+    }
+}

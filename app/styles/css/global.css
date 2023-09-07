@@ -723,6 +723,47 @@
   display: flex;
 }
 
+.locate {
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  height: 100vh;
+  padding: 170px 0 0 0;
+  width: 1440px;
+}
+.locate .avaliable-bookings {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: scroll;
+  padding: 25px 0;
+}
+.locate .avaliable-bookings .booking {
+  width: 95%;
+  background: white;
+  color: black;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+.locate .avaliable-bookings .booking .left {
+  color: black;
+}
+.locate .avaliable-bookings .booking .right {
+  color: black;
+  justify-content: right;
+  text-align: right;
+}
+.locate iframe {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
     background: #F6F9FC;
@@ -995,6 +1036,7 @@
     align-items: center;
     color: #333333;
     box-sizing: border-box;
+    border-top: 1px solid #e5e5e5;
   }
   .Footer .FooterInner {
     padding: 50px 0 100px 0;
@@ -1223,11 +1265,11 @@
   margin-bottom: 1px;
   position: fixed;
   width: 100%;
-  background: transparent;
+  background: white;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
-  width: 1080px;
+  width: 1440px;
   background: transparent;
   display: inherit;
   align-items: center;
@@ -1423,6 +1465,35 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 25px;
   grid-row-gap: 25px;
+}
+
+.filtration {
+  margin: 85px 0 0 0;
+  width: 100%;
+  height: 85px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  background: white;
+}
+.filtration .inner {
+  width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+}
+.filtration .inner .search {
+  display: flex;
+  gap: 16px;
+}
+.filtration .inner span {
+  display: flex;
+  gap: 16px;
 }
 
 .FAQLeje {

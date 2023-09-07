@@ -1,0 +1,47 @@
+.locate {
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  height: 100vh;
+  padding: 170px 0 0 0;
+  width: 1440px;
+  .avaliable-bookings {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow-y: scroll;
+    padding: 25px 0;
+    .booking {
+        width: 95%;
+        background: white;
+        color: black;
+        padding: 25px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        .left {
+            color: black;
+        }
+        .right {
+            color: black;
+            justify-content: right;
+            text-align: right;
+            // .price {
+            //     color: rgb(0, 150, 92);
+            //     border: 1px solid green;
+            //     width: fit-content;
+            //     padding: 8px;
+            // }
+        }
+    }
+  }
+  iframe {
+    
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
