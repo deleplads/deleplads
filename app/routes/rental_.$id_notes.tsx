@@ -5,7 +5,7 @@ import { Button, TextField } from "@mui/material";
 import { Form, Link } from "@remix-run/react";
 import Switch from "@mui/material/Switch";
 
-export default function Rental() {
+export default function RentalNotes() {
   const [age, setAge] = useState("");
 
   const [value, setValue] = React.useState(0);
@@ -21,10 +21,8 @@ export default function Rental() {
       <Navbar></Navbar>
       <section className="rentalLocation">
         <div className="inner">
-          <h1>Hvor ligger din parkeringsplads?</h1>
-          <p>
-            Fortæl os hvor lejerne kan finde din parkeringsplads.
-          </p>
+          <h1>Hihi</h1>
+          <p>Fortæl os hvor lejerne kan finde din parkeringsplads.</p>
           <Form>
             <TextField
               id="outlined-basic"
@@ -54,39 +52,36 @@ export default function Rental() {
           <div className="specific-location">
             <span>
               <h2>Vis din specifikke adresse</h2>
-              <p>
-                Vælg om dit husnummer skal være synligt eller ej.
-              </p>
+              <p>Vælg om dit husnummer skal være synligt eller ej.</p>
             </span>
             <Switch {...label} />
           </div>
         </div>
-        
-        <div className="rental-navigation">
-          <div className="inner">
-            <Button
-              variant="outlined"
-              style={{
-                width: "fit-content",
-                textTransform: "initial",
-                fontWeight: "600",
-              }}
-            >
-              <Link to={"/"}>Fortryd</Link>
-            </Button>
-            <Button
-              variant="contained"
-              style={{
-                width: "fit-content",
-                textTransform: "initial",
-                fontWeight: "600",
-              }}
-            >
-              <Link to={"/rental/1/location"}>Næste</Link>
-            </Button>
-          </div>
-        </div>
       </section>
+      <div className="rental-navigation">
+        <div className="inner">
+          <Button
+            variant="outlined"
+            style={{
+              width: "fit-content",
+              textTransform: "initial",
+              fontWeight: "600",
+            }}
+          >
+            <Link to={"/rental"}>Tilbage</Link>
+          </Button>
+          <Button
+            variant="contained"
+            style={{
+              width: "fit-content",
+              textTransform: "initial",
+              fontWeight: "600",
+            }}
+          >
+            <Link to={"/rental/1/avaliability"}>Næste</Link>
+          </Button>
+        </div>
+      </div>
     </>
   );
 }
