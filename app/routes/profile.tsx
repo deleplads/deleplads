@@ -8,9 +8,37 @@ import type { SetStateAction} from "react";
 import React, { useState } from "react";
 import EditProfile from "~/components/ProfileSettings/EditProfile";
 import { Tab, Tabs } from "@mui/material";
+import type { LoaderFunction } from "@remix-run/node";
+import { requireUserId } from "utils/auth.server";
+import { getProfileFromUserId } from "utils/profile.server";
+import { useLoaderData } from "@remix-run/react";
+
+
+type ProfileProps = {
+  profile: {
+    id: string;
+    created_at: Date | null;
+    first_name: string;
+    last_name: string;
+  };
+};
+export const loader: LoaderFunction = async ({ request }) => {
+  try {
+    const userId = await requireUserId(request);
+    const profile = await getProfileFromUserId(userId);
+    console.log(profile);
+    
+    return {profile}
+  } catch (error) {
+    return { error };
+  }
+}
+
+
 
 
 export default function Profile() {
+  const  { profile } = useLoaderData() as ProfileProps;
   const [age, setAge] = useState("");
 
   const [value, setValue] = React.useState(0);
@@ -70,7 +98,7 @@ export default function Profile() {
             </nav>
           </Box>
         </div>
-        <EditProfile></EditProfile>
+        <EditProfile profile={profile}></EditProfile>
       </section>
       <Footer></Footer>
     </>

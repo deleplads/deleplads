@@ -9,8 +9,16 @@ import { Button, FormHelperText, TextField } from "@mui/material";
 import { SetStateAction, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 
-function EditProfile() {
-  const [age, setAge] = React.useState("");
+type EditProfileProps = {
+  profile: {
+    id: string;
+    created_at: Date | null;
+    first_name: string;
+    last_name: string;
+  };
+};
+function EditProfile(profile: EditProfileProps) {
+  const [age, setAge] = useState("");
 
   const handleChange = (event: {
     target: { value: SetStateAction<string> };
@@ -41,6 +49,7 @@ function EditProfile() {
           id=""
           placeholder="Fornavn"
           variant="outlined"
+          value={profile.profile.first_name}
         />
       </div>
       <div id="item-2">
@@ -56,6 +65,7 @@ function EditProfile() {
           id=""
           placeholder="Efternavn"
           variant="outlined"
+          value={profile.profile.last_name}
         />
       </div>
       <div id="item-3">

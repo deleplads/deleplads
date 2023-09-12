@@ -266,7 +266,7 @@ function Navbar(profile: any) {
             </div>
             {loading ? (
               <div></div>
-            ) :userProfile ? (
+            ) :userProfile?.profile ? (
               <span className="LogOutMenu">
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
@@ -295,20 +295,14 @@ function Navbar(profile: any) {
                     onClose={handleCloseUserMenu}
                     disableScrollLock={true}
                   >
-                    <MenuItem>
-                      <a href="/#" style={{ textDecoration: "none" }}>
+                    <MenuItem  onClick={() => {navigate("/"); handleCloseUserMenu()}}>
                         Opret udlejning
-                      </a>
                     </MenuItem>
-                    <MenuItem>
-                      <a href="/dashboard" style={{ textDecoration: "none" }}>
+                    <MenuItem  onClick={() => {navigate("/dashboard"); handleCloseUserMenu()}}>
                         Mit overblik
-                      </a>
                     </MenuItem>
-                    <MenuItem>
-                      <a href="/profile" style={{ textDecoration: "none" }}>
+                    <MenuItem onClick={() => {navigate("/profile"); handleCloseUserMenu()}}>
                         Konto
-                      </a>
                     </MenuItem>
                     <MenuItem
                       onClick={handleSubmit}
