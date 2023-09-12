@@ -20,7 +20,7 @@ export default function BasicCard() {
           <Box
             sx={{ width: "100%" }}
             component="img"
-            src="./parkeringsplads2.png"
+            src="../parkeringsplads2.png"
           />
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
             Ll. Blovstrødvej

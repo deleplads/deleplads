@@ -31,7 +31,7 @@ function Hero() {
           <Button
             variant="outlined"
             size="large"
-            href="/sign-up"
+            href="/locate/map"
             sx={{
               textTransform: "initial",
               borderRadius: "8px",

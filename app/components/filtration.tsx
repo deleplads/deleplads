@@ -14,8 +14,10 @@ import { Button, List } from "@mui/material";
 import ListIcon from "@mui/icons-material/List";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AppsIcon from "@mui/icons-material/Apps";
+import { useNavigate } from "@remix-run/react";
 
 function Filtration() {
+  const navigate = useNavigate();
   return (
     <section className="filtration">
       <div className="inner">
@@ -33,13 +35,13 @@ function Filtration() {
           </LocalizationProvider>
         </div>
         <span>
-          <Button variant="outlined" startIcon={<ListIcon />}>
+          <Button variant="outlined" startIcon={<ListIcon />} onClick={() => {navigate("/locate/list")}}>
             Liste
           </Button>
-          <Button variant="outlined" startIcon={<AppsIcon />}>
+          <Button variant="outlined" startIcon={<AppsIcon />} onClick={() => {navigate("/locate/gallery")}}>
             Galleri
           </Button>
-          <Button variant="outlined" startIcon={<LocationOnOutlinedIcon />}>
+          <Button variant="outlined" startIcon={<LocationOnOutlinedIcon />} onClick={() => {navigate("/locate/map")}}>
             Kort
           </Button>
         </span>

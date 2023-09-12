@@ -2,7 +2,7 @@ import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Filtration from "../components/filtration"
-import { Outlet } from "@remix-run/react";
+import Gallery from "~/components/Gallery";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -11,12 +11,10 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function Locate() {
+export default function LocateGallery() {
   return (
-    <main>
-      <Filtration></Filtration>
-      <Outlet></Outlet>
-      <Footer></Footer>
-    </main>
+      <section className="pt-52">
+        <Gallery></Gallery>
+      </section>
   );
 }

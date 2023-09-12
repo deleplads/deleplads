@@ -209,7 +209,7 @@ function Navbar(profile: any) {
               <Link to={"/"} id="home" className="menu-item">
                 Hjem
               </Link>
-              <Link to={"/"}>Find en parkeringsplads</Link>
+              <Link to={"/locate/map"}>Find en parkeringsplads</Link>
               <div
                 onClick={handleOpenRentingMenu}
                 style={{
