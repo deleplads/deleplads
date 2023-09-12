@@ -1,0 +1,97 @@
+// Rental Location
+
+.rentalLocation {
+  margin: 0 auto;
+  height: 100vh;
+  width: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+
+  .inner {
+    width: 600px;
+
+    h1 {
+      font-size: 32px;
+    }
+
+    p {
+      margin: 0 0 16px 0;
+    }
+
+    Form {
+      margin: 32px 0;
+    }
+
+    .rental-input {
+      width: 100% !important;
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .specific-location {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.rental-navigation {
+  height: 85px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e5e5e5;
+
+  .inner {
+    width: 1080px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.rental-avaliability {
+  margin: 0 auto;
+  height: 100vh;
+  width: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  .inner {
+    width: 600px;
+    .avaliability-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      .avaliability-day {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e5e5e5;
+        padding: 16.5px 14px;
+        margin: 0;
+      }
+      .avaliability-time {
+        display: flex;
+      }
+    }
+  }
+}

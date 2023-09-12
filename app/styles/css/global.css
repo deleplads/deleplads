@@ -764,6 +764,92 @@
   width: 100%;
 }
 
+.rentalLocation {
+  margin: 0 auto;
+  height: 100vh;
+  width: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.rentalLocation .inner {
+  width: 600px;
+}
+.rentalLocation .inner h1 {
+  font-size: 32px;
+}
+.rentalLocation .inner p {
+  margin: 0 0 16px 0;
+}
+.rentalLocation .inner Form {
+  margin: 32px 0;
+}
+.rentalLocation .inner .rental-input {
+  width: 100% !important;
+  margin-bottom: 16px;
+}
+.rentalLocation .inner .rental-input:last-child {
+  margin: 0;
+}
+.rentalLocation .inner .specific-location {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rentalLocation .inner .specific-location p {
+  margin: 0;
+}
+
+.rental-navigation {
+  height: 85px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e5e5e5;
+}
+.rental-navigation .inner {
+  width: 1080px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rental-avaliability {
+  margin: 0 auto;
+  height: 100vh;
+  width: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.rental-avaliability .inner {
+  width: 600px;
+}
+.rental-avaliability .inner .avaliability-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.rental-avaliability .inner .avaliability-option .avaliability-day {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  padding: 16.5px 14px;
+  margin: 0;
+}
+.rental-avaliability .inner .avaliability-option .avaliability-time {
+  display: flex;
+}
+
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
     background: #F6F9FC;
@@ -1252,8 +1338,8 @@
 }
 
 .NavbarDropShadow {
-  background: #FFFFFF !important;
-  border-bottom: 1px solid #E5E5E5;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e5e5e5;
   transition: transform linear 0.5s;
 }
 
@@ -1265,7 +1351,8 @@
   margin-bottom: 1px;
   position: fixed;
   width: 100%;
-  background: white;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e5e5e5;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;

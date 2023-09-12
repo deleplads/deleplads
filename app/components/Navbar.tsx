@@ -15,7 +15,7 @@ import { toast } from "react-hot-toast";
 // const TabletDiv = (tablet: any ) => {
 
 //   const [anchorElUser, setAnchorElUser] = useState(null);
- 
+
 //   const handleOpenUserMenu = (event: any) => {
 //     setAnchorElUser(event.currentTarget);
 //   };
@@ -143,20 +143,19 @@ function Navbar(profile: any) {
   }, [profile]);
 
   const handleSubmit = async () => {
-    const response = await fetch('/logout', {
-      method: 'POST',
+    const response = await fetch("/logout", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
-  
+
     if (response.ok) {
-     navigate("/");
+      navigate("/");
     } else {
       toast.error("Error logging out");
     }
   };
-  
 
   const handleState = (state: any): void => {
     setisOpen(state);
@@ -168,13 +167,9 @@ function Navbar(profile: any) {
         className={`NavigationBar ${scrolledPastTop ? "NavbarDropShadow" : ""}`}
       >
         <div className="InnerNavigationBar">
-        <Link to={"/"} style={{ fontWeight: "700" }}>
-            <Box
-              component="div"
-              
-              className="NavImage"
-            >
-               Deleplads
+          <Link to={"/"} style={{ fontWeight: "700" }}>
+            <Box component="div" className="NavImage">
+              Deleplads
             </Box>
           </Link>
           <BurgerMenu
@@ -185,10 +180,10 @@ function Navbar(profile: any) {
             onStateChange={(state) => handleState(state)}
           >
             <Link to={"/"} className="menu-item MLogo">
-                 Deleplads.dk
+              Deleplads.dk
             </Link>
             <Link to={"/"} id="home" className="menu-item">
-              Forside
+              Hjem
             </Link>
             <Link to={"/leje"} id="about" className="menu-item">
               Leje
@@ -211,7 +206,10 @@ function Navbar(profile: any) {
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-            <Link to={"/"}>Find en parkeringsplads</Link>
+              <Link to={"/"} id="home" className="menu-item">
+                Hjem
+              </Link>
+              <Link to={"/"}>Find en parkeringsplads</Link>
               <div
                 onClick={handleOpenRentingMenu}
                 style={{
@@ -251,12 +249,12 @@ function Navbar(profile: any) {
                 disableScrollLock={true}
               >
                 <MenuItem>
-                <Link to={"/leje"} style={{ textDecoration: "none" }}>
+                  <Link to={"/leje"} style={{ textDecoration: "none" }}>
                     Leje
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                <Link to={"/udleje"} style={{ textDecoration: "none" }}>
+                  <Link to={"/udleje"} style={{ textDecoration: "none" }}>
                     Udleje
                   </Link>
                 </MenuItem>
