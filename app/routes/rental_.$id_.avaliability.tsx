@@ -15,7 +15,6 @@ export default function RentalAvaliability() {
 
   return (
     <>
-      <Navbar></Navbar>
       <section className="rental-avaliability">
         <div className="inner">
           <h1>Hvornår er din parkeringsplads tilgængelig?</h1>

@@ -18,7 +18,6 @@ export default function RentalLocation() {
 
   return (
     <>
-      <Navbar></Navbar>
       <section className="rentalLocation">
         <div className="inner">
           <h1>Hvor ligger din parkeringsplads?</h1>

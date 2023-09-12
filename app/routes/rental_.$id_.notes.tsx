@@ -18,7 +18,6 @@ export default function RentalNotes() {
 
   return (
     <>
-      <Navbar></Navbar>
       <section className="rentalLocation">
         <div className="inner">
           <h1>Hihi</h1>

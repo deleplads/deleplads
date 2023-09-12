@@ -293,7 +293,7 @@ function Navbar(profile: any) {
                     onClose={handleCloseUserMenu}
                     disableScrollLock={true}
                   >
-                    <MenuItem  onClick={() => {navigate("/"); handleCloseUserMenu()}}>
+                    <MenuItem  onClick={() => {navigate("/rental"); handleCloseUserMenu()}}>
                         Opret udlejning
                     </MenuItem>
                     <MenuItem  onClick={() => {navigate("/dashboard"); handleCloseUserMenu()}}>
