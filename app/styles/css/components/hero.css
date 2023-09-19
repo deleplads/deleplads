@@ -1,22 +1,20 @@
 .Hero {
   width: 100%;
-  padding: 185px 0;
+  height: 800px;
   display: flex;
-  justify-content: center;
-  overflow: hidden;
 }
 .Hero .HeroInner {
   height: auto;
-  width: 1080px;
+  width: var(--PageWidth);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center !important;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
-  text-align: center;
+  padding-top: 65px;
+  border-bottom: 1px solid #e5e5e5;
 }
 .Hero .HeroInner h1 {
-  font-size: 64px;
+  font-size: 48px;
   line-height: 120%;
   font-weight: 700;
   letter-spacing: -1px;
@@ -31,35 +29,17 @@
   padding: 0;
   margin: 20px 0 30px 0;
 }
-.Hero .HeroInner .caption {
-  color: #635bff;
-  font-family: "Gilroy", sans-serif !important;
-  margin: 0;
-  text-transform: uppercase;
+.Hero .HeroInner .SearchButton {
+  padding: 12px 20px;
   font-weight: 700;
-  font-size: 14px;
+  height: fit-content;
+  margin-top: 32px;
+  background: var(--BrandPrimary);
 }
-.Hero .HeroInner .HeroImage {
-  height: 475px;
-  z-index: 1;
-  position: relative;
-  left: 150px;
-  top: 0px;
-  border-radius: 30px;
-  box-shadow: 10px 10px 19px 0px rgba(229, 229, 229, 0.75);
-  -webkit-box-shadow: 10px 10px 19px 0px rgba(229, 229, 229, 0.75);
-  -moz-box-shadow: 10px 10px 19px 0px rgb(229, 229, 2);
-}
-.Hero .HeroInner .rekt {
-  position: relative;
-  border: 1px solid #e5e5e5;
-  bottom: 35px;
-  height: 475px;
+.Hero .HeroInner .hero-content {
+  height: 575px;
+  width: auto;
   border-radius: 8px;
-  left: 15px;
-  box-shadow: 10px 10px 19px 0px rgba(229, 229, 229, 0.75);
-  -webkit-box-shadow: 10px 10px 19px 0px rgba(229, 229, 229, 0.75);
-  -moz-box-shadow: 10px 10px 19px 0px rgb(229, 229, 2);
 }
 
 @media only screen and (max-width: 600px) {

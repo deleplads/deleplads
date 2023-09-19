@@ -7,14 +7,12 @@ function CallToAction() {
     <>
       <section className="CallToAction">
         <div className="inner">
-          <h1>Tilmeld dig gratis</h1>
-          <p>Lorem ipsum dolor sit amet.</p>
+          <h1>Kom i gang med at leje og udleje parkeringspladser i dag</h1>
           <Button
             variant="contained"
             href="#"
             size="large"
-            sx={{ textTransform: "initial",
-          background: "#635BFF" }}
+            sx={{ textTransform: "initial", background: "#635BFF" }}
             className="CallToActionButton"
           >
             Tilmeld gratis

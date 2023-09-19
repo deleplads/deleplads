@@ -1,11 +1,9 @@
 .NavbarDropShadow {
   background: #ffffff !important;
-  border-bottom: 1px solid #e5e5e5;
-  transition: transform linear 0.5s;
 }
 
 .NavigationBar {
-  height: 85px;
+  height: 80px;
   display: flex;
   justify-content: center;
   z-index: 1000 !important;
@@ -13,11 +11,10 @@
   position: fixed;
   width: 100%;
   background: #ffffff !important;
-  border-bottom: 1px solid #e5e5e5;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
-  width: 1440px;
+  width: var(--PageWidth);
   background: transparent;
   display: inherit;
   align-items: center;

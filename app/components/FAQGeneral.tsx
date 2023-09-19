@@ -1,6 +1,4 @@
 "use client";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -9,9 +7,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function FAQGeneral() {
   return (
-    <section className="FAQLeje">
+    <section className="FAQGeneral">
       <div className="inner">
-        <h1>Generelle spørgsmål</h1>
+        <h1>Ofte stillede spørgsmål</h1>
         <div className="questions">
           <Accordion>
             <AccordionSummary
@@ -19,7 +17,9 @@ function FAQGeneral() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>Hvor meget koster det at leje en parkeringsplads?</Typography>
+              <Typography>
+                Hvor meget koster det at leje en parkeringsplads?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -67,7 +67,9 @@ function FAQGeneral() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Skal jeg som lejer være i dialog med udlejer?</Typography>
+              <Typography>
+                Skal jeg som lejer være i dialog med udlejer?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -83,7 +85,9 @@ function FAQGeneral() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Hvad hvis parkeringspladsen er optaget når jeg ankommer?</Typography>
+              <Typography>
+                Hvad hvis parkeringspladsen er optaget når jeg ankommer?
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>

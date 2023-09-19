@@ -20,7 +20,9 @@ export default function Udleje() {
           Tjen penge på din<br></br>parkeringsplads
         </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet rerum magni facilis eius<br></br>hic veniam aperiam recusandae ipsam! Alias quaerat sunt ullam aspernatur.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet rerum
+          magni facilis eius<br></br>hic veniam aperiam recusandae ipsam! Alias
+          quaerat sunt ullam aspernatur.
         </p>
         <div className="wrapper">
           <Box

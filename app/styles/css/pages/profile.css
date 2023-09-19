@@ -1,7 +1,7 @@
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media only screen and (min-width: 600px) {
   .ProfileMenuSettings {
-    width: 1080px;
+    width: var(--PageWidth);
     padding: 185px 0 200px 0;
     margin: 0 auto;
     display: grid;

@@ -20,11 +20,12 @@
 @import "./components/footer.scss";
 @import "./components/gallery.scss";
 @import "./components/hero.scss";
-@import "./components/lejeExplainer.scss";
 @import "./components/navbar.scss";
 @import "./components/searchbar.scss";
 @import "./components/popular.scss";
 @import "./components/filtration.scss";
+@import "./components/socialproof.scss";
+@import "./components/cards.scss";
 
 // FAQ's
 
@@ -32,6 +33,13 @@
 @import "./components/faqs/faq-leje.scss";
 @import "./components/faqs/faq-udleje.scss";
 @import "./components/faqs/faq-general.scss";
+
+// Unique selling points
+
+@import "./usp/whyshouldyouuseit.scss";
+@import "./usp/howshouldyouuseit.scss";
+@import "./usp/whatisit.scss";
+
 
 // Profile edit page
 

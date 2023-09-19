@@ -1,5 +1,4 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import type { SelectChangeEvent } from "@mui/material";
 import {
@@ -191,7 +190,11 @@ export default function Parkeringsplads() {
               size="large"
               variant="contained"
               href="#"
-              sx={{ width: "100%", textTransform: "initial", background: "#635BFF" }}
+              sx={{
+                width: "100%",
+                textTransform: "initial",
+                background: "#635BFF",
+              }}
             >
               Bestil
             </Button>

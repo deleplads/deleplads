@@ -1,0 +1,40 @@
+.socialProof {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+  .inner {
+    padding: 98px;
+    background: #f1f7f0;
+    width: var(--PageWidth);
+    display: grid;
+    grid-template-columns: 25% 70%;
+    gap: 5%;
+    border-radius: 24px;
+    span {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        margin: 24px 0 8px 0;
+        font-size: 18px;
+      }
+      p {
+        font-size: 18px;
+      }
+      .socialProofimg {
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+      }
+    }
+    .stars {
+        height: 20px;
+        margin: 0 0 24px 0;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}

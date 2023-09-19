@@ -4,7 +4,7 @@
   padding: 25px 0 100px 0;
 }
 .Gallery .GalleryInner {
-  width: 1080px;
+  width: var(--PageWidth);
 }
 .Gallery .GalleryInner span {
   padding: 0;

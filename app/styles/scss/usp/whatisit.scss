@@ -1,0 +1,50 @@
+.what-is-it {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .inner {
+    width: var(--PageWidth);
+    padding: 75px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    h1 {
+      font-size: 48px;
+      line-height: 120%;
+    }
+    p {
+      margin: 30px 0 48px 0;
+      font-size: 18px;
+      line-height: 200%;
+    }
+    .solutions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      .solution-one {
+        background: #f1f7f0;
+        padding: 48px;
+        border-radius: 8px;
+        span {
+          margin-top: 48px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      .solution-two {
+        background: #f1f7f0;
+        padding: 48px;
+        border-radius: 8px;
+        span {
+          margin-top: 48px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

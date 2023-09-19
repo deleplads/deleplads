@@ -1,16 +1,7 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box, Button } from "@mui/material";
-import CallToAction from "~/components/CallToAction";
-import Check from "@mui/icons-material/Check";
-import LejeExplainer from "~/components/LejeExplainer";
-import FAQLeje from "~/components/FaqLeje";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -56,7 +47,7 @@ export default function Leje() {
               </div>
             </span>
             <div className="message-contents">
-            <label htmlFor="#">Henvendelsestype</label>
+              <label htmlFor="#">Henvendelsestype</label>
               <select name="cars" id="cars">
                 <option value="volvo">Generelle spørgsmål</option>
                 <option value="saab">Ris og ros</option>
@@ -74,7 +65,8 @@ export default function Leje() {
             </div>
             <p>
               Ved at klikke på send bekræfter du, at du giver samtykke til
-              behandlingen af dine personlige oplysninger, som det fremgår af vores&nbsp;
+              behandlingen af dine personlige oplysninger, som det fremgår af
+              vores&nbsp;
               <a href="/privacy-policy">privatlivspolitik</a>.
             </p>
             <Button

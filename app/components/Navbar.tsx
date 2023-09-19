@@ -167,7 +167,7 @@ function Navbar(profile: any) {
         className={`NavigationBar ${scrolledPastTop ? "NavbarDropShadow" : ""}`}
       >
         <div className="InnerNavigationBar">
-          <Link to={"/"} style={{ fontWeight: "700" }}>
+          <Link to={"/"} style={{ fontWeight: "700", fontSize: "24px" }}>
             <Box component="div" className="NavImage">
               Deleplads
             </Box>
@@ -181,9 +181,6 @@ function Navbar(profile: any) {
           >
             <Link to={"/"} className="menu-item MLogo">
               Deleplads.dk
-            </Link>
-            <Link to={"/"} id="home" className="menu-item">
-              Hjem
             </Link>
             <Link to={"/leje"} id="about" className="menu-item">
               Leje
@@ -206,9 +203,6 @@ function Navbar(profile: any) {
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-              <Link to={"/"} id="home" className="menu-item">
-                Hjem
-              </Link>
               <Link to={"/locate/map"}>Find en parkeringsplads</Link>
               <div
                 onClick={handleOpenRentingMenu}
@@ -264,7 +258,7 @@ function Navbar(profile: any) {
             </div>
             {loading ? (
               <div></div>
-            ) :userProfile?.profile ? (
+            ) : userProfile?.profile ? (
               <span className="LogOutMenu">
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
@@ -293,14 +287,29 @@ function Navbar(profile: any) {
                     onClose={handleCloseUserMenu}
                     disableScrollLock={true}
                   >
-                    <MenuItem  onClick={() => {navigate("/rental"); handleCloseUserMenu()}}>
-                        Opret udlejning
+                    <MenuItem
+                      onClick={() => {
+                        navigate("/rental");
+                        handleCloseUserMenu();
+                      }}
+                    >
+                      Opret udlejning
                     </MenuItem>
-                    <MenuItem  onClick={() => {navigate("/dashboard"); handleCloseUserMenu()}}>
-                        Mit overblik
+                    <MenuItem
+                      onClick={() => {
+                        navigate("/dashboard");
+                        handleCloseUserMenu();
+                      }}
+                    >
+                      Mit overblik
                     </MenuItem>
-                    <MenuItem onClick={() => {navigate("/profile"); handleCloseUserMenu()}}>
-                        Konto
+                    <MenuItem
+                      onClick={() => {
+                        navigate("/profile");
+                        handleCloseUserMenu();
+                      }}
+                    >
+                      Konto
                     </MenuItem>
                     <MenuItem
                       onClick={handleSubmit}
@@ -316,9 +325,12 @@ function Navbar(profile: any) {
                 <Button
                   href="/sign-in"
                   sx={{
-                    marginRight: "15px",
-                    textTransform: "Capitalize",
+                    marginRight: "12px",
+                    textTransform: "initial",
                     background: "transparent",
+                    padding: "12px 20px",
+                    border: "1px solid #e5e5e5",
+                    borderRadius: "52px"
                   }}
                 >
                   Log ind
@@ -328,11 +340,13 @@ function Navbar(profile: any) {
                   href="/sign-up"
                   sx={{
                     textTransform: "initial",
-                    fontWeight: "600",
-                    background: "#635bff",
+                    fontWeight: "700",
+                    padding: "12px 20px",
+                    background: "var(--BrandPrimary)",
+                    borderRadius: "52px"
                   }}
                 >
-                  Tilmeld
+                  Opret gratis bruger
                 </Button>
               </span>
             )}

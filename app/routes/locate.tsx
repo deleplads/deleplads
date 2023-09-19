@@ -1,7 +1,6 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Filtration from "../components/filtration"
+import Filtration from "../components/filtration";
 import { Outlet } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {

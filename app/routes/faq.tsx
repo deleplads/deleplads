@@ -19,7 +19,10 @@ export default function Faq() {
       <section className="FAQHeader">
         <p className="caption">Har du brug for hjælp?</p>
         <h1>Hyppige spørgsmål og svar 🤔</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, distinctio?</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere,
+          distinctio?
+        </p>
       </section>
       <FAQGeneral></FAQGeneral>
       <FAQLeje></FAQLeje>

@@ -1,23 +1,21 @@
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
-    background: #F6F9FC;
-    padding: 150px 0;
+    background: #f1f7f0;
     display: flex;
-    justify-content: center;
-    width: 1080px;
+    width: var(--PageWidth);
     margin: 0 auto;
     border-radius: 24px;
   }
   .CallToAction .inner {
-    width: 1080px;
+    padding: 98px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 48px;
   }
   .CallToAction .inner h1 {
-    font-size: 50px;
+    font-size: 48px;
     font-weight: 900;
+    line-height: 120%;
   }
   .CallToAction .inner p {
     font-size: 20px;
@@ -26,6 +24,7 @@
   .CallToAction .inner .CallToActionButton {
     font-weight: 700;
     font-size: 18px;
+    width: fit-content;
   }
 }
 

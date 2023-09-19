@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   .inner {
-    width: 1080px;
+    width: var(--PageWidth);
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 25px;

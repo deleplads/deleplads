@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import { Box, Button } from "@mui/material";
 import CallToAction from "~/components/CallToAction";
 import Check from "@mui/icons-material/Check";
-import LejeExplainer from "~/components/LejeExplainer";
 import FAQLeje from "~/components/FaqLeje";
 
 export const meta: V2_MetaFunction = () => {
@@ -72,15 +71,9 @@ export default function Leje() {
               </Button>
             </ul>
           </div>
-          <Box
-            component="img"
-            src="./14-test.png"
-            className="ExplainerImage"
-          />
+          <Box component="img" src="./14-test.png" className="ExplainerImage" />
         </div>
       </section>
-
-      <LejeExplainer></LejeExplainer>
 
       <section className="lejeExplainer-2">
         <div className="inner">
@@ -115,11 +108,7 @@ export default function Leje() {
               </Button>
             </ul>
           </div>
-          <Box
-            component="img"
-            src="./14-test.png"
-            className="ExplainerImage"
-          />
+          <Box component="img" src="./14-test.png" className="ExplainerImage" />
         </div>
       </section>
 

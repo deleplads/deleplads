@@ -111,12 +111,6 @@ export default function SignUp() {
             border: "1px solid #e5e5e5",
           }}
         >
-          <Box
-            component="img"
-            src="./Wolt_logo_black.png"
-            className="NavImage"
-            sx={{ height: "40px" }}
-          />
           <Box component="form" noValidate method="POST" sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>

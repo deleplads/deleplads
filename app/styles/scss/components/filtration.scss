@@ -10,7 +10,7 @@
     border-bottom: 1px solid #e5e5e5;
     background: white;
     .inner {
-        width: 1440px;
+        width: var(--PageWidth);
         margin: 0 auto;
         display: flex;
         align-items: stretch;

@@ -3,7 +3,7 @@
   justify-content: center;
   padding: 25px 0 100px 0;
   .GalleryInner {
-    width: 1080px;
+    width: var(--PageWidth);
     span {
       padding: 0;
       display: grid;

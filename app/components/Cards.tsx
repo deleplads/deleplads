@@ -14,23 +14,17 @@ const bull = (
 
 export default function BasicCard() {
   return (
-    <a href="/parkeringsplads" style={{ textDecoration: "none" }}>
-      <Card sx={{ minWidth: "275", border: "none", boxShadow: "none" }}>
-        <CardContent sx={{ padding: "0" }}>
+    <a href="/parkeringsplads">
+      <Card className="gallery-cards">
+        <CardContent className="gallery-cards-content">
           <Box
             sx={{ width: "100%" }}
             component="img"
             src="../parkeringsplads2.png"
           />
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            Ll. Blovstrødvej
-          </Typography>
-          <Typography sx={{ mt: 1.5 }} color="text.secondary">
-            3450 Allerød
-          </Typography>
-          <Typography sx={{ mt: 1.5 }} color="text.secondary">
-            17,75 / time
-          </Typography>
+          <Typography>Ll. Blovstrødvej</Typography>
+          <Typography>3450 Allerød</Typography>
+          <Typography>17,75 / time</Typography>
         </CardContent>
       </Card>
     </a>

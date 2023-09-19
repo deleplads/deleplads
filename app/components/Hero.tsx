@@ -1,50 +1,42 @@
-"use client";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
+import SearchBar from "./SearchBar";
+import Button from "@mui/material/Button";
 
 function Hero() {
   return (
     <section className="Hero">
       <div className="HeroInner">
         <span>
-          <p className="caption">Collect form submissions</p>
-          <h1>Find og udlej private parkeringspladser</h1>
-          <p>
-            Code your own HTML form and style it, then point your form to
-            formcarry to get<br></br>email notifications, upload files, block
-            spam and integrate with other apps.
-          </p>
+          <h1>
+            Leje og udleje af
+            <br />
+            private parkeringspladser
+          </h1>
+          <SearchBar />
           <Button
+            className="SearchButton"
             variant="contained"
             size="large"
-            href="/sign-up"
+            href="#"
             sx={{
               textTransform: "initial",
-              borderRadius: "8px",
-              fontWeight: "600",
               width: "fit-content",
-              background: "#635bff",
-              marginRight: "8px",
-            }}
-          >
-            Tilmeld dig gratis
-          </Button>
-          <Button
-            variant="outlined"
-            size="large"
-            href="/locate/map"
-            sx={{
-              textTransform: "initial",
-              borderRadius: "8px",
-              fontWeight: "600",
-              width: "fit-content",
-              color: "#635bff",
-              borderColor: "#635bff",
-              marginLeft: "8px",
+              borderRadius: "52px",
             }}
           >
             Find parkeringsplads
           </Button>
         </span>
+        <Box
+          component="video"
+          src="./lmao.mp4"
+          className="hero-content"
+          loop
+          autoPlay
+        >
+          <source src="./lmao.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </Box>
       </div>
     </section>
   );

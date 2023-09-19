@@ -10,9 +10,6 @@ function Popular() {
           <BasicCard></BasicCard>
           <BasicCard></BasicCard>
           <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
         </span>
       </div>
     </section>

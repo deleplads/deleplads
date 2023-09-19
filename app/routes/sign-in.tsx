@@ -92,12 +92,6 @@ export default function SignIn() {
           }}
         > 
           <Box
-            component="img"
-            src="./Wolt_logo_black.png"
-            className="NavImage"
-            sx={{ height: "40px" }}
-          />
-          <Box
             component="form"
             method="POST"
             noValidate

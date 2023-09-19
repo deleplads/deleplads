@@ -5,7 +5,7 @@
   grid-template-columns: 35% 65%;
   height: 100vh;
   padding: 170px 0 0 0;
-  width: 1440px;
+  width: var(--PageWidth);
   .avaliable-bookings {
     display: flex;
     flex-direction: column;
