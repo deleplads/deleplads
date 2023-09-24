@@ -1,20 +1,17 @@
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+import { useNavigate } from "@remix-run/react";
 
 export default function BasicCard() {
+  const navigate = useNavigate();
   return (
-    <a href="/parkeringsplads">
+    <div
+      onClick={() => {
+        navigate("parkeringsplads");
+      }}
+    >
       <Card className="gallery-cards">
         <CardContent className="gallery-cards-content">
           <Box
@@ -22,11 +19,35 @@ export default function BasicCard() {
             component="img"
             src="../parkeringsplads2.png"
           />
-          <Typography>Ll. Blovstrødvej</Typography>
-          <Typography>3450 Allerød</Typography>
-          <Typography>17,75 / time</Typography>
+          <div className="gallery-cards-content-info">
+            <h3>Ll. Blovstrødvej 33</h3>
+
+            <p>3450 Allerød, Hovedstaden</p>
+            <br />
+            <p>Mandag: 08:00-16:00</p>
+            <p>Tirsdag: 08:00-16:00</p>
+            <p>Onsdag: 08:00-16:00</p>
+            <p>Torsdag: 08:00-16:00</p>
+            <p>Fredag: 08:00-16:00</p>
+            <p>Lørdag: 08:00-16:00</p>
+            <p>Søndag: 08:00-16:00</p>
+            <br />
+            <Button
+              className="SearchButton"
+              variant="contained"
+              size="large"
+              href="#"
+              sx={{
+                textTransform: "initial",
+                borderRadius: "52px",
+                width: "100%",
+              }}
+            >
+              Find parkeringsplads
+            </Button>
+          </div>
         </CardContent>
       </Card>
-    </a>
+    </div>
   );
 }

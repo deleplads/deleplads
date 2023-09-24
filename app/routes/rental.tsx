@@ -1,91 +1,58 @@
-import { SetStateAction, useState } from "react";
 import React from "react";
-import Navbar from "~/components/Navbar";
-import { Button, TextField } from "@mui/material";
-import { Form, Link } from "@remix-run/react";
-import Switch from "@mui/material/Switch";
+import type { V2_MetaFunction } from "@remix-run/node";
+import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Deleplads.dk - Opret udlejning" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
 
 export default function Rental() {
-  const [age, setAge] = useState("");
+  const [selectedValue, setSelectedValue] = React.useState("");
 
-  const [value, setValue] = React.useState(0);
-
-  const label = { inputProps: { "aria-label": "Switch demo" } };
-
-  const handleChange = (event: any, newValue: SetStateAction<number>) => {
-    setValue(newValue);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value);
   };
 
   return (
     <>
-      <section className="rentalLocation">
+      <section className="rentalIntroduction">
         <div className="inner">
-          <h1>Hvor ligger din parkeringsplads?</h1>
-          <p>
-            Fortæl os hvor lejerne kan finde din parkeringsplads.
-          </p>
-          <Form>
-            <TextField
-              id="outlined-basic"
-              label="Adresse"
-              variant="outlined"
-              className="rental-input"
-            />
-            <TextField
-              id="outlined-basic"
-              label="Husnummer"
-              variant="outlined"
-              className="rental-input"
-            />
-            <TextField
-              id="outlined-basic"
-              label="By"
-              variant="outlined"
-              className="rental-input"
-            />
-            <TextField
-              id="outlined-basic"
-              label="Postnummer"
-              variant="outlined"
-              className="rental-input"
-            />
-          </Form>
-          <div className="specific-location">
-            <span>
-              <h2>Vis din specifikke adresse</h2>
-              <p>
-                Vælg om dit husnummer skal være synligt eller ej.
-              </p>
-            </span>
-            <Switch {...label} />
+          <div className="introductionText">
+            <h1>Lad din parkeringsplads arbejde for dig</h1>
           </div>
-        </div>
-        
-        <div className="rental-navigation">
-          <div className="inner">
-            <Button
-              variant="outlined"
-              style={{
-                width: "fit-content",
-                textTransform: "initial",
-                fontWeight: "600",
-              }}
-            >
-              <Link to={"/"}>Fortryd</Link>
-            </Button>
-            <Button
-              variant="contained"
-              style={{
-                width: "fit-content",
-                textTransform: "initial",
-                fontWeight: "600",
-              }}
-            >
-              <Link to={"/rental/1/location"}>Næste</Link>
-            </Button>
+          <div className="introductionSteps">
+            <div className="step">
+              <h2>1. Fortæl os om din parkeringsplads</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Recusandae soluta eius nostrum doloremque saepe nisi.
+              </p>
+            </div>
+            <div className="step">
+              <h2>2. Få den til at skille sig ud</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Recusandae soluta eius nostrum doloremque saepe nisi.
+              </p>
+            </div>
+            <div className="step">
+              <h2>3. Færdiggør opslaget og offentliggør det</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Recusandae soluta eius nostrum doloremque saepe nisi.
+              </p>
+            </div>
           </div>
         </div>
       </section>
+      <RentalNavigation
+        back={"/"}
+        forward={"/rental/1/type"}
+        percentage={14.28}
+      ></RentalNavigation>
     </>
   );
 }

@@ -2,6 +2,16 @@
     border: 1px solid #e5e5e5;
     .gallery-cards-content {
         padding: 0;
-        
+        text-align: left;
+        .gallery-cards-content-info {
+            padding: 32px;
+            table {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+    &:hover {
+        cursor: pointer;
     }
 }

@@ -1,21 +1,17 @@
-import { SetStateAction, useState } from "react";
-import React from "react";
-import Navbar from "~/components/Navbar";
-import { Button, TextField } from "@mui/material";
-import { Form, Link } from "@remix-run/react";
+import { TextField } from "@mui/material";
+import { Form } from "@remix-run/react";
 import Switch from "@mui/material/Switch";
+import type { V2_MetaFunction } from "@remix-run/node";
+import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Deleplads.dk - Beliggenhed af udlejning" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
 
 export default function RentalLocation() {
-  const [age, setAge] = useState("");
-
-  const [value, setValue] = React.useState(0);
-
-  const label = { inputProps: { "aria-label": "Switch demo" } };
-
-  const handleChange = (event: any, newValue: SetStateAction<number>) => {
-    setValue(newValue);
-  };
-
   return (
     <>
       <section className="rentalLocation">
@@ -53,34 +49,15 @@ export default function RentalLocation() {
               <h2>Vis din specifikke adresse</h2>
               <p>Vælg om dit husnummer skal være synligt eller ej.</p>
             </span>
-            <Switch {...label} />
+            <Switch inputProps={{ "aria-label": "Switch demo" }} />
           </div>
         </div>
       </section>
-      <div className="rental-navigation">
-        <div className="inner">
-          <Button
-            variant="outlined"
-            style={{
-              width: "fit-content",
-              textTransform: "initial",
-              fontWeight: "600",
-            }}
-          >
-            <Link to={"/rental"}>Tilbage</Link>
-          </Button>
-          <Button
-            variant="contained"
-            style={{
-              width: "fit-content",
-              textTransform: "initial",
-              fontWeight: "600",
-            }}
-          >
-            <Link to={"/rental/1/avaliability"}>Næste</Link>
-          </Button>
-        </div>
-      </div>
+      <RentalNavigation
+        back={"/rental/1/type"}
+        forward={"/rental/1/avaliability"}
+        percentage={42.48}
+      ></RentalNavigation>
     </>
   );
 }

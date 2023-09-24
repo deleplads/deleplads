@@ -1,86 +1,39 @@
-import { SetStateAction, useState } from "react";
-import React from "react";
-import Navbar from "~/components/Navbar";
-import { Button, TextField } from "@mui/material";
-import { Form, Link } from "@remix-run/react";
-import Switch from "@mui/material/Switch";
+import { TextField } from "@mui/material";
+import { Form } from "@remix-run/react";
+import type { V2_MetaFunction } from "@remix-run/node";
+import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Deleplads.dk - Note til udlejning" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
 
 export default function RentalNotes() {
-  const [age, setAge] = useState("");
-
-  const [value, setValue] = React.useState(0);
-
-  const label = { inputProps: { "aria-label": "Switch demo" } };
-
-  const handleChange = (event: any, newValue: SetStateAction<number>) => {
-    setValue(newValue);
-  };
-
   return (
     <>
       <section className="rentalLocation">
         <div className="inner">
-          <h1>Hihi</h1>
-          <p>Fortæl os hvor lejerne kan finde din parkeringsplads.</p>
+          <h1>Hvad skal folk være opmærksomme på?</h1>
+          <p>
+            Er din parkeringsplads svær at finde? Skriv en note til lejerne.
+          </p>
           <Form>
             <TextField
-              id="outlined-basic"
-              label="Adresse"
-              variant="outlined"
-              className="rental-input"
-            />
-            <TextField
-              id="outlined-basic"
-              label="Husnummer"
-              variant="outlined"
-              className="rental-input"
-            />
-            <TextField
-              id="outlined-basic"
-              label="By"
-              variant="outlined"
-              className="rental-input"
-            />
-            <TextField
-              id="outlined-basic"
-              label="Postnummer"
-              variant="outlined"
-              className="rental-input"
+              placeholder="Skriv din besked her"
+              multiline
+              rows={10}
+              sx={{ width: "100%" }}
             />
           </Form>
-          <div className="specific-location">
-            <span>
-              <h2>Vis din specifikke adresse</h2>
-              <p>Vælg om dit husnummer skal være synligt eller ej.</p>
-            </span>
-            <Switch {...label} />
-          </div>
         </div>
       </section>
-      <div className="rental-navigation">
-        <div className="inner">
-          <Button
-            variant="outlined"
-            style={{
-              width: "fit-content",
-              textTransform: "initial",
-              fontWeight: "600",
-            }}
-          >
-            <Link to={"/rental"}>Tilbage</Link>
-          </Button>
-          <Button
-            variant="contained"
-            style={{
-              width: "fit-content",
-              textTransform: "initial",
-              fontWeight: "600",
-            }}
-          >
-            <Link to={"/rental/1/avaliability"}>Næste</Link>
-          </Button>
-        </div>
-      </div>
+      <RentalNavigation
+        back={"/rental/1/attributes"}
+        forward={"/rental/1/images"}
+        percentage={85.68}
+      ></RentalNavigation>
     </>
   );
 }

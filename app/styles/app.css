@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-  --PageWidth: 1240px;
+  --PageWidth: 1340px;
   --BrandPrimary: #000000;
 }
 

@@ -25,7 +25,7 @@ function SearchBar() {
       <span>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
-            label="Starttidspunkt"
+            label="Fra hvornår?"
             viewRenderers={{
               hours: renderTimeViewClock,
               minutes: renderTimeViewClock,
@@ -33,7 +33,7 @@ function SearchBar() {
             }}
           />
           <DateTimePicker
-            label="Sluttidspunkt"
+            label="Til hvornår?"
             viewRenderers={{
               hours: renderTimeViewClock,
               minutes: renderTimeViewClock,

@@ -1,10 +1,18 @@
-import Navbar from "~/components/Navbar";
-import { Button, Radio, TextField } from "@mui/material";
-import { Form, Link } from "@remix-run/react";
+import { Radio } from "@mui/material";
+import { Form } from "@remix-run/react";
 import React from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import type { V2_MetaFunction } from "@remix-run/node";
+import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Deleplads.dk - Hvornår er din parkeringsplads ledig?" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
 
 export default function RentalAvaliability() {
   const [selectedValue, setSelectedValue] = React.useState("a");
@@ -144,30 +152,11 @@ export default function RentalAvaliability() {
           </div>
         </div>
       </section>
-      <div className="rental-navigation">
-        <div className="inner">
-          <Button
-            variant="outlined"
-            style={{
-              width: "fit-content",
-              textTransform: "initial",
-              fontWeight: "600",
-            }}
-          >
-            <Link to={"/rental/1/location"}>Tilbage</Link>
-          </Button>
-          <Button
-            variant="contained"
-            style={{
-              width: "fit-content",
-              textTransform: "initial",
-              fontWeight: "600",
-            }}
-          >
-            <Link to={"/rental/1/notes"}>Næste</Link>
-          </Button>
-        </div>
-      </div>
+      <RentalNavigation
+        back={"/rental/1/location"}
+        forward={"/rental/1/attributes"}
+        percentage={57.12}
+      ></RentalNavigation>
     </>
   );
 }
