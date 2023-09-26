@@ -51,7 +51,8 @@ export default function Rental() {
       <RentalNavigation
         back={"/"}
         forward={"/rental/1/type"}
-        percentage={14.28}
+        start={0}
+        end={10}
       ></RentalNavigation>
     </>
   );

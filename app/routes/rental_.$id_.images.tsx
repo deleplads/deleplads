@@ -36,8 +36,9 @@ export default function RentalImages() {
       </section>
       <RentalNavigation
         back={"/rental/1/notes"}
-        forward={"/"}
-        percentage={100}
+        forward={"/rental/1/price"}
+        end={80}
+        start={70}
       ></RentalNavigation>
     </>
   );

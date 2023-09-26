@@ -148,7 +148,8 @@ export default function RentalAttributes() {
       <RentalNavigation
         back={"/rental/1/avaliability"}
         forward={"/rental/1/notes"}
-        percentage={71.4}
+        end={60}
+        start={50}
       ></RentalNavigation>
     </>
   );

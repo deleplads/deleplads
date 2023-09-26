@@ -11,8 +11,9 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function RentalType() {
+export default function RentalAvailabilityType() {
   const [selectedValue, setSelectedValue] = React.useState("");
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
   };
@@ -21,7 +22,7 @@ export default function RentalType() {
     <>
       <section className="rentalLocation">
         <div className="inner">
-          <h1>Hvilken type parkering vil du oprette?</h1>
+          <h1>Hvilken udlejningsform vil du oprette?</h1>
           <p>Fortæl os hvor lejerne kan finde din parkeringsplads.</p>
           <Form>
             <div className="rental-type-options">
@@ -33,7 +34,7 @@ export default function RentalType() {
                   name="radio-buttons"
                   inputProps={{ "aria-label": "A" }}
                 />
-                <p>Privat</p>
+                <p>Engangsparkering</p>
               </div>
               <div className="business-option">
                 <Radio
@@ -42,19 +43,28 @@ export default function RentalType() {
                   value="b"
                   name="radio-buttons"
                   inputProps={{ "aria-label": "B" }}
-                  disabled={true}
                 />
-                <p>Erhverv</p>
+                <p>Gentagende parkering</p>
+              </div>
+              <div className="business-option">
+                <Radio
+                  checked={selectedValue === "c"}
+                  onChange={handleChange}
+                  value="c"
+                  name="radio-buttons"
+                  inputProps={{ "aria-label": "C" }}
+                />
+                <p>Langtidsparkering</p>
               </div>
             </div>
           </Form>
         </div>
       </section>
       <RentalNavigation
-        back={"/rental"}
-        forward={"/rental/1/location"}
-        end={20}
-        start={10}
+        back={"/rental/1/location"}
+        forward={"/rental/1/avaliability"}
+        end={40}
+        start={30}
       ></RentalNavigation>
     </>
   );

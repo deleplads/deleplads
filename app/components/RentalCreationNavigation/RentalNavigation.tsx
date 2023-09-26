@@ -1,26 +1,42 @@
 "use client";
 import { Button } from "@mui/material";
-import { Link, useNavigate } from "@remix-run/react";
+import { Link, useNavigate, useLocation  } from "@remix-run/react";
 import LinearWithValueLabel from "./Progress";
+import { useEffect, useState } from "react";
 
 type RentalNavigationProps = {
   back: string;
   forward: string;
-  percentage: number;
+  start: number;
+  end: number;
 };
 
 function RentalNavigation(props: RentalNavigationProps): JSX.Element {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [reverse, setReverse ] = useState(true);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const back = params.get('back');
+
+    if (back === "true") {
+      setReverse(false);
+    }else {
+      setReverse(true);
+    }
+  }, [location.search]);
+  
   return (
     <section>
       <div className="flex justify-center">
-        <LinearWithValueLabel procentage={props.percentage} />
+        <LinearWithValueLabel start={props.end} end={props.start} reverse={reverse} />
       </div>
       <div className="rental-navigation">
         <div className="inner">
           <Button
             onClick={() => {
-              navigate(props.back);
+              navigate(props.back + "?back=true");
             }}
             variant="outlined"
             style={{

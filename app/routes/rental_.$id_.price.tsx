@@ -15,7 +15,7 @@ export default function RentalNotes() {
     <>
       <section className="rentalLocation">
         <div className="inner">
-          <h1>Hvad skal folk være opmærksomme på?</h1>
+          <h1>Hva'skal'en'kost?</h1>
           <p>
             Er din parkeringsplads svær at finde? Skriv en note til lejerne.
           </p>
@@ -30,10 +30,10 @@ export default function RentalNotes() {
         </div>
       </section>
       <RentalNavigation
-        back={"/rental/1/attributes"}
-        forward={"/rental/1/images"}
-        end={70}
-        start={60}
+        back={"/rental/1/notes"}
+        forward={"/rental/1/receipt"}
+        end={90}
+        start={80}
       ></RentalNavigation>
     </>
   );

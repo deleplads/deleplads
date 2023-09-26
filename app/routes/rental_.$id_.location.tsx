@@ -55,8 +55,9 @@ export default function RentalLocation() {
       </section>
       <RentalNavigation
         back={"/rental/1/type"}
-        forward={"/rental/1/avaliability"}
-        percentage={42.48}
+        forward={"/rental/1/avaliability/type"}
+        end={30}
+        start={20}
       ></RentalNavigation>
     </>
   );
