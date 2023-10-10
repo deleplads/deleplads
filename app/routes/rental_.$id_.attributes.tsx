@@ -148,7 +148,7 @@ export default function RentalAttributes() {
       <RentalNavigation
         back={"/rental/1/avaliability"}
         forward={"/rental/1/notes"}
-        end={60}
+        end={3}
         start={50}
       ></RentalNavigation>
     </>

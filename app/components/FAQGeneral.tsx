@@ -1,25 +1,69 @@
-"use client";
+import * as React from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-function FAQGeneral() {
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `vertical-tab-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
+  };
+}
+
+export default function VerticalTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
   return (
     <section className="FAQGeneral">
       <div className="inner">
-        <h1>Ofte stillede spørgsmål</h1>
-        <div className="questions">
+        <h1>
+          Har du spørgsmål?
+          <br />
+          Find de svar du søger
+        </h1>
+        <div>
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>
-                Hvor meget koster det at leje en parkeringsplads?
-              </Typography>
+              <Typography>Accordion 1</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -35,7 +79,7 @@ function FAQGeneral() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Hvorfor skal jeg oplyse min nummerplade?</Typography>
+              <Typography>Accordion 2</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -51,7 +95,7 @@ function FAQGeneral() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Hvem betaler for en parkeringsafgift?</Typography>
+              <Typography>Accordion 2</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -67,9 +111,7 @@ function FAQGeneral() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>
-                Skal jeg som lejer være i dialog med udlejer?
-              </Typography>
+              <Typography>Accordion 2</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -85,9 +127,7 @@ function FAQGeneral() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>
-                Hvad hvis parkeringspladsen er optaget når jeg ankommer?
-              </Typography>
+              <Typography>Accordion 2</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -102,5 +142,3 @@ function FAQGeneral() {
     </section>
   );
 }
-
-export default FAQGeneral;

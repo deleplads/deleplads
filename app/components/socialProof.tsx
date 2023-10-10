@@ -1,30 +1,51 @@
 "use client";
 
-import { Box, Button } from "@mui/material";
+import { Avatar, Box, Button } from "@mui/material";
 
 function SocialProof() {
   return (
     <main className="socialProof">
+      <h1>Bliv en del af fællesskabet</h1>
+      <p>
+        På vores platform møder du lejere og udlejere, som deler en passion for
+        at skabe et stærkt fællesskab, der forstærker brugeroplevelsen.
+      </p>
+      <a href="#">Tilmeld dig gratis →</a>
       <div className="inner">
-        <span>
-          <Box component="img" src="./nicolas.jpg" className="socialProofimg" />
-          <h2>Nicolas Allesøe</h2>
-          <p>Verificeret udlejer</p>
-        </span>
-        <div>
-          <Box component="img" src="./snipsnip.png" className="stars" />
-          <p>
-            "Efter jeg begyndte at anvende Deleplads.dk for en uge siden til at
-            udleje min parkeringsplads, har jeg allerede tjent 3400 kroner!
-            Denne platform gør det enkelt at oprette parkeringslister og
-            acceptere lejeanmodninger, og der er konstant interesse fra folk,
-            der søger parkeringspladser.
-            <br />
-            <br />
-            Det er utroligt, hvor problemfrit det er blevet at tjene ekstra
-            penge ved at udnytte en ressource, der ellers blot ville stå
-            ubenyttet."
-          </p>
+        <div className="socialGrid">
+          <div className="bigger">
+            <div className="info">
+              <Avatar alt="Remy Sharp" src="../nicolas.jpg" />
+              <h3>Emma</h3>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ipsum
+              quidem quisquam in ratione perspiciatis totam exercitationem
+              ducimus sunt! Aspernatur reiciendis odio iusto error quibusdam?
+            </p>
+          </div>
+          <div className="smaller-upper">
+            <div className="info">
+              <Avatar alt="Remy Sharp" src="../nicolas.jpg" />
+              <h3>Christian</h3>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ipsum
+              quidem quisquam in ratione perspiciatis totam exercitationem
+              ducimus sunt! Aspernatur reiciendis odio iusto error quibusdam?
+            </p>
+          </div>
+          <div className="smaller-lower">
+            <div className="info">
+              <Avatar alt="Remy Sharp" src="../nicolas.jpg" />
+              <h3>Laura</h3>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ipsum
+              quidem quisquam in ratione perspiciatis totam exercitationem
+              ducimus sunt! Aspernatur reiciendis odio iusto error quibusdam?
+            </p>
+          </div>
         </div>
       </div>
     </main>

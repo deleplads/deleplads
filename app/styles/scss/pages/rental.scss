@@ -50,9 +50,22 @@
     border: 1px solid #e5e5e5;
     border-radius: 4px;
     padding: 12px 8px;
+    position: relative;
 
     p {
       margin: 0 !important;
+    }
+    .coming-soon {
+      background: #1976d2;
+      position: absolute;
+      top: -2px;
+      right: 16px;
+      padding: 4px 16px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 4px 4px;
+      p {
+        color: white !important;
+      }
     }
   }
 }
@@ -154,7 +167,7 @@
 .rental-avaliability {
   margin: 0 auto;
   height: 100vh;
-  width: 1080px;
+  width: 1240px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,24 +175,38 @@
   gap: 25px;
 
   .inner {
-    width: 600px;
+    width: auto;
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .options-form {
+      margin-top: 32px;
+    }
 
     .avaliability-option {
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
+      width: auto;
+      gap: 32px;
+      margin-bottom: 16px;
 
-      .avaliability-day {
+      .availability-day {
         display: flex;
         align-items: center;
-        border: 1px solid #e5e5e5;
-        padding: 16.5px 14px;
+        flex-direction: row !important;
         margin: 0;
+        width: auto;
+        gap: 32px;
       }
 
       .avaliability-time {
         display: flex;
+        align-items: center;
+        gap: 32px;
       }
     }
   }
@@ -233,4 +260,48 @@
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+// Mobile media query
+
+@media only screen and (max-width: 600px) {
+  // Rental introduction
+
+  .rentalIntroduction {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .inner {
+      width: var(--PageWidth);
+      display: flex;
+      flex-direction: column; //
+      margin: 0 16px; //
+      gap: 50px;
+      justify-content: space-between;
+      align-items: center;
+      .introductionText {
+        h1 {
+          font-size: 24px; //
+          max-width: 425px;
+          line-height: 120%;
+        }
+      }
+      .introductionSteps {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        .step {
+          h2 {
+            font-size: 22px;
+            max-width: 450px;
+            margin-bottom: 8px;
+          }
+          p {
+            max-width: 400px;
+          }
+        }
+      }
+    }
+  }
 }

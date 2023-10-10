@@ -1,41 +1,101 @@
 "use client";
+import * as React from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
-import Flag from "@mui/icons-material/Flag";
-import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
-import RecyclingOutlinedIcon from "@mui/icons-material/RecyclingOutlined";
-import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
-import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
-function WhyShouldYouUseIt() {
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `vertical-tab-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
+  };
+}
+
+export function WhyShouldYouUseIt() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
   return (
     <main className="why-should-you-use-it">
       <div className="inner">
-        <h2>Byens bedste parkeringshemmelighed</h2>
-        <div className="why-should-you-use">
-          <div className="item">
-            <div className="icon">{<AttachMoneyOutlinedIcon />}</div>
-            <p>Find de billigeste parkeringspladser rundt omkring i landet.</p>
-          </div>
-          <div className="item">
-            <div className="icon">{<RecyclingOutlinedIcon />}</div>
-            <p>Udnyt de eksisterende parkeringsmuligheder, og spar på.</p>
-          </div>
-          <div className="item">
-            <div className="icon">{<VerifiedUserOutlinedIcon />}</div>
-            <p>
-              Lej trygt og sikkert parkeringspladser fra udelukkende
-              verificerede udlejere.
-            </p>
-          </div>
-          <div className="item">
-            <div className="icon">{<SentimentVerySatisfiedOutlinedIcon />}</div>
-            <p>Nemt og enkelt at booke parkeringspladser gennem platformen.</p>
-          </div>
-          <div className="item">
-            <div className="icon">{<Flag />}</div>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-          </div>
-        </div>
+      <h2>Lorem ipsum dolor sit amet.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo iusto voluptates earum voluptatem consequuntur mollitia fugit asperiores at porro soluta!</p>
+        <Box
+          sx={{
+            flexGrow: 1,
+            bgcolor: "background.paper",
+            display: "flex",
+            height: 224,
+          }}
+        >
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            sx={{ borderRight: 1, borderColor: "divider" }}
+          >
+            <Tab label="Item One" {...a11yProps(0)} />
+            <Tab label="Item Two" {...a11yProps(1)} />
+            <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab label="Item Four" {...a11yProps(3)} />
+            <Tab label="Item Five" {...a11yProps(4)} />
+            <Tab label="Item Six" {...a11yProps(5)} />
+            <Tab label="Item Seven" {...a11yProps(6)} />
+          </Tabs>
+          <TabPanel value={value} index={0}>
+            Item One
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            Item Two
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            Item Three
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            Item Four
+          </TabPanel>
+          <TabPanel value={value} index={4}>
+            Item Five
+          </TabPanel>
+          <TabPanel value={value} index={5}>
+            Item Six
+          </TabPanel>
+          <TabPanel value={value} index={6}>
+            Item Seven
+          </TabPanel>
+        </Box>
       </div>
     </main>
   );

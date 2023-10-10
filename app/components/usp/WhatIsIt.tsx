@@ -52,6 +52,14 @@ function WhatIsIt() {
             </span>
           </div>
         </div>
+        <iframe
+          width="100%"
+          height="697,50"
+          src="https://www.youtube-nocookie.com/embed/3zhym9oUSGU?si=vDUxUwPxi87hE1WB&amp;controls=0"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          style={{ borderRadius: "24px", marginTop: "32px" }}
+        ></iframe>
       </div>
     </main>
   );

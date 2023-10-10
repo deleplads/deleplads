@@ -1,49 +1,145 @@
 "use client";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 function HowShouldYouUseIt() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
   return (
     <main className="how-should-you-use-it">
       <div className="inner">
-        <div className="step-by-step">
-          <h1>Sådan virker udlejningsprocessen</h1>
-          <ul>
-            <li>
-              <span>1.</span>
-              <p>
-                For at komme i gang, skal du tilmelde dig gratis på portalen ved
-                at oprette en konto.
-              </p>
-            </li>
-            <li>
-              <span>2.</span>
-              <p>
-                Følg verificeringsprocessen for at sikre, at både dig og dine
-                udlejninger er af tilstrækkelig kvalitet til at være på
-                portalen.
-              </p>
-            </li>
-            <li>
-              <span>3.</span>
-              <p>Tilmeld betalingskort.</p>
-            </li>
-            <li>
-              <span>4.</span>
-              <p>Opret udleje.</p>
-            </li>
-            <li>
-              <span>5.</span>
-              <p>accepter requests.</p>
-            </li>
-            <li>
-              <span>6.</span>
-              <p>modtag penge på din deleplads konto.</p>
-            </li>
-            <li>
-              <span>7.</span>
-              <p>cash out på din deleplads konto.</p>
-            </li>
-          </ul>
-        </div>
+        <h1>Sådan virker det for lejere</h1>
+        <p>
+          På vores platform møder du lejere og udlejere, som deler en passion
+          for at skabe et stærkt fællesskab, der forstærker brugeroplevelsen.
+        </p>
+        <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            centered
+            className="how-toggle"
+          >
+            <Tab label="Lejere" />
+            <Tab label="Udljere" />
+          </Tabs>
+
+          {value === 0 && (
+            <div className="how-renter">
+              <div className="steps">
+                <div className="step">
+                  <h2>1. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>2. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>3. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>4. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>5. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>6. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {value === 1 && (
+            <div className="how-host">
+              <div className="steps">
+                <div className="step">
+                  <h2>1. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>2. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>3. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>4. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>5. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+                <div className="step">
+                  <h2>6. Opret dig på portalen</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Enim temporibus adipisci, provident expedita dignissimos
+                    distinctio!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </Box>
       </div>
     </main>
   );

@@ -1,22 +1,6 @@
-import * as React from 'react';
-import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-
-function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
-  return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value,
-        )}%`}</Typography>
-      </Box>
-    </Box>
-  );
-}
+import * as React from "react";
+import LinearProgress from "@mui/material/LinearProgress";
+import Box from "@mui/material/Box";
 
 type ProgressBarProps = {
   start: number;
@@ -26,14 +10,18 @@ type ProgressBarProps = {
 
 const DURATION = 400; // 2 seconds
 
-export default function LinearWithValueLabel({ start, end, reverse }: ProgressBarProps) {
+export default function LinearWithValueLabel({
+  start,
+  end,
+  reverse,
+}: ProgressBarProps) {
   // Initialize progress state with the proper start value depending on the reverse prop
   const [progress, setProgress] = React.useState(reverse ? end : start);
 
   React.useEffect(() => {
     const adjustedStart = reverse ? end : start; // Adjust the start value if reverse is true
     const adjustedEnd = reverse ? start : end; // Adjust the end value if reverse is true
-    
+
     const startTimestamp = Date.now();
     const endTimestamp = startTimestamp + DURATION;
     let frameId: number;
@@ -45,7 +33,8 @@ export default function LinearWithValueLabel({ start, end, reverse }: ProgressBa
       } else {
         const elapsed = now - startTimestamp;
         const progress = elapsed / DURATION;
-        const newValue = adjustedStart + progress * (adjustedEnd - adjustedStart);
+        const newValue =
+          adjustedStart + progress * (adjustedEnd - adjustedStart);
         setProgress(newValue);
         frameId = requestAnimationFrame(frame);
       }
@@ -57,7 +46,7 @@ export default function LinearWithValueLabel({ start, end, reverse }: ProgressBa
 
   return (
     <Box alignContent={"center"} className="CreationProgressBar">
-      <LinearProgressWithLabel value={progress} sx={{ height: 10 }} />
+      <LinearProgress variant="determinate" value={progress} sx={{ height: 10 }} />
     </Box>
   );
 }

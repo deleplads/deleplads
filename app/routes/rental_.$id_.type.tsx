@@ -45,6 +45,9 @@ export default function RentalType() {
                   disabled={true}
                 />
                 <p>Erhverv</p>
+                <div className="coming-soon">
+                  <p>Kommer snart</p>
+                </div>
               </div>
             </div>
           </Form>
