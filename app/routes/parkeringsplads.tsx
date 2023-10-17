@@ -193,7 +193,7 @@ export default function Parkeringsplads() {
               sx={{
                 width: "100%",
                 textTransform: "initial",
-                background: "#635BFF",
+                background: "var(--BrandAccent)",
               }}
             >
               Bestil
@@ -229,7 +229,7 @@ export default function Parkeringsplads() {
             sx={{
               width: "100%",
               textTransform: "initial",
-              background: "#635BFF !important",
+              background: "var(--BrandAccent) !important",
             }}
           >
             Bestil

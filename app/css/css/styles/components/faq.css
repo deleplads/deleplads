@@ -35,7 +35,7 @@
 
 .faq-accordions .MuiAccordionSummary-root {
   padding: 20px 30px !important;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var(--BrandTertiary);
   box-shadow: none !important;
 }
 

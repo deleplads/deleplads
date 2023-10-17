@@ -7,10 +7,18 @@
 :root {
   --PageWidth: 1260px;
   --BrandPrimary: #000000;
+  --BrandSecondary: #191923;
+  --BrandTertiary: #e5e5e5;
+  --BrandAccent: #635bff;
 }
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2 {
+  letter-spacing: -2px;
 }
 
 h1,
@@ -22,7 +30,6 @@ h6 {
   color: #1d1d1f !important;
   font-weight: 700 !important;
   font-family: "Poppins", sans-serif;
-  letter-spacing: -2px;
 }
 
 p {

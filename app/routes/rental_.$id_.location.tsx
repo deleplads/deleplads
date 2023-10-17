@@ -46,7 +46,7 @@ export default function RentalLocation() {
           </Form>
           <div className="specific-location">
             <span>
-              <h2>Vis din specifikke adresse</h2>
+              <h3>Vis din specifikke adresse</h3>
               <p>Vælg om dit husnummer skal være synligt eller ej.</p>
             </span>
             <Switch inputProps={{ "aria-label": "Switch demo" }} />
@@ -56,7 +56,6 @@ export default function RentalLocation() {
       <RentalNavigation
         back={"/rental/1/type"}
         forward={"/rental/1/avaliability/type"}
-        end={30}
         start={20}
       ></RentalNavigation>
     </>

@@ -88,7 +88,7 @@ export default function SignIn() {
             alignItems: "center",
             background: "white",
             padding: "25px",
-            border: "1px solid #e5e5e5",
+            border: "1px solid #var(--BrandTertiary)",
           }}
         > 
           <Box

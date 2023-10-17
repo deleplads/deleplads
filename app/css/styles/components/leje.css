@@ -105,7 +105,7 @@
 }
 
 .line {
-  border-left: 1px solid #e5e5e5;
+  border-left: 1px solid #var(--BrandTertiary);
   height: 100%;
   position: absolute;
   left: 50%;
@@ -121,7 +121,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var(--BrandTertiary);
   margin-left: -28px;
   background: white;
   outline: 20px solid white;
@@ -154,7 +154,7 @@
 
 .leleje-accordions .MuiAccordionSummary-root {
   padding: 20px 30px !important;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var(--BrandTertiary);
   box-shadow: none !important;
 }
 

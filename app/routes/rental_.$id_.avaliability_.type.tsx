@@ -3,6 +3,7 @@ import { Form } from "@remix-run/react";
 import Radio from "@mui/material/Radio";
 import type { V2_MetaFunction } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -46,16 +47,6 @@ export default function RentalAvailabilityType() {
                 />
                 <p>Gentagende parkering</p>
               </div>
-              <div className="business-option">
-                <Radio
-                  checked={selectedValue === "c"}
-                  onChange={handleChange}
-                  value="c"
-                  name="radio-buttons"
-                  inputProps={{ "aria-label": "C" }}
-                />
-                <p>Langtidsparkering</p>
-              </div>
             </div>
           </Form>
         </div>
@@ -63,7 +54,6 @@ export default function RentalAvailabilityType() {
       <RentalNavigation
         back={"/rental/1/location"}
         forward={"/rental/1/avaliability"}
-        end={40}
         start={30}
       ></RentalNavigation>
     </>

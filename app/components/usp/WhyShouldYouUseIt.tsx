@@ -4,6 +4,12 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Button,
+} from "@mui/material";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -48,14 +54,33 @@ export function WhyShouldYouUseIt() {
   return (
     <main className="why-should-you-use-it">
       <div className="inner">
-      <h2>Lorem ipsum dolor sit amet.</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo iusto voluptates earum voluptatem consequuntur mollitia fugit asperiores at porro soluta!</p>
+        <h2>En platform med mange fordele</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo iusto
+          voluptates earum voluptatem consequuntur mollitia fugit asperiores at
+          porro soluta!
+        </p>
+        <Button
+          variant="contained"
+          href="#"
+          size="large"
+          sx={{
+            textTransform: "initial",
+            background: "var(--BrandAccent)",
+            width: "fit-content",
+            margin: "0 auto",
+            marginBottom: "32px",
+          }}
+          className="CallToActionButton"
+        >
+          Tilmeld gratis
+        </Button>
         <Box
           sx={{
             flexGrow: 1,
             bgcolor: "background.paper",
             display: "flex",
-            height: 224,
+            height: "auto",
           }}
         >
           <Tabs
@@ -66,34 +91,18 @@ export function WhyShouldYouUseIt() {
             aria-label="Vertical tabs example"
             sx={{ borderRight: 1, borderColor: "divider" }}
           >
-            <Tab label="Item One" {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
-            <Tab label="Item Four" {...a11yProps(3)} />
-            <Tab label="Item Five" {...a11yProps(4)} />
-            <Tab label="Item Six" {...a11yProps(5)} />
-            <Tab label="Item Seven" {...a11yProps(6)} />
+            <Tab label="Miljøvenlig" {...a11yProps(0)} />
+            <Tab label="Billigere end konkurrenterne" {...a11yProps(1)} />
+            <Tab label="Bekvemmelig" {...a11yProps(2)} />
           </Tabs>
           <TabPanel value={value} index={0}>
-            Item One
+            Miljøvenlig
           </TabPanel>
           <TabPanel value={value} index={1}>
             Item Two
           </TabPanel>
           <TabPanel value={value} index={2}>
             Item Three
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            Item Four
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            Item Five
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-            Item Six
-          </TabPanel>
-          <TabPanel value={value} index={6}>
-            Item Seven
           </TabPanel>
         </Box>
       </div>

@@ -56,7 +56,6 @@ export default function RentalType() {
       <RentalNavigation
         back={"/rental"}
         forward={"/rental/1/location"}
-        end={20}
         start={10}
       ></RentalNavigation>
     </>

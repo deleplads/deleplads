@@ -8,29 +8,16 @@ type RentalNavigationProps = {
   back: string;
   forward: string;
   start: number;
-  end: number;
 };
 
 function RentalNavigation(props: RentalNavigationProps): JSX.Element {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [reverse, setReverse ] = useState(true);
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const back = params.get('back');
-
-    if (back === "true") {
-      setReverse(false);
-    }else {
-      setReverse(true);
-    }
-  }, [location.search]);
+ 
   
   return (
     <section>
       <div className="flex justify-center">
-        <LinearWithValueLabel start={props.end} end={props.start} reverse={reverse} />
+        <LinearWithValueLabel value={props.start}/>
       </div>
       <div className="rental-navigation">
         <div className="inner">
@@ -44,7 +31,7 @@ function RentalNavigation(props: RentalNavigationProps): JSX.Element {
               textTransform: "initial",
               fontWeight: "600",
               padding: "12px 20px",
-              border: "1px solid #e5e5e5",
+              border: "1px solid var(--BrandTertiary)",
               borderRadius: "52px",
             }}
           >

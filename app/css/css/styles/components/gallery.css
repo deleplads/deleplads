@@ -33,7 +33,7 @@
 }
 
 .avaliability .ikke-ledig {
-  background: #e5e5e5;
+  background: #var(--BrandTertiary);
 }
 
 .bonus-info {

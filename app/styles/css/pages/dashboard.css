@@ -22,7 +22,7 @@
   column-gap: 25px;
 }
 .Dashboard #DashboardOverviewAnalytics .DashboardAnalytics {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   padding: 25px;
 }
 .Dashboard #DashboardParkingSpotsOverview .header {
@@ -77,7 +77,7 @@
   margin-bottom: 32px;
 }
 .Dashboard #DashboardTransactionHistory .DashboardTransaction {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   padding: 25px;
   display: flex;
   flex-direction: row;

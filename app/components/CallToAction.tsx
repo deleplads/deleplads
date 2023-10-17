@@ -12,7 +12,7 @@ function CallToAction() {
             variant="contained"
             href="#"
             size="large"
-            sx={{ textTransform: "initial", background: "#635BFF" }}
+            sx={{ textTransform: "initial", background: "var(--BrandAccent)" }}
             className="CallToActionButton"
           >
             Tilmeld gratis

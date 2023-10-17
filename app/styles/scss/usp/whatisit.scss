@@ -20,9 +20,9 @@
     .solutions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 24px;
       .solution-one {
-        background: #f1f7f0;
+        background: var(--BrandSecondary);
         padding: 48px;
         border-radius: 24px;
         span {
@@ -34,7 +34,7 @@
         }
       }
       .solution-two {
-        background: #f1f7f0;
+        background: var(--BrandSecondary);
         padding: 48px;
         border-radius: 24px;
         span {

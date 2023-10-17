@@ -37,7 +37,6 @@ export default function RentalImages() {
       <RentalNavigation
         back={"/rental/1/notes"}
         forward={"/rental/1/price"}
-        end={80}
         start={70}
       ></RentalNavigation>
     </>

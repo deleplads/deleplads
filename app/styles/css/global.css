@@ -48,7 +48,7 @@
   column-gap: 25px;
 }
 .Dashboard #DashboardOverviewAnalytics .DashboardAnalytics {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -81,7 +81,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   padding: 25px;
 }
 .Dashboard #DashboardParkingSpotsOverview .header {
@@ -103,7 +103,7 @@
   margin-bottom: 32px;
 }
 .Dashboard #DashboardTransactionHistory .DashboardTransaction {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   padding: 25px;
   display: flex;
   flex-direction: row;
@@ -342,7 +342,7 @@
 }
 .ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions {
   position: sticky;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   width: inherit;
   top: 205px;
   padding: 25px;
@@ -385,7 +385,7 @@
     background: white;
     margin: 0 -16px;
     padding: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--BrandTertiary);
   }
   .ParkingSpot .ParkingSpotInformationDetails {
     display: flex !important;
@@ -483,7 +483,7 @@
   line-height: 200%;
 }
 .rent .caption {
-  color: #635bff;
+  color: "var(--BrandAccent)";
   font-family: "Gilroy", sans-serif !important;
   margin: 0;
   text-transform: uppercase;
@@ -526,7 +526,7 @@
 }
 .step-by-step ul li span {
   font-size: 45px;
-  color: #635bff;
+  color: "var(--BrandAccent)";
   font-weight: 700;
   font-family: "Gilroy", sans-serif !important;
   user-select: none;
@@ -553,7 +553,7 @@
   margin: 0 0 64px 0;
 }
 .highlight .inner .caption {
-  color: #635bff;
+  color: "var(--BrandAccent)";
   font-family: "Gilroy", sans-serif !important;
   margin: 0;
   text-transform: uppercase;
@@ -600,7 +600,7 @@
   display: flex;
   flex-direction: column;
   padding: 32px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   border-radius: 8px;
 }
 .kontakt .inner .message span {
@@ -629,13 +629,13 @@
 }
 .kontakt .inner .message .message-contents input, .kontakt .inner .message .message-contents select {
   padding: 16px 10px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   border-radius: 4px;
 }
 .kontakt .inner .message .message-contents textarea {
   padding: 16px 10px;
   height: 150px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   border-radius: 4px;
   resize: vertical;
   max-height: 500px;
@@ -690,7 +690,7 @@
   margin: 20px 0 30px 0;
 }
 .FAQHeader .caption {
-  color: #635bff;
+  color: "var(--BrandAccent)";
   font-family: "Gilroy", sans-serif !important;
   margin: 0;
   text-transform: uppercase;
@@ -707,7 +707,7 @@
 }
 .faq-accordions .MuiAccordionSummary-root {
   padding: 20px 30px !important;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   box-shadow: none !important;
 }
 .faq-accordions #panel1a-content,
@@ -747,7 +747,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var --BrandTertiary;
   border-radius: 4px;
 }
 .locate .avaliable-bookings .booking .left {
@@ -805,7 +805,7 @@
 .rental-type-options .business-option {
   display: flex;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 4px;
   padding: 12px 8px;
   position: relative;
@@ -890,7 +890,7 @@
 }
 .rental-attributes .attributes-grid .option {
   padding: 48px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 8px;
   position: relative;
 }
@@ -951,7 +951,7 @@
   display: flex;
   flex-direction: column;
   background: white !important;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   box-shadow: none;
 }
 .upload-image:hover {
@@ -971,7 +971,7 @@
   right: auto;
   display: flex;
   justify-content: center;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--BrandTertiary);
 }
 .rental-navigation .inner {
   width: var(--PageWidth);
@@ -1025,7 +1025,7 @@
 }
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
-    background: #191923;
+    background: var(--BrandSecondary);
     display: flex;
     width: var(--PageWidth);
     margin: 0 auto;
@@ -1100,7 +1100,7 @@
     width: 100%;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #var --BrandTertiary;
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1162,7 +1162,7 @@
     width: 100%;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #var --BrandTertiary;
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1221,7 +1221,7 @@
     width: 1080px;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #var --BrandTertiary;
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1275,7 +1275,7 @@
     width: 1080px;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #var --BrandTertiary;
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1329,7 +1329,7 @@
     width: var(--PageWidth);
     padding: 50px 0 0 0;
     font-size: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #var --BrandTertiary;
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1376,7 +1376,7 @@
   color: white;
 }
 .avaliability .ikke-ledig {
-  background: #e5e5e5;
+  background: #var --BrandTertiary;
 }
 
 .bonus-info {
@@ -1523,7 +1523,7 @@
     background: white;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #var --BrandTertiary;
     z-index: 1000;
     padding: 0 16px;
   }
@@ -1621,7 +1621,7 @@
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #e5e5e5;
+  border-color: #var --BrandTertiary;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1649,7 +1649,7 @@
     width: 100%;
   }
   .MuiOutlinedInput-notchedOutline {
-    border-color: #e5e5e5;
+    border-color: #var --BrandTertiary;
   }
 }
 .popular {
@@ -1680,8 +1680,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #var --BrandTertiary;
+  border-bottom: 1px solid #var --BrandTertiary;
   background: white;
 }
 .filtration .inner {
@@ -1716,14 +1716,13 @@
   max-width: 600px;
   text-align: center;
   font-size: 18px;
-  margin: 16px 0 20px 0;
+  margin: 16px 0 32px 0;
   line-height: 200%;
 }
 .socialProof a {
   color: #0a85d1;
   font-weight: 600;
   font-size: 18px;
-  margin-bottom: 30px;
 }
 .socialProof .inner {
   width: var(--PageWidth);
@@ -1740,8 +1739,8 @@
 .socialProof .inner .socialGrid .bigger {
   grid-area: 1/4/3/6;
   border-radius: 24px;
-  background: #191923;
-  padding: 24px;
+  background: var(--BrandSecondary);
+  padding: 24px 32px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -1765,8 +1764,8 @@
 .socialProof .inner .socialGrid .smaller-upper {
   grid-area: 3/4/5/6;
   border-radius: 24px;
-  background: #191923;
-  padding: 24px;
+  background: var(--BrandSecondary);
+  padding: 24px 32px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -1790,13 +1789,19 @@
 .socialProof .inner .socialGrid .smaller-lower {
   grid-area: 1/1/5/4;
   border-radius: 24px;
-  background: #191923;
-  padding: 24px;
+  background: var(--BrandSecondary);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  position: relative;
 }
 .socialProof .inner .socialGrid .smaller-lower .info {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 16px;
+  padding: 24px 32px;
+}
+.socialProof .inner .socialGrid .smaller-lower .info span {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1811,6 +1816,7 @@
   text-align: left;
   margin: 0;
   padding: 0;
+  max-width: fit-content;
 }
 
 .Ratings .trustPilotRatings {
@@ -1844,7 +1850,7 @@
 }
 
 .gallery-cards {
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
 }
 .gallery-cards .gallery-cards-content {
   padding: 0;
@@ -1853,9 +1859,27 @@
 .gallery-cards .gallery-cards-content .gallery-cards-content-info {
   padding: 32px;
 }
-.gallery-cards .gallery-cards-content .gallery-cards-content-info table {
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes .gallery-cards-attribute {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 8px;
+}
+.gallery-cards .gallery-cards-content .price {
+  color: black;
+  background: var(--BrandTertiary);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  font-size: 15;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 9.125px 22px;
+  margin-bottom: 16px;
 }
 .gallery-cards:hover {
   cursor: pointer;
@@ -1965,7 +1989,7 @@
 .FAQGeneral .inner #panel5a-header p,
 .FAQGeneral .inner .MuiPaper-root p {
   font-size: 18px;
-  line-height: 200%;
+  line-height: 150%;
 }
 
 .why-should-you-use-it {
@@ -1992,6 +2016,7 @@
   line-height: 200%;
   padding: 16px 20px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .how-should-you-use-it {
@@ -2027,17 +2052,19 @@
   grid-gap: 24px;
 }
 .how-should-you-use-it .inner .how-renter .steps .step, .how-should-you-use-it .inner .how-host .steps .step {
-  background: #e5e5e5;
+  background: var(--BrandTertiary);
   border-radius: 24px;
   padding: 24px;
 }
 .how-should-you-use-it .inner .how-renter .steps .step h2, .how-should-you-use-it .inner .how-host .steps .step h2 {
+  margin-top: 24px;
   font-size: 20px;
   letter-spacing: -1px;
 }
 .how-should-you-use-it .inner .how-renter .steps .step p, .how-should-you-use-it .inner .how-host .steps .step p {
   text-align: left !important;
   margin: 0;
+  font-size: 16px;
 }
 
 .what-is-it {
@@ -2064,10 +2091,10 @@
 .what-is-it .inner .solutions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 24px;
 }
 .what-is-it .inner .solutions .solution-one {
-  background: #f1f7f0;
+  background: var(--BrandSecondary);
   padding: 48px;
   border-radius: 24px;
 }
@@ -2079,7 +2106,7 @@
   align-items: center;
 }
 .what-is-it .inner .solutions .solution-two {
-  background: #f1f7f0;
+  background: var(--BrandSecondary);
   padding: 48px;
   border-radius: 24px;
 }

@@ -14,7 +14,7 @@ function HowShouldYouUseIt() {
   return (
     <main className="how-should-you-use-it">
       <div className="inner">
-        <h1>Sådan virker det for lejere</h1>
+        <h1>Sådan virker processen</h1>
         <p>
           På vores platform møder du lejere og udlejere, som deler en passion
           for at skabe et stærkt fællesskab, der forstærker brugeroplevelsen.
@@ -34,51 +34,75 @@ function HowShouldYouUseIt() {
             <div className="how-renter">
               <div className="steps">
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>1. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>2. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>3. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>4. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>5. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>6. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci.
                   </p>
                 </div>
               </div>
@@ -89,51 +113,75 @@ function HowShouldYouUseIt() {
             <div className="how-host">
               <div className="steps">
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>1. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci, provident.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>2. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci, provident.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>3. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci, provident.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>4. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci, provident.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>5. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci, provident.
                   </p>
                 </div>
                 <div className="step">
+                  <Box
+                    sx={{ width: "100%" }}
+                    component="img"
+                    src="../placeholderr.png"
+                  />
                   <h2>6. Opret dig på portalen</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci, provident expedita dignissimos
-                    distinctio!
+                    Enim temporibus adipisci, provident.
                   </p>
                 </div>
               </div>

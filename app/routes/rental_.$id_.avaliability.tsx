@@ -157,7 +157,6 @@ export default function RentalAvaliability() {
       <RentalNavigation
         back={"/rental/1/avaliability/type"}
         forward={"/rental/1/attributes"}
-        end={50}
         start={40}
       ></RentalNavigation>
     </>

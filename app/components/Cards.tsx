@@ -3,6 +3,15 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { useNavigate } from "@remix-run/react";
+import EvStationOutlinedIcon from "@mui/icons-material/EvStationOutlined";
+import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
+import VpnKeyOffOutlinedIcon from "@mui/icons-material/VpnKeyOffOutlined";
+import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import AccessibleOutlinedIcon from "@mui/icons-material/AccessibleOutlined";
+import LightOutlinedIcon from "@mui/icons-material/LightOutlined";
+import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
+import DirectionsSubwayFilledOutlinedIcon from "@mui/icons-material/DirectionsSubwayFilledOutlined";
+import AddRoadOutlinedIcon from "@mui/icons-material/AddRoadOutlined";
 
 export default function BasicCard() {
   const navigate = useNavigate();
@@ -24,14 +33,26 @@ export default function BasicCard() {
 
             <p>3450 Allerød, Hovedstaden</p>
             <br />
-            <p>Mandag: 08:00-16:00</p>
-            <p>Tirsdag: 08:00-16:00</p>
-            <p>Onsdag: 08:00-16:00</p>
-            <p>Torsdag: 08:00-16:00</p>
-            <p>Fredag: 08:00-16:00</p>
-            <p>Lørdag: 08:00-16:00</p>
-            <p>Søndag: 08:00-16:00</p>
+            <div className="gallery-cards-attributes">
+              <div className="gallery-cards-attribute">
+                {<EvStationOutlinedIcon className="attribute-icon" />}{" "}
+                <p>El-ladestander</p>
+              </div>
+              <div className="gallery-cards-attribute">
+                {<GarageOutlinedIcon className="attribute-icon" />}{" "}
+                <p>Overdækning</p>
+              </div>
+              <div className="gallery-cards-attribute">
+                {<VpnKeyOffOutlinedIcon className="attribute-icon" />}{" "}
+                <p>Ingen kode</p>
+              </div>
+              <div className="gallery-cards-attribute">
+                {<CameraAltOutlinedIcon className="attribute-icon" />}{" "}
+                <p>Overvågning</p>
+              </div>
+            </div>
             <br />
+            <div className="price">1337 DKK per time</div>
             <Button
               className="SearchButton"
               variant="contained"
@@ -39,11 +60,12 @@ export default function BasicCard() {
               href="#"
               sx={{
                 textTransform: "initial",
-                borderRadius: "52px",
+                borderRadius: "16px",
                 width: "100%",
+                background: "var(--BrandAccent)",
               }}
             >
-              Find parkeringsplads
+              Lej parkeringsplads →
             </Button>
           </div>
         </CardContent>

@@ -29,16 +29,18 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 24px;
         .step {
-          background: #e5e5e5;
+          background: var(--BrandTertiary);
           border-radius: 24px;
           padding: 24px;
           h2 {
+            margin-top: 24px;
             font-size: 20px;
             letter-spacing: -1px;
           }
           p {
             text-align: left !important;
             margin: 0;
+            font-size: 16px;
           }
         }
       }

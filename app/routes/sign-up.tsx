@@ -108,7 +108,7 @@ export default function SignUp() {
             alignItems: "center",
             background: "white",
             padding: "25px",
-            border: "1px solid #e5e5e5",
+            border: "1px solid #var(--BrandTertiary)",
           }}
         >
           <Box component="form" noValidate method="POST" sx={{ mt: 3 }}>

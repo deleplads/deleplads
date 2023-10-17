@@ -37,7 +37,7 @@ export default function RentalAttributes() {
         <div className="attributes-grid">
           <div className="option">
             {<EvStationOutlinedIcon className="attribute-icon" />}
-            <h2>El-ladestander</h2>
+            <h3>El-ladestander</h3>
             <Radio
               checked={selectedValue === "a"}
               onChange={handleChange}
@@ -49,7 +49,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<VpnKeyOffOutlinedIcon className="attribute-icon" />}
-            <h2>Ingen adgangskode</h2>
+            <h3>Ingen adgangskode</h3>
             <Radio
               checked={selectedValue === "b"}
               onChange={handleChange}
@@ -61,7 +61,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<GarageOutlinedIcon className="attribute-icon" />}
-            <h2>Overdækning</h2>
+            <h3>Overdækning</h3>
             <Radio
               checked={selectedValue === "c"}
               onChange={handleChange}
@@ -73,7 +73,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<AddRoadOutlinedIcon className="attribute-icon" />}
-            <h2>Gadetilgængelig</h2>
+            <h3>Gadetilgængelig</h3>
             <Radio
               checked={selectedValue === "d"}
               onChange={handleChange}
@@ -85,7 +85,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<CameraAltOutlinedIcon className="attribute-icon" />}
-            <h2>Overvågning</h2>
+            <h3>Overvågning</h3>
             <Radio
               checked={selectedValue === "e"}
               onChange={handleChange}
@@ -97,7 +97,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<AccessibleOutlinedIcon className="attribute-icon" />}
-            <h2>Handicapadgang</h2>
+            <h3>Handicapadgang</h3>
             <Radio
               checked={selectedValue === "f"}
               onChange={handleChange}
@@ -109,7 +109,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<LightOutlinedIcon className="attribute-icon" />}
-            <h2>Belysning</h2>
+            <h3>Belysning</h3>
             <Radio
               checked={selectedValue === "g"}
               onChange={handleChange}
@@ -121,7 +121,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<DirectionsSubwayFilledOutlinedIcon className="attribute-icon" />}
-            <h2>Tæt på offentlig transport</h2>
+            <h3>Tæt på offentlig transport</h3>
             <Radio
               checked={selectedValue === "h"}
               onChange={handleChange}
@@ -133,7 +133,7 @@ export default function RentalAttributes() {
           </div>
           <div className="option">
             {<HealthAndSafetyOutlinedIcon className="attribute-icon" />}
-            <h2>Aftenvagter</h2>
+            <h3>Aftenvagter</h3>
             <Radio
               checked={selectedValue === "i"}
               onChange={handleChange}
@@ -148,7 +148,6 @@ export default function RentalAttributes() {
       <RentalNavigation
         back={"/rental/1/avaliability"}
         forward={"/rental/1/notes"}
-        end={3}
         start={50}
       ></RentalNavigation>
     </>

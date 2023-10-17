@@ -103,7 +103,7 @@
 
 .ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions {
   position: sticky;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #var(--BrandTertiary);
   width: inherit;
   top: 205px;
   padding: 25px;
@@ -144,7 +144,7 @@
     background: white;
     margin: 0 -16px;
     padding: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #var(--BrandTertiary);
   }
 }
 

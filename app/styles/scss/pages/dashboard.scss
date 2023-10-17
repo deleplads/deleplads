@@ -22,7 +22,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 25px;
     .DashboardAnalytics {
-      border: 1px solid #e5e5e5;
+      border: 1px solid #var(--BrandTertiary);
       padding: 25px;
       display: flex;
       flex-direction: column;
@@ -56,7 +56,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid #e5e5e5;
+      border: 1px solid #var(--BrandTertiary);
       padding: 25px;
     }
     .header {
@@ -78,7 +78,7 @@
       margin-bottom: 32px;
     }
     .DashboardTransaction {
-      border: 1px solid #e5e5e5;
+      border: 1px solid #var(--BrandTertiary);
       padding: 25px;
       display: flex;
       flex-direction: row;

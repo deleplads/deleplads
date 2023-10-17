@@ -25,6 +25,7 @@ function Hero() {
               textTransform: "initial",
               width: "fit-content",
               borderRadius: "52px",
+              background: "var(--BrandPrimary) !important"
             }}
           >
             Find parkeringsplads

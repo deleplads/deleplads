@@ -12,14 +12,13 @@
     max-width: 600px;
     text-align: center;
     font-size: 18px;
-    margin: 16px 0 20px 0;
+    margin: 16px 0 32px 0;
     line-height: 200%;
   }
   a {
     color: #0a85d1;
     font-weight: 600;
     font-size: 18px;
-    margin-bottom: 30px;
   }
   .inner {
     width: var(--PageWidth);
@@ -35,8 +34,8 @@
       .bigger {
         grid-area: 1 / 4 / 3 / 6;
         border-radius: 24px;
-        background: #191923;
-        padding: 24px;
+        background: var(--BrandSecondary);
+        padding: 24px 32px;
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -60,8 +59,8 @@
       .smaller-upper {
         grid-area: 3 / 4 / 5 / 6;
         border-radius: 24px;
-        background: #191923;
-        padding: 24px;
+        background: var(--BrandSecondary);
+        padding: 24px 32px;
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -85,16 +84,22 @@
       .smaller-lower {
         grid-area: 1 / 1 / 5 / 4;
         border-radius: 24px;
-        background: #191923;
-        padding: 24px;
+        background: var(--BrandSecondary);
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        position: relative;
         .info {
           display: flex;
-          flex-direction: row;
-          align-items: center;
+          flex-direction: column;
+          align-items: left;
           gap: 16px;
+          padding: 24px 32px;
+          span {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+          }
           h3 {
             color: white !important;
             font-size: 20px;
@@ -105,6 +110,7 @@
           text-align: left;
           margin: 0;
           padding: 0;
+          max-width: fit-content;
         }
       }
     }

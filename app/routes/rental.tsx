@@ -25,21 +25,21 @@ export default function Rental() {
           </div>
           <div className="introductionSteps">
             <div className="step">
-              <h2>1. Fortæl os om din parkeringsplads</h2>
+              <h3>1. Fortæl os om din parkeringsplads</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Recusandae soluta eius nostrum doloremque saepe nisi.
               </p>
             </div>
             <div className="step">
-              <h2>2. Få den til at skille sig ud</h2>
+              <h3>2. Få den til at skille sig ud</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Recusandae soluta eius nostrum doloremque saepe nisi.
               </p>
             </div>
             <div className="step">
-              <h2>3. Færdiggør opslaget og offentliggør det</h2>
+              <h3>3. Færdiggør opslaget og offentliggør det</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Recusandae soluta eius nostrum doloremque saepe nisi.

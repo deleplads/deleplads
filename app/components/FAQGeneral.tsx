@@ -63,7 +63,7 @@ export default function VerticalTabs() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>Accordion 1</Typography>
+              <Typography>Hvad koster det at leje parkeringspladser?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -79,7 +79,7 @@ export default function VerticalTabs() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Accordion 2</Typography>
+              <Typography>Hvad sker der, hvis lejer overskrider udlejningsperioden?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -95,7 +95,21 @@ export default function VerticalTabs() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Accordion 2</Typography>
+              <Typography>Skal jeg interagere med andre mennesker ved udlejning?</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+              Det er op til dig. Når du udlejer din parkeringsplads gennem vores hjemmeside, behøver du ikke nødvendigvis at have direkte kontakt med andre mennesker. Alle nødvendige oplysninger om din parkeringsplads er tilgængelige på hjemmesiden, så lejere er godt informerede, inden de kommer for at parkere. På den måde kan du bevare din privatlivssfære hele vejen igennem udlejningsprocessen.
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography>Hvem betaler for en parkeringsafgift?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -111,23 +125,7 @@ export default function VerticalTabs() {
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography>Accordion 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Accordion 2</Typography>
+              <Typography>Hvad sker der, hvis parkeringspladsen er optaget når jeg ankommer?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
