@@ -24,7 +24,7 @@
     margin: 20px 0 30px 0;
   }
   .caption {
-    color: #635bff;
+    color: "var(--BrandAccent)";
     font-family: "Gilroy", sans-serif !important;
     margin: 0;
     text-transform: uppercase;
@@ -41,7 +41,7 @@
   gap: 25px;
   .MuiAccordionSummary-root {
     padding: 20px 30px !important;
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--BrandTertiary);
     box-shadow: none !important;
   }
   #panel1a-content,

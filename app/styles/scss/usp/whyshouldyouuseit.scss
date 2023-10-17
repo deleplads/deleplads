@@ -1,33 +1,26 @@
 .why-should-you-use-it {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 150px;
+  .inner {
+    width: var(--PageWidth);
     display: flex;
-    justify-content: center;
-    .inner {
-      width: var(--PageWidth);
-      padding: 75px 0;
-      h2 {
-        font-size: 48px;
-        line-height: 120%;
-        text-align: center;
-        margin-bottom: 96px;
-      }
-      .why-should-you-use {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        color: black;
-        gap: 40px 64px;
-        .item {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          .icon {
-            border: 1px solid #000;
-            padding: 20px;
-            border-radius: 16px;
-            margin-right: 16px;
-          }
-        }
-      }
+    flex-direction: column;
+    z-index: 999;
+    h2 {
+      font-size: 48px;
+      line-height: 120%;
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      line-height: 200%;
+      padding: 16px 20px;
+      text-align: center;
+      margin: 0 auto;
     }
   }
+}

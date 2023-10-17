@@ -2,48 +2,45 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 150px;
   .inner {
     width: var(--PageWidth);
-    padding: 75px 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    .how-toggle {
+      margin-bottom: 30px;
+    }
     h1 {
       font-size: 48px;
       line-height: 120%;
+      text-align: center;
     }
     p {
-      margin: 30px 0 48px 0;
+      margin: 16px 0 20px 0;
       font-size: 18px;
       line-height: 200%;
+      max-width: 600px;
+      text-align: center;
     }
-    .step-by-step {
-      width: var(--PageWidth);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      h1 {
-        font-size: 40px;
-      }
-      ul {
-        li {
-          display: flex;
-          flex-direction: row;
-          gap: 32px;
-          align-items: flex-start;
-          max-width: 500px;
-          margin-bottom: 32px;
-          span {
-            font-size: 45px;
-            color: #635bff;
-            font-weight: 700;
-            font-family: "Gilroy", sans-serif !important;
-            user-select: none;
+    .how-renter, .how-host {
+      .steps {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 24px;
+        .step {
+          background: var(--BrandTertiary);
+          border-radius: 24px;
+          padding: 24px;
+          h2 {
+            margin-top: 24px;
+            font-size: 20px;
+            letter-spacing: -1px;
           }
           p {
-            font-size: 18px;
-            line-height: 200%;
+            text-align: left !important;
+            margin: 0;
+            font-size: 16px;
           }
         }
       }

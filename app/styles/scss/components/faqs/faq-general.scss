@@ -1,22 +1,17 @@
 .FAQGeneral {
   display: flex;
   justify-content: center;
-  margin: 75px 0;
+  margin-bottom: 125px;
   .inner {
     padding: 0;
     width: var(--PageWidth);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
     h1 {
-      font-size: 40px;
+      font-size: 48px;
       font-weight: 800;
-    }
-    .questions {
-      width: 605px;
-      p {
-        font-size: 18px !important;
-      }
+      letter-spacing: -2px;
     }
     #panel1a-header,
     #panel2a-header,
@@ -28,6 +23,10 @@
       border: none;
       padding: 16px 0;
       font-size: 22px;
+      p {
+        font-size: 18px;
+        line-height: 150%;
+      }
     }
   }
 }

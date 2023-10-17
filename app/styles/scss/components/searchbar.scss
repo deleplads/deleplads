@@ -19,7 +19,7 @@
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #e5e5e5;
+  border-color: #var(--BrandTertiary);
 }
 
 // Mobile media query
@@ -50,6 +50,6 @@
   }
 
   .MuiOutlinedInput-notchedOutline {
-    border-color: #e5e5e5;
+    border-color: #var(--BrandTertiary);
   }
 }

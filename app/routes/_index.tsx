@@ -20,12 +20,11 @@ export default function Index() {
   return (
     <>
       <Hero></Hero>
-
       <Popular></Popular>
       <WhatIsIt></WhatIsIt>
+      <HowShouldYouUseIt></HowShouldYouUseIt>
       <WhyShouldYouUseIt></WhyShouldYouUseIt>
       <SocialProof></SocialProof>
-      <HowShouldYouUseIt></HowShouldYouUseIt>
       <FAQGeneral></FAQGeneral>
       <CallToAction></CallToAction>
       <Footer></Footer>

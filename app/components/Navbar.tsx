@@ -3,14 +3,24 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useEffect, useState } from "react";
 import ChevronDown from "../components/icons/ChevronDown";
-import { useOutletContext, useNavigate, Link } from "@remix-run/react";
-import type { SupabaseOutletContext } from "~/root";
+import { useNavigate, Link } from "@remix-run/react";
 import { slide as BurgerMenu } from "react-burger-menu";
 import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
-import type { Session } from "@supabase/supabase-js";
 import type { Profile } from "db_types";
 import { useMediaQuery } from "react-responsive";
 import { toast } from "react-hot-toast";
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 // const TabletDiv = (tablet: any ) => {
 
@@ -161,6 +171,12 @@ function Navbar(profile: any) {
     setisOpen(state);
   };
 
+  const handleOpen = (): void => {
+
+  }
+
+  
+
   return (
     <>
       <div
@@ -193,9 +209,6 @@ function Navbar(profile: any) {
             </Link>
             <Link to={"/FAQ"} id="contact" className="menu-item">
               FAQ
-            </Link>
-            <Link to={"/sign-up"} id="contact" className="menu-item MButton1">
-              Tilmeld
             </Link>
             <Link to={"/sign-in"} id="contact" className="menu-item MButton2">
               Log ind
@@ -329,8 +342,8 @@ function Navbar(profile: any) {
                     textTransform: "initial",
                     background: "transparent",
                     padding: "12px 20px",
-                    border: "1px solid #e5e5e5",
-                    borderRadius: "52px"
+                    border: "1px solid var(--BrandTertiary)",
+                    borderRadius: "52px",
                   }}
                 >
                   Log ind
@@ -342,8 +355,8 @@ function Navbar(profile: any) {
                     textTransform: "initial",
                     fontWeight: "700",
                     padding: "12px 20px",
-                    background: "var(--BrandPrimary)",
-                    borderRadius: "52px"
+                    background: "var(--BrandAccent)",
+                    borderRadius: "52px",
                   }}
                 >
                   Opret gratis bruger

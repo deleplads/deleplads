@@ -1,17 +1,20 @@
 import { Box } from "@mui/material";
 import SearchBar from "./SearchBar";
 import Button from "@mui/material/Button";
+import Ratings from "./Ratings";
 
 function Hero() {
   return (
     <section className="Hero">
       <div className="HeroInner">
         <span>
+        <Ratings />
           <h1>
-            Leje og udleje af
+            Leje og udleje af private
             <br />
-            private parkeringspladser
+             parkeringspladser
           </h1>
+          
           <SearchBar />
           <Button
             className="SearchButton"
@@ -22,6 +25,7 @@ function Hero() {
               textTransform: "initial",
               width: "fit-content",
               borderRadius: "52px",
+              background: "var(--BrandPrimary) !important"
             }}
           >
             Find parkeringsplads

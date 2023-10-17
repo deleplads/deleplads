@@ -2,9 +2,9 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 150px;
   .inner {
     width: var(--PageWidth);
-    padding: 75px 0;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -20,11 +20,11 @@
     .solutions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 24px;
       .solution-one {
-        background: #f1f7f0;
+        background: var(--BrandSecondary);
         padding: 48px;
-        border-radius: 8px;
+        border-radius: 24px;
         span {
           margin-top: 48px;
           display: flex;
@@ -34,9 +34,9 @@
         }
       }
       .solution-two {
-        background: #f1f7f0;
+        background: var(--BrandSecondary);
         padding: 48px;
-        border-radius: 8px;
+        border-radius: 24px;
         span {
           margin-top: 48px;
           display: flex;

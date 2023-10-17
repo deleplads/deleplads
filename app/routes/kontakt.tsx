@@ -77,7 +77,7 @@ export default function Leje() {
                 textTransform: "initial",
                 borderRadius: "8px",
                 fontWeight: "600",
-                background: "#635bff",
+                background: "var(--BrandAccent)",
               }}
             >
               Send

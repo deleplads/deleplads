@@ -7,7 +7,7 @@
   position: fixed;
   width: 100%;
   background: white;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--BrandTertiary);
 }
 
 .NavigationBar .InnerNavigationBar {
@@ -60,7 +60,7 @@
     background: white;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--BrandTertiary);
     z-index: 1000;
     padding: 0 16px;
   }
@@ -119,7 +119,7 @@
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #e5e5e5;
+  border-color: var(--BrandTertiary);
 }
 
 .SEJT {
@@ -218,7 +218,7 @@
 }
 
 .avaliability .ikke-ledig {
-  background: #e5e5e5;
+  background: var(--BrandTertiary);
 }
 
 .bonus-info {
@@ -245,8 +245,8 @@
   align-items: center;
   color: #333333;
   box-sizing: border-box;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid var(--BrandTertiary);
+  border-bottom: 1px solid var(--BrandTertiary);
 }
 
 .Footer .FooterInner {
@@ -283,7 +283,7 @@
   width: 1080px;
   padding: 50px 0;
   font-size: 16px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--BrandTertiary);
 }
 
 .Footer .FooterBottom a {
@@ -304,7 +304,7 @@
     background: white;
     width: 100% !important;
     height: auto;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--BrandTertiary);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -344,7 +344,7 @@
     width: 100%;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--BrandTertiary);
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -445,7 +445,7 @@
 
 .faq-accordions .MuiAccordionSummary-root {
   padding: 20px 30px !important;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   box-shadow: none !important;
 }
 
@@ -581,7 +581,7 @@
 }
 
 .line {
-  border-left: 1px solid #e5e5e5;
+  border-left: 1px solid var(--BrandTertiary);
   height: 100%;
   position: absolute;
   left: 50%;
@@ -597,7 +597,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   margin-left: -28px;
   background: white;
   outline: 20px solid white;
@@ -630,7 +630,7 @@
 
 .leleje-accordions .MuiAccordionSummary-root {
   padding: 20px 30px !important;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   box-shadow: none !important;
 }
 
@@ -710,7 +710,7 @@
 }
 
 .line {
-  border-left: 1px solid #e5e5e5;
+  border-left: 1px solid var(--BrandTertiary);
   height: 100%;
   position: absolute;
   left: 50%;
@@ -726,7 +726,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   margin-left: -28px;
   background: white;
   outline: 20px solid white;
@@ -759,7 +759,7 @@
 
 .udleje-accordions .MuiAccordionSummary-root {
   padding: 20px 30px !important;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   box-shadow: none !important;
 }
 
@@ -905,7 +905,7 @@
 
 .ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions {
   position: sticky;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   width: inherit;
   top: 205px;
   padding: 25px;
@@ -946,7 +946,7 @@
     background: white;
     margin: 0 -16px;
     padding: 16px;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--BrandTertiary);
   }
 }
 .Dashboard {
@@ -978,7 +978,7 @@
 }
 
 .Dashboard #DashboardOverviewAnalytics .DashboardAnalytics {
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -1018,7 +1018,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   padding: 25px;
 }
 
@@ -1045,7 +1045,7 @@
 }
 
 .Dashboard #DashboardTransactionHistory .DashboardTransaction {
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--BrandTertiary);
   padding: 25px;
   display: flex;
   flex-direction: row;

@@ -20,7 +20,7 @@
     line-height: 200%;
   }
   .caption {
-    color: #635bff;
+    color: "var(--BrandAccent)";
     font-family: "Gilroy", sans-serif !important;
     margin: 0;
     text-transform: uppercase;
@@ -65,7 +65,7 @@
       margin-bottom: 32px;
       span {
         font-size: 45px;
-        color: #635bff;
+        color: "var(--BrandAccent)";
         font-weight: 700;
         font-family: "Gilroy", sans-serif !important;
         user-select: none;
@@ -95,7 +95,7 @@
       margin: 0 0 64px 0;
     }
     .caption {
-      color: #635bff;
+      color: "var(--BrandAccent)";
       font-family: "Gilroy", sans-serif !important;
       margin: 0;
       text-transform: uppercase;
