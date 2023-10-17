@@ -6,6 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { renderTimeViewClock } from "@mui/x-date-pickers/timeViewRenderers";
 import "dayjs/locale/en-gb";
+import dayjs from "dayjs";
 
 function SearchBar() {
   const [age, setAge] = React.useState("");
@@ -25,7 +26,9 @@ function SearchBar() {
       <span>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
-            label="Fra hvornår?"
+            format="DD/MM hh:ss"
+            ampm={false}
+            label="Starttidspunkt"
             viewRenderers={{
               hours: renderTimeViewClock,
               minutes: renderTimeViewClock,
@@ -33,7 +36,9 @@ function SearchBar() {
             }}
           />
           <DateTimePicker
-            label="Til hvornår?"
+            format="DD/MM hh:ss"
+            ampm={false}
+            label="Sluttidspunkt"
             viewRenderers={{
               hours: renderTimeViewClock,
               minutes: renderTimeViewClock,
