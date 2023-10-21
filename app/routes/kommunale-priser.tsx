@@ -1,10 +1,12 @@
 import type { LoaderFunction, V2_MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { getAllcommunes } from "utils/commune.server";
 import Footer from "~/components/Footer";
 
 export const loader: LoaderFunction = async ({ request }) => {
   try {
-    
-    return {}
+    const communes = await getAllcommunes();
+    return {communes}
   } catch (error) {
     return { error };
   }
@@ -19,6 +21,10 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export default function KommunalePriser() {
+  const  { communes } = useLoaderData();
+console.log(communes);
+
+
   return (
     <>
       <section className="kommunale-priser">
