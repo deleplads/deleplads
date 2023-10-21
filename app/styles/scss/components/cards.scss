@@ -5,11 +5,14 @@
     text-align: left;
     .gallery-cards-content-info {
       padding: 32px;
-
+        h3 {
+          font-size: 20px;
+        }
       .gallery-cards-attributes {
         display: grid;
         grid-template-columns: 1fr 1fr;
         row-gap: 16px;
+        margin: 16px 0;
         .gallery-cards-attribute {
           display: flex;
           flex-direction: row;
@@ -20,17 +23,20 @@
     .price {
       color: black;
       background: var(--BrandTertiary);
-      border-radius: 16px;
       display: flex;
       justify-content: center;
       font-size: 15;
       font-weight: 600;
       line-height: 24px;
-      padding: 9.125px 22px;
+      padding: 12px 20px;
       margin-bottom: 16px;
     }
   }
   &:hover {
     cursor: pointer;
   }
+}
+
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  box-shadow: none !important;
 }

@@ -43,6 +43,16 @@ export default function RentalLocation() {
               variant="outlined"
               className="rental-input"
             />
+            <iframe
+              title="SHIT"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.579493914321!2d12.536347670690457!3d55.65536410407578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46525381652cfd11%3A0x6496d86f15f53006!2sEngelbert-Petersens%20Bageri!5e0!3m2!1sda!2sdk!4v1691516861738!5m2!1sda!2sdk"
+              width="100%"
+              height="325"
+              style={{ border: 0, marginTop: "25px" }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </Form>
           <div className="specific-location">
             <span>

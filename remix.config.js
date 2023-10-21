@@ -6,6 +6,18 @@ module.exports = {
   // so we default back to the standard build output.
   server: process.env.NODE_ENV === "development" ? undefined : "./server.ts",
   serverBuildPath: "api/index.js",
+  serverDependenciesToBundle: [
+    "swiper",
+    "swiper/react",
+    "swiper/modules/navigation",
+    "swiper/react/swiper-react.js",
+    "ssr-window",
+    "ssr-window/ssr-window.esm.js",
+    "dom7",
+    "swiper/react",
+    "swiper/react/swiper-react.esm.js",
+    "swiper/css", // Include Swiper CSS
+  ],
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",

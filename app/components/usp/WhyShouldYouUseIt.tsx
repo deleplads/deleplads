@@ -1,15 +1,12 @@
 "use client";
 import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Button,
-} from "@mui/material";
+import { Button } from "@mui/material";
+import RecyclingIcon from "@mui/icons-material/Recycling";
+import PriceCheckIcon from "@mui/icons-material/PriceCheck";
+import TagFacesIcon from "@mui/icons-material/TagFaces";
+import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -58,7 +55,6 @@ export function WhyShouldYouUseIt() {
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo iusto
           voluptates earum voluptatem consequuntur mollitia fugit asperiores at
-          porro soluta!
         </p>
         <Button
           variant="contained"
@@ -69,42 +65,49 @@ export function WhyShouldYouUseIt() {
             background: "var(--BrandAccent)",
             width: "fit-content",
             margin: "0 auto",
-            marginBottom: "32px",
+            marginBottom: "64px",
+            fontWeight: 700,
+            padding: "12px 20px"
           }}
           className="CallToActionButton"
         >
           Tilmeld gratis
         </Button>
-        <Box
-          sx={{
-            flexGrow: 1,
-            bgcolor: "background.paper",
-            display: "flex",
-            height: "auto",
-          }}
-        >
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            sx={{ borderRight: 1, borderColor: "divider" }}
-          >
-            <Tab label="Miljøvenlig" {...a11yProps(0)} />
-            <Tab label="Billigere end konkurrenterne" {...a11yProps(1)} />
-            <Tab label="Bekvemmelig" {...a11yProps(2)} />
-          </Tabs>
-          <TabPanel value={value} index={0}>
-            Miljøvenlig
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            Item Two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Item Three
-          </TabPanel>
-        </Box>
+        <div className="benefits">
+          <div className="benefit">
+            {<RecyclingIcon className="attribute-icon" />}{" "}
+            <h3>Bæredygtig resourcefordeling</h3>
+            <p>
+              I takt med færre parkeringspladser i storbyerne, er det
+              miljømæssigt bedre at benytte de eksisterende
+              parkeringsmuligheder.
+            </p>
+          </div>
+          <div className="benefit">
+            {<VerifiedUserOutlinedIcon className="attribute-icon" />}{" "}
+            <h3>Sikre og trygge interaktioner</h3>
+            <p>
+              På platformen er alle brugere verificerede, hvilket understøtter
+              en sikker og tryg brugeroplevelse for alle.
+            </p>
+          </div>
+          <div className="benefit">
+            {<PriceCheckIcon className="attribute-icon" />}{" "}
+            <h3>Billigere end konkurrenterne</h3>
+            <p>
+              Vi bestræber os på, altid at være billigere end konkurrenterne.
+              Vores system er designet til at kunne prismatche.
+            </p>
+          </div>
+          <div className="benefit">
+            {<TagFacesIcon className="attribute-icon" />}{" "}
+            <h3>Nem og enkel brugeroplevelse</h3>
+            <p>
+              Scale your traffic, content, and site performance to match your
+              business — without worrying about reliability.
+            </p>
+          </div>
+        </div>
       </div>
     </main>
   );
