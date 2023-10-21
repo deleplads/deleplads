@@ -1,4 +1,4 @@
-import type { LoaderFunction, V2_MetaFunction } from "@remix-run/node";
+import { type LoaderFunction, type V2_MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getAllcommunes } from "utils/commune.server";
 import Footer from "~/components/Footer";
@@ -11,7 +11,14 @@ export const loader: LoaderFunction = async ({ request }) => {
     return { error };
   }
 }
-
+function formatDate(dateString: string | number | Date) {
+  const date = new Date(dateString);
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+  const year = date.getUTCFullYear();
+  
+  return `${day}-${month}-${year}`;
+}
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -22,7 +29,6 @@ export const meta: V2_MetaFunction = () => {
 
 export default function KommunalePriser() {
   const  { communes } = useLoaderData();
-console.log(communes);
 
 
   return (
@@ -31,13 +37,23 @@ console.log(communes);
         <h2>HTML Table</h2>
 
         <table>
-          <tr>
-            <th>Kommune</th>
-            <th>Gennemsnitspris</th>
-            <th>Sidst opdateret</th>
-          </tr>
-          
-        </table>
+  <thead>
+    <tr>
+      <th>Kommune</th>
+      <th>Gennemsnitspris</th>
+      <th>Sidst opdateret</th>
+    </tr>
+  </thead>
+  <tbody>
+    {communes.map(element => 
+      <tr key={element.commune}>
+        <td>{element.commune}</td>
+        <td>{element.price}</td>
+        <td>{formatDate(element.updated_at)}</td>
+      </tr>
+      )}
+  </tbody>
+</table>
       </section>
       <Footer></Footer>
     </>
