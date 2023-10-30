@@ -8,15 +8,13 @@ function WhatIsIt() {
       <div className="inner">
         <h1>Byens bedste parkeringshemmelighed</h1>
         <p>
-          You get 7 days to try it for free. And if it's not what you expected,
-          <br />
-          we guarantee your money back within the first two weeks.
+          En deleøkonomisk platform, der matcher lejere og udlejere af private parkeringspladser — nemt, enkelt og billigt.
         </p>
         <div className="solutions">
           <div className="solution-one">
             <Box component="img" src="./placeholderr.png" className="stars" />
             <span>
-              løsning
+              Lej private parkeringspladser
               <Button
                 className="usp-button"
                 variant="contained"
@@ -24,8 +22,9 @@ function WhatIsIt() {
                   background: "var(--BrandAccent)",
                   color: "#FFF",
                   textTransform: "initial",
-                  fontWeight: 600,
-                  fontSize: "14px",
+                  fontWeight: 700,
+                  fontSize: "15px",
+                  padding: "12px 20px"
                 }}
               >
                 Læs mere
@@ -35,7 +34,7 @@ function WhatIsIt() {
           <div className="solution-two">
             <Box component="img" src="./placeholderr.png" className="stars" />
             <span>
-              Privatudlejning
+              Udlej din parkeringsplads
               <Button
                 className="usp-button"
                 variant="contained"
@@ -43,8 +42,9 @@ function WhatIsIt() {
                   background: "var(--BrandAccent)",
                   color: "#FFF",
                   textTransform: "initial",
-                  fontWeight: 600,
-                  fontSize: "14px",
+                  fontWeight: 700,
+                  fontSize: "15px",
+                  padding: "12px 20px"
                 }}
               >
                 Læs mere

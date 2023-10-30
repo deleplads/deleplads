@@ -831,7 +831,8 @@
 
 .rentalLocation {
   margin: 0 auto;
-  height: 100vh;
+  height: auto;
+  padding: 200px 0;
   width: 1080px;
   display: flex;
   flex-direction: column;
@@ -962,16 +963,52 @@
   font-size: 48px;
 }
 
+.recommended-price {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: baseline;
+}
+.recommended-price h2 {
+  font-size: 32px;
+}
+.recommended-price p {
+  margin: 0;
+}
+
+.set-custom-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 24px;
+  padding: 16px 24px;
+  border: 1px solid var(--BrandTertiary);
+}
+.set-custom-price span p {
+  margin: 0 !important;
+}
+
+.custom-price {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between !important;
+  align-items: center;
+  margin: 24px 0;
+}
+
 .rental-navigation {
   height: 85px;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0 !important;
   left: auto;
   right: auto;
   display: flex;
   justify-content: center;
   border-top: 1px solid var(--BrandTertiary);
+  background: white;
 }
 .rental-navigation .inner {
   width: var(--PageWidth);
@@ -981,7 +1018,7 @@
 }
 
 .CreationProgressBar {
-  position: absolute;
+  position: fixed;
   bottom: 85px;
   margin: 0;
   padding: 0;
@@ -1023,6 +1060,31 @@
     max-width: 400px;
   }
 }
+.kommunale-priser {
+  color: var(--BrandPrimary);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 200px 0;
+}
+.kommunale-priser table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: var(--PageWidth);
+}
+.kommunale-priser td,
+.kommunale-priser th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.kommunale-priser tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 @media only screen and (min-width: 1399.98px) {
   .CallToAction {
     background: var(--BrandSecondary);
@@ -1100,7 +1162,7 @@
     width: 100%;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #var --BrandTertiary;
+    border-top: 1px solid var(--BrandTertiary);
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1162,7 +1224,7 @@
     width: 100%;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #var --BrandTertiary;
+    border-top: 1px solid var(--BrandTertiary);
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1221,7 +1283,7 @@
     width: 1080px;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #var --BrandTertiary;
+    border-top: 1px solid var(--BrandTertiary);
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1275,7 +1337,7 @@
     width: 1080px;
     padding: 50px 0;
     font-size: 16px;
-    border-top: 1px solid #var --BrandTertiary;
+    border-top: 1px solid var(--BrandTertiary);
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1329,7 +1391,7 @@
     width: var(--PageWidth);
     padding: 50px 0 0 0;
     font-size: 16px;
-    border-top: 1px solid #var --BrandTertiary;
+    border-top: 1px solid var(--BrandTertiary);
   }
   .Footer .FooterBottom a {
     text-decoration: none;
@@ -1523,7 +1585,7 @@
     background: white;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #var --BrandTertiary;
+    border-bottom: 1px solid var(--BrandTertiary);
     z-index: 1000;
     padding: 0 16px;
   }
@@ -1859,10 +1921,14 @@
 .gallery-cards .gallery-cards-content .gallery-cards-content-info {
   padding: 32px;
 }
+.gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
+  font-size: 20px;
+}
 .gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 16px;
+  margin: 16px 0;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes .gallery-cards-attribute {
   display: flex;
@@ -1872,17 +1938,20 @@
 .gallery-cards .gallery-cards-content .price {
   color: black;
   background: var(--BrandTertiary);
-  border-radius: 16px;
   display: flex;
   justify-content: center;
   font-size: 15;
   font-weight: 600;
   line-height: 24px;
-  padding: 9.125px 22px;
+  padding: 12px 20px;
   margin-bottom: 16px;
 }
 .gallery-cards:hover {
   cursor: pointer;
+}
+
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  box-shadow: none !important;
 }
 
 .FAQLeje {
@@ -2018,6 +2087,29 @@
   text-align: center;
   margin: 0 auto;
 }
+.why-should-you-use-it .inner .benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px;
+}
+.why-should-you-use-it .inner .benefits .benefit {
+  color: black;
+  border: 1px solid var(--BrandTertiary);
+  padding: 32px 40px;
+}
+.why-should-you-use-it .inner .benefits .benefit .attribute-icon {
+  height: 112px;
+  width: auto;
+}
+.why-should-you-use-it .inner .benefits .benefit h3 {
+  font-size: 24px;
+  margin: 48px 0 16px 0;
+}
+.why-should-you-use-it .inner .benefits .benefit p {
+  font-size: 16px;
+  text-align: left;
+  padding: 0;
+}
 
 .how-should-you-use-it {
   width: 100%;
@@ -2031,9 +2123,6 @@
   flex-direction: column;
   align-items: center;
 }
-.how-should-you-use-it .inner .how-toggle {
-  margin-bottom: 30px;
-}
 .how-should-you-use-it .inner h1 {
   font-size: 48px;
   line-height: 120%;
@@ -2046,25 +2135,48 @@
   max-width: 600px;
   text-align: center;
 }
-.how-should-you-use-it .inner .how-renter .steps, .how-should-you-use-it .inner .how-host .steps {
+.how-should-you-use-it .inner .how-renter .steps,
+.how-should-you-use-it .inner .how-host .steps {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
-.how-should-you-use-it .inner .how-renter .steps .step, .how-should-you-use-it .inner .how-host .steps .step {
-  background: var(--BrandTertiary);
+.how-should-you-use-it .inner .how-renter .steps .step,
+.how-should-you-use-it .inner .how-host .steps .step {
+  border: 1px solid var(--BrandTertiary);
   border-radius: 24px;
   padding: 24px;
 }
-.how-should-you-use-it .inner .how-renter .steps .step h2, .how-should-you-use-it .inner .how-host .steps .step h2 {
-  margin-top: 24px;
-  font-size: 20px;
+.how-should-you-use-it .inner .how-renter .steps .step h2,
+.how-should-you-use-it .inner .how-host .steps .step h2 {
+  margin: 24px 0 16px 0;
+  font-size: 24px;
   letter-spacing: -1px;
 }
-.how-should-you-use-it .inner .how-renter .steps .step p, .how-should-you-use-it .inner .how-host .steps .step p {
+.how-should-you-use-it .inner .how-renter .steps .step p,
+.how-should-you-use-it .inner .how-host .steps .step p {
   text-align: left !important;
   margin: 0;
   font-size: 16px;
+}
+.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  text-transform: initial;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif !important;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: white;
+  background: #146ef5;
+}
+.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  color: black;
+  border: 1px solid #e5e5e5;
+  margin: 0 4px 64px 4px;
+}
+.how-should-you-use-it .css-1aquho2-MuiTabs-indicator {
+  display: none;
 }
 
 .what-is-it {
@@ -2078,6 +2190,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
 }
 .what-is-it .inner h1 {
   font-size: 48px;
@@ -2087,6 +2200,7 @@
   margin: 30px 0 48px 0;
   font-size: 18px;
   line-height: 200%;
+  max-width: 600px;
 }
 .what-is-it .inner .solutions {
   display: grid;
@@ -2094,7 +2208,7 @@
   gap: 24px;
 }
 .what-is-it .inner .solutions .solution-one {
-  background: var(--BrandSecondary);
+  border: 1px solid var(--BrandTertiary);
   padding: 48px;
   border-radius: 24px;
 }
@@ -2106,7 +2220,7 @@
   align-items: center;
 }
 .what-is-it .inner .solutions .solution-two {
-  background: var(--BrandSecondary);
+  border: 1px solid var(--BrandTertiary);
   padding: 48px;
   border-radius: 24px;
 }

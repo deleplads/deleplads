@@ -74,7 +74,8 @@
 
 .rentalLocation {
   margin: 0 auto;
-  height: 100vh;
+  height: auto;
+  padding: 200px 0;
   width: 1080px;
   display: flex;
   flex-direction: column;
@@ -231,18 +232,58 @@
   }
 }
 
+// rental price
+
+.recommended-price {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: baseline;
+  h2 {
+    font-size: 32px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.set-custom-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 24px;
+  padding: 16px 24px;
+  border: 1px solid var(--BrandTertiary);
+  span {
+    p {
+      margin: 0 !important;
+    }
+  }
+}
+
+.custom-price {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between !important;
+  align-items: center;
+  margin: 24px 0;
+}
+
 // Rental navigation
 
 .rental-navigation {
   height: 85px;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0 !important;
   left: auto;
   right: auto;
   display: flex;
   justify-content: center;
   border-top: 1px solid var(--BrandTertiary);
+  background: white;
 
   .inner {
     width: var(--PageWidth);
@@ -255,7 +296,7 @@
 // Progress bar
 
 .CreationProgressBar {
-  position: absolute;
+  position: fixed;
   bottom: 85px;
   margin: 0;
   padding: 0;

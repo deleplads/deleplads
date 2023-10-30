@@ -25,12 +25,90 @@ model profiles {
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model user {
-  created_at DateTime  @default(now()) @db.Timestamptz(6)
-  email      String    @unique
-  password   String
-  updated_at DateTime  @updatedAt
-  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  profiles   profiles?
+  created_at   DateTime       @default(now()) @db.Timestamptz(6)
+  email        String         @unique
+  password     String
+  updated_at   DateTime       @updatedAt
+  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  parkingspots parkingspots[]
+  profiles     profiles?
+
+  @@schema("public")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model commune_prices {
+  id         Int   @id(map: "CommunePrices_pkey") @default(autoincrement())
+  commune    String?  @db.VarChar
+  price      Float?
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  zipcode    Int?
+
+  @@schema("public")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model parkingspot_details {
+  id                                                     BigInt        @id(map: "parking_spot_details_pkey") @default(autoincrement())
+  electric                                               Boolean?      @default(false)
+  code                                                   String?
+  surveillance                                           Boolean?      @default(false)
+  street_access                                          Boolean?      @default(false)
+  created_at                                             DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at                                             DateTime?     @default(now()) @db.Timestamptz(6)
+  spot_id                                                BigInt?
+  cover                                                  Boolean?      @default(false)
+  light                                                  Boolean?      @default(false)
+  night_guards                                           Boolean?      @default(false)
+  public_transport                                       Boolean?      @default(false)
+  handicap                                               Boolean?      @default(false)
+  parkingspots_parkingspot_details_idToparkingspots      parkingspots  @relation("parkingspot_details_idToparkingspots", fields: [id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  parkingspots_parkingspot_details_spot_idToparkingspots parkingspots? @relation("parkingspot_details_spot_idToparkingspots", fields: [spot_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model parkingspots {
+  price                                                         Float?                @db.Real
+  street_nr                                                     Int?                  @db.SmallInt
+  created_at                                                    DateTime              @default(now()) @db.Timestamptz(6)
+  updated_at                                                    DateTime?             @default(now()) @db.Timestamp(6)
+  street                                                        String?
+  postal_code                                                   Int?                  @db.SmallInt
+  city                                                          String?
+  id                                                            BigInt                @id(map: "parking_spots_pkey")
+  owner_id                                                      String?               @db.Uuid
+  notes                                                         String?
+  show_street_nr                                                Boolean?
+  availability_type                                             String?
+  status                                                        String?
+  parkingspot_details_parkingspot_details_idToparkingspots      parkingspot_details?  @relation("parkingspot_details_idToparkingspots")
+  parkingspot_details_parkingspot_details_spot_idToparkingspots parkingspot_details[] @relation("parkingspot_details_spot_idToparkingspots")
+  user                                                          user?                 @relation(fields: [owner_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  prices                                                         price[]
+
+  @@schema("public")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model price {
+  id                    BigInt        @id @default(autoincrement())
+  created_at            DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at            DateTime?     @default(now()) @db.Timestamptz(6)
+  noon_price            Int?          @db.SmallInt
+  morning_price         Int?          @db.SmallInt
+  evening_price         Int?          @db.SmallInt
+  weekend_evening_price Int?          @db.SmallInt
+  weekend_noon_price    Int?          @db.SmallInt
+  weekend_morning_price Int?          @db.SmallInt
+  recommended_price     Int?          @db.SmallInt
+  spot_id               BigInt?
+  parkingspots          parkingspots? @relation(fields: [spot_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@schema("public")
 }

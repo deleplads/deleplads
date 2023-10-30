@@ -60,8 +60,9 @@ export default function BasicCard() {
               href="#"
               sx={{
                 textTransform: "initial",
-                borderRadius: "16px",
+                padding: "12px 20px",
                 width: "100%",
+                fontWeight: 700,
                 background: "var(--BrandAccent)",
               }}
             >

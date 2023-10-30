@@ -26,8 +26,8 @@ function HowShouldYouUseIt() {
             centered
             className="how-toggle"
           >
-            <Tab label="Lejere" />
-            <Tab label="Udljere" />
+            <Tab label="For udlejere" />
+            <Tab label="For lejere" />
           </Tabs>
 
           {value === 0 && (
@@ -35,11 +35,29 @@ function HowShouldYouUseIt() {
               <div className="steps">
                 <div className="step">
                   <Box
-                    sx={{ width: "100%" }}
-                    component="img"
-                    src="../placeholderr.png"
-                  />
-                  <h2>1. Opret dig på portalen</h2>
+                    sx={{ width: "100%", height: "auto" }}
+                    component="video"
+                    src="./creation.mov"
+                    loop
+                    autoPlay
+                    muted
+                  ></Box>
+                  <h2>1. Tilmeld dig</h2>
+                  <p>
+                    For at komme i gang, skal du oprette en brugerprofil — det
+                    er 100% gratis.
+                  </p>
+                </div>
+                <div className="step">
+                  <Box
+                    sx={{ width: "100%", height: "auto" }}
+                    component="video"
+                    src="./creation.mov"
+                    loop
+                    autoPlay
+                    muted
+                  ></Box>
+                  <h2>2. Bliv verificeret</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Enim temporibus adipisci.
@@ -47,11 +65,14 @@ function HowShouldYouUseIt() {
                 </div>
                 <div className="step">
                   <Box
-                    sx={{ width: "100%" }}
-                    component="img"
-                    src="../placeholderr.png"
-                  />
-                  <h2>2. Opret dig på portalen</h2>
+                    sx={{ width: "100%", height: "auto" }}
+                    component="video"
+                    src="./creation.mov"
+                    loop
+                    autoPlay
+                    muted
+                  ></Box>
+                  <h2>3. Tilknyt betalingskort</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Enim temporibus adipisci.
@@ -59,11 +80,14 @@ function HowShouldYouUseIt() {
                 </div>
                 <div className="step">
                   <Box
-                    sx={{ width: "100%" }}
-                    component="img"
-                    src="../placeholderr.png"
-                  />
-                  <h2>3. Opret dig på portalen</h2>
+                    sx={{ width: "100%", height: "auto" }}
+                    component="video"
+                    src="./creation.mov"
+                    loop
+                    autoPlay
+                    muted
+                  ></Box>
+                  <h2>4. Opret udbud</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Enim temporibus adipisci.
@@ -71,11 +95,14 @@ function HowShouldYouUseIt() {
                 </div>
                 <div className="step">
                   <Box
-                    sx={{ width: "100%" }}
-                    component="img"
-                    src="../placeholderr.png"
-                  />
-                  <h2>4. Opret dig på portalen</h2>
+                    sx={{ width: "100%", height: "auto" }}
+                    component="video"
+                    src="./creation.mov"
+                    loop
+                    autoPlay
+                    muted
+                  ></Box>
+                  <h2>5. Accepter anmodninger</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Enim temporibus adipisci.
@@ -83,23 +110,14 @@ function HowShouldYouUseIt() {
                 </div>
                 <div className="step">
                   <Box
-                    sx={{ width: "100%" }}
-                    component="img"
-                    src="../placeholderr.png"
-                  />
-                  <h2>5. Opret dig på portalen</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Enim temporibus adipisci.
-                  </p>
-                </div>
-                <div className="step">
-                  <Box
-                    sx={{ width: "100%" }}
-                    component="img"
-                    src="../placeholderr.png"
-                  />
-                  <h2>6. Opret dig på portalen</h2>
+                    sx={{ width: "100%", height: "auto" }}
+                    component="video"
+                    src="./creation.mov"
+                    loop
+                    autoPlay
+                    muted
+                  ></Box>
+                  <h2>6. Tjen penge</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Enim temporibus adipisci.

@@ -22,29 +22,28 @@ const style = {
   p: 4,
 };
 
-// const TabletDiv = (tablet: any ) => {
+const TabletDiv = (tablet: any) => {
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
-//   const [anchorElUser, setAnchorElUser] = useState(null);
+  const handleOpenUserMenu = (event: any) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-//   const handleOpenUserMenu = (event: any) => {
-//     setAnchorElUser(event.currentTarget);
-//   };
-
-//   const handleCloseUserMenu = () => {
-//     setAnchorElUser(null);
-//   };
-//   return tablet ? (
-//     <Tooltip title="Open settings">
-//       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-//         <Avatar
-//           sx={{ width: "40px", height: "40px" }}
-//           alt="Remy Sharp"
-//           src="../../profile-picture-placeholder.jpg"
-//         />
-//       </IconButton>
-//     </Tooltip>
-//   ) : null;
-// };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  return tablet ? (
+    <Tooltip title="Open settings">
+      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+        <Avatar
+          sx={{ width: "40px", height: "40px" }}
+          alt="Remy Sharp"
+          src="../../profile-picture-placeholder.jpg"
+        />
+      </IconButton>
+    </Tooltip>
+  ) : null;
+};
 
 interface LoaderData {
   profile: Profile;
@@ -171,11 +170,7 @@ function Navbar(profile: any) {
     setisOpen(state);
   };
 
-  const handleOpen = (): void => {
-
-  }
-
-  
+  const handleOpen = (): void => {};
 
   return (
     <>
@@ -342,8 +337,7 @@ function Navbar(profile: any) {
                     textTransform: "initial",
                     background: "transparent",
                     padding: "12px 20px",
-                    border: "1px solid var(--BrandTertiary)",
-                    borderRadius: "52px",
+                    border: "none",
                   }}
                 >
                   Log ind
@@ -356,7 +350,6 @@ function Navbar(profile: any) {
                     fontWeight: "700",
                     padding: "12px 20px",
                     background: "var(--BrandAccent)",
-                    borderRadius: "52px",
                   }}
                 >
                   Opret gratis bruger

@@ -19,13 +19,13 @@ function Hero() {
           <Button
             className="SearchButton"
             variant="contained"
-            size="large"
             href="#"
             sx={{
               textTransform: "initial",
+              fontSize: "15px",
               width: "fit-content",
-              borderRadius: "52px",
-              background: "var(--BrandPrimary) !important"
+              padding: "12px 20px !important",
+              background: "var(--BrandAccent) !important"
             }}
           >
             Find parkeringsplads

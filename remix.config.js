@@ -1,11 +1,28 @@
 /** @type {import('@remix-run/dev').AppConfig} */
+const { flatRoutes } = require('remix-flat-routes')
+
 module.exports = {
   ignoredRouteFiles: ["**/.*"],
+  routes: async defineRoutes => {
+    return flatRoutes('routes', defineRoutes)
+  },
   // When running locally in development mode, we use the built-in remix
   // server. This does not understand the vercel lambda module format,
   // so we default back to the standard build output.
   server: process.env.NODE_ENV === "development" ? undefined : "./server.ts",
   serverBuildPath: "api/index.js",
+  serverDependenciesToBundle: [
+    "swiper",
+    "swiper/react",
+    "swiper/modules/navigation",
+    "swiper/react/swiper-react.js",
+    "ssr-window",
+    "ssr-window/ssr-window.esm.js",
+    "dom7",
+    "swiper/react",
+    "swiper/react/swiper-react.esm.js",
+    "swiper/css", // Include Swiper CSS
+  ],
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
