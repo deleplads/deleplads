@@ -18,7 +18,7 @@ import {
   toast,
   Toaster
 } from "react-hot-toast";
-import {   register } from "../../utils/auth.server";
+import {   register } from "../../../utils/auth.server";
 import type { ActionFunction} from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useEffect, useState } from "react";

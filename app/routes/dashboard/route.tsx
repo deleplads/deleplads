@@ -1,5 +1,7 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Footer from "../components/Footer";
+import Footer from "~/components/Footer";
+import type {
+  SelectChangeEvent} from "@mui/material";
 import {
   Avatar,
   Box,
@@ -7,10 +9,9 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemText,
-  SelectChangeEvent,
+  ListItemText
 } from "@mui/material";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import AddIcon from "@mui/icons-material/Add";
 
 export const meta: V2_MetaFunction = () => {
