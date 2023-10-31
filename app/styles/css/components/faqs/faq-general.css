@@ -1,0 +1,38 @@
+.FAQGeneral {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 125px;
+}
+.FAQGeneral .inner {
+  padding: 0;
+  width: var(--PageWidth);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.FAQGeneral .inner h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+.FAQGeneral .inner #panel1a-header,
+.FAQGeneral .inner #panel2a-header,
+.FAQGeneral .inner #panel3a-header,
+.FAQGeneral .inner #panel4a-header,
+.FAQGeneral .inner #panel5a-header,
+.FAQGeneral .inner .MuiPaper-root {
+  box-shadow: none;
+  border: none;
+  padding: 16px 0;
+  font-size: 22px;
+}
+.FAQGeneral .inner #panel1a-header p,
+.FAQGeneral .inner #panel2a-header p,
+.FAQGeneral .inner #panel3a-header p,
+.FAQGeneral .inner #panel4a-header p,
+.FAQGeneral .inner #panel5a-header p,
+.FAQGeneral .inner .MuiPaper-root p {
+  font-size: 18px;
+  line-height: 150%;
+}
+
+/*# sourceMappingURL=faq-general.css.map */

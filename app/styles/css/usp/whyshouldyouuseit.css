@@ -1,0 +1,51 @@
+.why-should-you-use-it {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 150px;
+}
+.why-should-you-use-it .inner {
+  width: var(--PageWidth);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+.why-should-you-use-it .inner h2 {
+  font-size: 48px;
+  line-height: 120%;
+  text-align: center;
+}
+.why-should-you-use-it .inner p {
+  font-size: 18px;
+  max-width: 600px;
+  line-height: 200%;
+  padding: 16px 20px;
+  text-align: center;
+  margin: 0 auto;
+}
+.why-should-you-use-it .inner .benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px;
+}
+.why-should-you-use-it .inner .benefits .benefit {
+  color: black;
+  border: 1px solid var(--BrandTertiary);
+  padding: 32px 40px;
+}
+.why-should-you-use-it .inner .benefits .benefit .attribute-icon {
+  height: 112px;
+  width: auto;
+}
+.why-should-you-use-it .inner .benefits .benefit h3 {
+  font-size: 24px;
+  margin: 48px 0 16px 0;
+}
+.why-should-you-use-it .inner .benefits .benefit p {
+  font-size: 16px;
+  text-align: left;
+  padding: 0;
+}
+
+/*# sourceMappingURL=whyshouldyouuseit.css.map */

@@ -1,0 +1,44 @@
+.gallery-cards {
+  border: 1px solid var(--BrandTertiary);
+}
+.gallery-cards .gallery-cards-content {
+  padding: 0;
+  text-align: left;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info {
+  padding: 32px;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
+  font-size: 20px;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+  margin: 16px 0;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes .gallery-cards-attribute {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.gallery-cards .gallery-cards-content .price {
+  color: black;
+  background: var(--BrandTertiary);
+  display: flex;
+  justify-content: center;
+  font-size: 15;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+}
+.gallery-cards:hover {
+  cursor: pointer;
+}
+
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  box-shadow: none !important;
+}
+
+/*# sourceMappingURL=cards.css.map */
