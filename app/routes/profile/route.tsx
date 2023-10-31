@@ -3,7 +3,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Footer from "../components/Footer";
+import Footer from "~/components/Footer";
 import type { SetStateAction} from "react";
 import React, { useState } from "react";
 import EditProfile from "~/components/ProfileSettings/EditProfile";

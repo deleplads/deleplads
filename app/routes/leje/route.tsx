@@ -1,6 +1,6 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "~/components/Navbar";
+import Footer from "~/components/Footer";
 import CallToAction from "~/components/CallToAction";
 import FAQLeje from "~/components/FaqLeje";
 

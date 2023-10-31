@@ -1,9 +1,9 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
-import Navbar from "../components/Navbar";
+import Navbar from "~/components/Navbar";
 import FAQGeneral from "~/components/FAQGeneral";
 import FAQLeje from "~/components/FaqLeje";
 import FAQUdleje from "~/components/FaqUdleje";
-import Footer from "../components/Footer";
+import Footer from "~/components/Footer";
 import CallToAction from "~/components/CallToAction";
 
 export const meta: V2_MetaFunction = () => {

@@ -1,9 +1,8 @@
-import { TextField } from "@mui/material";
 import { Form } from "@remix-run/react";
 import type { V2_MetaFunction } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import React, { useState } from "react";
-import { FormControl, FormControlLabel, Checkbox } from "@mui/material";
+import { FormControl, FormControlLabel, Checkbox, TextField } from "@mui/material";
 
 export const meta: V2_MetaFunction = () => {
   return [
