@@ -29,7 +29,7 @@ function SocialProof() {
               src="../parkeringsplads2.png"
             />
             <h3>Slide 2</h3>
-            <p>Learn the fundamentals of web design and development through this comprehensive course.</p>
+            <p>Learn the fundamentals of web design and development through this comprehensive course. tissemand</p>
             <a href="#">Læs om oplevelsen</a>
           </SwiperSlide>
           <SwiperSlide className="swiper-slide">Slide 2</SwiperSlide>
