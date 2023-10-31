@@ -1,0 +1,27 @@
+.privacy {
+  padding: 200px 0px 125px 0px;
+  width: 1080px;
+  margin: 0 auto;
+  color: #425466;
+  font-size: 16px;
+}
+.privacy h1 {
+  color: #0b3558;
+  font-size: 64px;
+}
+.privacy h5 {
+  font-size: 24px;
+  margin: 0;
+}
+.privacy h6 {
+  font-size: 20px;
+  margin: 0;
+}
+.privacy p {
+  color: #425466;
+}
+.privacy a {
+  color: #006bff;
+}
+
+/*# sourceMappingURL=privacy.css.map */

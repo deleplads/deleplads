@@ -1,0 +1,298 @@
+.rentalIntroduction {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rentalIntroduction .inner {
+  width: var(--PageWidth);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.rentalIntroduction .inner .introductionText h1 {
+  font-size: 48px;
+  max-width: 425px;
+  line-height: 120%;
+}
+.rentalIntroduction .inner .introductionSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.rentalIntroduction .inner .introductionSteps .step h2 {
+  font-size: 22px;
+  max-width: 450px;
+  margin-bottom: 8px;
+}
+.rentalIntroduction .inner .introductionSteps .step p {
+  max-width: 400px;
+}
+
+.rental-type-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.rental-type-options .private-option,
+.rental-type-options .business-option {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--BrandTertiary);
+  border-radius: 4px;
+  padding: 12px 8px;
+  position: relative;
+}
+.rental-type-options .private-option p,
+.rental-type-options .business-option p {
+  margin: 0 !important;
+}
+.rental-type-options .private-option .coming-soon,
+.rental-type-options .business-option .coming-soon {
+  background: #1976d2;
+  position: absolute;
+  top: -2px;
+  right: 16px;
+  padding: 4px 16px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 4px 4px;
+}
+.rental-type-options .private-option .coming-soon p,
+.rental-type-options .business-option .coming-soon p {
+  color: white !important;
+}
+
+.rentalLocation {
+  margin: 0 auto;
+  height: auto;
+  padding: 200px 0;
+  width: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.rentalLocation .inner {
+  width: 600px;
+}
+.rentalLocation .inner h1 {
+  font-size: 32px;
+}
+.rentalLocation .inner p {
+  margin: 0 0 16px 0;
+}
+.rentalLocation .inner Form {
+  margin: 32px 0;
+}
+.rentalLocation .inner .rental-input {
+  width: 100% !important;
+  margin-bottom: 16px;
+}
+.rentalLocation .inner .rental-input:last-child {
+  margin: 0;
+}
+.rentalLocation .inner .specific-location {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rentalLocation .inner .specific-location p {
+  margin: 0;
+}
+
+.rental-attributes {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: fit-content;
+  margin: 0 auto;
+}
+.rental-attributes h1 {
+  font-size: 32px;
+}
+.rental-attributes p {
+  margin: 0 0 32px 0;
+}
+.rental-attributes .attributes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: black;
+  gap: 16px 16px;
+}
+.rental-attributes .attributes-grid .option {
+  padding: 48px;
+  border: 1px solid var(--BrandTertiary);
+  border-radius: 8px;
+  position: relative;
+}
+.rental-attributes .attributes-grid .option .radio-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.rental-attributes .attributes-grid .option .attribute-icon {
+  font-size: 36px;
+}
+
+.rental-avaliability {
+  margin: 0 auto;
+  height: 100vh;
+  width: 1240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.rental-avaliability .inner {
+  width: auto;
+}
+.rental-avaliability .inner h1 {
+  font-size: 32px;
+}
+.rental-avaliability .inner .options-form {
+  margin-top: 32px;
+}
+.rental-avaliability .inner .avaliability-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  gap: 32px;
+  margin-bottom: 16px;
+}
+.rental-avaliability .inner .avaliability-option .availability-day {
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+  margin: 0;
+  width: auto;
+  gap: 32px;
+}
+.rental-avaliability .inner .avaliability-option .avaliability-time {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.upload-image {
+  height: 300px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  background: white !important;
+  border: 1px solid var(--BrandTertiary);
+  box-shadow: none;
+}
+.upload-image:hover {
+  background: white;
+}
+.upload-image .image-icon {
+  color: black;
+  font-size: 48px;
+}
+
+.recommended-price {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: baseline;
+}
+.recommended-price h2 {
+  font-size: 32px;
+}
+.recommended-price p {
+  margin: 0;
+}
+
+.set-custom-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 24px;
+  padding: 16px 24px;
+  border: 1px solid var(--BrandTertiary);
+}
+.set-custom-price span p {
+  margin: 0 !important;
+}
+
+.custom-price {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between !important;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.rental-navigation {
+  height: 85px;
+  width: 100%;
+  position: fixed;
+  bottom: 0 !important;
+  left: auto;
+  right: auto;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--BrandTertiary);
+  background: white;
+}
+.rental-navigation .inner {
+  width: var(--PageWidth);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CreationProgressBar {
+  position: fixed;
+  bottom: 85px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .rentalIntroduction {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .rentalIntroduction .inner {
+    width: var(--PageWidth);
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .rentalIntroduction .inner .introductionText h1 {
+    font-size: 24px;
+    max-width: 425px;
+    line-height: 120%;
+  }
+  .rentalIntroduction .inner .introductionSteps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .rentalIntroduction .inner .introductionSteps .step h2 {
+    font-size: 22px;
+    max-width: 450px;
+    margin-bottom: 8px;
+  }
+  .rentalIntroduction .inner .introductionSteps .step p {
+    max-width: 400px;
+  }
+}
+
+/*# sourceMappingURL=rental.css.map */

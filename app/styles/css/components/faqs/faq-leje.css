@@ -1,0 +1,36 @@
+.FAQLeje {
+  display: flex;
+  justify-content: center;
+}
+.FAQLeje .inner {
+  padding: 0;
+  width: 1080px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 175px;
+}
+.FAQLeje .inner h1 {
+  font-size: 40px;
+  font-weight: 800;
+  max-width: 300px;
+}
+.FAQLeje .inner .questions {
+  width: 605px;
+}
+.FAQLeje .inner .questions p {
+  font-size: 18px !important;
+}
+.FAQLeje .inner #panel1a-header,
+.FAQLeje .inner #panel2a-header,
+.FAQLeje .inner #panel3a-header,
+.FAQLeje .inner #panel4a-header,
+.FAQLeje .inner #panel5a-header,
+.FAQLeje .inner .MuiPaper-root {
+  box-shadow: none;
+  border: none;
+  padding: 16px 0;
+  font-size: 22px;
+}
+
+/*# sourceMappingURL=faq-leje.css.map */

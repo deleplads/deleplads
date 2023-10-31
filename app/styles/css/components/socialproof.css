@@ -1,0 +1,41 @@
+.socialProof {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 150px;
+}
+.socialProof h1 {
+  font-size: 48px;
+}
+.socialProof p {
+  max-width: 600px;
+  text-align: center;
+  font-size: 18px;
+  margin: 16px 0 32px 0;
+  line-height: 200%;
+}
+.socialProof a {
+  color: #0a85d1;
+  font-weight: 600;
+  font-size: 18px;
+}
+.socialProof .inner {
+  width: 100%;
+}
+.socialProof .inner .swiper-slide {
+  background: green !important;
+  width: 385px !important;
+  height: 500px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.socialProof .inner .swiper-slide:nth-child(1) {
+  background: red !important;
+  margin-left: -25.25%;
+}
+
+/*# sourceMappingURL=socialproof.css.map */

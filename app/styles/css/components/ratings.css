@@ -1,0 +1,31 @@
+.Ratings .trustPilotRatings {
+  display: flex;
+  align-items: center;
+}
+.Ratings .trustPilotRatings h3 {
+  font-size: 18px;
+  font-weight: 400 !important;
+}
+.Ratings .trustPilotRatings .stars {
+  height: 20px;
+  margin: 0 16px 0 12px;
+}
+.Ratings .trustPilotRatings p {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+.Ratings .googleRatings {
+  display: flex;
+  align-items: center;
+}
+.Ratings .googleRatings p {
+  margin: 0;
+  padding: 0;
+}
+.Ratings .googleRatings .stars {
+  height: 20px;
+  margin: 0 8px;
+}
+
+/*# sourceMappingURL=ratings.css.map */

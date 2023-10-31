@@ -1,0 +1,69 @@
+.how-should-you-use-it {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+.how-should-you-use-it .inner {
+  width: var(--PageWidth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.how-should-you-use-it .inner h1 {
+  font-size: 48px;
+  line-height: 120%;
+  text-align: center;
+}
+.how-should-you-use-it .inner p {
+  margin: 16px 0 20px 0;
+  font-size: 18px;
+  line-height: 200%;
+  max-width: 600px;
+  text-align: center;
+}
+.how-should-you-use-it .inner .how-renter .steps,
+.how-should-you-use-it .inner .how-host .steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.how-should-you-use-it .inner .how-renter .steps .step,
+.how-should-you-use-it .inner .how-host .steps .step {
+  border: 1px solid var(--BrandTertiary);
+  border-radius: 24px;
+  padding: 24px;
+}
+.how-should-you-use-it .inner .how-renter .steps .step h2,
+.how-should-you-use-it .inner .how-host .steps .step h2 {
+  margin: 24px 0 16px 0;
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+.how-should-you-use-it .inner .how-renter .steps .step p,
+.how-should-you-use-it .inner .how-host .steps .step p {
+  text-align: left !important;
+  margin: 0;
+  font-size: 16px;
+}
+.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  text-transform: initial;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif !important;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: white;
+  background: #146ef5;
+}
+.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  color: black;
+  border: 1px solid #e5e5e5;
+  margin: 0 4px 64px 4px;
+}
+.how-should-you-use-it .css-1aquho2-MuiTabs-indicator {
+  display: none;
+}
+
+/*# sourceMappingURL=howshouldyouuseit.css.map */

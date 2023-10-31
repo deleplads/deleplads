@@ -1,0 +1,117 @@
+.rent {
+  padding: 185px 0;
+  width: var(--PageWidth);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.rent h1 {
+  text-align: center;
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 700;
+  margin: 12px 0 16px 0;
+}
+.rent p {
+  font-size: 18px;
+  margin: 0 0 32px 0;
+  line-height: 200%;
+}
+.rent .caption {
+  color: "var(--BrandAccent)";
+  font-family: "Gilroy", sans-serif !important;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+}
+.rent .wrapper {
+  width: 730px;
+  margin: 32px auto 0 auto;
+  background: rgb(213, 200, 249);
+  display: flex;
+  justify-content: center;
+  padding: 35px 0;
+  border-radius: 24px;
+}
+.rent .wrapper .dashboard-illustration {
+  width: 880px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: rgba(34, 14, 65, 0.04) 0px 8px 12px -8px, rgba(34, 14, 65, 0.4) 0px 120px 120px -80px;
+}
+
+.step-by-step {
+  width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.step-by-step h1 {
+  font-size: 40px;
+}
+.step-by-step ul li {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 500px;
+  margin-bottom: 32px;
+}
+.step-by-step ul li span {
+  font-size: 45px;
+  color: "var(--BrandAccent)";
+  font-weight: 700;
+  font-family: "Gilroy", sans-serif !important;
+  user-select: none;
+}
+.step-by-step ul li p {
+  font-size: 18px;
+  line-height: 200%;
+}
+
+.highlight {
+  width: 1080px;
+  margin: 0 auto;
+  margin: 175px auto;
+  text-align: center;
+}
+.highlight .inner h2 {
+  font-size: 48px;
+  line-height: 120%;
+  margin: 12px 0 16px 0;
+}
+.highlight .inner p {
+  font-size: 18px;
+  line-height: 200%;
+  margin: 0 0 64px 0;
+}
+.highlight .inner .caption {
+  color: "var(--BrandAccent)";
+  font-family: "Gilroy", sans-serif !important;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+}
+.highlight .inner .wrapper {
+  width: 730px;
+  margin: 32px auto 0 auto;
+  background: rgb(213, 200, 249);
+  display: flex;
+  justify-content: center;
+  padding: 35px 0;
+  border-radius: 24px;
+}
+.highlight .inner .wrapper .dashboard-illustration {
+  width: 880px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: rgba(34, 14, 65, 0.04) 0px 8px 12px -8px, rgba(34, 14, 65, 0.4) 0px 120px 120px -80px;
+}
+
+/*# sourceMappingURL=udleje.css.map */
