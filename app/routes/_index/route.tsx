@@ -8,6 +8,8 @@ import WhyShouldYouUseIt from "~/components/usp/WhyShouldYouUseIt";
 import HowShouldYouUseIt from "~/components/usp/HowShouldYouUseIt";
 import SocialProof from "~/components/socialProof";
 import FAQGeneral from "~/components/FAQGeneral";
+import swipercss from  "node_modules/swiper/swiper-bundle.min.css"; // Import Swiper styles
+
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -15,6 +17,13 @@ export const meta: V2_MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
+
+
+export function links() {
+  return [
+    { rel: "stylesheet", href: swipercss },
+  ];
+}
 
 export default function Index() {
   return (

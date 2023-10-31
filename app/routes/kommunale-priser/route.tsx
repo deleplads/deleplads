@@ -6,6 +6,7 @@ import Footer from "~/components/Footer";
 export const loader: LoaderFunction = async ({ request }) => {
   try {
     const communes = await getAllcommunes();
+    
     return {communes}
   } catch (error) {
     return { error };
@@ -28,9 +29,9 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export default function KommunalePriser() {
-  const  { communes } = useLoaderData();
+  const data = useLoaderData();
 
-
+  const { communes } = data;
   return (
     <>
       <section className="kommunale-priser">

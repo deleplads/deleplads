@@ -7,6 +7,8 @@ node_modules
 
 /build/
 /public/build
+/api/metafile.js.json
+/api/metafile.server.json
 /api/index.js
 /api/index.js.map
 /app/styles/css
