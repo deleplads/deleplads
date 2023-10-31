@@ -21,97 +21,18 @@
     font-size: 18px;
   }
   .inner {
-    width: var(--PageWidth);
-    border-radius: 24px;
-
-    .socialGrid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      grid-column-gap: 0px;
-      grid-row-gap: 0px;
+    width: 100%;
+    .swiper-slide {
+      background: green !important;
+      width: 385px !important;
+      height: 500px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
       gap: 24px;
-      .bigger {
-        grid-area: 1 / 4 / 3 / 6;
-        border-radius: 24px;
-        background: var(--BrandSecondary);
-        padding: 24px 32px;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        .info {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 16px;
-          h3 {
-            color: white !important;
-            font-size: 20px;
-          }
-        }
-        p {
-          color: white !important;
-          text-align: left;
-          margin: 0;
-          padding: 0;
-        }
-      }
-      .smaller-upper {
-        grid-area: 3 / 4 / 5 / 6;
-        border-radius: 24px;
-        background: var(--BrandSecondary);
-        padding: 24px 32px;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        .info {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 16px;
-          h3 {
-            color: white !important;
-            font-size: 20px;
-          }
-        }
-        p {
-          color: white !important;
-          text-align: left;
-          margin: 0;
-          padding: 0;
-        }
-      }
-      .smaller-lower {
-        grid-area: 1 / 1 / 5 / 4;
-        border-radius: 24px;
-        background: var(--BrandSecondary);
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        .info {
-          display: flex;
-          flex-direction: column;
-          align-items: left;
-          gap: 16px;
-          padding: 24px 32px;
-          span {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 16px;
-          }
-          h3 {
-            color: white !important;
-            font-size: 20px;
-          }
-        }
-        p {
-          color: white !important;
-          text-align: left;
-          margin: 0;
-          padding: 0;
-          max-width: fit-content;
-        }
+      &:nth-child(1) {
+        background: red !important;
+        margin-left: -25.25%;
       }
     }
   }
