@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css"; // Import Swiper styles
+import { Scrollbar, A11y } from "swiper/modules";
+import { Box } from "@mui/material";
 
 function SocialProof() {
   return (
@@ -12,15 +12,33 @@ function SocialProof() {
       </p>
       <div className="inner">
         <Swiper
-          spaceBetween={50}
-          slidesPerView={3}
+          modules={[Scrollbar, A11y]}
+          spaceBetween={24}
+          slidesPerView={6}
+          // navigation
+          // pagination={{ clickable: true }}
+          // scrollbar={{ draggable: true }}
+          centeredSlides={true}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper: any) => console.log(swiper)}
         >
-          <SwiperSlide style={{ background: "red" }}>Slide 1</SwiperSlide>
-          <SwiperSlide style={{ background: "red" }}>Slide 2</SwiperSlide>
-          <SwiperSlide style={{ background: "red" }}>Slide 3</SwiperSlide>
-          <SwiperSlide style={{ background: "red" }}>Slide 4</SwiperSlide>
+          <SwiperSlide className="swiper-slide">
+            <Box
+              sx={{ width: "100%" }}
+              component="img"
+              src="../parkeringsplads2.png"
+            />
+            <h3>Slide 2</h3>
+            <p>Learn the fundamentals of web design and development through this comprehensive course.</p>
+            <a href="#">Læs om oplevelsen</a>
+          </SwiperSlide>
+          <SwiperSlide className="swiper-slide">Slide 2</SwiperSlide>
+          <SwiperSlide className="swiper-slide">Slide 3</SwiperSlide>
+          <SwiperSlide className="swiper-slide">Slide 4</SwiperSlide>
+          <SwiperSlide className="swiper-slide">Slide 5</SwiperSlide>
+          <SwiperSlide className="swiper-slide">Slide 6</SwiperSlide>
+          <SwiperSlide className="swiper-slide">Slide 7</SwiperSlide>
+          <SwiperSlide className="swiper-slide">Slide 8</SwiperSlide>
         </Swiper>
       </div>
     </main>
