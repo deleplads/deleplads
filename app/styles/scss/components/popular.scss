@@ -1,12 +1,11 @@
 .popular {
   display: flex;
   justify-content: center;
-  text-align: center;
   margin-bottom: 150px;
   .popularInner {
     width: var(--PageWidth);
     h1 {
-      font-size: 40px;
+      font-size: 24px;
     }
     span {
       padding: 50px 0 0 0;

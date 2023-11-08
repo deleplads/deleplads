@@ -33,9 +33,9 @@ function Footer() {
         </div>
         <div className="FooterColumn">
           <h6>Overblik</h6>
-          <a href="/">Forside</a>
-          <a href="/leje">Leje</a>
-          <a href="/udleje">Udleje</a>
+          <a href="/locate/mao">Find en parkeringsplads</a>
+          <a href="/leje">For lejere</a>
+          <a href="/udleje">For udlejere</a>
           <a href="#">Blog</a>
           <a href="/faq">FAQ</a>
         </div>

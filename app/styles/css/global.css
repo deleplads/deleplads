@@ -24,99 +24,6 @@
   color: #006bff;
 }
 
-.Dashboard {
-  padding: 185px 0 200px 0;
-  width: var(--PageWidth);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 20% 77.5%;
-  column-gap: 2.5%;
-}
-.Dashboard .DashboardMenu {
-  position: relative;
-}
-.Dashboard .DashboardMenu .DashboardMenuInner {
-  position: sticky;
-  top: 125px;
-}
-.Dashboard .DashboardOverview h1 {
-  margin: 16px 0 32px 0;
-}
-.Dashboard #DashboardOverviewAnalytics {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 25px;
-}
-.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics {
-  border: 1px solid var --BrandTertiary;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-}
-.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics h2 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics p {
-  font-size: 16px;
-}
-.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics h3 {
-  padding: 25px 0;
-  font-size: 32px;
-  font-weight: 700;
-}
-.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics .up {
-  color: #26c051;
-}
-.Dashboard #DashboardOverviewAnalytics .DashboardAnalytics .down {
-  color: #c76363;
-}
-.Dashboard #DashboardParkingSpotsOverview {
-  display: flex;
-  flex-direction: column;
-  margin: 50px 0;
-}
-.Dashboard #DashboardParkingSpotsOverview .DashboardParkingSpot {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var --BrandTertiary;
-  padding: 25px;
-}
-.Dashboard #DashboardParkingSpotsOverview .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 32px;
-}
-.Dashboard #DashboardParkingSpotsOverview .header h2 {
-  font-size: 24px;
-}
-.Dashboard #DashboardTransactionHistory {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.Dashboard #DashboardTransactionHistory h2 {
-  font-size: 24px;
-  margin-bottom: 32px;
-}
-.Dashboard #DashboardTransactionHistory .DashboardTransaction {
-  border: 1px solid var --BrandTertiary;
-  padding: 25px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.Dashboard #DashboardTransactionHistory .DashboardTransaction span {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 16px;
-}
-
 .leje {
   padding: 185px 0 100px 0;
   width: var(--PageWidth);
@@ -269,6 +176,10 @@
   font-size: 16px;
   line-height: 150%;
 }
+.ParkingSpot h2 {
+  font-size: 24px;
+  letter-spacing: -0.4;
+}
 .ParkingSpot .ParkingSpotInformationHeader {
   margin-bottom: 50px;
   grid-area: 1/1/2/3;
@@ -280,7 +191,7 @@
   font-size: 32px;
 }
 .ParkingSpot .ParkingSpotInformationHeader p {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 .ParkingSpot .ParkingSpotInformation {
   display: flex;
@@ -290,21 +201,6 @@
 }
 .ParkingSpot .ParkingSpotInformation :first-child {
   gap: 0;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability h2,
-.ParkingSpot .ParkingSpotInformation .ParkingSpotLocation h2,
-.ParkingSpot .ParkingSpotInformation .ParkingSpotTerms h2,
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText h2 {
-  margin-bottom: 16px;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability .MuiDateCalendar-root {
-  display: contents !important;
 }
 .ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails {
   display: grid;
@@ -317,28 +213,9 @@
   flex-direction: row;
   gap: 16px;
 }
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee {
-  margin-top: 25px;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center;
-  gap: 10px;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .Avatar {
-  height: 50px;
-  width: 50px;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation a {
-  font-size: 20px;
-  text-decoration: none;
-}
 .ParkingSpot .ParkingSpotBooking {
   position: relative;
+  border-radius: 4px;
 }
 .ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions {
   position: sticky;
@@ -374,6 +251,15 @@
     display: flex;
     flex-direction: column;
     position: relative;
+  }
+  .ParkingSpot .ParkingSpotInformationHeader {
+    width: 100% !important;
+  }
+  .ParkingSpot .ParkingSpotInformationHeader h1 {
+    font-size: 32px;
+  }
+  .ParkingSpot .ParkingSpotInformationHeader p {
+    margin-top: 8px;
   }
   .ParkingSpot .ParkingSpotBooking {
     display: none;
@@ -600,7 +486,7 @@
   display: flex;
   flex-direction: column;
   padding: 32px;
-  border: 1px solid var --BrandTertiary;
+  border: 1px solid #var --BrandTertiary;
   border-radius: 8px;
 }
 .kontakt .inner .message span {
@@ -629,13 +515,13 @@
 }
 .kontakt .inner .message .message-contents input, .kontakt .inner .message .message-contents select {
   padding: 16px 10px;
-  border: 1px solid var --BrandTertiary;
+  border: 1px solid #var --BrandTertiary;
   border-radius: 4px;
 }
 .kontakt .inner .message .message-contents textarea {
   padding: 16px 10px;
   height: 150px;
-  border: 1px solid var --BrandTertiary;
+  border: 1px solid #var --BrandTertiary;
   border-radius: 4px;
   resize: vertical;
   max-height: 500px;
@@ -1458,17 +1344,18 @@
 }
 .Hero {
   width: 100%;
-  height: 930px;
+  height: 450px !important;
   display: flex;
+  justify-content: center;
+  margin: 120px 0 50px 0;
 }
 .Hero .HeroInner {
-  height: auto;
+  height: 100%;
   width: var(--PageWidth);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   align-items: center;
-  margin: 0 auto;
-  padding-top: 65px;
 }
 .Hero .HeroInner h1 {
   font-size: 56px;
@@ -1485,13 +1372,6 @@
   line-height: 36px;
   padding: 0;
   margin: 20px 0 30px 0;
-}
-.Hero .HeroInner .SearchButton {
-  padding: 12px 20px;
-  font-weight: 700;
-  height: fit-content;
-  margin-top: 32px;
-  background: var(--BrandPrimary);
 }
 .Hero .HeroInner .hero-content {
   height: 575px;
@@ -1531,6 +1411,7 @@
   z-index: 1000 !important;
   margin-bottom: 1px;
   position: fixed;
+  top: 0;
   width: 100%;
   background: #ffffff !important;
   border-bottom: 1px solid rgba(32, 33, 37, 0.12);
@@ -1667,23 +1548,26 @@
   height: 100px;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  grid-template-columns: 3fr 1fr;
   margin: 40px 0 25px 0 !important;
 }
-.SearchBar span {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+.SearchBar .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 24.5px 20px !important;
 }
-.SearchBar .SearchButton {
-  padding: 14px 60px;
-  font-weight: 700;
-  height: fit-content;
+.SearchBar .searchButton {
+  height: 72px;
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border: 1px solid #C6C6C6;
+  border-left: none;
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #var --BrandTertiary;
+  border-color: var(--BrandTertiary);
+  border-right: none !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1711,20 +1595,19 @@
     width: 100%;
   }
   .MuiOutlinedInput-notchedOutline {
-    border-color: #var --BrandTertiary;
+    border-color: var(--BrandTertiary);
   }
 }
 .popular {
   display: flex;
   justify-content: center;
-  text-align: center;
   margin-bottom: 150px;
 }
 .popular .popularInner {
   width: var(--PageWidth);
 }
 .popular .popularInner h1 {
-  font-size: 40px;
+  font-size: 24px;
 }
 .popular .popularInner span {
   padding: 50px 0 0 0;
@@ -1763,7 +1646,7 @@
   gap: 16px;
 }
 
-.socialProof {
+.blogTeaser {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1771,35 +1654,34 @@
   align-items: center;
   margin-bottom: 150px;
 }
-.socialProof h1 {
+.blogTeaser h1 {
   font-size: 48px;
 }
-.socialProof p {
+.blogTeaser p {
   max-width: 600px;
   text-align: center;
   font-size: 18px;
   margin: 16px 0 32px 0;
   line-height: 200%;
 }
-.socialProof a {
+.blogTeaser a {
   color: #0a85d1;
   font-weight: 600;
   font-size: 18px;
 }
-.socialProof .inner {
+.blogTeaser .inner {
   width: 100%;
 }
-.socialProof .inner .swiper-slide {
-  background: green !important;
+.blogTeaser .inner .swiper-slide {
   width: 385px !important;
+  border: 1px solid #e5e5e5;
   height: 500px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-.socialProof .inner .swiper-slide:nth-child(1) {
-  background: red !important;
+.blogTeaser .inner .swiper-slide:nth-child(1) {
   margin-left: -25.25%;
 }
 
@@ -1846,6 +1728,9 @@
 .gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
   font-size: 20px;
 }
+.gallery-cards .gallery-cards-content .gallery-cards-content-info p {
+  color: red !important;
+}
 .gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1876,6 +1761,70 @@
   box-shadow: none !important;
 }
 
+.booking {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.booking .controls {
+  display: flex;
+  justify-content: space-between;
+}
+.booking .bookingContents {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 24px;
+}
+.booking .MuiDateCalendar-root {
+  color: black;
+  display: flex !important;
+  flex-direction: column !important;
+  width: -webkit-fill-available;
+}
+.booking .calenderPicker,
+.booking .desktopTimePicker {
+  border: 1px solid var(--BrandTertiary);
+  padding: 24px 12px 0px 12px;
+  border-radius: 4px;
+}
+.booking .MobileTimePicker {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .booking {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .booking .controls {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .booking .bookingContents {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .booking .MuiDateCalendar-root {
+    color: black;
+    display: flex !important;
+    flex-direction: column !important;
+    width: -webkit-fill-available;
+  }
+  .booking .desktopTimePicker {
+    display: none;
+  }
+  .booking .MobileTimePicker {
+    display: initial;
+    width: 100% !important;
+  }
+  .booking .MobileTimePicker .MuiInputBase-input,
+  .booking .MobileTimePicker .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    width: -webkit-fill-available !important;
+  }
+}
 .FAQLeje {
   display: flex;
   justify-content: center;

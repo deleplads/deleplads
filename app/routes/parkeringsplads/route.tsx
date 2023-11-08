@@ -2,7 +2,6 @@ import type { V2_MetaFunction } from "@remix-run/node";
 import Footer from "~/components/Footer";
 import type { SelectChangeEvent } from "@mui/material";
 import {
-  Avatar,
   Box,
   Button,
   Checkbox,
@@ -13,17 +12,18 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { DateCalendar, LocalizationProvider } from "@mui/x-date-pickers";
+
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
 import { useState, type ReactNode, useEffect } from "react";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import Flag from "@mui/icons-material/Flag";
+import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import AddRoadOutlined from "@mui/icons-material/AddRoadOutlined";
 import GarageOutlined from "@mui/icons-material/GarageOutlined";
 import PersonOutlined from "@mui/icons-material/PersonOutlined";
 import VpnKeyOffOutlined from "@mui/icons-material/VpnKeyOffOutlined";
 import CallToAction from "~/components/CallToAction";
+import Booking from "~/components/booking";
+import { LocalizationProvider } from "@mui/x-date-pickers";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -61,23 +61,54 @@ export default function Parkeringsplads() {
         <div className="ParkingSpotInformationHeader">
           <span>
             <h1>Ll. Blovstrødvej</h1>
-            <p>3450, Allerød</p>
+            <p>3450 Allerød, Region Hovedstaden</p>
           </span>
-          <Button
-            variant="outlined"
-            size="large"
-            href="#"
-            sx={{ textTransform: "initial", height: "fit-content" }}
-          >
-            Del
-          </Button>
+          <span>
+            <Button
+              variant="outlined"
+              size="large"
+              href="#"
+              sx={{
+                textTransform: "initial",
+                height: "fit-content",
+                marginRight: "12px",
+              }}
+            >
+              Del
+            </Button>
+            <Button
+              variant="outlined"
+              size="large"
+              href="#"
+              sx={{ textTransform: "initial", height: "fit-content" }}
+            >
+              Rapporter et problem
+            </Button>
+          </span>
         </div>
         <div className="ParkingSpotInformation">
           <Box
-            sx={{ aspectRatio: "16 / 9", backgroundSize: "cover" }}
+            sx={{ aspectRatio: "16 / 9", backgroundSize: "cover", borderRadius: "4px" }}
             component="img"
             src="./parkeringsplads2.png"
           />
+
+          <Booking></Booking>
+
+          <div className="ParkingSpotLocation">
+            <h2>Cirka placering af parkeringsplads</h2>
+            <iframe
+              title="SHIT"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.579493914321!2d12.536347670690457!3d55.65536410407578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46525381652cfd11%3A0x6496d86f15f53006!2sEngelbert-Petersens%20Bageri!5e0!3m2!1sda!2sdk!4v1691516861738!5m2!1sda!2sdk"
+              width="100%"
+              height="325"
+              style={{ border: 0, marginTop: "25px" }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
           <h2>Information</h2>
           <div className="ParkingSpotInformationDetails">
             <div className="ParkingSpotDetails">
@@ -108,46 +139,6 @@ export default function Parkeringsplads() {
                 <p>Ingen behov for kode ved parkering.</p>
               </span>
             </div>
-          </div>
-          <div className="ParkingSpotAvaliability">
-            <h2>Tilgængelighed</h2>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar defaultValue={dayjs("2022-04-17")} disabled />
-            </LocalizationProvider>
-          </div>
-          <div className="ParkingSpotLocation">
-            <h2>Cirka placering af parkeringsplads</h2>
-            <iframe
-              title="SHIT"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.579493914321!2d12.536347670690457!3d55.65536410407578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46525381652cfd11%3A0x6496d86f15f53006!2sEngelbert-Petersens%20Bageri!5e0!3m2!1sda!2sdk!4v1691516861738!5m2!1sda!2sdk"
-              width="100%"
-              height="325"
-              style={{ border: 0, marginTop: "25px" }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-          <div className="ParkingSpotText">
-            <h2>Udlejerinformation</h2>
-            <div className="Rentee">
-              <Avatar className="Avatar" alt="Remy Sharp" src="" />
-              <div className="RenteeInformation">
-                <a href="#">Nicolas</a>
-              </div>
-            </div>
-          </div>
-          <div className="ParkingSpotTerms">
-            <h2>Regler og betingelser</h2>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Excepturi, fuga doloribus? Similique a iusto excepturi! Facilis
-              omnis, molestias animi voluptates, accusamus magni ex debitis
-              distinctio recusandae non corrupti similique inventore ratione
-              commodi nobis quisquam laudantium nemo dicta quasi repellendus
-              minima totam! Quo voluptatem veniam pariatur autem illo quae
-              consequatur rem.
-            </p>
           </div>
         </div>
 
@@ -203,9 +194,9 @@ export default function Parkeringsplads() {
               variant="outlined"
               href="/kontakt"
               sx={{ width: "100%", textTransform: "initial" }}
-              startIcon={<Flag />}
+              startIcon={<OpenInNewRoundedIcon />}
             >
-              Rapportér problem
+              Regler og betingelser
             </Button>
             <FormGroup
               sx={{

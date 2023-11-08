@@ -1,4 +1,4 @@
-.socialProof {
+.blogTeaser {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -6,36 +6,35 @@
   align-items: center;
   margin-bottom: 150px;
 }
-.socialProof h1 {
+.blogTeaser h1 {
   font-size: 48px;
 }
-.socialProof p {
+.blogTeaser p {
   max-width: 600px;
   text-align: center;
   font-size: 18px;
   margin: 16px 0 32px 0;
   line-height: 200%;
 }
-.socialProof a {
+.blogTeaser a {
   color: #0a85d1;
   font-weight: 600;
   font-size: 18px;
 }
-.socialProof .inner {
+.blogTeaser .inner {
   width: 100%;
 }
-.socialProof .inner .swiper-slide {
-  background: green !important;
+.blogTeaser .inner .swiper-slide {
   width: 385px !important;
+  border: 1px solid #e5e5e5;
   height: 500px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-.socialProof .inner .swiper-slide:nth-child(1) {
-  background: red !important;
+.blogTeaser .inner .swiper-slide:nth-child(1) {
   margin-left: -25.25%;
 }
 
-/*# sourceMappingURL=socialproof.css.map */
+/*# sourceMappingURL=blogTeaser.css.map */

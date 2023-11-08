@@ -1,4 +1,4 @@
-.socialProof {
+.blogTeaser {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -23,15 +23,14 @@
   .inner {
     width: 100%;
     .swiper-slide {
-      background: green !important;
       width: 385px !important;
+      border: 1px solid #e5e5e5;
       height: 500px;
       padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 24px;
       &:nth-child(1) {
-        background: red !important;
         margin-left: -25.25%;
       }
     }

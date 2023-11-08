@@ -1,0 +1,66 @@
+.booking {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.booking .controls {
+  display: flex;
+  justify-content: space-between;
+}
+.booking .bookingContents {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 24px;
+}
+.booking .MuiDateCalendar-root {
+  color: black;
+  display: flex !important;
+  flex-direction: column !important;
+  width: -webkit-fill-available;
+}
+.booking .calenderPicker,
+.booking .desktopTimePicker {
+  border: 1px solid var(--BrandTertiary);
+  padding: 24px 12px 0px 12px;
+  border-radius: 4px;
+}
+.booking .MobileTimePicker {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .booking {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .booking .controls {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .booking .bookingContents {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .booking .MuiDateCalendar-root {
+    color: black;
+    display: flex !important;
+    flex-direction: column !important;
+    width: -webkit-fill-available;
+  }
+  .booking .desktopTimePicker {
+    display: none;
+  }
+  .booking .MobileTimePicker {
+    display: initial;
+    width: 100% !important;
+  }
+  .booking .MobileTimePicker .MuiInputBase-input,
+  .booking .MobileTimePicker .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    width: -webkit-fill-available !important;
+  }
+}
+
+/*# sourceMappingURL=booking.css.map */

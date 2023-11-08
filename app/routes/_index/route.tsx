@@ -6,7 +6,7 @@ import Popular from "~/components/Popular";
 import WhatIsIt from "~/components/usp/WhatIsIt";
 import WhyShouldYouUseIt from "~/components/usp/WhyShouldYouUseIt";
 import HowShouldYouUseIt from "~/components/usp/HowShouldYouUseIt";
-import SocialProof from "~/components/socialProof";
+import SocialProof from "~/components/blogTeaser";
 import FAQGeneral from "~/components/FAQGeneral";
 import swipercss from  "node_modules/swiper/swiper-bundle.min.css"; // Import Swiper styles
 

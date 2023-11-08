@@ -3,23 +3,26 @@
   height: 100px;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  grid-template-columns: 3fr 1fr;
   margin: 40px 0 25px 0 !important;
 }
-.SearchBar span {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+.SearchBar .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 24.5px 20px !important;
 }
-.SearchBar .SearchButton {
-  padding: 14px 60px;
-  font-weight: 700;
-  height: fit-content;
+.SearchBar .searchButton {
+  height: 72px;
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border: 1px solid #C6C6C6;
+  border-left: none;
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #var --BrandTertiary;
+  border-color: var(--BrandTertiary);
+  border-right: none !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -47,7 +50,7 @@
     width: 100%;
   }
   .MuiOutlinedInput-notchedOutline {
-    border-color: #var --BrandTertiary;
+    border-color: var(--BrandTertiary);
   }
 }
 

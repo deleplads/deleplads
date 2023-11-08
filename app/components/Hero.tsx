@@ -8,7 +8,7 @@ function Hero() {
     <section className="Hero">
       <div className="HeroInner">
         <span>
-        <Ratings />
+        {/* <Ratings /> */}
           <h1>
             Leje og udleje af private
             <br />
@@ -16,7 +16,7 @@ function Hero() {
           </h1>
           
           <SearchBar />
-          <Button
+          {/* <Button
             className="SearchButton"
             variant="contained"
             href="#"
@@ -29,9 +29,9 @@ function Hero() {
             }}
           >
             Find parkeringsplads
-          </Button>
+          </Button> */}
         </span>
-        <Box
+        {/* <Box
           component="video"
           src="./lmao.mp4"
           className="hero-content"
@@ -40,7 +40,7 @@ function Hero() {
         >
           <source src="./lmao.mp4" type="video/mp4" />
           Your browser does not support the video tag.
-        </Box>
+        </Box> */}
       </div>
     </section>
   );
