@@ -42,7 +42,6 @@ export default function Profile() {
     const navigate = useNavigate();
     const [userProfile, setUserProfile] = useState<typeof profile>(profile);
     const [value, setValue] = React.useState(0);
-    const fetcher = useFetcher();
 
     
     const handleChange = (event: any, newValue: SetStateAction<number>) => {
