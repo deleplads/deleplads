@@ -1,7 +1,6 @@
 // Pages
 
 @import "./pages/cookies.scss";
-@import "./pages/dashboard.scss";
 @import "./pages/leje.scss";
 @import "./pages/parkeringsplads.scss";
 @import "./pages/profile.scss";
@@ -25,12 +24,12 @@
 @import "./components/searchbar.scss";
 @import "./components/popular.scss";
 @import "./components/filtration.scss";
-@import "./components/socialproof.scss";
+@import "./components/blogTeaser.scss";
 @import "./components/ratings.scss";
 @import "./components/cards.scss";
+@import "./components/booking.scss";
 
 // FAQ's
-
 
 @import "./components/faqs/faq-leje.scss";
 @import "./components/faqs/faq-udleje.scss";
@@ -41,7 +40,6 @@
 @import "./usp/whyshouldyouuseit.scss";
 @import "./usp/howshouldyouuseit.scss";
 @import "./usp/whatisit.scss";
-
 
 // Profile edit page
 

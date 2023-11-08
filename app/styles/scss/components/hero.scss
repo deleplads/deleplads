@@ -1,15 +1,16 @@
 .Hero {
   width: 100%;
-  height: 930px;
+  height: 450px !important;
   display: flex;
+  justify-content: center;
+  margin: 120px 0 50px 0;
   .HeroInner {
-    height: auto;
+    height: 100%;
     width: var(--PageWidth);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     align-items: center;
-    margin: 0 auto;
-    padding-top: 65px;
     h1 {
       font-size: 56px;
       line-height: 120%;
@@ -26,13 +27,6 @@
       line-height: 36px;
       padding: 0;
       margin: 20px 0 30px 0;
-    }
-    .SearchButton {
-      padding: 12px 20px;
-      font-weight: 700;
-      height: fit-content;
-      margin-top: 32px;
-      background: var(--BrandPrimary);
     }
     .hero-content {
       height: 575px;

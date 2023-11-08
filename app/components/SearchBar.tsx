@@ -7,6 +7,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { renderTimeViewClock } from "@mui/x-date-pickers/timeViewRenderers";
 import "dayjs/locale/en-gb";
 import dayjs from "dayjs";
+import { Button, Input } from "@mui/material";
 
 function SearchBar() {
   const [age, setAge] = React.useState("");
@@ -21,9 +22,28 @@ function SearchBar() {
         id="outlined-basic"
         className="AreaSelector"
         label="Hvor vil du gerne parkere?"
+        sx={{
+          height: "50px !important",
+        }}
       />
+      <div className="searchButton">
+        <Button
+          className="SearchButton"
+          variant="contained"
+          href="#"
+          sx={{
+            textTransform: "initial",
+            fontSize: "15px",
+            padding: "12px 20px !important",
+            background: "var(--BrandAccent) !important",
+            height: "fit-content",
+          }}
+        >
+          Find parkeringsplads
+        </Button>
+      </div>
 
-      <span>
+      {/* <span>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             format="DD/MM hh:ss"
@@ -46,7 +66,7 @@ function SearchBar() {
             }}
           />
         </LocalizationProvider>
-      </span>
+      </span> */}
     </div>
   );
 }

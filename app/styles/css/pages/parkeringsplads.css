@@ -9,6 +9,10 @@
   font-size: 16px;
   line-height: 150%;
 }
+.ParkingSpot h2 {
+  font-size: 24px;
+  letter-spacing: -0.4;
+}
 .ParkingSpot .ParkingSpotInformationHeader {
   margin-bottom: 50px;
   grid-area: 1/1/2/3;
@@ -20,7 +24,7 @@
   font-size: 32px;
 }
 .ParkingSpot .ParkingSpotInformationHeader p {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 .ParkingSpot .ParkingSpotInformation {
   display: flex;
@@ -30,21 +34,6 @@
 }
 .ParkingSpot .ParkingSpotInformation :first-child {
   gap: 0;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability h2,
-.ParkingSpot .ParkingSpotInformation .ParkingSpotLocation h2,
-.ParkingSpot .ParkingSpotInformation .ParkingSpotTerms h2,
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText h2 {
-  margin-bottom: 16px;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotAvaliability .MuiDateCalendar-root {
-  display: contents !important;
 }
 .ParkingSpot .ParkingSpotInformation .ParkingSpotInformationDetails {
   display: grid;
@@ -57,28 +46,9 @@
   flex-direction: row;
   gap: 16px;
 }
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee {
-  margin-top: 25px;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center;
-  gap: 10px;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .Avatar {
-  height: 50px;
-  width: 50px;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.ParkingSpot .ParkingSpotInformation .ParkingSpotText .Rentee .RenteeInformation a {
-  font-size: 20px;
-  text-decoration: none;
-}
 .ParkingSpot .ParkingSpotBooking {
   position: relative;
+  border-radius: 4px;
 }
 .ParkingSpot .ParkingSpotBooking .ParkingSpotBookingOptions {
   position: sticky;
@@ -114,6 +84,15 @@
     display: flex;
     flex-direction: column;
     position: relative;
+  }
+  .ParkingSpot .ParkingSpotInformationHeader {
+    width: 100% !important;
+  }
+  .ParkingSpot .ParkingSpotInformationHeader h1 {
+    font-size: 32px;
+  }
+  .ParkingSpot .ParkingSpotInformationHeader p {
+    margin-top: 8px;
   }
   .ParkingSpot .ParkingSpotBooking {
     display: none;

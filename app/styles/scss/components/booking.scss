@@ -1,0 +1,66 @@
+.booking {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  .controls {
+    display: flex;
+    justify-content: space-between;
+  }
+  .bookingContents {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 24px;
+  }
+  .MuiDateCalendar-root {
+    color: black;
+    display: flex !important;
+    flex-direction: column !important;
+    width: -webkit-fill-available;
+  }
+  .calenderPicker,
+  .desktopTimePicker {
+    border: 1px solid var(--BrandTertiary);
+    padding: 24px 12px 0px 12px;
+    border-radius: 4px;
+  }
+  .MobileTimePicker {
+    display: none;
+  }
+}
+
+// Footer media query
+
+@media only screen and (max-width: 600px) {
+  .booking {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .bookingContents {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .MuiDateCalendar-root {
+      color: black;
+      display: flex !important;
+      flex-direction: column !important;
+      width: -webkit-fill-available;
+    }
+    .desktopTimePicker {
+      display: none;
+    }
+    .MobileTimePicker {
+      display: initial;
+      width: 100% !important;
+      .MuiInputBase-input,
+      .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+        width: -webkit-fill-available !important;
+      }
+    }
+  }
+}
