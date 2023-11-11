@@ -7,13 +7,38 @@ import Footer from "~/components/Footer";
 import type { SetStateAction } from "react";
 import React from "react";
 import { Tab, Tabs } from "@mui/material";
-import { useNavigate } from "@remix-run/react";
-import { Outlet } from "@remix-run/react";
+import { useNavigate , Outlet, useLoaderData } from "@remix-run/react";
+import { defer, type LoaderFunction } from "@remix-run/node";
+import { getProfileFromUserId } from "utils/profile.server";
+import { requireUserId } from "utils/auth.server";
+
+type ProfileProps = {
+  profile: {
+    id: string;
+    created_at: Date | null;
+    first_name: string;
+    last_name: string;
+  };
+};
+export const loader: LoaderFunction = async ({ request }) => {
+  try {
+    const userId = await requireUserId(request);
+    const profile = await getProfileFromUserId(userId);
+    
+    return defer({
+      profile
+  })} catch (error) {
+    return { error };
+  }
+}
+
+
 
 export default function Profile() {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
-
+  const  { profile } =  useLoaderData() as ProfileProps;
+  
   const handleChange = (event: any, newValue: SetStateAction<number>) => {
     setValue(newValue);
   };
@@ -138,7 +163,7 @@ export default function Profile() {
           </Box>
         </div>
         <section>
-          <Outlet></Outlet>
+          <Outlet context={{profile: profile}}></Outlet>
         </section>
       </main>
       <Footer></Footer>
