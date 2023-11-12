@@ -53,43 +53,53 @@ Så du kan kun indsætte alt dette under routes/ så hvis du laver en faq udner 
 };
 ```
 
-> **Warning**  
-> The `@remix-run/vercel` runtime adapter has been deprecated in favor of out of
-> the box Vercel functionality and will be removed in Remix v2.  
-> This means you don't have to use the Vercel template & can just use the Remix
-> template instead.
+> **Welcome to DelePlads**  
 
-# Welcome to Remix!
+# Project Routing Structure
 
-- [Remix Docs](https://remix.run/docs)
+## Overview
+This project utilizes [Flat route](https://github.com/kiliman/remix-flat-routes) for managing routes. Our routing structure is designed to be intuitive and scalable, ensuring easy navigation and maintenance.
 
-## Deployment
+## Structure
 
-After having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
+### Routes
+- **Root (`/`):** The root of our routing structure.
+  - **_index folder:** Serves as the home page route.
 
-If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
+- **Navbar and Footer:** These components are located in the root directory, making them available across all routes.
 
-```sh
-npm i -g vercel
-vercel
-```
+![Navbar and Footer Integration](./documentationImages\image.png)
 
-It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
+### Nested Routes
+- Each folder under the root can contain nested routes, providing a hierarchical and organized structure.
 
-## Development
+#### Example: `locate` Route
+- The `locate` folder includes three subfolders, each representing a nested route:
+  1. `locate/gallery`
+  2. `locate/list`
+  3. `locate/map`
 
-To run your Remix app locally, make sure your project's local dependencies are installed:
+![Nested Routes Example](./documentationImages\image2.png)
 
-```sh
-npm install
-```
+#### Route Composition
+- In the case of the `locate` route, a `route.tsx` file is present.
+  - **Function:** This file acts as a parent component.
+  - **Outlet:** It contains an `Outlet` component where the nested routes (e.g., `locate/gallery`) inject their respective HTML and data.
 
-Afterwards, start the Remix development server like so:
+![Route Composition with Outlet](./documentationImages\image3.png)
 
-```sh
-npm run dev
-```
+### Exception Case: `rental` Route
+- **Difference:** Unlike the `locate` route, the `rental` route does not have a `route.tsx` file in its parent folder.
+- **Implication:** This means nested routes under `rental` do not share a common parent component.
 
-Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
+![Rental Route Structure](./documentationImages\image3.png)
 
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+## Naming Convention
+- **Standard Format:** For folders without a specific use case for nested structures, the naming convention is `_[folder-name].tsx`.
+- **Purpose:** This convention signifies that the folder does not follow the nested route composition like `route.tsx`.
+- **Example:** If there's a folder named `example` without nested route needs, it should be named `_example.tsx`.
+
+![Naming Convention Example](path-to-your-image)
+
+## Conclusion
+Our routing system, fortified by the Flat route structure and strategic placement of `route.tsx` files, offers a flexible and maintainable setup. This allows for shared and distinct layouts across different sections of our application, adhering to a clear naming convention.
