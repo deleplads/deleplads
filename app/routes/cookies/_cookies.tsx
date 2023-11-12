@@ -9,11 +9,10 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function Index() {
+export default function CookiesRoute() {
   return (
     <main>
       <Cookies></Cookies>
-      <Footer></Footer>
     </main>
   );
 }

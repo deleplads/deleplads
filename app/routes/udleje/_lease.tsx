@@ -20,8 +20,6 @@ export default function Udleje() {
       <FAQLeje></FAQLeje>
 
       <CallToAction></CallToAction>
-
-      <Footer></Footer>
     </main>
   );
 }

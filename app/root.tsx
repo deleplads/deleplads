@@ -1,5 +1,5 @@
 import styles from "../app/styles/app.css";
-import { LoaderFunction, redirect, type LinksFunction, } from "@remix-run/node";
+import { LoaderFunction, redirect, type LinksFunction } from "@remix-run/node";
 import global from "../app/styles/css/global.css";
 import {
   Links,
@@ -14,6 +14,7 @@ import { getUser } from "utils/auth.server";
 import { Debug } from "utils/debug.server";
 import type { Profile } from "db_types";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -30,19 +31,17 @@ export const loader: LoaderFunction = async ({ request }) => {
   Debug();
   try {
     const [user, profile] = await getUser(request);
-    
-    return {user, profile} ;
+
+    return { user, profile };
   } catch (error) {
     // Handle error, maybe return a specific structure or status code
     return { error };
   }
-}
-
-
+};
 
 export default function App() {
-  const  {user, profile } = useLoaderData();
-  
+  const { user, profile } = useLoaderData();
+
   return (
     <html lang="en">
       <head>
@@ -55,10 +54,13 @@ export default function App() {
         <header>
           <Navbar profile={profile}></Navbar>
         </header>
-        <Outlet/>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <footer>
+          <Footer></Footer>
+        </footer>
       </body>
     </html>
   );

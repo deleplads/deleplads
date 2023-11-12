@@ -36,7 +36,6 @@ export default function Index() {
       <SocialProof></SocialProof>
       <FAQGeneral></FAQGeneral>
       <CallToAction></CallToAction>
-      <Footer></Footer>
     </>
   );
 }
