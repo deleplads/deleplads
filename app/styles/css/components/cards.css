@@ -12,7 +12,7 @@
   font-size: 20px;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info p {
-  color: red !important;
+  color: black !important;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes {
   display: grid;
