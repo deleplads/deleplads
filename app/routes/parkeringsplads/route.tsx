@@ -24,6 +24,7 @@ import VpnKeyOffOutlined from "@mui/icons-material/VpnKeyOffOutlined";
 import CallToAction from "~/components/CallToAction";
 import Booking from "~/components/booking";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import ApprDrawer from "~/components/AppDrawer";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -88,7 +89,11 @@ export default function Parkeringsplads() {
         </div>
         <div className="ParkingSpotInformation">
           <Box
-            sx={{ aspectRatio: "16 / 9", backgroundSize: "cover", borderRadius: "4px" }}
+            sx={{
+              aspectRatio: "16 / 9",
+              backgroundSize: "cover",
+              borderRadius: "4px",
+            }}
             component="img"
             src="./parkeringsplads2.png"
           />
@@ -213,19 +218,7 @@ export default function Parkeringsplads() {
           </div>
         </div>
 
-        <div className="ParkingSpotMobileBooking">
-          <Button
-            size="large"
-            href="#"
-            sx={{
-              width: "100%",
-              textTransform: "initial",
-              background: "var(--BrandAccent) !important",
-            }}
-          >
-            Bestil
-          </Button>
-        </div>
+        <ApprDrawer></ApprDrawer>
       </section>
       <CallToAction></CallToAction>
       <Footer></Footer>

@@ -1,0 +1,63 @@
+// Venstremenuen for account siden - skal på et tidspunkt gøres sticky for bedre UI/UX.
+
+.ProfileMenuSettings {
+  width: var(--PageWidth);
+  padding: 185px 0 200px 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 20% 77.5%;
+  column-gap: 2.5%;
+}
+
+.ProfileMenuSettingsMobile {
+  display: none !important;
+}
+
+// Selve account containeren, der skifter baseret på dens forskellige states.
+
+.account {
+  h1 {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+  .inner {
+    .accountListings {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+
+// Skal rykkes til sin egen scss fil - muligvis i en fælles for de forskellige typer af kort.
+
+.listingsCard {
+  border: 1px solid #e5e5e5;
+  h3 {
+    font-size: 24px;
+    margin-top: 16px;
+  }
+  p {
+    font-size: 16px;
+  }
+  .cardsAttributes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 16px;
+    margin-top: 16px;
+  }
+  .cardsAttribute {
+    display: flex;
+    flex-direction: row;
+  }
+  .attribute-icon {
+    margin-right: 8px;
+  }
+  .price {
+    font-size: 16px;
+    background: #e5e5e5;
+    padding: 8px 20px;
+    font-weight: 700;
+    text-align: center;
+    margin: 16px 0px;
+  }
+}

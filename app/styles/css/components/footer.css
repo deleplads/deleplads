@@ -26,7 +26,8 @@
     font-weight: 700;
     margin: 50px 0 25px 0;
   }
-  .Footer .FooterInner .FooterColumn h6, .Footer .FooterInner .FooterColumn a {
+  .Footer .FooterInner .FooterColumn h6,
+  .Footer .FooterInner .FooterColumn a {
     font-size: 16px;
     margin-bottom: 25px;
     text-decoration: none;
