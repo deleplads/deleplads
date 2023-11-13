@@ -1,95 +1,50 @@
-# HOW TO!!!!
+> **Welcome to DelePlads**  
 
-npx supabase gen types typescript --project-id slotgmexnyekacixnhyc > db_types.ts
+# Project Routing Structure
 
-Du skal køre følgende:
+## Overview
+This project utilizes [Flat route](https://github.com/kiliman/remix-flat-routes) for managing routes. Our routing structure is designed to be intuitive and scalable, ensuring easy navigation and maintenance.
 
-npm install
+## Structure
 
-npm install -g sass
+### Routes
+- **Root (`/`):** The root of our routing structure.
+  - **_index folder:** Serves as the home page route.
 
-npm run dev
+- **Navbar and Footer:** These components are located in the root directory, making them available across all routes.
 
-Måden du for css til at virke, er at du bruger følgende logik inder under routes:
-```
-import navBarStyle from "../styles/components/navbar.css";
-import heroStyle from "../styles/components/hero.css";
-import footerStyle from "../styles/components/footer.css";
-import galleryStyle from "../styles/components/gallery.css";
-import searchbarStyle from "../styles/components/searchbar.css";
+![Navbar and Footer Integration](./documentationImages\image.png)
 
+### Nested Routes
+- Each folder under the root can contain nested routes, providing a hierarchical and organized structure.
 
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: navBarStyle },
-  { rel: "stylesheet", href: footerStyle },
-  { rel: "stylesheet", href: heroStyle },
-  { rel: "stylesheet", href: galleryStyle },
-  { rel: "stylesheet", href: searchbarStyle },
-];
-};
-```
+#### Example: `locate` Route
+- The `locate` folder includes three subfolders, each representing a nested route:
+  1. `locate/gallery`
+  2. `locate/list`
+  3. `locate/map`
 
-Det vil sige du skal inde i routen Kontakt som jeg har lavet indsætte følgende:
-import kontaktStyle from '../styles/components/kontakt.css'
+![Nested Routes Example](./documentationImages\image2.png)
 
-og tilføje inde i.
-export const links: LinksFunction = () => {
-    ...
-  { rel: "stylesheet", href: kontaktStyle },
-}
+#### Route Composition
+- In the case of the `locate` route, a `route.tsx` file is present.
+  - **Function:** This file acts as a parent component.
+  - **Outlet:** It contains an `Outlet` component where the nested routes (e.g., `locate/gallery`) inject their respective HTML and data.
 
-Du kan ikke gøre dette under componenter desværre.
+![Route Composition with Outlet](./documentationImages\image3.png)
 
-Så du kan kun indsætte alt dette under routes/ så hvis du laver en faq udner routes, skal du indsætte:
+### Exception Case: `rental` Route
+- **Difference:** Unlike the `locate` route, the `rental` route does not have a `route.tsx` file in its parent folder.
+- **Implication:** This means nested routes under `rental` do not share a common parent component.
 
-```export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: navBarStyle },
-  { rel: "stylesheet", href: footerStyle },
-  { rel: "stylesheet", href: heroStyle },
-  { rel: "stylesheet", href: galleryStyle },
-  { rel: "stylesheet", href: searchbarStyle },
-   { rel: "stylesheet", href: faqStyle },
-];
-};
-```
+![Rental Route Structure](./documentationImages\image3.png)
 
-> **Warning**  
-> The `@remix-run/vercel` runtime adapter has been deprecated in favor of out of
-> the box Vercel functionality and will be removed in Remix v2.  
-> This means you don't have to use the Vercel template & can just use the Remix
-> template instead.
+## Naming Convention
+- **Standard Format:** For folders without a specific use case for nested structures, the naming convention is `_[folder-name].tsx`.
+- **Purpose:** This convention signifies that the folder does not follow the nested route composition like `route.tsx`.
+- **Example:** If there's a folder named `example` without nested route needs, it should be named `_example.tsx`.
 
-# Welcome to Remix!
+![Naming Convention Example](path-to-your-image)
 
-- [Remix Docs](https://remix.run/docs)
-
-## Deployment
-
-After having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
-
-If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
-
-```sh
-npm i -g vercel
-vercel
-```
-
-It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
-
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
-
-```sh
-npm install
-```
-
-Afterwards, start the Remix development server like so:
-
-```sh
-npm run dev
-```
-
-Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
-
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+## Conclusion
+Our routing system, fortified by the Flat route structure and strategic placement of `route.tsx` files, offers a flexible and maintainable setup. This allows for shared and distinct layouts across different sections of our application, adhering to a clear naming convention.
