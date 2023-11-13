@@ -9,14 +9,9 @@ export default function Profile() {
 
     return (
     <section className="">
-      <Suspense fallback={<div>Loading...</div>}>
-        <Await resolve={data}>
-          <div className="">
-            <EditProfile profile={data?.profile}></EditProfile>  
-          </div>
-        </Await>
-      </Suspense>
-        
+     <div className="bg-black">
+        {data?.profile?.first_name + " " + data?.profile?.last_name}
+     </div>
     </section>
   );
 }

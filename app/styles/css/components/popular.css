@@ -6,8 +6,18 @@
 .popular .popularInner {
   width: var(--PageWidth);
 }
-.popular .popularInner h1 {
+.popular .popularInner .heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.popular .popularInner .heading h1 {
   font-size: 24px;
+}
+.popular .popularInner .heading .headingItem {
+  font-weight: 700;
+  font-size: 18px;
 }
 .popular .popularInner span {
   padding: 50px 0 0 0;

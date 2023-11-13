@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   padding: 32px;
-  border: 1px solid #var --BrandTertiary;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 8px;
 }
 .kontakt .inner .message span {
@@ -49,15 +49,16 @@
   font-size: 14px;
   font-family: "Poppins", sans-serif;
 }
-.kontakt .inner .message .message-contents input, .kontakt .inner .message .message-contents select {
+.kontakt .inner .message .message-contents input,
+.kontakt .inner .message .message-contents select {
   padding: 16px 10px;
-  border: 1px solid #var --BrandTertiary;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 4px;
 }
 .kontakt .inner .message .message-contents textarea {
   padding: 16px 10px;
   height: 150px;
-  border: 1px solid #var --BrandTertiary;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 4px;
   resize: vertical;
   max-height: 500px;

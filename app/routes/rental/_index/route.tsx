@@ -1,6 +1,19 @@
 import React from "react";
-import type { V2_MetaFunction } from "@remix-run/node";
+import type { V2_MetaFunction , ActionFunction} from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import { json } from "@remix-run/node";
+import { useFetcher, useNavigate } from "@remix-run/react";
+import { createOrUpdate } from "utils/Parkingspot/createOrUpdate.server";
+import type { parkingspots } from "@prisma/client";
+
+export const action: ActionFunction = async ({ request }) => {
+  const parkingspot: Partial<parkingspots> = {
+  }
+   const newParkingspot = await createOrUpdate(parkingspot);
+
+  return json({ success: true, parkingspot: newParkingspot });
+};
+
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -11,9 +24,19 @@ export const meta: V2_MetaFunction = () => {
 
 export default function Rental() {
   const [selectedValue, setSelectedValue] = React.useState("");
+  const fetcher = useFetcher(); // useFetcher hook from Remix
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
+  };
+
+  const handleNext = () => {
+    fetcher.submit(
+      { /* your form data here */ }, 
+      { method: "post" }
+    );
+    navigate("/rental/1/type");
   };
 
   return (
@@ -50,9 +73,8 @@ export default function Rental() {
       </section>
       <RentalNavigation
         back={"/"}
-        forward={"/rental/1/type"}
         start={0}
-        end={10}
+        onNext={handleNext}
       ></RentalNavigation>
     </>
   );

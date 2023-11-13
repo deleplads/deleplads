@@ -16,13 +16,12 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #c6c6c6;
   border-left: none;
 }
 
 .MuiOutlinedInput-notchedOutline {
   border-color: var(--BrandTertiary);
-  border-right: none !important;
 }
 
 @media only screen and (max-width: 600px) {

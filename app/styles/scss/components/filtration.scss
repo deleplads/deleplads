@@ -1,28 +1,28 @@
 .filtration {
-    margin: 85px 0 0 0;
-    width: 100%;
-    height: 85px;
-    position: fixed;
+  margin: 85px 0 0 0;
+  width: 100%;
+  height: 85px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--BrandTertiary);
+  border-bottom: 1px solid var(--BrandTertiary);
+  background: white;
+  .inner {
+    width: var(--PageWidth);
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid #var(--BrandTertiary);
-    border-bottom: 1px solid #var(--BrandTertiary);
-    background: white;
-    .inner {
-        width: var(--PageWidth);
-        margin: 0 auto;
-        display: flex;
-        align-items: stretch;
-        justify-content: space-between;
-        gap: 16px;
-        .search {
-            display: flex;
-            gap: 16px;
-        }
-        span {
-            display: flex;
-            gap: 16px;
-        }
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 16px;
+    .search {
+      display: flex;
+      gap: 16px;
     }
+    span {
+      display: flex;
+      gap: 16px;
+    }
+  }
 }

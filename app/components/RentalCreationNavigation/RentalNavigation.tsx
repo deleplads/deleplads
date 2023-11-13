@@ -1,18 +1,26 @@
 "use client";
 import { Button } from "@mui/material";
-import { Link, useNavigate, useLocation  } from "@remix-run/react";
+import { useNavigate  } from "@remix-run/react";
 import LinearWithValueLabel from "./Progress";
-import { useEffect, useState } from "react";
 
 type RentalNavigationProps = {
   back: string;
-  forward: string;
+  forward?: string;
   start: number;
+  onNext: () => void; // Define onNext as a function prop
 };
 
 function RentalNavigation(props: RentalNavigationProps): JSX.Element {
   const navigate = useNavigate();
  
+  const handleOnClick = () => {
+        if (!props.forward) {
+          props.onNext();
+        } else {
+          navigate(props.forward);
+        }
+  }
+
   
   return (
     <section>
@@ -38,9 +46,7 @@ function RentalNavigation(props: RentalNavigationProps): JSX.Element {
             Tilbage
           </Button>
           <Button
-            onClick={() => {
-              navigate(props.forward);
-            }}
+            onClick={handleOnClick}
             variant="contained"
             sx={{
               textTransform: "initial",

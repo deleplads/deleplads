@@ -1,3 +1,57 @@
+.ProfileMenuSettings {
+  width: var(--PageWidth);
+  padding: 185px 0 200px 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 20% 77.5%;
+  column-gap: 2.5%;
+}
+
+.ProfileMenuSettingsMobile {
+  display: none !important;
+}
+
+.account h1 {
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+.account .inner .accountListings {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.listingsCard {
+  border: 1px solid #e5e5e5;
+}
+.listingsCard h3 {
+  font-size: 24px;
+  margin-top: 16px;
+}
+.listingsCard p {
+  font-size: 16px;
+}
+.listingsCard .cardsAttributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+  margin-top: 16px;
+}
+.listingsCard .cardsAttribute {
+  display: flex;
+  flex-direction: row;
+}
+.listingsCard .attribute-icon {
+  margin-right: 8px;
+}
+.listingsCard .price {
+  font-size: 16px;
+  background: #e5e5e5;
+  padding: 8px 20px;
+  font-weight: 700;
+  text-align: center;
+  margin: 16px 0px;
+}
+
 .cookies {
   padding: 200px 0px 125px 0px;
   width: 1080px;
@@ -236,12 +290,16 @@
   text-align: center;
 }
 .ParkingSpot .ParkingSpotMobileBooking {
-  display: none;
+  display: none !important;
 }
 
 .MuiFormControlLabel-root {
   margin: 0 0 0 -12px !important;
   padding: 0 !important;
+}
+
+.css-jcszzj {
+  display: none !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -264,15 +322,6 @@
   .ParkingSpot .ParkingSpotBooking {
     display: none;
   }
-  .ParkingSpot .ParkingSpotMobileBooking {
-    display: block;
-    position: sticky !important;
-    bottom: 0;
-    background: white;
-    margin: 0 -16px;
-    padding: 16px;
-    border-top: 1px solid var(--BrandTertiary);
-  }
   .ParkingSpot .ParkingSpotInformationDetails {
     display: flex !important;
     flex-direction: column;
@@ -280,29 +329,8 @@
   .ParkingSpot .ParkingSpotInformationDetails .ParkingSpotDetails {
     margin-bottom: 25px;
   }
-}
-/* tablet, landscape iPad, lo-res laptops ands desktops */
-@media only screen and (min-width: 600px) {
-  .ProfileMenuSettings {
-    width: var(--PageWidth);
-    padding: 185px 0 200px 0;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 20% 77.5%;
-    column-gap: 2.5%;
-  }
-  .ProfileMenuSettingsMobile {
-    display: none !important;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .ProfileMenuSettings {
-    width: 100%;
-    padding: 50px 16px;
-    box-sizing: border-box;
-  }
-  .ProfileMenuSettingsDesktop {
-    display: none;
+  .css-jcszzj {
+    display: block !important;
   }
 }
 #sign-in-container {
@@ -486,7 +514,7 @@
   display: flex;
   flex-direction: column;
   padding: 32px;
-  border: 1px solid #var --BrandTertiary;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 8px;
 }
 .kontakt .inner .message span {
@@ -513,15 +541,16 @@
   font-size: 14px;
   font-family: "Poppins", sans-serif;
 }
-.kontakt .inner .message .message-contents input, .kontakt .inner .message .message-contents select {
+.kontakt .inner .message .message-contents input,
+.kontakt .inner .message .message-contents select {
   padding: 16px 10px;
-  border: 1px solid #var --BrandTertiary;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 4px;
 }
 .kontakt .inner .message .message-contents textarea {
   padding: 16px 10px;
   height: 150px;
-  border: 1px solid #var --BrandTertiary;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 4px;
   resize: vertical;
   max-height: 500px;
@@ -633,7 +662,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  border: 1px solid #var --BrandTertiary;
+  border: 1px solid var(--BrandTertiary);
   border-radius: 4px;
 }
 .locate .avaliable-bookings .booking .left {
@@ -1032,7 +1061,8 @@
     font-weight: 700;
     margin: 50px 0 25px 0;
   }
-  .Footer .FooterInner .FooterColumn h6, .Footer .FooterInner .FooterColumn a {
+  .Footer .FooterInner .FooterColumn h6,
+  .Footer .FooterInner .FooterColumn a {
     font-size: 16px;
     margin-bottom: 25px;
     text-decoration: none;
@@ -1324,7 +1354,7 @@
   color: white;
 }
 .avaliability .ikke-ledig {
-  background: #var --BrandTertiary;
+  background: var(--BrandTertiary);
 }
 
 .bonus-info {
@@ -1351,6 +1381,7 @@
 }
 .Hero .HeroInner {
   height: 100%;
+  border: 1px solid #e5e5e5;
   width: var(--PageWidth);
   display: flex;
   justify-content: center;
@@ -1561,13 +1592,12 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #c6c6c6;
   border-left: none;
 }
 
 .MuiOutlinedInput-notchedOutline {
   border-color: var(--BrandTertiary);
-  border-right: none !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1606,8 +1636,18 @@
 .popular .popularInner {
   width: var(--PageWidth);
 }
-.popular .popularInner h1 {
+.popular .popularInner .heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.popular .popularInner .heading h1 {
   font-size: 24px;
+}
+.popular .popularInner .heading .headingItem {
+  font-weight: 700;
+  font-size: 18px;
 }
 .popular .popularInner span {
   padding: 50px 0 0 0;
@@ -1625,8 +1665,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #var --BrandTertiary;
-  border-bottom: 1px solid #var --BrandTertiary;
+  border-top: 1px solid var(--BrandTertiary);
+  border-bottom: 1px solid var(--BrandTertiary);
   background: white;
 }
 .filtration .inner {
