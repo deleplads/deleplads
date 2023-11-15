@@ -7,7 +7,7 @@ import Footer from "~/components/Footer";
 import type { SetStateAction } from "react";
 import React, { useEffect } from "react";
 import { Tab, Tabs } from "@mui/material";
-import { useNavigate, Outlet, useLoaderData, useParams, useLocation } from "@remix-run/react";
+import { useNavigate, Outlet, useLoaderData, useLocation } from "@remix-run/react";
 import { defer, type LoaderFunction } from "@remix-run/node";
 import { getProfileFromUserId } from "utils/profile.server";
 import { requireUserId } from "utils/auth.server";
@@ -57,11 +57,9 @@ export default function Profile() {
 
   const updateSelectedIndexFromURL = () => {
     const path = location.pathname;
-    console.log(path);
     
     const index = tabMapping[path] ?? 0; // Default to 0 if path not found
     setSelectedIndex(index);
-    console.log(selectedIndex);
     
   };
 
