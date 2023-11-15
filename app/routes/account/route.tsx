@@ -5,9 +5,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Footer from "~/components/Footer";
 import type { SetStateAction } from "react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Tab, Tabs } from "@mui/material";
-import { useNavigate, Outlet, useLoaderData } from "@remix-run/react";
+import { useNavigate, Outlet, useLoaderData, useParams, useLocation } from "@remix-run/react";
 import { defer, type LoaderFunction } from "@remix-run/node";
 import { getProfileFromUserId } from "utils/profile.server";
 import { requireUserId } from "utils/auth.server";
@@ -34,15 +34,41 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function Profile() {
+  const location = useLocation();
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
   const { profile } = useLoaderData() as ProfileProps;
+  const tabMapping = {
+    "/account": 0, // default path, e.g., /account
+    "/account/listings": 1,
+    "/account/profile": 2,
+    "/account/payment": 3,
+    "/account/notification": 4,
+    "/account/settings": 5,
+    "/account/verification": 6,
+    "/account/activity": 7,
+  };
 
   const handleChange = (event: any, newValue: SetStateAction<number>) => {
     setValue(newValue);
   };
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const updateSelectedIndexFromURL = () => {
+    const path = location.pathname;
+    console.log(path);
+    
+    const index = tabMapping[path] ?? 0; // Default to 0 if path not found
+    setSelectedIndex(index);
+    console.log(selectedIndex);
+    
+  };
+
+  // Update selectedIndex when URL changes
+  useEffect(() => {
+     updateSelectedIndexFromURL();
+  }, [location]);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -125,7 +151,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 4}
                       onClick={(event) =>
-                        handleListItemClick(event, 4, "/account/notfication")
+                        handleListItemClick(event, 4, "/account/notification")
                       }
                     >
                       <ListItemText primary="Notifikationer" />
