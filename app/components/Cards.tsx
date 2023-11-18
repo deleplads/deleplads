@@ -7,11 +7,6 @@ import EvStationOutlinedIcon from "@mui/icons-material/EvStationOutlined";
 import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
 import VpnKeyOffOutlinedIcon from "@mui/icons-material/VpnKeyOffOutlined";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
-import AccessibleOutlinedIcon from "@mui/icons-material/AccessibleOutlined";
-import LightOutlinedIcon from "@mui/icons-material/LightOutlined";
-import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
-import DirectionsSubwayFilledOutlinedIcon from "@mui/icons-material/DirectionsSubwayFilledOutlined";
-import AddRoadOutlinedIcon from "@mui/icons-material/AddRoadOutlined";
 
 export default function BasicCard() {
   const navigate = useNavigate();

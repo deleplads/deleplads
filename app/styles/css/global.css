@@ -93,7 +93,6 @@
   font-size: 64px;
   line-height: 72px;
   font-weight: 800;
-  letter-spacing: 0.12px;
   color: #0b3558;
   margin-bottom: 15px;
 }
@@ -232,7 +231,6 @@
 }
 .ParkingSpot h2 {
   font-size: 24px;
-  letter-spacing: -0.4;
 }
 .ParkingSpot .ParkingSpotInformationHeader {
   margin-bottom: 50px;
@@ -300,6 +298,7 @@
 
 .css-jcszzj {
   display: none !important;
+  z-index: 999 !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -318,6 +317,9 @@
   }
   .ParkingSpot .ParkingSpotInformationHeader p {
     margin-top: 8px;
+  }
+  .ParkingSpot .ParkingSpotInformationHeader .shareAndBugs {
+    display: none;
   }
   .ParkingSpot .ParkingSpotBooking {
     display: none;
@@ -592,7 +594,6 @@
   font-size: 64px;
   line-height: 120%;
   font-weight: 700;
-  letter-spacing: -1px;
   color: #0b3558;
   margin: 0 0 8px 0;
   padding: 0;
@@ -1000,37 +1001,61 @@
   background-color: #dddddd;
 }
 
-@media only screen and (min-width: 1399.98px) {
+.CallToAction {
+  background-color: rgb(240, 243, 248) !important;
+  border: 1px solid rgb(212, 224, 237);
+  display: flex;
+  width: var(--PageWidth);
+  margin: 0 auto;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  justify-content: center;
+}
+.CallToAction .inner {
+  padding: 98px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.CallToAction .inner h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 120%;
+  margin: 0 auto;
+}
+.CallToAction .inner p {
+  font-size: 20px;
+  margin: 24px auto 32px auto;
+  text-align: center;
+}
+.CallToAction .inner .CallToActionButton {
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px 20px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
   .CallToAction {
-    background: var(--BrandSecondary);
-    display: flex;
-    width: var(--PageWidth);
-    margin: 0 auto;
-    border-radius: 24px;
-    backface-visibility: hidden;
+    width: auto;
+    margin: 48px 16px;
+    border-radius: 4px;
   }
   .CallToAction .inner {
-    padding: 98px;
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
+    padding: 40px 24px;
+    width: 100%;
   }
   .CallToAction .inner h1 {
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 120%;
-    font-family: "Poppins", sans-serif;
-    letter-spacing: -2px;
-    color: white !important;
+    font-size: 24px;
   }
   .CallToAction .inner p {
-    font-size: 20px;
-    margin: 20px 0 30px 0;
+    font-size: 18px;
+    margin: 24px 0 32px 0;
+    line-height: 175%;
   }
   .CallToAction .inner .CallToActionButton {
-    font-weight: 700;
-    font-size: 18px;
-    width: fit-content;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -1374,28 +1399,30 @@
 }
 .Hero {
   width: 100%;
-  height: 450px !important;
+  height: 650px !important;
   display: flex;
   justify-content: center;
-  margin: 120px 0 50px 0;
+  margin: 80px 0 50px 0;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fffdf9;
 }
 .Hero .HeroInner {
   height: 100%;
-  border: 1px solid #e5e5e5;
   width: var(--PageWidth);
   display: flex;
-  justify-content: center;
-  text-align: center;
+  justify-content: left;
+  text-align: left;
   align-items: center;
+  position: relative;
 }
 .Hero .HeroInner h1 {
   font-size: 56px;
   line-height: 120%;
-  font-weight: 700;
-  letter-spacing: -1px;
+  font-weight: 400;
   color: #0b3558;
   margin: 0 0 8px 0;
   padding: 0;
+  font-family: "Unbounded", sans-serif;
 }
 .Hero .HeroInner p {
   color: #2d2d34;
@@ -1405,9 +1432,11 @@
   margin: 20px 0 30px 0;
 }
 .Hero .HeroInner .hero-content {
-  height: 575px;
-  width: auto;
+  width: 55%;
   border-radius: 8px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1432,20 +1461,20 @@
   }
 }
 .NavbarDropShadow {
-  background: #ffffff !important;
+  background: #fffdf9;
+  border-bottom: 1px solid rgba(32, 33, 37, 0.12);
 }
 
 .NavigationBar {
   height: 80px;
   display: flex;
   justify-content: center;
-  z-index: 1000 !important;
+  z-index: 9999 !important;
   margin-bottom: 1px;
   position: fixed;
   top: 0;
   width: 100%;
-  background: #ffffff !important;
-  border-bottom: 1px solid rgba(32, 33, 37, 0.12);
+  background: #fffdf9;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
@@ -1498,7 +1527,7 @@
     display: flex;
     justify-content: center;
     border-bottom: 1px solid var(--BrandTertiary);
-    z-index: 1000;
+    z-index: 9999;
     padding: 0 16px;
   }
   .NavigationBar .InnerNavigationBar {
@@ -1508,6 +1537,7 @@
     display: inherit;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
   }
   .NavigationBar .InnerNavigationBar .items {
     display: flex;
@@ -1541,6 +1571,7 @@
   }
   .bm-menu {
     padding: 16px !important;
+    z-index: 9999 !important;
   }
   .MenuToggle {
     position: relative;
@@ -1576,28 +1607,34 @@
 }
 .SearchBar {
   width: 100%;
-  height: 100px;
+  height: auto;
   padding: 0;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr;
+  gap: 16px;
   margin: 40px 0 25px 0 !important;
 }
-.SearchBar .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  padding: 24.5px 20px !important;
-}
 .SearchBar .searchButton {
-  height: 72px;
   padding: 0 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
-  border: 1px solid #c6c6c6;
   border-left: none;
+}
+.SearchBar span {
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+}
+.SearchBar .MuiFormControl-root {
+  width: 100%;
+  height: auto !important;
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: var(--BrandTertiary);
+  border-color: #7b728e !important;
+  color: black !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1642,7 +1679,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.popular .popularInner .heading h1 {
+.popular .popularInner .heading h2 {
   font-size: 24px;
 }
 .popular .popularInner .heading .headingItem {
@@ -1694,7 +1731,7 @@
   align-items: center;
   margin-bottom: 150px;
 }
-.blogTeaser h1 {
+.blogTeaser h2 {
   font-size: 48px;
 }
 .blogTeaser p {
@@ -1725,36 +1762,6 @@
   margin-left: -25.25%;
 }
 
-.Ratings .trustPilotRatings {
-  display: flex;
-  align-items: center;
-}
-.Ratings .trustPilotRatings h3 {
-  font-size: 18px;
-  font-weight: 400 !important;
-}
-.Ratings .trustPilotRatings .stars {
-  height: 20px;
-  margin: 0 16px 0 12px;
-}
-.Ratings .trustPilotRatings p {
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-}
-.Ratings .googleRatings {
-  display: flex;
-  align-items: center;
-}
-.Ratings .googleRatings p {
-  margin: 0;
-  padding: 0;
-}
-.Ratings .googleRatings .stars {
-  height: 20px;
-  margin: 0 8px;
-}
-
 .gallery-cards {
   border: 1px solid var(--BrandTertiary);
 }
@@ -1766,7 +1773,7 @@
   padding: 32px;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
-  font-size: 20px;
+  font-size: 24px;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info p {
   color: black !important;
@@ -1865,6 +1872,36 @@
     width: -webkit-fill-available !important;
   }
 }
+.benefits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 192px;
+}
+.benefits .inner {
+  width: var(--PageWidth);
+}
+.benefits .inner .benefit {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+  text-align: left;
+  column-gap: 10%;
+}
+.benefits .inner .benefit:nth-child(2) {
+  margin: 96px 0px;
+}
+.benefits .inner .benefit .text h2 {
+  font-size: 48px;
+  line-height: 125%;
+}
+.benefits .inner .benefit .text p {
+  margin: 24px 0px 32px 0px;
+  font-size: 18px;
+  line-height: 175%;
+}
+
 .FAQLeje {
   display: flex;
   justify-content: center;
@@ -1945,11 +1982,11 @@
   width: var(--PageWidth);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 10%;
 }
-.FAQGeneral .inner h1 {
+.FAQGeneral .inner h2 {
   font-size: 48px;
-  font-weight: 800;
-  letter-spacing: -2px;
+  font-weight: 700;
 }
 .FAQGeneral .inner #panel1a-header,
 .FAQGeneral .inner #panel2a-header,
@@ -1970,177 +2007,6 @@
 .FAQGeneral .inner .MuiPaper-root p {
   font-size: 18px;
   line-height: 150%;
-}
-
-.why-should-you-use-it {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 150px;
-}
-.why-should-you-use-it .inner {
-  width: var(--PageWidth);
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
-}
-.why-should-you-use-it .inner h2 {
-  font-size: 48px;
-  line-height: 120%;
-  text-align: center;
-}
-.why-should-you-use-it .inner p {
-  font-size: 18px;
-  max-width: 600px;
-  line-height: 200%;
-  padding: 16px 20px;
-  text-align: center;
-  margin: 0 auto;
-}
-.why-should-you-use-it .inner .benefits {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 24px;
-}
-.why-should-you-use-it .inner .benefits .benefit {
-  color: black;
-  border: 1px solid var(--BrandTertiary);
-  padding: 32px 40px;
-}
-.why-should-you-use-it .inner .benefits .benefit .attribute-icon {
-  height: 112px;
-  width: auto;
-}
-.why-should-you-use-it .inner .benefits .benefit h3 {
-  font-size: 24px;
-  margin: 48px 0 16px 0;
-}
-.why-should-you-use-it .inner .benefits .benefit p {
-  font-size: 16px;
-  text-align: left;
-  padding: 0;
-}
-
-.how-should-you-use-it {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 150px;
-}
-.how-should-you-use-it .inner {
-  width: var(--PageWidth);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.how-should-you-use-it .inner h1 {
-  font-size: 48px;
-  line-height: 120%;
-  text-align: center;
-}
-.how-should-you-use-it .inner p {
-  margin: 16px 0 20px 0;
-  font-size: 18px;
-  line-height: 200%;
-  max-width: 600px;
-  text-align: center;
-}
-.how-should-you-use-it .inner .how-renter .steps,
-.how-should-you-use-it .inner .how-host .steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.how-should-you-use-it .inner .how-renter .steps .step,
-.how-should-you-use-it .inner .how-host .steps .step {
-  border: 1px solid var(--BrandTertiary);
-  border-radius: 24px;
-  padding: 24px;
-}
-.how-should-you-use-it .inner .how-renter .steps .step h2,
-.how-should-you-use-it .inner .how-host .steps .step h2 {
-  margin: 24px 0 16px 0;
-  font-size: 24px;
-  letter-spacing: -1px;
-}
-.how-should-you-use-it .inner .how-renter .steps .step p,
-.how-should-you-use-it .inner .how-host .steps .step p {
-  text-align: left !important;
-  margin: 0;
-  font-size: 16px;
-}
-.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  text-transform: initial;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif !important;
-  padding: 12px 20px;
-  border-radius: 4px;
-}
-.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  color: white;
-  background: #146ef5;
-}
-.how-should-you-use-it .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  color: black;
-  border: 1px solid #e5e5e5;
-  margin: 0 4px 64px 4px;
-}
-.how-should-you-use-it .css-1aquho2-MuiTabs-indicator {
-  display: none;
-}
-
-.what-is-it {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 150px;
-}
-.what-is-it .inner {
-  width: var(--PageWidth);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
-.what-is-it .inner h1 {
-  font-size: 48px;
-  line-height: 120%;
-}
-.what-is-it .inner p {
-  margin: 30px 0 48px 0;
-  font-size: 18px;
-  line-height: 200%;
-  max-width: 600px;
-}
-.what-is-it .inner .solutions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-.what-is-it .inner .solutions .solution-one {
-  border: 1px solid var(--BrandTertiary);
-  padding: 48px;
-  border-radius: 24px;
-}
-.what-is-it .inner .solutions .solution-one span {
-  margin-top: 48px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.what-is-it .inner .solutions .solution-two {
-  border: 1px solid var(--BrandTertiary);
-  padding: 48px;
-  border-radius: 24px;
-}
-.what-is-it .inner .solutions .solution-two span {
-  margin-top: 48px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .angry-grid {

@@ -1,23 +1,23 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, A11y } from "swiper/modules";
+import { Scrollbar, A11y, Navigation } from "swiper/modules";
 import { Box } from "@mui/material";
 
 function blogTeaser() {
   return (
     <main className="blogTeaser">
-      <h1>Bliv en del af fællesskabet</h1>
+      <h2>Bliv en del af fællesskabet</h2>
       <p>
         På vores platform møder du lejere og udlejere, som deler en passion for
         at skabe et stærkt fællesskab, der forstærker brugeroplevelsen.
       </p>
       <div className="inner">
         <Swiper
-          modules={[Scrollbar, A11y]}
+          modules={[Scrollbar, A11y, Navigation]}
           spaceBetween={24}
           slidesPerView={6}
           freeMode={true}
           mousewheel={{ releaseOnEdges: true }}
-          // navigation
+          navigation={true}
           // pagination={{ clickable: true }}
           // scrollbar={{ draggable: true }}
           centeredSlides={true}

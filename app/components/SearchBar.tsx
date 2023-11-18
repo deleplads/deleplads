@@ -26,24 +26,8 @@ function SearchBar() {
           height: "50px !important",
         }}
       />
-      <div className="searchButton">
-        <Button
-          className="SearchButton"
-          variant="contained"
-          href="#"
-          sx={{
-            textTransform: "initial",
-            fontSize: "15px",
-            padding: "12px 20px !important",
-            background: "var(--BrandAccent) !important",
-            height: "fit-content",
-          }}
-        >
-          Find parkeringsplads
-        </Button>
-      </div>
 
-      {/* <span>
+      <span>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             format="DD/MM hh:ss"
@@ -66,7 +50,23 @@ function SearchBar() {
             }}
           />
         </LocalizationProvider>
-      </span> */}
+      </span>
+
+      <Button
+        className="SearchButton"
+        variant="contained"
+        href="#"
+        sx={{
+          textTransform: "initial",
+          fontSize: "15px",
+          padding: "12px 20px !important",
+          background: "#FF4F00",
+          height: "fit-content",
+          fontWeight: 700,
+        }}
+      >
+        Find parkeringsplads
+      </Button>
     </div>
   );
 }

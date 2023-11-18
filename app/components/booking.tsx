@@ -5,8 +5,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { ListItem, ListItemText } from "@mui/material";
 import { VariableSizeList } from "react-window";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { renderTimeViewClock } from "@mui/x-date-pickers/timeViewRenderers";
 import "dayjs/locale/en-gb";
 
 const hourList = Array.from({ length: 24 }, (_, i) => i);
@@ -118,19 +116,6 @@ function Booking() {
           <div className="desktopTimePicker">
             <TimePicker />
           </div>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateTimePicker
-              className="MobileTimePicker"
-              format="DD/MM hh:ss"
-              ampm={false}
-              label="Starttidspunkt"
-              viewRenderers={{
-                hours: renderTimeViewClock,
-                minutes: renderTimeViewClock,
-                seconds: renderTimeViewClock,
-              }}
-            />
-          </LocalizationProvider>
         </div>
       </section>
     </>

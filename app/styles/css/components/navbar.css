@@ -1,18 +1,18 @@
 .NavbarDropShadow {
-  background: #ffffff !important;
+  background: #fffdf9;
+  border-bottom: 1px solid rgba(32, 33, 37, 0.12);
 }
 
 .NavigationBar {
   height: 80px;
   display: flex;
   justify-content: center;
-  z-index: 1000 !important;
+  z-index: 9999 !important;
   margin-bottom: 1px;
   position: fixed;
   top: 0;
   width: 100%;
-  background: #ffffff !important;
-  border-bottom: 1px solid rgba(32, 33, 37, 0.12);
+  background: #fffdf9;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
@@ -65,7 +65,7 @@
     display: flex;
     justify-content: center;
     border-bottom: 1px solid var(--BrandTertiary);
-    z-index: 1000;
+    z-index: 9999;
     padding: 0 16px;
   }
   .NavigationBar .InnerNavigationBar {
@@ -75,6 +75,7 @@
     display: inherit;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
   }
   .NavigationBar .InnerNavigationBar .items {
     display: flex;
@@ -108,6 +109,7 @@
   }
   .bm-menu {
     padding: 16px !important;
+    z-index: 9999 !important;
   }
   .MenuToggle {
     position: relative;

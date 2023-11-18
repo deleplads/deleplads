@@ -8,11 +8,11 @@
   width: var(--PageWidth);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 10%;
 }
-.FAQGeneral .inner h1 {
+.FAQGeneral .inner h2 {
   font-size: 48px;
-  font-weight: 800;
-  letter-spacing: -2px;
+  font-weight: 700;
 }
 .FAQGeneral .inner #panel1a-header,
 .FAQGeneral .inner #panel2a-header,
