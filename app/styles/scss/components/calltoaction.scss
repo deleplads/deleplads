@@ -1,32 +1,60 @@
-@media only screen and (min-width: 1399.98px) {
-  .CallToAction {
-    background: var(--BrandSecondary);
+// Desktop css
+
+.CallToAction {
+  background-color: rgb(240, 243, 248) !important;
+  border: 1px solid rgb(212, 224, 237);
+  display: flex;
+  width: var(--PageWidth);
+  margin: 0 auto;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  justify-content: center;
+  .inner {
+    padding: 98px;
     display: flex;
-    width: var(--PageWidth);
-    margin: 0 auto;
-    border-radius: 24px;
-    backface-visibility: hidden;
+    flex-direction: column;
+    justify-content: center;
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 120%;
+      margin: 0 auto;
+    }
+    p {
+      font-size: 20px;
+      margin: 24px auto 32px auto;
+      text-align: center;
+    }
+    .CallToActionButton {
+      font-weight: 700;
+      font-size: 16px;
+      padding: 12px 20px;
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+}
+
+// Mobile css
+
+@media only screen and (max-width: 600px) {
+  .CallToAction {
+    width: auto;
+    margin: 48px 16px;
+    border-radius: 4px;
     .inner {
-      padding: 98px;
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
+      padding: 40px 24px;
+      width: 100%;
       h1 {
-        font-size: 48px;
-        font-weight: 900;
-        line-height: 120%;
-        font-family: "Poppins", sans-serif;
-        letter-spacing: -2px;
-        color: white !important;
+        font-size: 24px;
       }
       p {
-        font-size: 20px;
-        margin: 20px 0 30px 0;
+        font-size: 18px;
+        margin: 24px 0 32px 0;
+        line-height: 175%;
       }
       .CallToActionButton {
-        font-weight: 700;
-        font-size: 18px;
-        width: fit-content;
+        width: 100%;
       }
     }
   }

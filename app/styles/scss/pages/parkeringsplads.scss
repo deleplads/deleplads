@@ -11,7 +11,6 @@
 
   h2 {
     font-size: 24px;
-    letter-spacing: -0.4;
   }
 
   .ParkingSpotInformationHeader {
@@ -84,6 +83,7 @@
 
 .css-jcszzj {
   display: none !important;
+  z-index: 999 !important;
 }
 
 // Footer media query
@@ -103,6 +103,9 @@
       }
       p {
         margin-top: 8px;
+      }
+      .shareAndBugs {
+        display: none;
       }
     }
 

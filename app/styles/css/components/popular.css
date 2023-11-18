@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.popular .popularInner .heading h1 {
+.popular .popularInner .heading h2 {
   font-size: 24px;
 }
 .popular .popularInner .heading .headingItem {

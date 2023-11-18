@@ -64,7 +64,7 @@ export default function Parkeringsplads() {
             <h1>Ll. Blovstrødvej</h1>
             <p>3450 Allerød, Region Hovedstaden</p>
           </span>
-          <span>
+          <span className="shareAndBugs">
             <Button
               variant="outlined"
               size="large"
@@ -114,7 +114,7 @@ export default function Parkeringsplads() {
             ></iframe>
           </div>
 
-          <h2>Information</h2>
+          <h2>Fordele ved denne parkeringsplads</h2>
           <div className="ParkingSpotInformationDetails">
             <div className="ParkingSpotDetails">
               <PersonOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />

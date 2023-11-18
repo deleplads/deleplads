@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@mui/material";
 
 function CallToAction() {
@@ -7,7 +6,8 @@ function CallToAction() {
     <>
       <section className="CallToAction">
         <div className="inner">
-          <h1>Download gratis app til<br/>kvitteringer</h1>
+          <h1>Parkering gjort enkelt</h1>
+          <p>Kom i gang med at finde og udleje private parkeringspladser nu.</p>
           <Button
             variant="contained"
             href="#"
@@ -15,7 +15,7 @@ function CallToAction() {
             sx={{ textTransform: "initial", background: "var(--BrandAccent)" }}
             className="CallToActionButton"
           >
-            Tilmeld gratis
+            Tilmeld dig gratis
           </Button>
         </div>
       </section>
