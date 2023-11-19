@@ -3,12 +3,10 @@ import CallToAction from "~/components/CallToAction";
 import Footer from "~/components/Footer";
 import Hero from "~/components/Hero";
 import Popular from "~/components/Popular";
-import WhatIsIt from "~/components/usp/WhatIsIt";
-import WhyShouldYouUseIt from "~/components/usp/WhyShouldYouUseIt";
-import HowShouldYouUseIt from "~/components/usp/HowShouldYouUseIt";
 import SocialProof from "~/components/blogTeaser";
 import FAQGeneral from "~/components/FAQGeneral";
-import swipercss from  "node_modules/swiper/swiper-bundle.min.css"; // Import Swiper styles
+import swipercss from  "node_modules/swiper/swiper-bundle.min.css";
+import Benefits from "~/components/benefits";
 
 
 export const meta: V2_MetaFunction = () => {
@@ -30,9 +28,7 @@ export default function Index() {
     <>
       <Hero></Hero>
       <Popular></Popular>
-      <WhatIsIt></WhatIsIt>
-      <HowShouldYouUseIt></HowShouldYouUseIt>
-      <WhyShouldYouUseIt></WhyShouldYouUseIt>
+      <Benefits></Benefits>
       <SocialProof></SocialProof>
       <FAQGeneral></FAQGeneral>
       <CallToAction></CallToAction>

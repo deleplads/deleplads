@@ -30,7 +30,7 @@
   color: white;
 }
 .avaliability .ikke-ledig {
-  background: #var --BrandTertiary;
+  background: var(--BrandTertiary);
 }
 
 .bonus-info {

@@ -24,6 +24,7 @@ import VpnKeyOffOutlined from "@mui/icons-material/VpnKeyOffOutlined";
 import CallToAction from "~/components/CallToAction";
 import Booking from "~/components/booking";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import ApprDrawer from "~/components/AppDrawer";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -63,7 +64,7 @@ export default function Parkeringsplads() {
             <h1>Ll. Blovstrødvej</h1>
             <p>3450 Allerød, Region Hovedstaden</p>
           </span>
-          <span>
+          <span className="shareAndBugs">
             <Button
               variant="outlined"
               size="large"
@@ -88,7 +89,11 @@ export default function Parkeringsplads() {
         </div>
         <div className="ParkingSpotInformation">
           <Box
-            sx={{ aspectRatio: "16 / 9", backgroundSize: "cover", borderRadius: "4px" }}
+            sx={{
+              aspectRatio: "16 / 9",
+              backgroundSize: "cover",
+              borderRadius: "4px",
+            }}
             component="img"
             src="./parkeringsplads2.png"
           />
@@ -109,7 +114,7 @@ export default function Parkeringsplads() {
             ></iframe>
           </div>
 
-          <h2>Information</h2>
+          <h2>Fordele ved denne parkeringsplads</h2>
           <div className="ParkingSpotInformationDetails">
             <div className="ParkingSpotDetails">
               <PersonOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
@@ -213,19 +218,7 @@ export default function Parkeringsplads() {
           </div>
         </div>
 
-        <div className="ParkingSpotMobileBooking">
-          <Button
-            size="large"
-            href="#"
-            sx={{
-              width: "100%",
-              textTransform: "initial",
-              background: "var(--BrandAccent) !important",
-            }}
-          >
-            Bestil
-          </Button>
-        </div>
+        <ApprDrawer></ApprDrawer>
       </section>
       <CallToAction></CallToAction>
       <Footer></Footer>

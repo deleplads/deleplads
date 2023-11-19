@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import { Button, FormHelperText, TextField } from "@mui/material";
 import { SetStateAction, useState } from "react";
 import Avatar from "@mui/material/Avatar";
+import profilePicture from "public/profile-picture-placeholder.jpg"
 
 type EditProfileProps = {
   profile: {
@@ -251,7 +252,7 @@ function EditProfile(profile: EditProfileProps) {
           <Avatar
             className="Avatar"
             alt="Remy Sharp"
-            src="./profile-picture-placeholder.jpg"
+            src={profilePicture}
           />
           <span>
             <Button variant="outlined">Vælg fil</Button>

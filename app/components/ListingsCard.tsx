@@ -8,7 +8,7 @@ import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
 import VpnKeyOffOutlinedIcon from "@mui/icons-material/VpnKeyOffOutlined";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 
-export default function BasicCard() {
+export default function ListingsCard() {
   const navigate = useNavigate();
   return (
     <div
@@ -16,7 +16,7 @@ export default function BasicCard() {
         navigate("parkeringsplads");
       }}
     >
-      <Card className="gallery-cards">
+      <Card className="listingsCard">
         <CardContent className="gallery-cards-content">
           <Box
             sx={{ width: "100%" }}
@@ -27,26 +27,24 @@ export default function BasicCard() {
             <h3>Ll. Blovstrødvej 33</h3>
 
             <p>3450 Allerød, Hovedstaden</p>
-            <br />
-            <div className="gallery-cards-attributes">
-              <div className="gallery-cards-attribute">
+            <div className="cardsAttributes">
+              <div className="cardsAttribute">
                 {<EvStationOutlinedIcon className="attribute-icon" />}{" "}
                 <p>El-ladestander</p>
               </div>
-              <div className="gallery-cards-attribute">
+              <div className="cardsAttribute">
                 {<GarageOutlinedIcon className="attribute-icon" />}{" "}
                 <p>Overdækning</p>
               </div>
-              <div className="gallery-cards-attribute">
+              <div className="cardsAttribute">
                 {<VpnKeyOffOutlinedIcon className="attribute-icon" />}{" "}
                 <p>Ingen kode</p>
               </div>
-              <div className="gallery-cards-attribute">
+              <div className="cardsAttribute">
                 {<CameraAltOutlinedIcon className="attribute-icon" />}{" "}
                 <p>Overvågning</p>
               </div>
             </div>
-            <br />
             <div className="price">1337 DKK per time</div>
             <Button
               className="SearchButton"

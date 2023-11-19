@@ -9,6 +9,7 @@ import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
 import type { Profile } from "db_types";
 import { useMediaQuery } from "react-responsive";
 import { toast } from "react-hot-toast";
+import profilePicture from "public/profile-picture-placeholder.jpg"
 
 const style = {
   position: "absolute" as "absolute",
@@ -38,7 +39,7 @@ const TabletDiv = (tablet: any) => {
         <Avatar
           sx={{ width: "40px", height: "40px" }}
           alt="Remy Sharp"
-          src="../../profile-picture-placeholder.jpg"
+          src={profilePicture}
         />
       </IconButton>
     </Tooltip>
@@ -227,7 +228,7 @@ function Navbar(profile: any) {
                       <Avatar
                         sx={{ width: "40px", height: "40px" }}
                         alt="Remy Sharp"
-                        src="./profile-picture-placeholder.jpg"
+                        src={profilePicture}
                       />
                     </IconButton>
                   </Tooltip>

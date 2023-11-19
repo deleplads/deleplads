@@ -11,7 +11,6 @@
 }
 .ParkingSpot h2 {
   font-size: 24px;
-  letter-spacing: -0.4;
 }
 .ParkingSpot .ParkingSpotInformationHeader {
   margin-bottom: 50px;
@@ -69,12 +68,17 @@
   text-align: center;
 }
 .ParkingSpot .ParkingSpotMobileBooking {
-  display: none;
+  display: none !important;
 }
 
 .MuiFormControlLabel-root {
   margin: 0 0 0 -12px !important;
   padding: 0 !important;
+}
+
+.css-jcszzj {
+  display: none !important;
+  z-index: 999 !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -94,17 +98,11 @@
   .ParkingSpot .ParkingSpotInformationHeader p {
     margin-top: 8px;
   }
-  .ParkingSpot .ParkingSpotBooking {
+  .ParkingSpot .ParkingSpotInformationHeader .shareAndBugs {
     display: none;
   }
-  .ParkingSpot .ParkingSpotMobileBooking {
-    display: block;
-    position: sticky !important;
-    bottom: 0;
-    background: white;
-    margin: 0 -16px;
-    padding: 16px;
-    border-top: 1px solid var(--BrandTertiary);
+  .ParkingSpot .ParkingSpotBooking {
+    display: none;
   }
   .ParkingSpot .ParkingSpotInformationDetails {
     display: flex !important;
@@ -112,6 +110,9 @@
   }
   .ParkingSpot .ParkingSpotInformationDetails .ParkingSpotDetails {
     margin-bottom: 25px;
+  }
+  .css-jcszzj {
+    display: block !important;
   }
 }
 
