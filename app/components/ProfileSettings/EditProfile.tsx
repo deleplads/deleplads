@@ -3,27 +3,19 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import { Button, FormHelperText, TextField } from "@mui/material";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import profilePicture from "public/profile-picture-placeholder.jpg"
 import { Form, useActionData, useNavigation } from '@remix-run/react';
-import { getYearsRange } from './ProfileUtils'
+import { getYearsRange } from "utils/profile/profileUtils";
 import toast, { Toaster } from "react-hot-toast";
+import type { profiles } from "@prisma/client";
+
 
 type EditProfileProps = {
-  profile: {
-    id: string;
-    created_at: Date | null;
-    first_name: string;
-    last_name: string;
-    birth_date: string | null;
-    address: string | null;
-    city: string | null;
-    postal_code: number | null;
-    phone_number: number | null;
-  };
+  profile: profiles
 };
 function EditProfile(profile: EditProfileProps) {
   const actionData = useActionData();
@@ -38,45 +30,42 @@ function EditProfile(profile: EditProfileProps) {
       toast.dismiss();
     }
   }, [isSubmitting]);
-  // An error happened after submitting the form
+
+  // An error or succes happened after submitting the form
   useEffect(() => {
     if (!isSubmitting && actionData?.error) {
       toast.error(actionData.error);
     }
-  }, [isSubmitting, actionData?.error]);
-  // The form was submitted successfully
-  useEffect(() => {
     if (!isSubmitting && actionData?.success) {
       toast.success(actionData.success);
     }
-  }, [isSubmitting, actionData?.success]);
+  }, [isSubmitting, actionData?.error, actionData?.success]);
 
   const yearsRange = getYearsRange();
+  const [formData, setFormData] = useState({
+    firstName: profile.profile.first_name,
+    lastName: profile.profile.last_name,
+    birthDay: profile.profile.birth_date ? new Date(profile.profile.birth_date).getDate() : null,
+    birthMonth: profile.profile.birth_date ? new Date(profile.profile.birth_date).getMonth() : null,
+    birthYear: profile.profile.birth_date ? new Date(profile.profile.birth_date).getFullYear() : null,
+    address: profile.profile.address,
+    city: profile.profile.city,
+    postalCode: profile.profile.postal_code,
+    phoneNumber: profile.profile.phone_number
+  });
 
-  const [firstName, setFirstName] = useState(profile.profile.first_name);
-  const [lastName, setLastName] = useState(profile.profile.last_name);
-  const [birthDay, setBirthDay] = useState(profile.profile.birth_date ? new Date(profile.profile.birth_date).getDate() : null);
-  const [birthMonth, setBirthMonth] = useState(profile.profile.birth_date ? new Date(profile.profile.birth_date).getMonth() : null);
-  const [birthYear, setBirthYear] = useState(profile.profile.birth_date ? new Date(profile.profile.birth_date).getFullYear() : null);
-  const [address, setAddress] = useState(profile.profile.address);
-  const [city, setCity] = useState(profile.profile.city);
-  const [postalCode, setPostalCode] = useState(profile.profile.postal_code);
-  const [phoneNumber, setPhoneNumber] = useState(profile.profile.phone_number);
-
-  const handleFirstNameChange = (event: React.ChangeEvent<HTMLInputElement>) => setFirstName(event.target.value);
-  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => setLastName(event.target.value);
-  const handleBirthDayChange = (event: SelectChangeEvent<number | null>) => setBirthDay(event.target.value);
-  const handleBirthMonthChange = (event: SelectChangeEvent<number | null>) => setBirthMonth(event.target.value);
-  const handleBirthYearChange = (event: SelectChangeEvent<number | null>) => setBirthYear(event.target.value);
-  const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => setAddress(event.target.value);
-  const handleCityChange = (event: React.ChangeEvent<HTMLInputElement>) => setCity(event.target.value);
-  const handlePostalCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => setPostalCode(event.target.value);
-  const handlePhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => setPhoneNumber(event.target.value);
+  const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
+    const { name, value } = event.target;
+    setFormData(prevFormData => ({
+        ...prevFormData,
+        [name]: value
+    }));
+};
 
 
   const [firstNameError, setFirstNameError] = useState('');
   const validateFirstName = () => {
-    if (!firstName) {
+    if (!formData.firstName) {
       setFirstNameError("First name is required");
       return false;
     } else {
@@ -123,8 +112,8 @@ function EditProfile(profile: EditProfileProps) {
               helperText={firstNameError}
               placeholder="Fornavn"
               variant="outlined"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              value={formData.firstName}
+              onChange={handleInputChange}
             />
           </div>
           <div id="item-2">
@@ -141,8 +130,8 @@ function EditProfile(profile: EditProfileProps) {
               id=""
               placeholder="Efternavn"
               variant="outlined"
-              value={lastName}
-              onChange={handleLastNameChange}
+              value={formData.lastName}
+              onChange={handleInputChange}
             />
           </div>
           <div id="item-3">
@@ -161,8 +150,8 @@ function EditProfile(profile: EditProfileProps) {
                   labelId=""
                   id=""
                   label=""
-                  value={birthDay}
-                  onChange={handleBirthDayChange}
+                  value={formData.birthDay}
+                  onChange={handleInputChange}
                 >
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
@@ -218,8 +207,8 @@ function EditProfile(profile: EditProfileProps) {
                   labelId=""
                   id=""
                   label=""
-                  value={birthMonth}
-                  onChange={handleBirthMonthChange}
+                  value={formData.birthMonth}
+                  onChange={handleInputChange}
                 >
                   <MenuItem value={0}>Januar</MenuItem>
                   <MenuItem value={1}>Februar</MenuItem>
@@ -252,9 +241,9 @@ function EditProfile(profile: EditProfileProps) {
                   name="birthYear"
                   labelId=""
                   id=""
-                  value={birthYear}
+                  value={formData.birthYear}
                   label=""
-                  onChange={handleBirthYearChange}
+                  onChange={handleInputChange}
                 >
                   {yearsRange.map((year) => (
                     <MenuItem key={year} value={year}>
@@ -278,8 +267,8 @@ function EditProfile(profile: EditProfileProps) {
               className="Textfield"
               id="demo-helper-text-misaligned"
               placeholder="F.eks. Prins Jørgens Gård 11"
-              value={address}
-              onChange={handleAddressChange}
+              value={formData.address}
+              onChange={handleInputChange}
             />
           </div>
           <div id="item-7">
@@ -296,8 +285,8 @@ function EditProfile(profile: EditProfileProps) {
               id="demo-helper-text-misaligned"
               label="Postnummer"
               placeholder="F.eks. 1218"
-              value={postalCode}
-              onChange={handlePostalCodeChange}
+              value={formData.postalCode}
+              onChange={handleInputChange}
             />
           </div>
           <div id="item-8">
@@ -314,8 +303,8 @@ function EditProfile(profile: EditProfileProps) {
               id="demo-helper-text-misaligned"
               label="By"
               placeholder="F.eks. København"
-              value={city}
-              onChange={handleCityChange}
+              value={formData.city}
+              onChange={handleInputChange}
             />
           </div>
           <div id="item-9">
@@ -332,8 +321,8 @@ function EditProfile(profile: EditProfileProps) {
               id="demo-helper-text-misaligned"
               label="Mobiltelefonnummer"
               placeholder="F.eks. 11223344"
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
             />
           </div>
           <div id="item-10">
