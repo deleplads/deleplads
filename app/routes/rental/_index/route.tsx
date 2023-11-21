@@ -5,13 +5,28 @@ import { json } from "@remix-run/node";
 import { useFetcher, useNavigate } from "@remix-run/react";
 import { createOrUpdate } from "utils/Parkingspot/createOrUpdate.server";
 import type { parkingspots } from "@prisma/client";
+import { getUser } from "utils/auth.server";
 
 export const action: ActionFunction = async ({ request }) => {
-  const parkingspot: Partial<parkingspots> = {
-  }
-   const newParkingspot = await createOrUpdate(parkingspot);
+  const userArray = await getUser(request);
 
-  return json({ success: true, parkingspot: newParkingspot });
+  let ownerId: string | undefined;
+  
+  if (userArray && userArray.length > 0) {
+      const user = userArray[0]; // Assuming 'user' is always the first element
+  
+      if (user && 'id' in user) {
+          ownerId = user.id;
+      }
+  }
+  
+  const parkingspot: Partial<parkingspots> = {
+      owner_id: ownerId
+  }
+
+   const newParkingspot = await createOrUpdate(parkingspot);
+ 
+  return json({ success: true, parkingspotId: newParkingspot.id }); 
 };
 
 
@@ -23,21 +38,22 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export default function Rental() {
-  const [selectedValue, setSelectedValue] = React.useState("");
   const fetcher = useFetcher(); // useFetcher hook from Remix
   const navigate = useNavigate();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
-  };
 
   const handleNext = () => {
     fetcher.submit(
       { /* your form data here */ }, 
       { method: "post" }
     );
-    navigate("/rental/1/type");
   };
+
+  React.useEffect(() => {
+    if (fetcher.data?.success) {
+      navigate(`/rental/${fetcher.data.parkingspotId}/type`);
+    }
+  }, [fetcher.data, navigate]);
 
   return (
     <>
