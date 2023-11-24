@@ -4,8 +4,7 @@ import EditProfile from '~/components/ProfileSettings/EditProfile';
 import { ActionFunction, json, redirect } from '@remix-run/node';
 import { deleteProfile, updateProfile } from 'utils/profile.server';
 import { logout } from 'utils/auth.server';
-import { validateAddressFields, validateBirthDateFields, validateNames, validatePhoneNumber } from 'helpers/profileValidations';
-import updateProfiles from "types/Profiles"
+
 export default function Profile() {
   const data = useOutletContext();
 
@@ -27,31 +26,34 @@ export const action: ActionFunction = async ({ request }) => {
   await new Promise((resolve, reject) => setTimeout(() => resolve(), 1000));
 
   const formData = await request.formData();
-  const formObj = Object.fromEntries<updateProfiles>(formData);
+  const formObj = Object.fromEntries(formData);
 
   if (formObj._action === 'deleteUser') {
     await deleteProfile(formObj.profileId);
     return await logout(request);
   }
 
-  const nameValidationResult = validateNames(formObj.firstName, formObj.lastName);
-  if (nameValidationResult?.error) {
-      return nameValidationResult;
+  // Validating the form data
+  if (formObj.firstName  == '' || formObj.lastName == '') {
+    return { error: 'Felterne for fornavn og efternavn må ikke være tomme.' };
   }
   
-  const addressValidationResult = validateAddressFields(formObj.address, formObj.postalCode, formObj.city);
-  if (addressValidationResult?.error) {
-      return addressValidationResult;
-  }
-  
-  const birthDateValidationResult = validateBirthDateFields(formObj.birthYear, formObj.birthMonth, formObj.birthDay);
-  if (birthDateValidationResult?.error) {
-      return birthDateValidationResult;
+  const allAddressFieldsOrNone =
+    (formObj.address && formObj.postalCode && formObj.city) ||
+    (!formObj.address && !formObj.postalCode && !formObj.city);
+  if (!allAddressFieldsOrNone) {
+    return { error: 'Udfyld venligst alle adressefelter eller lad dem alle være tomme.' };
   }
 
-  const phoneValidationResult = validatePhoneNumber(formObj.phoneNumber);
-  if (phoneValidationResult?.error) {
-    return phoneValidationResult
+  const allBirthDateFieldsOrNone =
+    (formObj.birthYear != '' && formObj.birthMonth != '' && formObj.birthDay != '') ||
+    (formObj.birthYear == '' && formObj.birthMonth == '' && formObj.birthDay == '');
+  if (!allBirthDateFieldsOrNone) {
+    return { error: 'Udfyld venligst alle fødselsdatofelter eller lad dem alle være tomme.' };
+  }
+
+  if (formObj.phoneNumber != '' && !isValidPhoneNumber(formObj.phoneNumber)) {
+    return { error: 'Ugyldigt telefonnummer. Telefonnummeret skal indeholde 8 cifre.' };
   }
 
   const profileEntity = mapProfileDataToDatabaseEntity(formObj);
@@ -79,4 +81,9 @@ function mapProfileDataToDatabaseEntity(profileData: any) {
   };
 
   return profileEntity;
+}
+
+function isValidPhoneNumber(phoneNumber: string) {
+  const regex = /^\d{8}$/;
+  return regex.test(phoneNumber);
 }
