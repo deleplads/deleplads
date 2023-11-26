@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
-import { Await, Link, isRouteErrorResponse, useOutletContext, useRouteError } from '@remix-run/react';
-import EditProfile from '~/components/ProfileSettings/EditProfile';
-import { ActionFunction, json, redirect } from '@remix-run/node';
-import { deleteProfile, updateProfile } from 'utils/profile.server';
-import { logout } from 'utils/auth.server';
-import { validateAddressFields, validateBirthDateFields, validateNames, validatePhoneNumber } from 'helpers/profileValidations';
+import { Await, useOutletContext } from '@remix-run/react';
+import EditProfile from '~/components/Account/Profile/EditProfile';
+import { ActionFunction} from '@remix-run/node';
+import { updateProfile } from 'utils/account/profile/profile.server';
+import { validateAddressFields, validateBirthDateFields, validateNames, validatePhoneNumber, validatePostalCode } from 'helpers/profileValidations';
 import updateProfiles from "types/Profiles"
+
 export default function Profile() {
   const data = useOutletContext();
 
@@ -23,42 +23,43 @@ export default function Profile() {
 }
 
 export const action: ActionFunction = async ({ request }) => {
-  // todo: remove line used for testing purposes
-  await new Promise((resolve, reject) => setTimeout(() => resolve(), 1000));
-
   const formData = await request.formData();
-  const formObj = Object.fromEntries<updateProfiles>(formData);
+  const profileForm = Object.fromEntries<updateProfiles>(formData);
 
-  if (formObj._action === 'deleteUser') {
-    await deleteProfile(formObj.profileId);
-    return await logout(request);
-  }
+  validateProfileForm(profileForm);
 
-  const nameValidationResult = validateNames(formObj.firstName, formObj.lastName);
-  if (nameValidationResult?.error) {
-      return nameValidationResult;
-  }
-  
-  const addressValidationResult = validateAddressFields(formObj.address, formObj.postalCode, formObj.city);
-  if (addressValidationResult?.error) {
-      return addressValidationResult;
-  }
-  
-  const birthDateValidationResult = validateBirthDateFields(formObj.birthYear, formObj.birthMonth, formObj.birthDay);
-  if (birthDateValidationResult?.error) {
-      return birthDateValidationResult;
-  }
-
-  const phoneValidationResult = validatePhoneNumber(formObj.phoneNumber);
-  if (phoneValidationResult?.error) {
-    return phoneValidationResult
-  }
-
-  const profileEntity = mapProfileDataToDatabaseEntity(formObj);
+  const profileEntity = mapProfileDataToDatabaseEntity(profileForm);
   await updateProfile(profileEntity);
 
   return { success: 'Profil opdateret!' };
 };
+
+function validateProfileForm(formObj: updateProfiles) {
+  const nameValidationResult = validateNames(formObj.firstName, formObj.lastName);
+  if (nameValidationResult) {
+    return { error: nameValidationResult };
+  }
+
+  const addressValidationResult = validateAddressFields(formObj.address, formObj.postalCode, formObj.city);
+  if (addressValidationResult) {
+    return { error: addressValidationResult };
+  }
+
+  const birthDateValidationResult = validateBirthDateFields(formObj.birthYear, formObj.birthMonth, formObj.birthDay);
+  if (birthDateValidationResult) {
+    return { error: birthDateValidationResult };
+  }
+
+  const postalCodeValidationResult = validatePostalCode(formObj.postalCode);
+  if (postalCodeValidationResult) {
+    return { error: postalCodeValidationResult };
+  }
+
+  const phoneValidationResult = validatePhoneNumber(formObj.phoneNumber);
+  if (phoneValidationResult) {
+    return { error: phoneValidationResult };
+  }
+}
 
 function mapProfileDataToDatabaseEntity(profileData: any) {
 

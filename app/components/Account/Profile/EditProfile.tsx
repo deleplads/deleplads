@@ -5,13 +5,14 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button, FormHelperText, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import profilePicture from "public/profile-picture-placeholder.jpg"
-import { Form, useActionData, useNavigation } from '@remix-run/react';
-import { getYearsRange } from "utils/profile/profileUtils";
+import { Form, useActionData, useNavigation, useSubmit } from '@remix-run/react';
+import { getYearsRange } from "utils/account/profile/profileUtils";
 import toast, { Toaster } from "react-hot-toast";
 import type { profiles } from "@prisma/client";
+import { validateAddressFields, validateBirthDateFields, validateFirstName, validateLastName, validatePhoneNumber, validatePostalCode } from "helpers/profileValidations";
 
 
 type EditProfileProps = {
@@ -22,7 +23,7 @@ function EditProfile(profile: EditProfileProps) {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
-  // The form is being submitted to the backend
+  // Show loading toast or dismiss it when the form is submitted
   useEffect(() => {
     if (isSubmitting) {
       toast.loading("Sender formularen..");
@@ -31,7 +32,7 @@ function EditProfile(profile: EditProfileProps) {
     }
   }, [isSubmitting]);
 
-  // An error or succes happened after submitting the form
+  // Show success/error toast wwhen the form is being submitted or actionData returns error or success
   useEffect(() => {
     if (!isSubmitting && actionData?.error) {
       toast.error(actionData.error);
@@ -41,52 +42,74 @@ function EditProfile(profile: EditProfileProps) {
     }
   }, [isSubmitting, actionData?.error, actionData?.success]);
 
-  const yearsRange = getYearsRange();
   const [formData, setFormData] = useState({
     firstName: profile.profile.first_name,
     lastName: profile.profile.last_name,
-    birthDay: profile.profile.birth_date ? new Date(profile.profile.birth_date).getDate() : null,
-    birthMonth: profile.profile.birth_date ? new Date(profile.profile.birth_date).getMonth() : null,
-    birthYear: profile.profile.birth_date ? new Date(profile.profile.birth_date).getFullYear() : null,
-    address: profile.profile.address,
-    city: profile.profile.city,
-    postalCode: profile.profile.postal_code,
-    phoneNumber: profile.profile.phone_number
+    birthDay: profile.profile.birth_date ? new Date(profile.profile.birth_date).getDate().toString() : '',
+    birthMonth: profile.profile.birth_date ? new Date(profile.profile.birth_date).getMonth().toString() : '',
+    birthYear: profile.profile.birth_date ? new Date(profile.profile.birth_date).getFullYear().toString() : '',
+    address: profile.profile.address || '',
+    city: profile.profile.city || '',
+    postalCode: profile.profile.postal_code ? profile.profile.postal_code.toString() : '',
+    phoneNumber: profile.profile.phone_number ? profile.profile.phone_number.toString() : ''
   });
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
+  const [birthDateError, setBirthDateError] = useState('');
+  const [addressError, setAddressError] = useState('');
+  const [postalCodeError, setPostalCodeError] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
 
   const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
-    setFormData(prevFormData => ({
+    setFormData(prevFormData => {
+      const newFormData = {
         ...prevFormData,
         [name]: value
-    }));
-};
+      }
 
+      // We need to perform form validation within this callback so we can ensure that we get the latest
+      // form data and that we are not lagging behind the current state.
+      if (name === 'firstName') {
+        setFirstNameError(validateFirstName(value));
+      }
+      if (name === 'lastName') {
+        setLastNameError(validateLastName(value));
+      }
+      if (name === 'postalCode') {
+        setPostalCodeError(validatePostalCode(newFormData.postalCode));
+      }
 
-  const [firstNameError, setFirstNameError] = useState('');
-  const validateFirstName = () => {
-    if (!formData.firstName) {
-      setFirstNameError("First name is required");
-      return false;
-    } else {
-      setFirstNameError('');
-      return true;
-    }
+      return newFormData;
+    });
   };
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const submit = useSubmit();
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const isFirstNameValid = validateFirstName();
 
-    if (!isFirstNameValid) {
-      return;
+    const birthDateValidationError = validateBirthDateFields(formData.birthYear, formData.birthMonth, formData.birthDay);
+    setBirthDateError(birthDateValidationError);
+    const addressValidationError = validateAddressFields(formData.address, formData.postalCode, formData.city);
+    setAddressError(addressValidationError);
+    const phoneNumberValidationError = validatePhoneNumber(formData.phoneNumber);
+    setPhoneNumberError(phoneNumberValidationError);
+
+    // we check directly on the validation errors and not the React state because the state
+    // is updated asynchronously and we won't catch the errors here
+    console.log(`firstnameerror: ${firstNameError}`)
+    if (!firstNameError && !lastNameError && !birthDateValidationError && !addressValidationError 
+      && !phoneNumberValidationError && !postalCodeError) {
+      submit({ ...formData, profileId: profile.profile.id }, { method: "post", action: "/account/profile" });
+    } else {
+      toast.error("Formularen har nogle fejl. Du kan rette dem og prøve at gemme igen.");
     }
   };
 
   return (
     <div>
       <Toaster position="top-right" />
-      <Form method="post">
+      <Form onSubmit={handleSubmit}>
         <div className="angry-grid">
           <div id="item-0">
             <div className="ProfileEditHeader">
@@ -108,11 +131,12 @@ function EditProfile(profile: EditProfileProps) {
               name="firstName"
               className="Textfield"
               id=""
-              error={!!firstNameError}
-              helperText={firstNameError}
               placeholder="Fornavn"
               variant="outlined"
               value={formData.firstName}
+              label="Fornavn"
+              error={!!firstNameError}
+              helperText={firstNameError}
               onChange={handleInputChange}
             />
           </div>
@@ -131,6 +155,9 @@ function EditProfile(profile: EditProfileProps) {
               placeholder="Efternavn"
               variant="outlined"
               value={formData.lastName}
+              label="Efternavn"
+              error={!!lastNameError}
+              helperText={lastNameError}
               onChange={handleInputChange}
             />
           </div>
@@ -143,7 +170,7 @@ function EditProfile(profile: EditProfileProps) {
               Fødselsdag
             </InputLabel>
             <Box>
-              <FormControl fullWidth>
+              <FormControl fullWidth error={!!birthDateError}>
                 <InputLabel id="">Dag</InputLabel>
                 <Select
                   name="birthDay"
@@ -153,6 +180,7 @@ function EditProfile(profile: EditProfileProps) {
                   value={formData.birthDay}
                   onChange={handleInputChange}
                 >
+                  <MenuItem value={""}>Vælg dag</MenuItem>
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
@@ -186,7 +214,7 @@ function EditProfile(profile: EditProfileProps) {
                   <MenuItem value={31}>31</MenuItem>
                 </Select>
                 <FormHelperText className="FormHelperText">
-                  Vises ikke offentligt.
+                  {!!birthDateError ? birthDateError : 'Vises ikke offentligt.'}
                 </FormHelperText>
               </FormControl>
             </Box>
@@ -200,7 +228,7 @@ function EditProfile(profile: EditProfileProps) {
               &nbsp;
             </InputLabel>
             <Box>
-              <FormControl fullWidth>
+              <FormControl fullWidth error={!!birthDateError}>
                 <InputLabel id="">Måned</InputLabel>
                 <Select
                   name="birthMonth"
@@ -210,6 +238,7 @@ function EditProfile(profile: EditProfileProps) {
                   value={formData.birthMonth}
                   onChange={handleInputChange}
                 >
+                  <MenuItem value={""}>Vælg måned</MenuItem>
                   <MenuItem value={0}>Januar</MenuItem>
                   <MenuItem value={1}>Februar</MenuItem>
                   <MenuItem value={2}>Marts</MenuItem>
@@ -235,7 +264,7 @@ function EditProfile(profile: EditProfileProps) {
               &nbsp;
             </InputLabel>
             <Box>
-              <FormControl fullWidth>
+              <FormControl fullWidth error={!!birthDateError}>
                 <InputLabel id="">År</InputLabel>
                 <Select
                   name="birthYear"
@@ -245,7 +274,8 @@ function EditProfile(profile: EditProfileProps) {
                   label=""
                   onChange={handleInputChange}
                 >
-                  {yearsRange.map((year) => (
+                  <MenuItem value={""}>Vælg år</MenuItem>
+                  {getYearsRange().map((year) => (
                     <MenuItem key={year} value={year}>
                       {year}
                     </MenuItem>
@@ -268,6 +298,9 @@ function EditProfile(profile: EditProfileProps) {
               id="demo-helper-text-misaligned"
               placeholder="F.eks. Prins Jørgens Gård 11"
               value={formData.address}
+              label="Addresse"
+              error={!!addressError}
+              helperText={addressError}
               onChange={handleInputChange}
             />
           </div>
@@ -283,9 +316,11 @@ function EditProfile(profile: EditProfileProps) {
               name="postalCode"
               className="Textfield"
               id="demo-helper-text-misaligned"
-              label="Postnummer"
               placeholder="F.eks. 1218"
               value={formData.postalCode}
+              label="Postnummer"
+              error={!!addressError || !!postalCodeError}
+              helperText={addressError || postalCodeError}
               onChange={handleInputChange}
             />
           </div>
@@ -301,9 +336,11 @@ function EditProfile(profile: EditProfileProps) {
               name="city"
               className="Textfield"
               id="demo-helper-text-misaligned"
-              label="By"
               placeholder="F.eks. København"
               value={formData.city}
+              label="By"
+              error={!!addressError}
+              helperText={addressError}
               onChange={handleInputChange}
             />
           </div>
@@ -322,6 +359,8 @@ function EditProfile(profile: EditProfileProps) {
               label="Mobiltelefonnummer"
               placeholder="F.eks. 11223344"
               value={formData.phoneNumber}
+              error={!!phoneNumberError}
+              helperText={phoneNumberError}
               onChange={handleInputChange}
             />
           </div>
@@ -349,11 +388,6 @@ function EditProfile(profile: EditProfileProps) {
           <div id="item-11">
             <Button type="submit" variant="contained" name="_action" value="updateProfile" disabled={isSubmitting}>
               Gem
-            </Button>
-          </div>
-          <div id="item-12">
-            <Button type="submit" color="error" variant="contained" name="_action" value="deleteUser" disabled={isSubmitting}>
-              Slet konto
             </Button>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { profiles } from '@prisma/client';
-import { prisma } from './prisma.server';
+import { prisma } from '../../prisma.server';
 
 export async function getProfileFromUserId(userId: string) {
   const profile = await prisma.profiles.findFirst({
@@ -22,10 +22,4 @@ export async function updateProfile(profileData: Partial<profiles>) {
     },
   });
   return profile;
-}
-
-export async function deleteProfile(profileId: string) {
-  await prisma.profiles.delete({
-    where: { id: profileId },
-  });
 }

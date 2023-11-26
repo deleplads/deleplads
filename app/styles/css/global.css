@@ -2141,14 +2141,6 @@
   height: fit-content;
 }
 
-#item-12 {
-  grid-row-start: 9;
-  grid-column-start: 1;
-  grid-row-end: 9;
-  grid-column-end: 3;
-  height: fit-content;
-}
-
 @media only screen and (max-width: 600px) {
   .angry-grid {
     box-sizing: border-box;

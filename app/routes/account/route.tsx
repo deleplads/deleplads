@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 import { Tab, Tabs } from "@mui/material";
 import { useNavigate, Outlet, useLoaderData, useLocation } from "@remix-run/react";
 import { defer, type LoaderFunction } from "@remix-run/node";
-import { getProfileFromUserId } from "utils/profile.server";
+import { getProfileFromUserId } from "utils/account/profile/profile.server";
 import { requireUserId } from "utils/auth.server";
 
 type ProfileProps = {
