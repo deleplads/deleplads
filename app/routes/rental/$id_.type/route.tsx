@@ -1,13 +1,18 @@
 import React from "react";
-import { Form, useFetcher, useNavigate } from "@remix-run/react";
+import { Form, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import Radio from "@mui/material/Radio";
-import { type V2_MetaFunction , type ActionArgs, json, ActionFunction } from "@remix-run/node";
+import { type V2_MetaFunction , json, ActionFunction, LinksFunction, LoaderFunction, redirect } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import { CustomerType, parkingspots } from "@prisma/client";
-import { getUser } from "utils/auth.server";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import { getCustomerType } from "utils/helpers/getTypes";
+import rental from "~/styles/rental.css";
+import { requireUserId } from "utils/auth.server";
+import { getParkingSpotById } from "utils/parkingspot/getSport";
 
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -15,6 +20,24 @@ export const meta: V2_MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
+
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const userId = await requireUserId(request);
+  const spotId = params.id;
+
+  try {
+    if (typeof spotId === "string" && spotId) {
+      const parkingspots = await getParkingSpotById(spotId, userId);
+  
+      return json(parkingspots);
+    }else {
+      return redirect(`/rental`);
+    }
+  } catch (error) {
+    return { error };
+  }
+};
+
 
 export const action: ActionFunction = async ({ request, params }) => {
   const formData = await request.formData();
@@ -40,6 +63,7 @@ export const action: ActionFunction = async ({ request, params }) => {
 export default function RentalType() {
   const [selectedValue, setSelectedValue] = React.useState("");
   const fetcher = useFetcher();
+  const useLoader = useLoaderData();
   const navigate = useNavigate();
 
   const handleChange = (value: string) => {
@@ -54,10 +78,16 @@ export default function RentalType() {
   };
 
   React.useEffect(() => {
+    if (useLoader) {
+      if (!useLoader.error) {
+        setSelectedValue(useLoader.customer_type);
+      }
+    } 
+
     if (fetcher.data?.success) {
       navigate(`/rental/${fetcher.data.parkingspotId}/location`);
     }
-  }, [fetcher.data, navigate]);
+  }, [fetcher.data, navigate, useLoader]);
 
   return (
     <>

@@ -1,12 +1,16 @@
-import { FormControlLabel, Radio } from "@mui/material";
 import { Form } from "@remix-run/react";
 import React, { useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import type { V2_MetaFunction } from "@remix-run/node";
+import type { LinksFunction, V2_MetaFunction } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import Switch from "@mui/material/Switch";
+import rental from "~/styles/rental.css";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 
 export const meta: V2_MetaFunction = () => {
   return [

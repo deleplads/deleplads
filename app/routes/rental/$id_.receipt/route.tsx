@@ -1,7 +1,12 @@
 import { TextField } from "@mui/material";
 import { Form } from "@remix-run/react";
-import type { V2_MetaFunction } from "@remix-run/node";
+import type { LinksFunction, V2_MetaFunction } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import rental from "~/styles/rental.css";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 
 export const meta: V2_MetaFunction = () => {
   return [

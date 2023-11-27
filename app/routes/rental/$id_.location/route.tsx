@@ -1,8 +1,18 @@
 import { TextField } from "@mui/material";
-import { Form } from "@remix-run/react";
+import { Form, useLoaderData, useNavigate } from "@remix-run/react";
 import Switch from "@mui/material/Switch";
-import type { V2_MetaFunction } from "@remix-run/node";
+import { json, LoaderFunction, type LinksFunction, type V2_MetaFunction, redirect } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import rental from "~/styles/rental.css";
+import { requireUserId } from "utils/auth.server";
+import { getParkingSpotById } from "utils/parkingspot/getSport";
+import React from "react";
+
+
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -11,7 +21,36 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const userId = await requireUserId(request);
+  const spotId = params.id;
+
+  try {
+    if (typeof spotId === "string" && spotId) {
+      const parkingspots = await getParkingSpotById(spotId, userId);
+  
+      return json(parkingspots);
+    }else {
+      return redirect(`/rental`);
+    }
+  } catch (error) {
+    return { error };
+  }
+};
+
 export default function RentalLocation() {
+  const useLoader = useLoaderData();
+
+  
+  React.useEffect(() => {
+    if (useLoader) {
+      if (!useLoader.error) {
+        console.log(useLoader);
+        
+      }
+    } 
+  }, [useLoader]);
+
   return (
     <>
       <section className="rentalLocation">
