@@ -1,14 +1,18 @@
 import { TextField } from "@mui/material";
 import { Form, useLoaderData, useNavigate } from "@remix-run/react";
 import Switch from "@mui/material/Switch";
-import { json, LoaderFunction, type LinksFunction, type V2_MetaFunction, redirect } from "@remix-run/node";
+import {
+  json,
+  LoaderFunction,
+  type LinksFunction,
+  type V2_MetaFunction,
+  redirect,
+} from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import { requireUserId } from "utils/auth.server";
 import { getParkingSpotById } from "utils/parkingspot/getSport";
-import React from "react";
-
-
+import React, { Suspense, useState } from "react";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
@@ -28,9 +32,9 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   try {
     if (typeof spotId === "string" && spotId) {
       const parkingspots = await getParkingSpotById(spotId, userId);
-  
+
       return json(parkingspots);
-    }else {
+    } else {
       return redirect(`/rental`);
     }
   } catch (error) {
@@ -40,15 +44,15 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 export default function RentalLocation() {
   const useLoader = useLoaderData();
+  const [back, setBack] = useState("");
 
-  
   React.useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
         console.log(useLoader);
-        
+        setBack(`/rental/${useLoader.id}/type`);
       }
-    } 
+    }
   }, [useLoader]);
 
   return (
@@ -102,11 +106,19 @@ export default function RentalLocation() {
           </div>
         </div>
       </section>
-      <RentalNavigation
-        back={"/rental/1/type"}
-        forward={"/rental/1/avaliability/type"}
-        start={20}
-      ></RentalNavigation>
+      <Suspense>
+        {
+          useLoader && !useLoader.error ?  <RentalNavigation
+          back={back ? back : "/rental"}
+          forward={"/rental/1/avaliability/type"}
+          onNext={() => ""}
+          start={20}
+        ></RentalNavigation> :
+        <div className="min-h-max">
+
+        </div>
+        }
+      </Suspense>
     </>
   );
 }
