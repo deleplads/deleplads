@@ -4,7 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Button, FormHelperText, TextField } from "@mui/material";
+import { Button, FormHelperText, Input, TextField } from "@mui/material";
 import { FormEvent, useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import profilePicture from "public/profile-picture-placeholder.jpg"
@@ -13,11 +13,13 @@ import { getYearsRange } from "utils/account/profile/profileUtils";
 import toast, { Toaster } from "react-hot-toast";
 import type { profiles } from "@prisma/client";
 import { validateAddressFields, validateBirthDateFields, validateFirstName, validateLastName, validatePhoneNumber, validatePostalCode } from "helpers/profileValidations";
+import { Image } from "@mui/icons-material";
 
 
 type EditProfileProps = {
   profile: profiles
 };
+
 function EditProfile(profile: EditProfileProps) {
   const actionData = useActionData();
   const navigation = useNavigation();
@@ -51,7 +53,8 @@ function EditProfile(profile: EditProfileProps) {
     address: profile.profile.address || '',
     city: profile.profile.city || '',
     postalCode: profile.profile.postal_code ? profile.profile.postal_code.toString() : '',
-    phoneNumber: profile.profile.phone_number ? profile.profile.phone_number.toString() : ''
+    phoneNumber: profile.profile.phone_number ? profile.profile.phone_number.toString() : '',
+    // image: null
   });
   const [firstNameError, setFirstNameError] = useState('');
   const [lastNameError, setLastNameError] = useState('');
@@ -84,6 +87,11 @@ function EditProfile(profile: EditProfileProps) {
     });
   };
 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
   const submit = useSubmit();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -97,10 +105,9 @@ function EditProfile(profile: EditProfileProps) {
 
     // we check directly on the validation errors and not the React state because the state
     // is updated asynchronously and we won't catch the errors here
-    console.log(`firstnameerror: ${firstNameError}`)
-    if (!firstNameError && !lastNameError && !birthDateValidationError && !addressValidationError 
+    if (!firstNameError && !lastNameError && !birthDateValidationError && !addressValidationError
       && !phoneNumberValidationError && !postalCodeError) {
-      submit({ ...formData, profileId: profile.profile.id }, { method: "post", action: "/account/profile" });
+      submit({ ...formData, profileId: profile.profile.id, image: selectedFile }, { method: "post", action: "/account/profile" });
     } else {
       toast.error("Formularen har nogle fejl. Du kan rette dem og prøve at gemme igen.");
     }
@@ -109,7 +116,7 @@ function EditProfile(profile: EditProfileProps) {
   return (
     <div>
       <Toaster position="top-right" />
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="angry-grid">
           <div id="item-0">
             <div className="ProfileEditHeader">
@@ -364,6 +371,7 @@ function EditProfile(profile: EditProfileProps) {
               onChange={handleInputChange}
             />
           </div>
+
           <div id="item-10">
             <div className="EditProfilePicture">
               <InputLabel
@@ -378,13 +386,16 @@ function EditProfile(profile: EditProfileProps) {
                 alt="Remy Sharp"
                 src={profilePicture}
               />
-              <span>
-                <Button variant="outlined">Vælg fil</Button>
-                <p></p>
-              </span>
+              {/* <input type="file" name="image" accept="image/*" required style={{ display: 'none' }} onChange={handleFileChange} id="image-input" /> */}
+              <label htmlFor="image-input">
+                <Button variant="outlined" component="span">Vælg fil</Button>
+              </label>
+              {selectedFile && <span>{selectedFile.name}</span>}
+
+              <input type="hidden" name="profileId" value={profile.profile.id} />
+
             </div>
           </div>
-          <input type="hidden" name="profileId" value={profile.profile.id} />
           <div id="item-11">
             <Button type="submit" variant="contained" name="_action" value="updateProfile" disabled={isSubmitting}>
               Gem

@@ -146,6 +146,7 @@ export const createUser = async (user: RegisterForm) => {
           last_name: user.lastName,
         },
       },
+      marked_for_deletion_at: null
     },
   });
 

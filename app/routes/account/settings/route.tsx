@@ -41,10 +41,11 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const settingsForm = Object.fromEntries<accountSettingsForm>(formData);
 
-  if (settingsForm._action === 'markUserForDeletion') {
+  if (settingsForm._action === 'markUserForDeletion') {  
     await markUserForDeletion(userId);
-    // return await logout(request);
-    return null;
+   
+    return await logout(request);
   }
+  
   return null;
 };
