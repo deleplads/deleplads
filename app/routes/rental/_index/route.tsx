@@ -10,9 +10,9 @@ import RentalNavigation from "~/components/RentalCreationNavigation/RentalNaviga
 import { json } from "@remix-run/node";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { createOrUpdate } from "utils/Parkingspot/createOrUpdate.server";
-import type { parkingspots } from "@prisma/client";
+import { ParkingStatus, type parkingspots } from "@prisma/client";
 import { getUser, requireUserId } from "utils/auth.server";
-import { getParkingSpotsByUser } from "utils/parkingspot/getAllSpots";
+import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots";
 import NativeSelect from "@mui/material/NativeSelect";
 import { Button, InputLabel } from "@mui/material";
 import { getNextStepForParkingSpotById } from "utils/parkingspot/nextStep";
@@ -25,7 +25,7 @@ export const links: LinksFunction = () => {
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserId(request);
   try {
-    const parkingspots = await getParkingSpotsByUser(userId);
+    const parkingspots = await getParkingSpotsByUserWhereStatus(userId, ParkingStatus.InProgress);
 
     return json(parkingspots);
   } catch (error) {

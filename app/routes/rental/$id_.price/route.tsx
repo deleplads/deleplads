@@ -1,8 +1,11 @@
-import { Form } from "@remix-run/react";
-import type { V2_MetaFunction } from "@remix-run/node";
+import { Form, useFetcher, useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
+import { ActionFunction, json, LoaderFunction, type V2_MetaFunction } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormControl, FormControlLabel, Checkbox, TextField } from "@mui/material";
+import toast from "react-hot-toast";
+import { requireUserId } from "utils/auth.server";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -11,12 +14,75 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
+
+export const loader: LoaderFunction = async ({ request, params }) => {
+  return await fetchParkingSpotData(request, params);
+};
+
+export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  // const formData = await request.formData();
+  // const selectedValue = formData.get('selectedValue');
+  // let note: string | null = null;
+
+  // // Check if selectedValue is a string and then call getCustomerType
+  // if (typeof selectedValue === 'string' && selectedValue) {
+  //   note = selectedValue;
+  // }else {
+  //   return json({error: "Du skal udfylde noten"})
+  // }
+  const parkingspotId = params.id;
+
+  return json({ success: true, parkingspotId: parkingspotId });
+  // const parkingspot: Partial<parkingspots> = {
+  //    notes: note,
+  //    id: parkingspotId
+  // }
+
+  //  const newParkingspot = await createOrUpdate(parkingspot);
+
+  // return json({ success: true, parkingspotId: newParkingspot.id });
+};
+
 export default function RentalNotes() {
   const [isFormEnabled, setIsFormEnabled] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsFormEnabled(!isFormEnabled);
   };
+
+  const fetcher = useFetcher();
+  const useLoader = useLoaderData();
+  const navigate = useNavigate();
+  const [back, setBack] = useState("");
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  const handleNext = () => {
+    fetcher.submit({  }, { method: "post" });
+  };
+
+  useEffect(() => {
+    if (useLoader) {
+      if (!useLoader.error) {
+        
+        setBack(`/rental/${useLoader.id}/notes`);
+      } else {
+        toast.error(useLoader.error);
+      }
+    }
+  }, [navigate, useLoader]);
+
+  useEffect(() => {
+    if (fetcher.data) {
+      if (!isSubmitting && fetcher.data.error) {
+        toast.error(fetcher.data.error);
+      } else if (!isSubmitting && fetcher.data.success) {
+        navigate(`/rental/${fetcher.data.parkingspotId}/reciept`);
+      }
+    }
+  }, [fetcher.data, isSubmitting, navigate]);
+
 
   return (
     <>
@@ -83,7 +149,7 @@ export default function RentalNotes() {
       <RentalNavigation
         back="/rental/1/notes"
         forward="/rental/1/receipt"
-        start={80}
+        start={87}
       ></RentalNavigation>
     </>
   );

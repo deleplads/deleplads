@@ -37,7 +37,7 @@ export default function RentalNotes() {
       <RentalNavigation
         back={"/rental/1/price"}
         forward={"/"}
-        start={90}
+        start={99}
       ></RentalNavigation>
     </>
   );

@@ -1,14 +1,14 @@
 import React from "react";
 import { Form, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import Radio from "@mui/material/Radio";
-import { type V2_MetaFunction , json, ActionFunction, LinksFunction, LoaderFunction, redirect } from "@remix-run/node";
+import { type V2_MetaFunction , json, ActionFunction, LinksFunction, LoaderFunction } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import { CustomerType, parkingspots } from "@prisma/client";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
-import { getCustomerType } from "utils/helpers/getTypes";
+import { getCustomerType } from "helpers/helpers";
 import rental from "~/styles/rental.css";
 import { requireUserId } from "utils/auth.server";
-import { getParkingSpotById } from "utils/parkingspot/getSport";
+import fetchParkingSpotData from "utils/parkingspot/FetchAndRequireAuth";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
@@ -22,24 +22,12 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ request, params }) => {
-  const userId = await requireUserId(request);
-  const spotId = params.id;
-
-  try {
-    if (typeof spotId === "string" && spotId) {
-      const parkingspots = await getParkingSpotById(spotId, userId);
-  
-      return json(parkingspots);
-    }else {
-      return redirect(`/rental`);
-    }
-  } catch (error) {
-    return { error };
-  }
+  return await fetchParkingSpotData(request, params);
 };
 
 
 export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
   const formData = await request.formData();
   const selectedValue = formData.get('selectedValue');
   let customerType: CustomerType | null = null;
@@ -127,7 +115,7 @@ export default function RentalType() {
       </section>
       <RentalNavigation
         back={"/rental"}
-        start={10}
+        start={12}
         onNext={handleNext}
       ></RentalNavigation>
     </>

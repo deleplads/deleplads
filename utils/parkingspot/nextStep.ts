@@ -25,7 +25,8 @@ export async function getNextStepForParkingSpotById(
     !selectedSpot.street_nr
   ) {
     nextStep = `${spotId}/location`;
-  } else if (
+  } 
+  else if (
     !selectedSpot.parkingspot_details_parkingspot_details_spot_idToparkingspots ||
     selectedSpot.parkingspot_details_parkingspot_details_spot_idToparkingspots.length === 0
   ) {
