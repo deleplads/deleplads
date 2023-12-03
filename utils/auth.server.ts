@@ -1,7 +1,7 @@
 // app/utils/auth.server.ts
 
 import type { LoginForm, RegisterForm } from "./types.server";
-import { bypassRLS, forUser, prisma } from "./prisma.server";
+import { prisma } from "./prisma.server";
 import { json, createCookieSessionStorage, redirect } from "@remix-run/node";
 import bcrypt from "bcryptjs";
 
