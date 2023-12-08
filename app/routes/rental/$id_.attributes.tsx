@@ -20,12 +20,10 @@ import RentalNavigation from "~/components/RentalCreationNavigation/RentalNaviga
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
-import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
-import { parkingspot_details, parkingspots } from "@prisma/client";
+import { parkingspot_details } from "@prisma/client";
 import { requireUserId } from "utils/auth.server";
 import createOrUpdateParkingspotDetails from "utils/parkingspot/createOrUpdateParkingDetails";
 import Checkbox from "@mui/material/Checkbox";
-import { LoaderResponse, ParkingSpotWithDetailsAndPrice } from "utils/types.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
