@@ -75,7 +75,7 @@ export default function RentalType() {
     }
 
     if (fetcher.data?.success) {
-      navigate(`/rental/${fetcher.data.parkingspotId}/location`);
+      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/location`);
     }
   }, [fetcher.data, navigate, useLoader]);
 
@@ -118,7 +118,7 @@ export default function RentalType() {
       <Suspense>
         {useLoader && !useLoader.error ? (
           <RentalNavigation
-            back={"/rental"}
+            back={"/opret-udlejning"}
             start={12}
             onNext={handleNext}
           ></RentalNavigation>

@@ -1,12 +1,21 @@
-import { FormControlLabel, Radio } from "@mui/material";
-import { Form } from "@remix-run/react";
-import React, { useState } from "react";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import type { V2_MetaFunction } from "@remix-run/node";
+import { Form, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
+import React, { Suspense, useEffect, useState } from "react";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
-import Switch from "@mui/material/Switch";
+import rental from "~/styles/rental.css";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
+import { Calendar, DateObject } from "react-multi-date-picker";
+import { Button, ListItem, ListItemText } from "@mui/material";
+import { VariableSizeList } from "react-window";
+import TimePicker from "react-multi-date-picker/plugins/time_picker";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -15,22 +24,101 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
+export const loader: LoaderFunction = async ({ request, params }) => {
+  return await fetchParkingSpotData(request, params);
+};
+
+const hourList = Array.from({ length: 24 }, (_, i) => i);
+
+const TimePickerJs = () => {
+  const [selectedHour, setSelectedHour] = useState(0);
+
+  const handleHourClick = (hour: number) => {
+    setSelectedHour(hour);
+  };
+
+  const rowRenderer = ({
+    index,
+    style,
+  }: {
+    index: number;
+    style: React.CSSProperties;
+  }) => {
+    const hour = hourList[index];
+    const formattedHour = hour < 10 ? `0${hour}` : hour; // Add leading zero if hour is single-digit
+    return (
+      <ListItem
+        button
+        key={hour}
+        style={style}
+        selected={hour === selectedHour}
+        onClick={() => handleHourClick(hour)}
+      >
+        <ListItemText primary={`${formattedHour}:00`} />
+      </ListItem>
+    );
+  };
+
+  const listHeight = 300; // Set your desired height
+  const rowHeight = 48; // Set your desired row height
+
+  return (
+    <div>
+      <div style={{ height: listHeight, width: "200px" }}>
+        <VariableSizeList
+          itemData={hourList}
+          height={listHeight}
+          width="100%"
+          itemSize={() => rowHeight}
+          itemCount={hourList.length}
+        >
+          {rowRenderer}
+        </VariableSizeList>
+      </div>
+    </div>
+  );
+};
+
 export default function RentalAvaliability() {
-  const [selectedValue, setSelectedValue] = React.useState("a");
+  const fetcher = useFetcher();
+  const useLoader = useLoaderData();
+  const navigate = useNavigate();
+  const [back, setBack] = useState("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
+  const handleNext = () => {
+    if (useLoader) {
+      if (!useLoader.error) {
+        navigate(`/opret-udlejning/${useLoader.id}/attributes`);
+      }
+    }
+    // fetcher.submit({  }, { method: "post" });
   };
 
-  const label = { inputProps: { "aria-label": "Switch demo" } };
+  React.useEffect(() => {
+    if (useLoader) {
+      if (!useLoader.error) {
+        setBack(`/opret-udlejning/${useLoader.id}/availability/type`);
+      }
+    }
 
-  const [isOpen, setIsOpen] = useState(false);
+    if (fetcher.data?.success) {
+      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/availability`);
+    }
+  }, [fetcher.data, navigate, useLoader]);
 
-  const handleToggleChange = () => {
-    setIsOpen(!isOpen);
+  const [value, setValue] = useState("");
+  const [highlightedDays, setHighlitedDays] = useState([]);
+
+  const handleChange = (selectedDates: DateObject[] | null) => {
+    if (selectedDates) {
+      const formattedDates = selectedDates.map((date) =>
+        date.format("DD/MM/YYYY HH:mm")
+      );
+      setHighlitedDays(formattedDates);
+    } else {
+      setHighlitedDays([]);
+    }
   };
-
-  const labelText = isOpen ? "Åben" : "Lukket";
 
   return (
     <>
@@ -38,127 +126,72 @@ export default function RentalAvaliability() {
         <div className="inner">
           <h1>Hvornår er din parkeringsplads tilgængelig?</h1>
           <p>Fortæl os hvor lejerne kan finde din parkeringsplads.</p>
-          <Form className="options-form">
-            <div className="avaliability-option">
-              <div className="availability-day">
-                <p>Mandag</p>
-                <Switch {...label} defaultChecked />
+          <Form>
+            <section className="booking">
+              <h2>Tilgængelighed</h2>
+              <div className="controls">
+                <Button
+                  variant="outlined"
+                  size="large"
+                  href="#"
+                  sx={{ textTransform: "initial", height: "fit-content" }}
+                >
+                  Start: 16 sep, 08:00
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  href="#"
+                  sx={{ textTransform: "initial", height: "fit-content" }}
+                >
+                  Slut: 16 sep, 09:00
+                </Button>
+                <Button
+                  disabled
+                  variant="outlined"
+                  size="large"
+                  href="#"
+                  sx={{ textTransform: "initial", height: "fit-content" }}
+                >
+                  Ryd dag
+                </Button>
               </div>
-
-              <div className="avaliability-time">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="09:00" />
-                </LocalizationProvider>
-                <p>til</p>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="17:00" />
-                </LocalizationProvider>
+              <div className="bookingContents">
+                <div className="calenderPicker text-black">
+                  <Calendar
+                    multiple={true}
+                    value={highlightedDays}
+                    onChange={handleChange}
+                    format="DD/MM/YYYY HH:mm"
+                    plugins={[
+                      <TimePicker
+                        key={2}
+                        hideSeconds
+                        format="DD/MM/YYYY HH:mm"
+                      />,
+                    ]}
+                    displayWeekNumbers={true}
+                  />
+                </div>
+                <div className="desktopTimePicker">
+                  <TimePickerJs />
+                </div>
               </div>
-            </div>
-            <div className="avaliability-option">
-              <div className="availability-day">
-                <p>Tirsdag</p>
-                <Switch {...label} defaultChecked />
-              </div>
-
-              <div className="avaliability-time">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="09:00" />
-                </LocalizationProvider>
-                <p>til</p>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="17:00" />
-                </LocalizationProvider>
-              </div>
-            </div>
-            <div className="avaliability-option">
-              <div className="availability-day">
-                <p>Onsdag</p>
-                <Switch {...label} defaultChecked />
-              </div>
-
-              <div className="avaliability-time">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="09:00" />
-                </LocalizationProvider>
-                <p>til</p>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="17:00" />
-                </LocalizationProvider>
-              </div>
-            </div>
-            <div className="avaliability-option">
-              <div className="availability-day">
-                <p>Torsdag</p>
-                <Switch {...label} defaultChecked />
-              </div>
-
-              <div className="avaliability-time">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="09:00" />
-                </LocalizationProvider>
-                <p>til</p>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="17:00" />
-                </LocalizationProvider>
-              </div>
-            </div>
-            <div className="avaliability-option">
-              <div className="availability-day">
-                <p>Fredag</p>
-                <Switch {...label} defaultChecked />
-              </div>
-
-              <div className="avaliability-time">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="09:00" />
-                </LocalizationProvider>
-                <p>til</p>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="17:00" />
-                </LocalizationProvider>
-              </div>
-            </div>
-            <div className="avaliability-option">
-              <div className="availability-day">
-                <p>Lørdag</p>
-                <Switch {...label} defaultChecked />
-              </div>
-
-              <div className="avaliability-time">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="09:00" />
-                </LocalizationProvider>
-                <p>til</p>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="17:00" />
-                </LocalizationProvider>
-              </div>
-            </div>
-            <div className="avaliability-option">
-              <div className="availability-day">
-                <p>Søndag</p>
-                <Switch {...label} defaultChecked />
-              </div>
-
-              <div className="avaliability-time">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="09:00" />
-                </LocalizationProvider>
-                <p>til</p>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker label="17:00" />
-                </LocalizationProvider>
-              </div>
-            </div>
+            </section>
           </Form>
         </div>
       </section>
-      <RentalNavigation
-        back={"/rental/1/avaliability/type"}
-        forward={"/rental/1/attributes"}
-        start={40}
-      ></RentalNavigation>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            start={37}
+            onNext={handleNext}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
     </>
   );
 }

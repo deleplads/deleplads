@@ -77,7 +77,7 @@ export default function RentalImages() {
     if (useLoader) {
       if (!useLoader.error) {
         setSelectedValue(useLoader.notes || "");
-        setBack(`/rental/${useLoader.id}/attributes`);
+        setBack(`/opret-udlejning/${useLoader.id}/attributes`);
       } else {
         toast.error(useLoader.error);
       }
@@ -89,7 +89,7 @@ export default function RentalImages() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/rental/${fetcher.data.parkingspotId}/price`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/price`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);

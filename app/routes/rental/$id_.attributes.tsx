@@ -97,7 +97,7 @@ export default function RentalAttributes() {
   React.useEffect(() => {
     if (useLoader) {
       if (!useLoader.error && useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots != null) {
-        setBack(`/rental/${useLoader.id}/availability`);
+        setBack(`/opret-udlejning/${useLoader.id}/availability`);
         const spotDetails = useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots;
         
         setAttributes({
@@ -116,7 +116,7 @@ export default function RentalAttributes() {
     }
 
     if (fetcher.data?.success) {
-      navigate(`/rental/${fetcher.data.parkingspotId}/notes`);
+      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/notes`);
     }
   }, [fetcher.data, navigate, useLoader]);
 

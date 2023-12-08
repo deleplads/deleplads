@@ -41,7 +41,7 @@ export default function RentalReceipt() {
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/rental/${useLoader.id}/price`);
+        setBack(`/opret-udlejning/${useLoader.id}/price`);
       }
     } else if (useLoader?.error) {
       toast.error(useLoader.error);

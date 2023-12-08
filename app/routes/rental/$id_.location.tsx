@@ -115,7 +115,7 @@ export default function RentalLocation() {
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/rental/${useLoader.id}/type`);
+        setBack(`/opret-udlejning/${useLoader.id}/type`);
 
         setFormData({
           street: useLoader.street || "",
@@ -136,7 +136,7 @@ export default function RentalLocation() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/rental/${fetcher.data.parkingspotId}/availability`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/availability`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
@@ -227,7 +227,7 @@ export default function RentalLocation() {
       <Suspense>
         {useLoader && !useLoader.error ? (
           <RentalNavigation
-            back={back ? back : "/rental"}
+            back={back ? back : "/opret-udlejning"}
             onNext={handleNext}
             start={25}
           ></RentalNavigation>

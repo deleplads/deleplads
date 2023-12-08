@@ -123,7 +123,7 @@ export default function RentalNotes() {
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/rental/${useLoader.parkingspot.id}/notes`);
+        setBack(`/opret-udlejning/${useLoader.parkingspot.id}/notes`);
         setPrices({
           evening_price: useLoader.parkingspot.evening_price || "",
           morning_price: useLoader.parkingspot.morning_price || "",
@@ -148,7 +148,7 @@ export default function RentalNotes() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/rental/${fetcher.data.parkingspotId}/receipt`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/receipt`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);

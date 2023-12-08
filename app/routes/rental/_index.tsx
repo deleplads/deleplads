@@ -88,9 +88,9 @@ export default function Rental() {
 
   React.useEffect(() => {
     if (fetcher.data?.type == "next") {
-      navigate(`/rental/${fetcher.data.parkingspotId}/type`);
+      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/type`);
     } else if(fetcher.data?.type == "selected") {
-      navigate(`/rental/${fetcher.data.nextStep}`)
+      navigate(`/opret-udlejning/${fetcher.data.nextStep}`)
     }
   }, [fetcher.data, navigate]);
 
