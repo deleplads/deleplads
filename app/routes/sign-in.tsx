@@ -11,8 +11,8 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { useActionData, useNavigate } from "@remix-run/react";
 import { Renderable, Toast, Toaster, ValueFunction, toast } from "react-hot-toast";
-import { login } from '../../../utils/auth.server'
-import { validateEmail } from "../../../utils/validators.server";
+import { login } from '../../utils/auth.server'
+import { validateEmail } from "../../utils/validators.server";
 import type { ActionFunction} from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useEffect, useState } from "react";

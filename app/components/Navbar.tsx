@@ -203,16 +203,16 @@ function Navbar(profile: any) {
             <Link to={"/blog"} id="contact" className="menu-item">
               Blog
             </Link>
-            <Link to={"/FAQ"} id="contact" className="menu-item">
+            <Link to={"/faq"} id="contact" className="menu-item">
               FAQ
             </Link>
-            <Link to={"/sign-in"} id="contact" className="menu-item MButton2">
+            <Link to={"/logind"} id="contact" className="menu-item MButton2">
               Log ind
             </Link>
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-              <Link to={"/locate/map"}>Find en parkeringsplads</Link>
+              <Link to={"/find-parkering/kort"}>Find en parkeringsplads</Link>
               <Link to={"/leje"}>For lejere</Link>
               <Link to={"/udleje"}>For udlejere</Link>
               <Link to={"/blog"}>Blog</Link>
@@ -251,7 +251,7 @@ function Navbar(profile: any) {
                   >
                     <MenuItem
                       onClick={() => {
-                        navigate("/rental");
+                        navigate("/opret-udlejning");
                         handleCloseUserMenu();
                       }}
                     >
@@ -259,7 +259,7 @@ function Navbar(profile: any) {
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate("/account");
+                        navigate("/konto");
                         handleCloseUserMenu();
                       }}
                     >
@@ -277,7 +277,7 @@ function Navbar(profile: any) {
             ) : (
               <span>
                 <Button
-                  href="/sign-in"
+                  href="/logind"
                   sx={{
                     marginRight: "12px",
                     textTransform: "initial",
@@ -290,7 +290,7 @@ function Navbar(profile: any) {
                 </Button>
                 <Button
                   variant="contained"
-                  href="/sign-up"
+                  href="/opret"
                   sx={{
                     textTransform: "initial",
                     fontWeight: "700",

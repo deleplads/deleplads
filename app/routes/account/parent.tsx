@@ -39,14 +39,14 @@ export default function Profile() {
   const [value, setValue] = React.useState(0);
   const { profile } = useLoaderData() as ProfileProps;
   const tabMapping = {
-    "/account": 0, // default path, e.g., /account
-    "/account/listings": 1,
-    "/account/profile": 2,
-    "/account/payment": 3,
-    "/account/notification": 4,
-    "/account/settings": 5,
-    "/account/verification": 6,
-    "/account/activity": 7,
+    "/konto": 0, // default path, e.g., /account
+    "/konto/mine-udlejninger": 1,
+    "/konto/profil": 2,
+    "/konto/betalingskort": 3,
+    "/konto/notifikationer": 4,
+    "/konto/indstillinger": 5,
+    "/konto/verificeringer": 6,
+    "/konto/aktivitet": 7,
   };
 
   const handleChange = (event: any, newValue: SetStateAction<number>) => {
@@ -109,7 +109,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 0}
                       onClick={(event) =>
-                        handleListItemClick(event, 0, "/account")
+                        handleListItemClick(event, 0, "/konto")
                       }
                     >
                       <ListItemText primary="Overblik" />
@@ -119,7 +119,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 1}
                       onClick={(event) =>
-                        handleListItemClick(event, 1, "/account/listings")
+                        handleListItemClick(event, 1, "/konto/mine-udlejninger")
                       }
                     >
                       <ListItemText primary="Mine udlejninger" />
@@ -129,7 +129,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 2}
                       onClick={(event) =>
-                        handleListItemClick(event, 2, "/account/profile")
+                        handleListItemClick(event, 2, "/konto/profil")
                       }
                     >
                       <ListItemText primary="Redigér profil" />
@@ -139,7 +139,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 3}
                       onClick={(event) =>
-                        handleListItemClick(event, 3, "/account/payment")
+                        handleListItemClick(event, 3, "/konto/betalingskort")
                       }
                     >
                       <ListItemText primary="Betalingskort" />
@@ -149,7 +149,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 4}
                       onClick={(event) =>
-                        handleListItemClick(event, 4, "/account/notification")
+                        handleListItemClick(event, 4, "/konto/notifikationer")
                       }
                     >
                       <ListItemText primary="Notifikationer" />
@@ -159,7 +159,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 5}
                       onClick={(event) =>
-                        handleListItemClick(event, 5, "/account/settings")
+                        handleListItemClick(event, 5, "/konto/indstillinger")
                       }
                     >
                       <ListItemText primary="Indstillinger" />
@@ -169,7 +169,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 6}
                       onClick={(event) =>
-                        handleListItemClick(event, 6, "/account/verification")
+                        handleListItemClick(event, 6, "/konto/verificeringer")
                       }
                     >
                       <ListItemText primary="Verificeringer" />
@@ -179,7 +179,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 7}
                       onClick={(event) =>
-                        handleListItemClick(event, 7, "/account/activity")
+                        handleListItemClick(event, 7, "/konto/aktivitet")
                       }
                     >
                       <ListItemText primary="Aktivitet" />
