@@ -10,6 +10,7 @@ import {
 import {
   ActionFunction,
   json,
+  LinksFunction,
   type LoaderFunction,
   type V2_MetaFunction,
 } from "@remix-run/node";
@@ -19,7 +20,10 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
 import { requireUserId } from "utils/auth.server";
-
+import rental from "~/styles/rental.css";
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "Deleplads.dk - Upload et billede af din parkeringsplads" },

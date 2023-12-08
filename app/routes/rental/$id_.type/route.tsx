@@ -1,7 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Form, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import Radio from "@mui/material/Radio";
-import { type V2_MetaFunction , json, ActionFunction, LinksFunction, LoaderFunction } from "@remix-run/node";
+import {
+  type V2_MetaFunction,
+  json,
+  ActionFunction,
+  LinksFunction,
+  LoaderFunction,
+} from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import { CustomerType, parkingspots } from "@prisma/client";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
@@ -25,27 +31,26 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return await fetchParkingSpotData(request, params);
 };
 
-
 export const action: ActionFunction = async ({ request, params }) => {
   await requireUserId(request);
   const formData = await request.formData();
-  const selectedValue = formData.get('selectedValue');
+  const selectedValue = formData.get("selectedValue");
   let customerType: CustomerType | null = null;
 
   // Check if selectedValue is a string and then call getCustomerType
-  if (typeof selectedValue === 'string') {
+  if (typeof selectedValue === "string") {
     customerType = getCustomerType(selectedValue);
   }
   const parkingspotId = params.id;
 
   const parkingspot: Partial<parkingspots> = {
-     customer_type: customerType,
-     id: parkingspotId
-  }
+    customer_type: customerType,
+    id: parkingspotId,
+  };
 
-   const newParkingspot = await createOrUpdate(parkingspot);
- 
-  return json({ success: true, parkingspotId: newParkingspot.id }); 
+  const newParkingspot = await createOrUpdate(parkingspot);
+
+  return json({ success: true, parkingspotId: newParkingspot.id });
 };
 
 export default function RentalType() {
@@ -59,10 +64,7 @@ export default function RentalType() {
   };
 
   const handleNext = () => {
-    fetcher.submit(
-      { selectedValue }, 
-      { method: "post" }
-    );
+    fetcher.submit({ selectedValue }, { method: "post" });
   };
 
   React.useEffect(() => {
@@ -70,7 +72,7 @@ export default function RentalType() {
       if (!useLoader.error) {
         setSelectedValue(useLoader.customer_type);
       }
-    } 
+    }
 
     if (fetcher.data?.success) {
       navigate(`/rental/${fetcher.data.parkingspotId}/location`);
@@ -113,11 +115,17 @@ export default function RentalType() {
           </Form>
         </div>
       </section>
-      <RentalNavigation
-        back={"/rental"}
-        start={12}
-        onNext={handleNext}
-      ></RentalNavigation>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={"/rental"}
+            start={12}
+            onNext={handleNext}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
     </>
   );
 }

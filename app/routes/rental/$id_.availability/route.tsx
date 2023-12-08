@@ -1,5 +1,5 @@
 import { Form, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -98,7 +98,6 @@ export default function RentalAvaliability() {
     if (useLoader) {
       if (!useLoader.error) {
         setBack(`/rental/${useLoader.id}/availability/type`);
-       
       }
     }
 
@@ -164,9 +163,14 @@ export default function RentalAvaliability() {
                     value={highlightedDays}
                     onChange={handleChange}
                     format="DD/MM/YYYY HH:mm"
-                    plugins={[<TimePicker key={2} hideSeconds format="DD/MM/YYYY HH:mm"/>]}
+                    plugins={[
+                      <TimePicker
+                        key={2}
+                        hideSeconds
+                        format="DD/MM/YYYY HH:mm"
+                      />,
+                    ]}
                     displayWeekNumbers={true}
-                    
                   />
                 </div>
                 <div className="desktopTimePicker">
@@ -177,11 +181,17 @@ export default function RentalAvaliability() {
           </Form>
         </div>
       </section>
-      <RentalNavigation
-        back={back}
-        start={37}
-        onNext={handleNext}
-      ></RentalNavigation>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            start={37}
+            onNext={handleNext}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
     </>
   );
 }

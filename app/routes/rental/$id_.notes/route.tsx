@@ -1,14 +1,29 @@
 import { TextField } from "@mui/material";
-import { Form, useFetcher, useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
-import { json, type ActionFunction, type LoaderFunction, type V2_MetaFunction } from "@remix-run/node";
+import {
+  Form,
+  useFetcher,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "@remix-run/react";
+import {
+  json,
+  type ActionFunction,
+  type LoaderFunction,
+  type V2_MetaFunction,
+  LinksFunction,
+} from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { requireUserId } from "utils/auth.server";
 import { parkingspots } from "@prisma/client";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import toast, { Toaster } from "react-hot-toast";
-
+import rental from "~/styles/rental.css";
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "Deleplads.dk - Note til udlejning" },
@@ -23,25 +38,25 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 export const action: ActionFunction = async ({ request, params }) => {
   await requireUserId(request);
   const formData = await request.formData();
-  const selectedValue = formData.get('selectedValue');
+  const selectedValue = formData.get("selectedValue");
   let note: string | null = null;
 
   // Check if selectedValue is a string and then call getCustomerType
-  if (typeof selectedValue === 'string' && selectedValue) {
+  if (typeof selectedValue === "string" && selectedValue) {
     note = selectedValue;
-  }else {
-    return json({error: "Du skal udfylde noten"})
+  } else {
+    return json({ error: "Du skal udfylde noten" });
   }
   const parkingspotId = params.id;
 
   const parkingspot: Partial<parkingspots> = {
-     notes: note,
-     id: parkingspotId
-  }
+    notes: note,
+    id: parkingspotId,
+  };
 
-   const newParkingspot = await createOrUpdate(parkingspot);
- 
-  return json({ success: true, parkingspotId: newParkingspot.id }); 
+  const newParkingspot = await createOrUpdate(parkingspot);
+
+  return json({ success: true, parkingspotId: newParkingspot.id });
 };
 
 export default function RentalNotes() {
@@ -55,13 +70,10 @@ export default function RentalNotes() {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
-};
+  };
 
   const handleNext = () => {
-    fetcher.submit(
-      { selectedValue }, 
-      { method: "post" }
-    );
+    fetcher.submit({ selectedValue }, { method: "post" });
   };
 
   useEffect(() => {
@@ -69,10 +81,10 @@ export default function RentalNotes() {
       if (!useLoader.error) {
         setSelectedValue(useLoader.notes || "");
         setBack(`/rental/${useLoader.id}/attributes`);
-      }else {
-        toast.error(useLoader.error)
+      } else {
+        toast.error(useLoader.error);
       }
-    } 
+    }
   }, [navigate, useLoader]);
 
   useEffect(() => {
@@ -87,7 +99,7 @@ export default function RentalNotes() {
 
   return (
     <>
-    <Toaster position="top-right"></Toaster>
+      <Toaster position="top-right"></Toaster>
       <section className="rentalLocation">
         <div className="inner">
           <h1>Hvad skal folk være opmærksomme på?</h1>
@@ -106,11 +118,17 @@ export default function RentalNotes() {
           </Form>
         </div>
       </section>
-      <RentalNavigation
-        back={back}
-        onNext={handleNext}
-        start={62}
-      ></RentalNavigation>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            onNext={handleNext}
+            start={62}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
     </>
   );
 }
