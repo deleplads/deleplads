@@ -12,7 +12,7 @@ import type {
 } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
-import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Suspense, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 

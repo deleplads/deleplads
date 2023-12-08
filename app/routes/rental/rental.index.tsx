@@ -12,10 +12,10 @@ import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { createOrUpdate } from "utils/Parkingspot/createOrUpdate.server";
 import { ParkingStatus, type parkingspots } from "@prisma/client";
 import { getUser, requireUserId } from "utils/auth.server";
-import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots";
+import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots.server";
 import NativeSelect from "@mui/material/NativeSelect";
 import { Button, InputLabel } from "@mui/material";
-import { getNextStepForParkingSpotById } from "utils/parkingspot/nextStep";
+import { getNextStepForParkingSpotById } from "utils/parkingspot/nextStep.server";
 import rental from "~/styles/rental.css";
 
 export const links: LinksFunction = () => {

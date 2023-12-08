@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import toast from "react-hot-toast";
 import { requireUserId } from "utils/auth.server";
-import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import rental from "~/styles/rental.css";
 import { price } from "@prisma/client";
 import createOrUpdatePrice from "utils/parkingspot/createOrUpdatePrices.server";

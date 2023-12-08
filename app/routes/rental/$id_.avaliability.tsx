@@ -7,7 +7,7 @@ import type {
 } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
-import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Calendar, DateObject } from "react-multi-date-picker";
 import { Button, ListItem, ListItemText } from "@mui/material";
 import { VariableSizeList } from "react-window";

@@ -1,5 +1,4 @@
 import React, { Suspense, useState } from "react";
-import Radio from "@mui/material/Radio";
 import EvStationOutlinedIcon from "@mui/icons-material/EvStationOutlined";
 import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
 import VpnKeyOffOutlinedIcon from "@mui/icons-material/VpnKeyOffOutlined";
@@ -18,11 +17,11 @@ import {
 } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
-import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { parkingspot_details } from "@prisma/client";
 import { requireUserId } from "utils/auth.server";
-import createOrUpdateParkingspotDetails from "utils/parkingspot/createOrUpdateParkingDetails";
+import createOrUpdateParkingspotDetails from "utils/parkingspot/createOrUpdateParkingDetails.server";
 import Checkbox from "@mui/material/Checkbox";
 
 export const links: LinksFunction = () => {

@@ -2,7 +2,7 @@
 
 import { json, redirect } from "@remix-run/node";
 import { requireUserId } from "utils/auth.server";
-import { getParkingSpotById } from "utils/parkingspot/getSport";
+import { getParkingSpotById } from "utils/parkingspot/getSport.server";
 
 async function fetchParkingSpotData(request: Request, params: any) {
   const userId = await requireUserId(request);

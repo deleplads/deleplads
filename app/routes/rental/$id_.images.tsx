@@ -18,7 +18,7 @@ import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternate
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { requireUserId } from "utils/auth.server";
 import rental from "~/styles/rental.css";
 export const links: LinksFunction = () => {
