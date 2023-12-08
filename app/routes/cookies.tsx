@@ -1,6 +1,6 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 import Footer from "~/components/Footer";
-import Cookies from "~/components/cookies";
+import Cookies from "~/components/CookiesSite";
 
 export const meta: V2_MetaFunction = () => {
   return [

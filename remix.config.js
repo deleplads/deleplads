@@ -19,7 +19,7 @@ module.exports = {
       route("/opret", "routes/sign-up.tsx");
 
       //Rental
-      route("/opret-udlejning", "routes/rental/_index.tsx");
+      route("/opret-udlejning", "routes/rental/rental.index.tsx");
       route("/opret-udlejning/:id/attributes", "routes/rental/$id_.attributes.tsx");
       route("/opret-udlejning/:id/avaliability", "routes/rental/$id_.avaliability.tsx");
       route("/opret-udlejning/:id/images", "routes/rental/$id_.images.tsx");
@@ -30,15 +30,15 @@ module.exports = {
       route("/opret-udlejning/:id/type", "routes/rental/$id_.type.tsx");
 
       //Account
-      route("/account", "routes/account/parent.tsx", () => {
-        route("", "routes/account/index.tsx", { index: true });
-        route("aktivitet", "routes/account/activity.tsx");
-        route("opslag", "routes/account/listings.tsx");
-        route("notifikationer", "routes/account/notification.tsx");
-        route("betalinger", "routes/account/payment.tsx");
-        route("profil", "routes/account/profile.tsx");
-        route("indstillinger", "routes/account/settings.tsx");
-        route("verifikation", "routes/account/verification.tsx");
+      route("/account", "routes/account/account.parent.tsx", () => {
+        route("", "routes/account/account.index.tsx", { index: true });
+        route("aktivitet", "routes/account/account.activity.tsx");
+        route("opslag", "routes/account/account.listings.tsx");
+        route("notifikationer", "routes/account/account.notification.tsx");
+        route("betalinger", "routes/account/account.payment.tsx");
+        route("profil", "routes/account/account.profile.tsx");
+        route("indstillinger", "routes/account/account.settings.tsx");
+        route("verifikation", "routes/account/account.verification.tsx");
       });
 
 
@@ -49,10 +49,10 @@ module.exports = {
       });
       
       //Locate
-      route("/find", "routes/locate/parent.tsx", () => {
-        route("galleri", "routes/locate/gallery.tsx",  { index: true });
-        route("liste", "routes/locate/list.tsx");
-        route("kort", "routes/locate/map.tsx");
+      route("/find", "routes/locate/locate.parent.tsx", () => {
+        route("galleri", "routes/locate/locate.gallery.tsx",  { index: true });
+        route("liste", "routes/locate/locate.list.tsx");
+        route("kort", "routes/locate/locate.map.tsx");
       });
     });
   },
