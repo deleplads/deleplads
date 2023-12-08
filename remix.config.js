@@ -21,7 +21,7 @@ module.exports = {
       //Rental
       route("/opret-udlejning", "routes/rental/rental.index.tsx");
       route("/opret-udlejning/:id/attributes", "routes/rental/$id_.attributes.tsx");
-      route("/opret-udlejning/:id/avaliability", "routes/rental/$id_.avaliability.tsx");
+      route("/opret-udlejning/:id/availability", "routes/rental/$id_.availability.tsx");
       route("/opret-udlejning/:id/images", "routes/rental/$id_.images.tsx");
       route("/opret-udlejning/:id/location", "routes/rental/$id_.location.tsx");
       route("/opret-udlejning/:id/notes", "routes/rental/$id_.notes.tsx");

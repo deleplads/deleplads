@@ -79,7 +79,7 @@ const TimePickerJs = () => {
   );
 };
 
-export default function RentalAvaliability() {
+export default function RentalAvailability() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();

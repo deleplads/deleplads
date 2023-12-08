@@ -59,8 +59,8 @@ export default function RentalReceipt() {
   }, [fetcher.data, isSubmitting, navigate]);
 
   const handleNext = () => {
-    fetcher.submit({}, { method: "post" });
-    
+    // fetcher.submit({}, { method: "post" });
+    navigate(`/`);
   };
 
   return (
