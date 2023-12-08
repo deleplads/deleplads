@@ -10,7 +10,7 @@ import {
 } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import { CustomerType, parkingspots } from "@prisma/client";
-import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
+import createOrUpdate from "utils/parkingspot/createOrUpdate.server";
 import { getCustomerType } from "helpers/helpers";
 import rental from "~/styles/rental.css";
 import { requireUserId } from "utils/auth.server";
