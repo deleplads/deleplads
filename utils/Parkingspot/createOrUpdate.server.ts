@@ -1,4 +1,4 @@
-import type { parkingspots } from "@prisma/client";
+import { ParkingStatus, type parkingspots } from "@prisma/client";
 import { prisma } from "../prisma.server";
 
 export async function createOrUpdate(parkingspot: Partial<parkingspots>) {
@@ -19,6 +19,7 @@ export async function createOrUpdate(parkingspot: Partial<parkingspots>) {
     const createdParkingspot = await prisma.parkingspots.create({
       data: {
         ...parkingspot,
+        status: ParkingStatus.InProgress
       },
     });
     return createdParkingspot;

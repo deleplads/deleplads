@@ -8,6 +8,7 @@ type RentalNavigationProps = {
   forward?: string;
   start: number;
   onNext: () => void; // Define onNext as a function prop
+  nextText?: string
 };
 
 function RentalNavigation(props: RentalNavigationProps): JSX.Element {
@@ -56,7 +57,9 @@ function RentalNavigation(props: RentalNavigationProps): JSX.Element {
               borderRadius: "52px",
             }}
           >
-            Næste skridt
+            {
+            props.nextText ? props.nextText : "Næste skridt"
+            }
           </Button>
         </div>
       </div>

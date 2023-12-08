@@ -1,18 +1,19 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 import Footer from "~/components/Footer";
-import Cookies from "~/components/cookies";
+import PrivacyPolicy from "~/components/PrivacyPolicy";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Deleplads.dk - Cookiepolitik" },
+    { title: "Deleplads.dk - Persondatapolitik" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
 
-export default function CookiesRoute() {
+export default function Index() {
   return (
     <main>
-      <Cookies></Cookies>
+      <PrivacyPolicy></PrivacyPolicy>
+      <Footer></Footer>
     </main>
   );
 }

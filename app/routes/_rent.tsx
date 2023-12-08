@@ -1,6 +1,6 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
+import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
-import { Box } from "@mui/material";
 import CallToAction from "~/components/CallToAction";
 import FAQLeje from "~/components/FaqLeje";
 
@@ -11,15 +11,19 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export default function Udleje() {
+export default function Leje() {
   return (
     <main>
-      <section className="rent">
+      <Navbar></Navbar>
+
+      <section className="leje">
       </section>
 
       <FAQLeje></FAQLeje>
 
       <CallToAction></CallToAction>
+
+      <Footer></Footer>
     </main>
   );
 }

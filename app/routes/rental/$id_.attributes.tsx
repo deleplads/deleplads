@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, useState } from "react";
 import Radio from "@mui/material/Radio";
 import EvStationOutlinedIcon from "@mui/icons-material/EvStationOutlined";
 import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
@@ -9,8 +9,27 @@ import LightOutlinedIcon from "@mui/icons-material/LightOutlined";
 import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
 import DirectionsSubwayFilledOutlinedIcon from "@mui/icons-material/DirectionsSubwayFilledOutlined";
 import AddRoadOutlinedIcon from "@mui/icons-material/AddRoadOutlined";
-import type { V2_MetaFunction } from "@remix-run/node";
+import {
+  ActionFunction,
+  json,
+  type LinksFunction,
+  type LoaderFunction,
+  type V2_MetaFunction,
+} from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import rental from "~/styles/rental.css";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
+import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
+import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
+import { parkingspot_details, parkingspots } from "@prisma/client";
+import { requireUserId } from "utils/auth.server";
+import createOrUpdateParkingspotDetails from "utils/parkingspot/createOrUpdateParkingDetails";
+import Checkbox from "@mui/material/Checkbox";
+import { LoaderResponse, ParkingSpotWithDetailsAndPrice } from "utils/types.server";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: rental }];
+};
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -18,13 +37,90 @@ export const meta: V2_MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
+export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  const spotId = params.id;
+  const formData = await request.formData();
+  const convertToBoolean = (value: FormDataEntryValue | null) => value === "true";
+
+  const attributes: Partial<parkingspot_details> = {
+    electric: convertToBoolean(formData.get("electric")),
+    surveillance: convertToBoolean(formData.get("surveillance")),
+    street_access: convertToBoolean(formData.get("street_access")),
+    cover: convertToBoolean(formData.get("cover")),
+    light: convertToBoolean(formData.get("light")),
+    night_guards: convertToBoolean(formData.get("night_guards")),
+    public_transport: convertToBoolean(formData.get("public_transport")),
+    handicap: convertToBoolean(formData.get("handicap")),
+    code: convertToBoolean(formData.get("code")),
+    spot_id: spotId
+  };
+  
+
+  const newParkingspot = await createOrUpdateParkingspotDetails(attributes);
+  
+
+  return json({ success: true, parkingspotId: newParkingspot.spot_id });
+};
+
+export const loader: LoaderFunction = async ({ request, params }) => {
+  return await fetchParkingSpotData(request, params);
+};
 
 export default function RentalAttributes() {
-  const [selectedValue, setSelectedValue] = React.useState("");
+  const [attributes, setAttributes] = useState({
+    electric: false,
+    code: false,
+    surveillance: false,
+    street_access: false,
+    cover: false,
+    light: false,
+    night_guards: false,
+    public_transport: false,
+    handicap: false,
+  });
+  const fetcher = useFetcher();
+  const useLoader = useLoaderData();
+  const navigate = useNavigate();
+  const [back, setBack] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
+    const { name, checked } = event.target;
+    setAttributes((prevAttrs: any) => ({
+      ...prevAttrs,
+      [name]: checked,
+    }));
   };
+
+  const handleNext = () => {
+    fetcher.submit( attributes , { method: "post" });
+  };
+
+  React.useEffect(() => {
+    if (useLoader) {
+      if (!useLoader.error && useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots != null) {
+        setBack(`/rental/${useLoader.id}/availability`);
+        const spotDetails = useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots;
+        
+        setAttributes({
+          code: spotDetails.code,
+          cover: spotDetails.cover,
+          electric: spotDetails.electric,
+          handicap: spotDetails.handicap,
+          light: spotDetails.light,
+          night_guards: spotDetails.night_guards,
+          public_transport: spotDetails.public_transport,
+          street_access: spotDetails.street_access,
+          surveillance: spotDetails.surveillance,
+        });
+
+      }
+    }
+
+    if (fetcher.data?.success) {
+      navigate(`/rental/${fetcher.data.parkingspotId}/notes`);
+    }
+  }, [fetcher.data, navigate, useLoader]);
 
   return (
     <>
@@ -38,11 +134,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<EvStationOutlinedIcon className="attribute-icon" />}
             <h3>El-ladestander</h3>
-            <Radio
-              checked={selectedValue === "a"}
+            <Checkbox
+              checked={attributes.electric}
               onChange={handleChange}
-              value="a"
-              name="radio-buttons"
+              value={attributes.electric}
+              name="electric"
               inputProps={{ "aria-label": "A" }}
               className="radio-check"
             />
@@ -50,11 +146,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<VpnKeyOffOutlinedIcon className="attribute-icon" />}
             <h3>Ingen adgangskode</h3>
-            <Radio
-              checked={selectedValue === "b"}
+            <Checkbox
+              checked={attributes.code}
               onChange={handleChange}
-              value="b"
-              name="radio-buttons"
+              value={attributes.code}
+              name="code"
               inputProps={{ "aria-label": "B" }}
               className="radio-check"
             />
@@ -62,11 +158,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<GarageOutlinedIcon className="attribute-icon" />}
             <h3>Overdækning</h3>
-            <Radio
-              checked={selectedValue === "c"}
+            <Checkbox
+              checked={attributes.cover}
               onChange={handleChange}
-              value="c"
-              name="radio-buttons"
+              value={attributes.cover}
+              name="cover"
               inputProps={{ "aria-label": "C" }}
               className="radio-check"
             />
@@ -74,11 +170,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<AddRoadOutlinedIcon className="attribute-icon" />}
             <h3>Gadetilgængelig</h3>
-            <Radio
-              checked={selectedValue === "d"}
+            <Checkbox
+              checked={attributes.street_access}
               onChange={handleChange}
-              value="d"
-              name="radio-buttons"
+              value={attributes.street_access}
+              name="street_access"
               inputProps={{ "aria-label": "D" }}
               className="radio-check"
             />
@@ -86,11 +182,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<CameraAltOutlinedIcon className="attribute-icon" />}
             <h3>Overvågning</h3>
-            <Radio
-              checked={selectedValue === "e"}
+            <Checkbox
+              checked={attributes.surveillance}
               onChange={handleChange}
-              value="e"
-              name="radio-buttons"
+              value={attributes.surveillance}
+              name="surveillance"
               inputProps={{ "aria-label": "E" }}
               className="radio-check"
             />
@@ -98,11 +194,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<AccessibleOutlinedIcon className="attribute-icon" />}
             <h3>Handicapadgang</h3>
-            <Radio
-              checked={selectedValue === "f"}
+            <Checkbox
+              checked={attributes.handicap}
               onChange={handleChange}
-              value="f"
-              name="radio-buttons"
+              value={attributes.handicap}
+              name="handicap"
               inputProps={{ "aria-label": "F" }}
               className="radio-check"
             />
@@ -110,11 +206,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<LightOutlinedIcon className="attribute-icon" />}
             <h3>Belysning</h3>
-            <Radio
-              checked={selectedValue === "g"}
+            <Checkbox
+              checked={attributes.light}
               onChange={handleChange}
-              value="g"
-              name="radio-buttons"
+              value={attributes.light}
+              name="light"
               inputProps={{ "aria-label": "G" }}
               className="radio-check"
             />
@@ -122,11 +218,11 @@ export default function RentalAttributes() {
           <div className="option">
             {<DirectionsSubwayFilledOutlinedIcon className="attribute-icon" />}
             <h3>Tæt på offentlig transport</h3>
-            <Radio
-              checked={selectedValue === "h"}
+            <Checkbox
+              checked={attributes.public_transport}
               onChange={handleChange}
-              value="h"
-              name="radio-buttons"
+              value={attributes.public_transport}
+              name="public_transport"
               inputProps={{ "aria-label": "H" }}
               className="radio-check"
             />
@@ -134,22 +230,28 @@ export default function RentalAttributes() {
           <div className="option">
             {<HealthAndSafetyOutlinedIcon className="attribute-icon" />}
             <h3>Aftenvagter</h3>
-            <Radio
-              checked={selectedValue === "i"}
+            <Checkbox
+              checked={attributes.night_guards}
               onChange={handleChange}
-              value="i"
-              name="radio-buttons"
+              value={attributes.night_guards}
+              name="night_guards"
               inputProps={{ "aria-label": "I" }}
               className="radio-check"
             />
           </div>
         </div>
       </section>
-      <RentalNavigation
-        back={"/rental/1/avaliability"}
-        forward={"/rental/1/notes"}
-        start={50}
-      ></RentalNavigation>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            onNext={handleNext}
+            start={50}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
     </>
   );
 }
