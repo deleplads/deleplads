@@ -14,7 +14,7 @@ import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import { getCustomerType } from "helpers/helpers";
 import rental from "~/styles/rental.css";
 import { requireUserId } from "utils/auth.server";
-import fetchParkingSpotData from "utils/parkingspot/FetchAndRequireAuth";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
