@@ -30,15 +30,15 @@ module.exports = {
       route("/opret-udlejning/:id/type", "routes/rental/$id_.type.tsx");
 
       //Account
-      route("/account", "routes/account/account.parent.tsx", () => {
+      route("/konto", "routes/account/account.parent.tsx", () => {
         route("", "routes/account/account.index.tsx", { index: true });
         route("aktivitet", "routes/account/account.activity.tsx");
-        route("opslag", "routes/account/account.listings.tsx");
+        route("mine-udlejninger", "routes/account/account.listings.tsx");
         route("notifikationer", "routes/account/account.notification.tsx");
-        route("betalinger", "routes/account/account.payment.tsx");
+        route("betalingskort", "routes/account/account.payment.tsx");
         route("profil", "routes/account/account.profile.tsx");
         route("indstillinger", "routes/account/account.settings.tsx");
-        route("verifikation", "routes/account/account.verification.tsx");
+        route("verificeringer", "routes/account/account.verification.tsx");
       });
 
 
@@ -49,7 +49,7 @@ module.exports = {
       });
       
       //Locate
-      route("/find", "routes/locate/locate.parent.tsx", () => {
+      route("/find-parkering", "routes/locate/locate.parent.tsx", () => {
         route("galleri", "routes/locate/locate.gallery.tsx",  { index: true });
         route("liste", "routes/locate/locate.list.tsx");
         route("kort", "routes/locate/locate.map.tsx");
