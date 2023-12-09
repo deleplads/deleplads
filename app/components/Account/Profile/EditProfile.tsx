@@ -8,12 +8,13 @@ import { Button, FormHelperText, Input, TextField } from "@mui/material";
 import { FormEvent, useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import profilePicture from "public/profile-picture-placeholder.jpg"
-import { Form, useActionData, useNavigation, useSubmit } from '@remix-run/react';
+import { Form, useActionData, useFetcher, useLoaderData, useNavigation, useSubmit } from '@remix-run/react';
 import { getYearsRange } from "utils/account/profile/profileUtils";
 import toast, { Toaster } from "react-hot-toast";
 import type { profiles } from "@prisma/client";
 import { validateAddressFields, validateBirthDateFields, validateFirstName, validateLastName, validatePhoneNumber, validatePostalCode } from "helpers/profileValidations";
 import { Image } from "@mui/icons-material";
+import supabase from "utils/supabase.server";
 
 
 type EditProfileProps = {
@@ -21,6 +22,26 @@ type EditProfileProps = {
 };
 
 function EditProfile(profile: EditProfileProps) {
+  console.log(profile.profile)
+  // const arrayBuffer = new Uint8Array(profile.profile.buffer.data).buffer;
+  // const blob = new Blob([arrayBuffer], { type: 'image/png' });
+  // const profileImageUrl = URL.createObjectURL(blob);
+  // console.log(33)
+  // console.log(profileImageUrl);
+  const [profileImageUrl, setProfileImageUrl] = useState();
+
+  useEffect(() => {
+    // This code will run only on the client side after component mounts
+    if (profile.profile.buffer.data) {
+      const arrayBuffer = new Uint8Array(profile.profile.buffer.data).buffer;
+      const blob = new Blob([arrayBuffer], { type: 'image/png' });
+      const url = URL.createObjectURL(blob);
+      console.log(url)
+      setProfileImageUrl(url);
+    }
+  }, [profile.profile.buffer.data]); // Dependency array ensures this runs only when the data changes
+
+
   const actionData = useActionData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -34,7 +55,7 @@ function EditProfile(profile: EditProfileProps) {
     }
   }, [isSubmitting]);
 
-  // Show success/error toast wwhen the form is being submitted or actionData returns error or success
+  // Show success/error toast when the form is being submitted or actionData returns error or success
   useEffect(() => {
     if (!isSubmitting && actionData?.error) {
       toast.error(actionData.error);
@@ -54,7 +75,7 @@ function EditProfile(profile: EditProfileProps) {
     city: profile.profile.city || '',
     postalCode: profile.profile.postal_code ? profile.profile.postal_code.toString() : '',
     phoneNumber: profile.profile.phone_number ? profile.profile.phone_number.toString() : '',
-    // image: null
+    // profileImageUrl: profileImageUrl ? profileImageUrl : ''
   });
   const [firstNameError, setFirstNameError] = useState('');
   const [lastNameError, setLastNameError] = useState('');
@@ -87,9 +108,20 @@ function EditProfile(profile: EditProfileProps) {
     });
   };
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+  //   const file = event.target.files[0];
+  //   setSelectedFile(file);
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       setFormData((prevFormData) => ({
+  //         ...prevFormData,
+  //         profileImageUrl: e.target.result
+  //       }));
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
   };
 
   const submit = useSubmit();
@@ -107,7 +139,23 @@ function EditProfile(profile: EditProfileProps) {
     // is updated asynchronously and we won't catch the errors here
     if (!firstNameError && !lastNameError && !birthDateValidationError && !addressValidationError
       && !phoneNumberValidationError && !postalCodeError) {
-      submit({ ...formData, profileId: profile.profile.id, image: selectedFile }, { method: "post", action: "/account/profile" });
+
+      const formDataToSend = new FormData();
+      formDataToSend.append('firstName', formData.firstName);
+      formDataToSend.append('lastName', formData.lastName);
+      formDataToSend.append('birthDay', formData.birthDay);
+      formDataToSend.append('birthMonth', formData.birthMonth);
+      formDataToSend.append('birthYear', formData.birthYear);
+      formDataToSend.append('address', formData.address);
+      formDataToSend.append('city', formData.city);
+      formDataToSend.append('postalCode', formData.postalCode);
+      formDataToSend.append('phoneNumber', formData.phoneNumber);
+      // if (selectedFile) {
+        // formDataToSend.append('profileImage', selectedFile);
+      // }
+      formDataToSend.append('profileId', profile.profile.id);
+
+      submit(formDataToSend, { method: "post", action: "/account/profile", encType: "multipart/form-data" });
     } else {
       toast.error("Formularen har nogle fejl. Du kan rette dem og prøve at gemme igen.");
     }
@@ -383,14 +431,14 @@ function EditProfile(profile: EditProfileProps) {
               </InputLabel>
               <Avatar
                 className="Avatar"
-                alt="Remy Sharp"
-                src={profilePicture}
+                alt="Billede"
+                src={profileImageUrl}
               />
-              {/* <input type="file" name="image" accept="image/*" required style={{ display: 'none' }} onChange={handleFileChange} id="image-input" /> */}
+              {/* <input type="file" name="profileImage" accept="image/*" style={{ display: 'none' }} onChange={handleFileChange} id="image-input" /> */}
               <label htmlFor="image-input">
                 <Button variant="outlined" component="span">Vælg fil</Button>
               </label>
-              {selectedFile && <span>{selectedFile.name}</span>}
+              {/* {selectedFile && <span>{selectedFile.name}</span>} */}
 
               <input type="hidden" name="profileId" value={profile.profile.id} />
 

@@ -39,7 +39,8 @@ const TabletDiv = (tablet: any) => {
         <Avatar
           sx={{ width: "40px", height: "40px" }}
           alt="Remy Sharp"
-          src={profilePicture}
+          // src={profilePicture}
+          src={profile.profile.profileImageUrl}
         />
       </IconButton>
     </Tooltip>
@@ -100,6 +101,7 @@ var styles = {
 };
 
 function Navbar(profile: any) {
+  // console.log(profile.profile)
   const tablet = useMediaQuery({ query: "(max-width: 600px)" });
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorRentning, setAnchorRentning] = useState(null);
@@ -228,7 +230,8 @@ function Navbar(profile: any) {
                       <Avatar
                         sx={{ width: "40px", height: "40px" }}
                         alt="Remy Sharp"
-                        src={profilePicture}
+                        // src={profilePicture}
+                        src={profile.profile.profileImageUrl}
                       />
                     </IconButton>
                   </Tooltip>

@@ -11,6 +11,9 @@ import { useNavigate, Outlet, useLoaderData, useLocation } from "@remix-run/reac
 import { defer, type LoaderFunction } from "@remix-run/node";
 import { getProfileFromUserId } from "utils/account/profile/profile.server";
 import { requireUserId } from "utils/auth.server";
+import { createServerClient, parse, serialize } from "@supabase/ssr";
+// import { supabase } from "utils/supabase.server";
+import supabase from "utils/supabase.server";
 
 type ProfileProps = {
   profile: {
@@ -23,15 +26,30 @@ type ProfileProps = {
     city: string | null;
     birth_date: string | null;
     phone_number: number | null;
+    profile_image: Blob | null;
   };
 };
+const blobToBase64 = (blob) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onloadend = () => resolve(reader.result);
+  reader.onerror = reject;
+  reader.readAsDataURL(blob);
+});
 export const loader: LoaderFunction = async ({ request }) => {
   try {
     const userId = await requireUserId(request);
     const profile = await getProfileFromUserId(userId);
 
+    const supabaseClient = await supabase(request);
+    const { data, error } = await supabaseClient.storage
+      .from('users')
+      .download(`${userId}/profile_image`);
+
+    const buffer = Buffer.from(await data.arrayBuffer());
+    profile.buffer = buffer;
+
     return defer({
-      profile,
+      profile
     });
   } catch (error) {
     return { error };
@@ -42,7 +60,8 @@ export default function Profile() {
   const location = useLocation();
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
-  const { profile } = useLoaderData() as ProfileProps;
+  // const { profile } = useLoaderData() as ProfileProps;
+  const { profile } = useLoaderData();
   const tabMapping = {
     "/account": 0, // default path, e.g., /account
     "/account/listings": 1,
@@ -62,15 +81,15 @@ export default function Profile() {
 
   const updateSelectedIndexFromURL = () => {
     const path = location.pathname;
-    
+
     const index = tabMapping[path] ?? 0; // Default to 0 if path not found
     setSelectedIndex(index);
-    
+
   };
 
   // Update selectedIndex when URL changes
   useEffect(() => {
-     updateSelectedIndexFromURL();
+    updateSelectedIndexFromURL();
   }, [location]);
 
   const handleListItemClick = (

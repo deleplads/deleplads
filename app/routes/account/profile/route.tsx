@@ -1,16 +1,42 @@
 import { Suspense } from 'react';
-import { Await, useOutletContext } from '@remix-run/react';
+import { Await, useLoaderData, useOutletContext } from '@remix-run/react';
 import EditProfile from '~/components/Account/Profile/EditProfile';
-import { ActionFunction } from '@remix-run/node';
-import { updateProfile } from 'utils/account/profile/profile.server';
+import { ActionFunction, LoaderFunction, json } from '@remix-run/node';
 import { validateAddressFields, validateBirthDateFields, validateNames, validatePhoneNumber, validatePostalCode } from 'helpers/profileValidations';
 import updateProfiles from "types/Profiles"
-import { createClient } from '@supabase/supabase-js';
-import { supabaseClient } from 'utils/supabase.client';
+import { createServerClient, type CookieOptions, parse, serialize } from '@supabase/ssr'
+import { getUserId, requireUserId } from "utils/auth.server";
+import supabase from 'utils/supabase.server';
+import { getProfileFromUserId } from 'utils/account/profile/profile.server';
 
+// export const loader: LoaderFunction = async ({ request }) => {
+
+//   const userId = await requireUserId(request);
+//   const profile = await getProfileFromUserId(userId);
+
+//   const supabaseClient = await supabase(request);
+//   const { data, error } = await supabaseClient.storage
+//     .from('users')
+//     .download(`${userId}/profile_image`);
+
+//   if (data) {
+//     const blob = data;
+//     const buffer = Buffer.from(await blob.arrayBuffer());
+//     // return { buffer: buffer, type: data?.type };
+//     return buffer;
+//   }
+
+// return null;
+// }
 
 export default function Profile() {
+  // const loaderData = useLoaderData();
+  // console.log("Loader data:")
+  // console.log(loaderData)
+  // console.log(URL.createObjectURL(loaderData))
+
   const data = useOutletContext();
+  // data.profile.buffer = loaderData;
 
   return (
     <section className="">
@@ -18,6 +44,7 @@ export default function Profile() {
         <Await resolve={data}>
           <div className="">
             <EditProfile profile={data?.profile}></EditProfile>
+            {/* <EditProfile profile={loaderData}></EditProfile> */}
           </div>
         </Await>
       </Suspense>
@@ -30,34 +57,39 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const profileForm = Object.fromEntries<updateProfiles>(formData);
 
+  const userId = await getUserId(request);
 
-  // todo: figure out issue with import from supabase.client.ts.
-  // and 
-// [1] {
-// [1]   statusCode: '403',
-// [1]   error: 'Unauthorized',
-// [1]   message: 'new row violates row-level security policy'
-// [1] }
-  // const supabaseClient = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_ANON_KEY!);
-  // const { data, error } = await supabaseClient
-  //   .storage
-  //   .from('profile_image')
-  //   .upload('public/avatar1.png', profileForm.image, {
-  //     cacheControl: '3600',
-  //     upsert: false
-  //   })
+  const supabaseClient = await supabase(request);
+  const { data, error } = await supabaseClient
+    .storage
+    .from('users')
+    .upload(`${userId}/profile_image`, profileForm.profileImage, {
+      cacheControl: '3600',
+      upsert: true,
+      contentType: 'image/*'
+    })
   // console.log(data)
-  // console.log(error)
+  if (error) {
+    console.log(error)
+    if (error.statusCode == '413') { // Content too large
+      return { error: 'Profilbilledet er for stort. Prøv at uploade et mindre billede.' };
+    } else {
+      return { error: 'Der opstod en fejl under upload af profilbilledet. Prøv venligst igen med et andet billede.' }
+    }
+  }
 
+  // validateProfileForm(profileForm);
+
+  // const profileEntity = mapProfileDataToDatabaseEntity(profileForm);
+  // await updateProfile(profileEntity);
+
+  // const publicUrlData = supabaseClient.storage
+  //   .from('users')
+  //   .getPublicUrl(`${userId}/profile_image`);
+  // // add the profile image to the profile object
+  // console.log(publicUrlData)
+  return { success: 'Profil opdateret!', profileImageUrl: publicUrlData?.data?.publicUrl };
   // return null;
-
-  
-  validateProfileForm(profileForm);
-
-  const profileEntity = mapProfileDataToDatabaseEntity(profileForm);
-  await updateProfile(profileEntity);
-
-  return { success: 'Profil opdateret!' };
 };
 
 function validateProfileForm(formObj: updateProfiles) {

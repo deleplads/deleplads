@@ -14,6 +14,7 @@ import { getUser } from "utils/auth.server";
 import { Debug } from "utils/debug.server";
 import type { Profile } from "db_types";
 import Navbar from "./components/Navbar";
+import supabase from "utils/supabase.server";
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -31,7 +32,14 @@ export const loader: LoaderFunction = async ({ request }) => {
   Debug();
   try {
     const [user, profile] = await getUser(request);
-    
+
+    // const supabaseClient = await supabase(request);
+    // const { data } = supabaseClient.storage
+    //   .from('users')
+    //   .getPublicUrl(`${user.id}/profile_image`);
+    // // add the profile image to the profile object
+    // profile.profileImageUrl = data?.publicUrl;
+
     return {user, profile} ;
   } catch (error) {
     // Handle error, maybe return a specific structure or status code

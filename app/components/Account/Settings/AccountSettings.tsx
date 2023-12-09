@@ -59,7 +59,6 @@ function ProfileSettings(profile: EditProfileProps) {
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
-                {/* <Box className="modal123"> */}
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   Er du sikker på du vil slette din profil?
                 </Typography>
