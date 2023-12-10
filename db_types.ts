@@ -10,7 +10,12 @@ export type Profile = {
   created_at: string | null
   first_name: string
   id: string
-  last_name: string
+  last_name: string,
+  birth_date: string | null,
+  address: string | null,
+  city: string | null,
+  postal_code: string | null,
+  phone_number: number | null,
 }
 
 export interface Database {
@@ -21,19 +26,34 @@ export interface Database {
           created_at: string | null
           first_name: string
           id: string
-          last_name: string
+          last_name: string,
+          birth_date: string | null,
+          address: string | null,
+          city: string | null,
+          postal_code: string | null,
+          phone_number: number | null,
         }
         Insert: {
           created_at?: string | null
           first_name: string
           id?: string
-          last_name: string
+          last_name: string,
+          birth_date: string | null,
+          address: string | null,
+          city: string | null,
+          postal_code: string | null,
+          phone_number: number | null,
         }
         Update: {
           created_at?: string | null
           first_name?: string
           id?: string
-          last_name?: string
+          last_name?: string,
+          birth_date: string | null,
+          address: string | null,
+          city: string | null,
+          postal_code: string | null,
+          phone_number: number | null,
         }
         Relationships: [
           {
