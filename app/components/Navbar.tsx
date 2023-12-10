@@ -10,6 +10,9 @@ import type { Profile } from "db_types";
 import { useMediaQuery } from "react-responsive";
 import { toast } from "react-hot-toast";
 import profilePicture from "public/profile-picture-placeholder.jpg"
+import { useSelector } from "react-redux";
+import { RootState } from "~/store/store";
+import { ImageContext } from "~/contexts/image.context";
 
 const style = {
   position: "absolute" as "absolute",
@@ -108,6 +111,17 @@ function Navbar(profile: any) {
   const navigate = useNavigate();
   const [isOpen, setisOpen] = useState({ menuOpen: false });
   const [scrolledPastTop, setScrolledPastTop] = useState(false);
+
+  const [profileImageUrl, setProfileImageUrl] = useState('');
+  useEffect(() => {
+    if (profile.profile?.profileImageBufferData?.data) {
+      const arrayBuffer = new Uint8Array(profile.profile.profileImageBufferData?.data).buffer;
+      const blob = new Blob([arrayBuffer], { type: 'image/*' });
+      const url = URL.createObjectURL(blob);
+      setProfileImageUrl(url);
+    }
+  }, [profile.profile?.profileImageBufferData?.data]);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -229,9 +243,9 @@ function Navbar(profile: any) {
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar
                         sx={{ width: "40px", height: "40px" }}
-                        alt="Remy Sharp"
+                        alt="Bruger Profil Billede"
                         // src={profilePicture}
-                        src={profile.profile.profileImageUrl}
+                        src={profileImageUrl}
                       />
                     </IconButton>
                   </Tooltip>
