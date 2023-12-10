@@ -37,6 +37,7 @@ export default function Profile() {
   const location = useLocation();
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
+
   const { profile } = useLoaderData() as ProfileProps;
   const tabMapping = {
     "/konto": 0, // default path, e.g., /account
@@ -190,6 +191,7 @@ export default function Profile() {
             </Box>
           </div>
           <section>
+            <div className="text-black text-xl">{selectedIndex}</div>
             <Outlet context={{ profile: profile }}></Outlet>
           </section>
         </main>

@@ -43,7 +43,7 @@ module.exports = {
 
 
       //Blog
-      route("/blog", "routes/blog/route.tsx", () => {
+      route("/blog", "routes/blog/blog.index.tsx", () => {
         route("artikel", "routes/blog/artikel.tsx");
         route("artikel2", "routes/blog/artikel2.tsx");
       });

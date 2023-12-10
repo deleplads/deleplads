@@ -40,7 +40,9 @@ export const meta: V2_MetaFunction = () => {
 export const loader: LoaderFunction = async ({ request, params }) => {
   const parkingspot = await fetchParkingSpotData(request, params);
   const spotId = params.id;
-  if (typeof spotId === "string" && spotId && !parkingspot.prices) {
+
+  if (typeof spotId === "string" && spotId && parkingspot?.prices.length === 0) {
+    
     const newPrice = await createOrUpdatePrice({
       recommended_price: 23,
       spot_id: spotId,
