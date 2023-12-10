@@ -146,7 +146,7 @@ function EditProfile(props: ProfileProps) {
       }
       formDataToSend.append('profileId', props.profile.id);
 
-      submit(formDataToSend, { method: "post", action: "/account/profile", encType: "multipart/form-data" });
+      submit(formDataToSend, { method: "post", action: "/konto/profil", encType: "multipart/form-data" });
     } else {
       toast.error("Formularen har nogle fejl. Du kan rette dem og prøve at gemme igen.");
     }

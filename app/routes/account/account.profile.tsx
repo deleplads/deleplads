@@ -10,11 +10,7 @@ import {
   validatePostalCode
 } from 'helpers/profileValidations';
 import type { updateProfiles } from "types/Profiles"
-import {
-  downloadProfileImageAsBuffer,
-  updateProfile,
-  uploadProfileImage
-} from "../../../../utils/account/profile/profile.server";
+import { updateProfile, uploadProfileImage } from "../../../utils/account/profile/profile.server";
 
 
 export default function Profile() {
