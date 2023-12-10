@@ -9,4 +9,5 @@ export interface updateProfiles {
     birthMonth?: string;
     birthDay?: string;
     phoneNumber?: string;
+    profileImage?: File;
 }

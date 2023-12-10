@@ -15,6 +15,12 @@ import { Debug } from "utils/debug.server";
 import type { Profile } from "db_types";
 import Navbar from "./components/Navbar";
 import supabase from "utils/supabase.server";
+import { useEffect, useState } from "react";
+import { Provider, useDispatch } from "react-redux";
+import store from "~/store/store";
+import { downloadProfileImageAsBuffer } from "../utils/account/profile/profile.server";
+import { ImageContext } from "./contexts/image.context";
+import { mapProfileEntityToProfileProp } from "../utils/account/profile/profile.mapper";
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -33,14 +39,9 @@ export const loader: LoaderFunction = async ({ request }) => {
   try {
     const [user, profile] = await getUser(request);
 
-    // const supabaseClient = await supabase(request);
-    // const { data } = supabaseClient.storage
-    //   .from('users')
-    //   .getPublicUrl(`${user.id}/profile_image`);
-    // // add the profile image to the profile object
-    // profile.profileImageUrl = data?.publicUrl;
+    const { data } = await downloadProfileImageAsBuffer(request);
 
-    return {user, profile} ;
+    return { user, profile, profileImageBufferData: data };
   } catch (error) {
     // Handle error, maybe return a specific structure or status code
     return { error };
@@ -48,10 +49,17 @@ export const loader: LoaderFunction = async ({ request }) => {
 }
 
 
-
 export default function App() {
-  const  {user, profile } = useLoaderData();
-  
+  const { user, profile, profileImageBufferData } = useLoaderData();
+
+  if (profileImageBufferData) {
+    profile.profileImageBufferData = profileImageBufferData;
+  }
+
+  function updateProfileImageState(newProfileImageBuffer: ArrayBuffer) {
+    profile.profileImageBufferData = newProfileImageBuffer;
+  }
+
   return (
     <html lang="en">
       <head>
@@ -64,7 +72,7 @@ export default function App() {
         <header>
           <Navbar profile={profile}></Navbar>
         </header>
-        <Outlet/>
+        <Outlet context={{ updateProfileImageState, profileImageBufferData }}/>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

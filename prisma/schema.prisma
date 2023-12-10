@@ -15,7 +15,7 @@ datasource db {
 model profiles {
   id           String    @id @db.Uuid
   created_at   DateTime? @default(now()) @db.Timestamptz(6)
-  first_name    String
+  first_name   String
   last_name    String
   birth_date   DateTime?
   address      String?
@@ -30,14 +30,14 @@ model profiles {
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model user {
-  created_at              DateTime       @default(now()) @db.Timestamptz(6)
-  email                   String         @unique
-  password                String
-  updated_at              DateTime       @updatedAt
-  id                      String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  parkingspots            parkingspots[]
-  profiles                 profiles?        
-  marked_for_deletion_at  DateTime?       @db.Timestamptz(6)
+  created_at             DateTime       @default(now()) @db.Timestamptz(6)
+  email                  String         @unique
+  password               String
+  updated_at             DateTime       @updatedAt
+  id                     String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  parkingspots           parkingspots[]
+  profiles               profiles?
+  marked_for_deletion_at DateTime?      @db.Timestamptz(6)
 
   @@schema("public")
 }
@@ -52,21 +52,6 @@ model commune_prices {
   zipcode    Int?
 
   @@schema("public")
-}
-
-model stuff {
-  id         BigInt   @id(map: "Stuff_pkey") @default(autoincrement())
-  name String? @db.VarChar
-  user_id String? @db.Uuid
-
-  @@schema("public")
-}
-
-model stuff2 {
-  id         BigInt   @id(map: "Stuff_pkey") @default(autoincrement())
-  name String? @db.VarChar
-
-  @@schema("private")
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments

@@ -11,3 +11,9 @@ node_modules
 /api/metafile.server.json
 /api/index.js
 /api/index.js.map
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

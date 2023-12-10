@@ -4,42 +4,41 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Button, FormHelperText, Input, TextField } from "@mui/material";
-import { FormEvent, useEffect, useState } from "react";
+import { Button, FormHelperText, TextField } from "@mui/material";
+import type { FormEvent } from "react";
+import { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import profilePicture from "public/profile-picture-placeholder.jpg"
-import { Form, useActionData, useFetcher, useLoaderData, useNavigation, useSubmit } from '@remix-run/react';
+import { Form, useActionData, useNavigation, useSubmit } from '@remix-run/react';
 import { getYearsRange } from "utils/account/profile/profileUtils";
 import toast, { Toaster } from "react-hot-toast";
 import type { profiles } from "@prisma/client";
-import { validateAddressFields, validateBirthDateFields, validateFirstName, validateLastName, validatePhoneNumber, validatePostalCode } from "helpers/profileValidations";
-import { Image } from "@mui/icons-material";
-import supabase from "utils/supabase.server";
+import {
+  validateAddressFields,
+  validateBirthDateFields,
+  validateFirstName,
+  validateLastName,
+  validatePhoneNumber,
+  validatePostalCode
+} from "helpers/profileValidations";
+import type { ProfileProps } from "../../../../utils/account/profile/profile.prop";
 
 
 type EditProfileProps = {
   profile: profiles
 };
 
-function EditProfile(profile: EditProfileProps) {
-  console.log(profile.profile)
-  // const arrayBuffer = new Uint8Array(profile.profile.buffer.data).buffer;
-  // const blob = new Blob([arrayBuffer], { type: 'image/png' });
-  // const profileImageUrl = URL.createObjectURL(blob);
-  // console.log(33)
-  // console.log(profileImageUrl);
-  const [profileImageUrl, setProfileImageUrl] = useState();
+function EditProfile(props: ProfileProps) {
+  const [profileImageUrl, setProfileImageUrl] = useState('');
 
   useEffect(() => {
     // This code will run only on the client side after component mounts
-    if (profile.profile.buffer.data) {
-      const arrayBuffer = new Uint8Array(profile.profile.buffer.data).buffer;
-      const blob = new Blob([arrayBuffer], { type: 'image/png' });
+    if (props.profile.profile_image_buffer?.data) {
+      const arrayBuffer = new Uint8Array(props.profile.profile_image_buffer.data).buffer;
+      const blob = new Blob([arrayBuffer], { type: 'image/*' });
       const url = URL.createObjectURL(blob);
-      console.log(url)
       setProfileImageUrl(url);
     }
-  }, [profile.profile.buffer.data]); // Dependency array ensures this runs only when the data changes
+  }, [props.profile.profile_image_buffer?.data]); // Dependency array ensures this runs only when the data changes
 
 
   const actionData = useActionData();
@@ -66,16 +65,16 @@ function EditProfile(profile: EditProfileProps) {
   }, [isSubmitting, actionData?.error, actionData?.success]);
 
   const [formData, setFormData] = useState({
-    firstName: profile.profile.first_name,
-    lastName: profile.profile.last_name,
-    birthDay: profile.profile.birth_date ? new Date(profile.profile.birth_date).getDate().toString() : '',
-    birthMonth: profile.profile.birth_date ? new Date(profile.profile.birth_date).getMonth().toString() : '',
-    birthYear: profile.profile.birth_date ? new Date(profile.profile.birth_date).getFullYear().toString() : '',
-    address: profile.profile.address || '',
-    city: profile.profile.city || '',
-    postalCode: profile.profile.postal_code ? profile.profile.postal_code.toString() : '',
-    phoneNumber: profile.profile.phone_number ? profile.profile.phone_number.toString() : '',
-    // profileImageUrl: profileImageUrl ? profileImageUrl : ''
+    firstName: props.profile.first_name,
+    lastName: props.profile.last_name,
+    birthDay: props.profile.birth_date ? new Date(props.profile.birth_date).getDate().toString() : '',
+    birthMonth: props.profile.birth_date ? new Date(props.profile.birth_date).getMonth().toString() : '',
+    birthYear: props.profile.birth_date ? new Date(props.profile.birth_date).getFullYear().toString() : '',
+    address: props.profile.address || '',
+    city: props.profile.city || '',
+    postalCode: props.profile.postal_code ? props.profile.postal_code.toString() : '',
+    phoneNumber: props.profile.phone_number ? props.profile.phone_number.toString() : '',
+    profileImageUrl: profileImageUrl ? profileImageUrl : ''
   });
   const [firstNameError, setFirstNameError] = useState('');
   const [lastNameError, setLastNameError] = useState('');
@@ -108,20 +107,12 @@ function EditProfile(profile: EditProfileProps) {
     });
   };
 
-  // const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const handleFileChange = (event) => {
-  //   const file = event.target.files[0];
-  //   setSelectedFile(file);
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       setFormData((prevFormData) => ({
-  //         ...prevFormData,
-  //         profileImageUrl: e.target.result
-  //       }));
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    setProfileImageUrl(URL.createObjectURL(event.target.files[0]));
   };
 
   const submit = useSubmit();
@@ -150,10 +141,10 @@ function EditProfile(profile: EditProfileProps) {
       formDataToSend.append('city', formData.city);
       formDataToSend.append('postalCode', formData.postalCode);
       formDataToSend.append('phoneNumber', formData.phoneNumber);
-      // if (selectedFile) {
-        // formDataToSend.append('profileImage', selectedFile);
-      // }
-      formDataToSend.append('profileId', profile.profile.id);
+      if (selectedFile) {
+        formDataToSend.append('profileImage', selectedFile);
+      }
+      formDataToSend.append('profileId', props.profile.id);
 
       submit(formDataToSend, { method: "post", action: "/account/profile", encType: "multipart/form-data" });
     } else {
@@ -163,7 +154,7 @@ function EditProfile(profile: EditProfileProps) {
 
   return (
     <div>
-      <Toaster position="top-right" />
+      <Toaster position="top-right"/>
       <Form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="angry-grid">
           <div id="item-0">
@@ -422,26 +413,14 @@ function EditProfile(profile: EditProfileProps) {
 
           <div id="item-10">
             <div className="EditProfilePicture">
-              <InputLabel
-                className="InputLabel"
-                variant="standard"
-                htmlFor="uncontrolled-native"
-              >
-                Billede
-              </InputLabel>
-              <Avatar
-                className="Avatar"
-                alt="Billede"
-                src={profileImageUrl}
-              />
-              {/* <input type="file" name="profileImage" accept="image/*" style={{ display: 'none' }} onChange={handleFileChange} id="image-input" /> */}
+              <InputLabel className="InputLabel" variant="standard" htmlFor="uncontrolled-native">Billede</InputLabel>
+              <Avatar className="Avatar" alt="Bruger Profil Billede" src={profileImageUrl}/>
+              <input type="file" name="profileImage" accept="image/*" style={{ display: 'none' }}
+                     onChange={handleFileChange} id="image-input"/>
               <label htmlFor="image-input">
                 <Button variant="outlined" component="span">Vælg fil</Button>
-              </label>
-              {/* {selectedFile && <span>{selectedFile.name}</span>} */}
-
-              <input type="hidden" name="profileId" value={profile.profile.id} />
-
+              </label>{selectedFile && <span>{selectedFile.name}</span>}
+              <input type="hidden" name="profileId" value={props.profile.id}/>
             </div>
           </div>
           <div id="item-11">
