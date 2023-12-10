@@ -5,7 +5,7 @@ import Hero from "~/components/Hero";
 import Popular from "~/components/Popular";
 import SocialProof from "~/components/blogTeaser";
 import FAQGeneral from "~/components/FAQGeneral";
-import swipercss from  "node_modules/swiper/swiper-bundle.min.css";
+import swipercss from "node_modules/swiper/swiper-bundle.min.css";
 import Benefits from "~/components/benefits";
 
 

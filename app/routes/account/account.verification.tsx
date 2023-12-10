@@ -6,11 +6,11 @@ import ListItemText from "@mui/material/ListItemText";
 import Footer from "~/components/Footer";
 import type { SetStateAction} from "react";
 import React, { useState } from "react";
-import EditProfile from "~/components/ProfileSettings/EditProfile";
+import EditProfile from "~/components/Account/Profile/EditProfile";
 import { Tab, Tabs } from "@mui/material";
 import type { LoaderFunction } from "@remix-run/node";
 import { requireUserId } from "utils/auth.server";
-import { getProfileFromUserId } from "utils/profile.server";
+import { getProfileFromUserId } from "utils/account/profile/profile.server";
 import { useLoaderData } from "@remix-run/react";
 
 

@@ -1,7 +1,5 @@
 import { Suspense } from "react";
-import { Await, useLoaderData, useOutletContext } from "@remix-run/react";
-import EditProfile from "~/components/ProfileSettings/EditProfile";
-import BasicCard from "~/components/Cards";
+import { useLoaderData, useOutletContext } from "@remix-run/react";
 import ListingsCard from "~/components/ListingsCard";
 import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots.server";
 import { requireUserId } from "utils/auth.server";
