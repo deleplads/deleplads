@@ -1,11 +1,11 @@
-import { Suspense } from "react";
 import { useLoaderData, useOutletContext } from "@remix-run/react";
 import ListingsCard from "~/components/ListingsCard";
 import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots.server";
 import { requireUserId } from "utils/auth.server";
-import { LoaderFunction, json } from "@remix-run/node";
+import type { LoaderFunction} from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { ParkingStatus } from "@prisma/client";
-import { ParkingSpot } from "utils/types.server";
+import type { ParkingSpot } from "utils/types.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserId(request);
@@ -30,9 +30,13 @@ export default function Listings() {
       <div className="inner">
         <h1>{data?.profile?.first_name}'s Listings</h1>
         <div className="accountListings">
-          {spots.map((spot: ParkingSpot) => (
+        {spots.length > 0 ? (
+          spots.map((spot: ParkingSpot) => (
             <ListingsCard key={spot.id} spot={spot} />
-          ))}
+          ))
+          ) : (
+            <p>Du har ingen udlejninger.</p>
+          )}
         </div>
       </div>
     </section>
