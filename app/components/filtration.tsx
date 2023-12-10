@@ -32,7 +32,7 @@ function Filtration() {
             variant="outlined"
             startIcon={<ListIcon />}
             onClick={() => {
-              navigate("/locate/list");
+              navigate("/find-parkering/liste");
             }}
           >
             Liste
@@ -41,7 +41,7 @@ function Filtration() {
             variant="outlined"
             startIcon={<AppsIcon />}
             onClick={() => {
-              navigate("/locate/gallery");
+              navigate("/find-parkering/galleri");
             }}
           >
             Galleri
@@ -50,7 +50,7 @@ function Filtration() {
             variant="outlined"
             startIcon={<LocationOnOutlinedIcon />}
             onClick={() => {
-              navigate("/locate/map");
+              navigate("/find-parkering/kort");
             }}
           >
             Kort

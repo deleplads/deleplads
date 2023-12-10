@@ -1,5 +1,5 @@
 import styles from "../app/styles/app.css";
-import { LoaderFunction, redirect, type LinksFunction, } from "@remix-run/node";
+import { LoaderFunction, type LinksFunction } from "@remix-run/node";
 import global from "../app/styles/css/global.css";
 import {
   Links,
@@ -14,13 +14,8 @@ import { getUser } from "utils/auth.server";
 import { Debug } from "utils/debug.server";
 import type { Profile } from "db_types";
 import Navbar from "./components/Navbar";
-import supabase from "utils/supabase.server";
-import { useEffect, useState } from "react";
-import { Provider, useDispatch } from "react-redux";
-import store from "~/store/store";
 import { downloadProfileImageAsBuffer } from "../utils/account/profile/profile.server";
-import { ImageContext } from "./contexts/image.context";
-import { mapProfileEntityToProfileProp } from "../utils/account/profile/profile.mapper";
+import Footer from "./components/Footer";
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -76,6 +71,9 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <footer>
+          <Footer></Footer>
+        </footer>
       </body>
     </html>
   );
