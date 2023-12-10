@@ -4,12 +4,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Footer from "~/components/Footer";
-import { SetStateAction } from "react";
+import type { SetStateAction } from "react";
 import React, { useEffect } from "react";
-import { Button, Tab, Tabs } from "@mui/material";
+import { Tab, Tabs } from "@mui/material";
 import { useNavigate, Outlet, useLoaderData, useLocation, useOutletContext } from "@remix-run/react";
 import { defer, type LoaderFunction } from "@remix-run/node";
-import { downloadProfileImageAsBuffer, getProfileFromUserId } from "utils/account/profile/profile.server";
+import { getProfileFromUserId } from "utils/account/profile/profile.server";
 import { requireUserId } from "utils/auth.server";
 import { mapProfileEntityToProfileProp } from "../../../utils/account/profile/profile.mapper";
 import type { ProfileProps } from "utils/account/profile/profile.prop";
@@ -19,10 +19,6 @@ export const loader: LoaderFunction = async ({ request }) => {
     const userId = await requireUserId(request);
     const profile = await getProfileFromUserId(userId);
     const profileProps = mapProfileEntityToProfileProp(profile);
-
-    // const { data } = await downloadProfileImageAsBuffer(request);
-    // profileProps.profile_image_buffer = data;
-
 
     return defer({
       profile: profileProps
