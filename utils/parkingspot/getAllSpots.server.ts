@@ -10,6 +10,10 @@ export async function getParkingSpotsByUserWhereStatus(userId: string, Status: P
         where: {
             owner_id: userId,
             status: Status
+        }, 
+        include: {
+            parkingspot_details_parkingspot_details_spot_idToparkingspots: true,
+            prices: true
         }
     });
 

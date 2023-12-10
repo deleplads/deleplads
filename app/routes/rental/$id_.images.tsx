@@ -6,6 +6,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
+  useParams,
 } from "@remix-run/react";
 import {
   ActionFunction,
@@ -65,7 +66,8 @@ export default function RentalImages() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 

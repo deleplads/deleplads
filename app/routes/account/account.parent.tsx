@@ -191,7 +191,6 @@ export default function Profile() {
             </Box>
           </div>
           <section>
-            <div className="text-black text-xl">{selectedIndex}</div>
             <Outlet context={{ profile: profile }}></Outlet>
           </section>
         </main>

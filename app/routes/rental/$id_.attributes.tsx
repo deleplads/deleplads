@@ -18,7 +18,7 @@ import {
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
-import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
+import { useFetcher, useLoaderData, useNavigate, useParams } from "@remix-run/react";
 import { parkingspot_details } from "@prisma/client";
 import { requireUserId } from "utils/auth.server";
 import createOrUpdateParkingspotDetails from "utils/parkingspot/createOrUpdateParkingDetails.server";
@@ -79,8 +79,10 @@ export default function RentalAttributes() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
-
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/availability`);
+  
+  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
     setAttributes((prevAttrs: any) => ({

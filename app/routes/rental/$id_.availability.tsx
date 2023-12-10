@@ -1,5 +1,5 @@
-import { Form, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import { useFetcher, useLoaderData, useNavigate, useParams } from "@remix-run/react";
+import React, { Suspense, useRef, useState } from "react";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -11,7 +11,6 @@ import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Calendar, DateObject } from "react-multi-date-picker";
 import { Button, ListItem, ListItemText } from "@mui/material";
 import { VariableSizeList } from "react-window";
-import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import {
   ArrowDropDownIcon,
   ArrowLeftIcon,
@@ -88,7 +87,8 @@ export default function RentalAvailability() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
   const [date, setDate] = useState(new DateObject());
   const calendarRef = useRef();
 
