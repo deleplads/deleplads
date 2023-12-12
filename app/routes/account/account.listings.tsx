@@ -28,8 +28,8 @@ export default function Listings() {
   return (
     <section className="account listings">
       <div className="inner">
-        <h1>{data?.profile?.first_name}'s Listings</h1>
-        <div className="accountListings">
+        <h1>{data?.profile?.first_name}'s udlejninger</h1>
+        <div className="accountListings gap-2">
         {spots.length > 0 ? (
           spots.map((spot: ParkingSpot) => (
             <ListingsCard key={spot.id} spot={spot} />
