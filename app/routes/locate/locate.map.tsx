@@ -1,4 +1,8 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
+import EvStationOutlinedIcon from "@mui/icons-material/EvStationOutlined";
+import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
+import VpnKeyOffOutlinedIcon from "@mui/icons-material/VpnKeyOffOutlined";
+import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -13,124 +17,27 @@ export default function LocateMap() {
       <div className="avaliable-bookings">
         <h2>Viser 365 ledige parkeringspladser</h2>
         <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
+          <h2>Ll. Blovstrødvej 33</h2>
+          <p>3450 Allerød, Hovedstaden</p>
+          <div className="map-cards-attributes">
+            <div className="map-cards-attribute">
+              {<EvStationOutlinedIcon className="attribute-icon" />}{" "}
+              <p>El-ladestander</p>
+            </div>
+            <div className="map-cards-attribute">
+              {<GarageOutlinedIcon className="attribute-icon" />}{" "}
+              <p>Overdækning</p>
+            </div>
+            <div className="map-cards-attribute">
+              {<VpnKeyOffOutlinedIcon className="attribute-icon" />}{" "}
+              <p>Ingen kode</p>
+            </div>
+            <div className="map-cards-attribute">
+              {<CameraAltOutlinedIcon className="attribute-icon" />}{" "}
+              <p>Overvågning</p>
+            </div>
           </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
-        </div>
-        <div className="booking">
-          <div className="left">
-            <h2>Ll. Blovstrødvej 33</h2>
-          </div>
-          <div className="right">
-            <p className="price">24,95 kr. per time</p>
-          </div>
+          <p>24,95 kr. per time</p>
         </div>
       </div>
       <iframe

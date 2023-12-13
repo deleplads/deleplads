@@ -1,0 +1,16 @@
+.mapGallery {
+  background: red;
+  padding: 165px 0 0 0;
+  .inner {
+    width: var(--PageWidth);
+    margin: 48px auto 48px auto;
+    background: green;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 24px;
+    .listing {
+      border: 1px solid #e5e5e5;
+    }
+  }
+}

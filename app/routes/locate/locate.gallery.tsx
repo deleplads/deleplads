@@ -1,5 +1,4 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
-import Gallery from "~/components/Gallery";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -10,8 +9,13 @@ export const meta: V2_MetaFunction = () => {
 
 export default function LocateGallery() {
   return (
-    <section className="pt-52">
-      <Gallery></Gallery>
-    </section>
+    <div className="mapGallery">
+      <div className="inner">
+        <div className="listing">cristian is a lil bitch</div>
+        <div className="listing">cristian is a lil bitch</div>
+        <div className="listing">cristian is a lil bitch</div>
+        <div className="listing">cristian is a lil bitch</div>
+      </div>
+    </div>
   );
 }
