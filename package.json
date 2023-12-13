@@ -37,6 +37,7 @@
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-id-swiper": "^4.0.0",
     "react-responsive": "^9.0.2",
     "react-window": "^1.8.9",
     "styled-components": "^5.3.11",
