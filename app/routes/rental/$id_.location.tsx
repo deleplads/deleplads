@@ -5,6 +5,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
+  useParams,
 } from "@remix-run/react";
 import Switch from "@mui/material/Switch";
 import {
@@ -84,7 +85,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 export default function RentalLocation() {
   const useLoader = useLoaderData();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/type`);
   const fetcher = useFetcher();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";

@@ -33,6 +33,7 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const [value, setValue] = React.useState(0);
+
   const { profile } = useLoaderData() as ProfileProps;
   profile.profile_image_buffer = outletData.profileImageBufferData;
 

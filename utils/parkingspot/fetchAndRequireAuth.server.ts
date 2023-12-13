@@ -12,7 +12,7 @@ async function fetchParkingSpotData(request: Request, params: any) {
     if (typeof spotId === "string" && spotId) {
       const parkingspots = await getParkingSpotById(spotId, userId);
       
-      return json(parkingspots);
+      return parkingspots;
     } else {
       return redirect(`/rental`);
     }

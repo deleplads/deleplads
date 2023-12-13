@@ -4,6 +4,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
+  useParams,
 } from "@remix-run/react";
 import {
   ActionFunction,
@@ -40,7 +41,9 @@ export const meta: V2_MetaFunction = () => {
 export const loader: LoaderFunction = async ({ request, params }) => {
   const parkingspot = await fetchParkingSpotData(request, params);
   const spotId = params.id;
-  if (typeof spotId === "string" && spotId && !parkingspot.prices) {
+
+  if (typeof spotId === "string" && spotId && parkingspot?.prices.length === 0) {
+    
     const newPrice = await createOrUpdatePrice({
       recommended_price: 23,
       spot_id: spotId,
@@ -86,8 +89,8 @@ export const action: ActionFunction = async ({ request, params }) => {
   return json({ success: true, parkingspotId: newParkingspot.spot_id });
 };
 
-export default function RentalNotes() {
-  const [isFormEnabled, setIsFormEnabled] = useState(false);
+export default function RentalPrices() {
+  const [isFormEnabled, setIsFormEnabled] = useState(true);
   const [prices, setPrices] = useState({
     noon_price: "",
     morning_price: "",
@@ -111,11 +114,21 @@ export default function RentalNotes() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/notes`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
   const handleNext = () => {
+    if (!isFormEnabled) {
+      setPrices({
+        evening_price: "24",
+        morning_price: "24",
+        noon_price: "24",
+        weekend_price: "24",
+        price_id: ""
+      })
+    }
     fetcher.submit(prices, { method: "post" });
   };
 
@@ -124,11 +137,11 @@ export default function RentalNotes() {
       if (!useLoader.error) {
         setBack(`/opret-udlejning/${useLoader.parkingspot.id}/notes`);
         setPrices({
-          evening_price: useLoader.parkingspot.evening_price || "",
-          morning_price: useLoader.parkingspot.morning_price || "",
-          noon_price: useLoader.parkingspot.noon_price || "",
-          weekend_price: useLoader.parkingspot.weekend_price || "",
-          price_id: useLoader.parkingspot.id || "",
+          evening_price: useLoader.parkingspot.prices[0].evening_price || "",
+          morning_price: useLoader.parkingspot.prices[0].morning_price || "",
+          noon_price: useLoader.parkingspot.prices[0].noon_price || "",
+          weekend_price: useLoader.parkingspot.prices[0].weekend_price || "",
+          price_id: useLoader.parkingspot.prices[0].id || "",
         });
         if (useLoader.priceId) {
           setPrices((prevAttrs: any) => ({

@@ -4,17 +4,23 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
+  useParams,
 } from "@remix-run/react";
-import type {
-  LinksFunction,
-  LoaderFunction,
-  V2_MetaFunction,
+import {
+  json,
+  type ActionFunction,
+  type LinksFunction,
+  type LoaderFunction,
+  type V2_MetaFunction,
 } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Suspense, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { requireUserId } from "utils/auth.server";
+import { parkingspots } from "@prisma/client";
+import createOrUpdate from "utils/parkingspot/createOrUpdate.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
@@ -30,10 +36,26 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return await fetchParkingSpotData(request, params);
 };
 
+export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  
+  const parkingspotId = params.id;
+
+  const parkingspot: Partial<parkingspots> = {
+    status: "Completed",
+    id: parkingspotId,
+  };
+
+  const newParkingspot = await createOrUpdate(parkingspot);
+
+  return json({ success: true, parkingspotId: newParkingspot.id });
+};
+
 export default function RentalReceipt() {
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/price`);
   const fetcher = useFetcher();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
@@ -59,8 +81,7 @@ export default function RentalReceipt() {
   }, [fetcher.data, isSubmitting, navigate]);
 
   const handleNext = () => {
-    // fetcher.submit({}, { method: "post" });
-    navigate(`/`);
+    fetcher.submit({}, { method: "post" });
   };
 
   return (
