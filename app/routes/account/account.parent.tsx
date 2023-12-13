@@ -3,7 +3,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Footer from "~/components/Footer";
 import type { SetStateAction } from "react";
 import React, { useEffect } from "react";
 import { Tab, Tabs } from "@mui/material";
@@ -39,13 +38,13 @@ export default function Profile() {
 
   const tabMapping = {
     "/konto": 0, // default path, e.g., /account
-    "/konto/mine-udlejninger": 1,
-    "/konto/profil": 2,
-    "/konto/betalingskort": 3,
-    "/konto/notifikationer": 4,
-    "/konto/indstillinger": 5,
-    "/konto/verificeringer": 6,
-    "/konto/aktivitet": 7,
+    "/konto/udlejninger": 1,
+    "/konto/rediger": 2,
+    "/konto/kodeord": 3,
+    "/konto/betalingskort": 4,
+    "/konto/notifikationer": 5,
+    "/konto/indstillinger": 6,
+    "/konto/verificeringer": 7,
   };
 
   const handleChange = (event: any, newValue: SetStateAction<number>) => {
@@ -98,7 +97,7 @@ export default function Profile() {
             <Tab label="Notifikationer" style={{ textTransform: "initial" }}/>
             <Tab label="Indstillinger" style={{ textTransform: "initial" }}/>
             <Tab label="Verificeringer" style={{ textTransform: "initial" }}/>
-            <Tab label="Aktivitet" style={{ textTransform: "initial" }}/>
+            <Tab label="Kodeord" style={{ textTransform: "initial" }}/>
           </Tabs>
           <div className="ProfileMenuSettingsDesktop">
             <Box>
@@ -118,7 +117,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 1}
                       onClick={(event) =>
-                        handleListItemClick(event, 1, "/konto/mine-udlejninger")
+                        handleListItemClick(event, 1, "/konto/udlejninger")
                       }
                     >
                       <ListItemText primary="Mine udlejninger"/>
@@ -128,7 +127,7 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 2}
                       onClick={(event) =>
-                        handleListItemClick(event, 2, "/konto/profil")
+                        handleListItemClick(event, 2, "/konto/rediger")
                       }
                     >
                       <ListItemText primary="Redigér profil"/>
@@ -138,7 +137,17 @@ export default function Profile() {
                     <ListItemButton
                       selected={selectedIndex === 3}
                       onClick={(event) =>
-                        handleListItemClick(event, 3, "/konto/betalingskort")
+                        handleListItemClick(event, 3, "/konto/kodeord")
+                      }
+                    >
+                      <ListItemText primary="Kodeord"/>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton
+                      selected={selectedIndex === 4}
+                      onClick={(event) =>
+                        handleListItemClick(event, 4, "/konto/betalingskort")
                       }
                     >
                       <ListItemText primary="Betalingskort"/>
@@ -146,9 +155,9 @@ export default function Profile() {
                   </ListItem>
                   <ListItem disablePadding>
                     <ListItemButton
-                      selected={selectedIndex === 4}
+                      selected={selectedIndex === 5}
                       onClick={(event) =>
-                        handleListItemClick(event, 4, "/konto/notifikationer")
+                        handleListItemClick(event, 5, "/konto/notifikationer")
                       }
                     >
                       <ListItemText primary="Notifikationer"/>
@@ -156,9 +165,9 @@ export default function Profile() {
                   </ListItem>
                   <ListItem disablePadding>
                     <ListItemButton
-                      selected={selectedIndex === 5}
+                      selected={selectedIndex === 6}
                       onClick={(event) =>
-                        handleListItemClick(event, 5, "/konto/indstillinger")
+                        handleListItemClick(event, 6, "/konto/indstillinger")
                       }
                     >
                       <ListItemText primary="Indstillinger"/>
@@ -166,22 +175,12 @@ export default function Profile() {
                   </ListItem>
                   <ListItem disablePadding>
                     <ListItemButton
-                      selected={selectedIndex === 6}
+                      selected={selectedIndex === 7}
                       onClick={(event) =>
-                        handleListItemClick(event, 6, "/konto/verificeringer")
+                        handleListItemClick(event, 7, "/konto/verificeringer")
                       }
                     >
                       <ListItemText primary="Verificeringer"/>
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton
-                      selected={selectedIndex === 7}
-                      onClick={(event) =>
-                        handleListItemClick(event, 7, "/konto/aktivitet")
-                      }
-                    >
-                      <ListItemText primary="Aktivitet"/>
                     </ListItemButton>
                   </ListItem>
                 </List>
@@ -193,7 +192,6 @@ export default function Profile() {
               context={{ profile: profile, updateProfileImageState: outletData.updateProfileImageState }}></Outlet>
           </section>
         </main>
-        <Footer></Footer>
       </div>
     </>
   );

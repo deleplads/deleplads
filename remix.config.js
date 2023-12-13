@@ -32,11 +32,11 @@ module.exports = {
       //Account
       route("/konto", "routes/account/account.parent.tsx", () => {
         route("", "routes/account/account.index.tsx", { index: true });
-        route("aktivitet", "routes/account/account.activity.tsx");
-        route("mine-udlejninger", "routes/account/account.listings.tsx");
+        route("kodeord", "routes/account/account.password.tsx");
+        route("udlejninger", "routes/account/account.listings.tsx");
         route("notifikationer", "routes/account/account.notification.tsx");
         route("betalingskort", "routes/account/account.payment.tsx");
-        route("profil", "routes/account/account.profile.tsx");
+        route("rediger", "routes/account/account.edit.tsx");
         route("indstillinger", "routes/account/account.settings.tsx");
         route("verificeringer", "routes/account/account.verification.tsx");
       });
