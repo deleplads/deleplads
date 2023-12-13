@@ -48,6 +48,10 @@ module.exports = {
         route("artikel2", "routes/blog/artikel2.tsx");
       });
       
+
+      //Userstorie
+      route("userstorie", "routes/userstories/userstorie.tsx");
+
       //Locate
       route("/find-parkering", "routes/locate/locate.parent.tsx", () => {
         route("galleri", "routes/locate/locate.gallery.tsx",  { index: true });

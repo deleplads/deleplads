@@ -28,7 +28,7 @@ export interface ParkingSpot {
   availability_type: AvaliabilityType | null; // Assuming AvaliabilityType is an enum or type you've defined
   customer_type: CustomerType; // Assuming CustomerType is an enum or type you've defined
   parkingspot_details_parkingspot_details_spot_idToparkingspots?: parkingspot_details; // This should match the actual data you have
-  prices?: price[]; // This should match the actual data you have
+  prices?: price; // This should match the actual data you have
 }
 
 export type ParkingSpotWithDetailsAndPrice = parkingspots | null & {

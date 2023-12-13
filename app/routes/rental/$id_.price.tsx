@@ -42,13 +42,12 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   const parkingspot = await fetchParkingSpotData(request, params);
   const spotId = params.id;
 
-  if (typeof spotId === "string" && spotId && parkingspot?.prices.length === 0) {
-    
+  if (typeof spotId === "string" && spotId && parkingspot?.prices == null) {
     const newPrice = await createOrUpdatePrice({
       recommended_price: 23,
       spot_id: spotId,
     });
-    return json({ parkingspot: parkingspot, priceId: newPrice.id });
+    return json({ parkingspot: parkingspot, priceId: newPrice.spot_id });
   }
   return json({ parkingspot: parkingspot });
 };
@@ -70,7 +69,6 @@ export const action: ActionFunction = async ({ request, params }) => {
     weekend_price: formData.get("weekend_price")
       ? Number(formData.get("weekend_price"))
       : null,
-    price_id: formData.get("price_id")?.toString(),
   };
 
   const parkingspotId = params.id;
@@ -80,7 +78,6 @@ export const action: ActionFunction = async ({ request, params }) => {
     morning_price: formValues.morning_price,
     noon_price: formValues.noon_price,
     weekend_price: formValues.weekend_price,
-    id: formValues.price_id,
     spot_id: parkingspotId,
   };
 
@@ -90,13 +87,12 @@ export const action: ActionFunction = async ({ request, params }) => {
 };
 
 export default function RentalPrices() {
-  const [isFormEnabled, setIsFormEnabled] = useState(true);
+  const [isFormEnabled, setIsFormEnabled] = useState(false);
   const [prices, setPrices] = useState({
     noon_price: "",
     morning_price: "",
     evening_price: "",
     weekend_price: "",
-    price_id: "",
   });
 
   const handleCheckboxChange = () => {
@@ -121,15 +117,18 @@ export default function RentalPrices() {
 
   const handleNext = () => {
     if (!isFormEnabled) {
-      setPrices({
-        evening_price: "24",
-        morning_price: "24",
-        noon_price: "24",
-        weekend_price: "24",
-        price_id: ""
-      })
+      fetcher.submit(
+        {
+          noon_price: "24",
+          morning_price: "24",
+          evening_price: "24",
+          weekend_price: "24",
+        },
+        { method: "post" }
+      );
+    } else {
+      fetcher.submit(prices, { method: "post" });
     }
-    fetcher.submit(prices, { method: "post" });
   };
 
   useEffect(() => {
@@ -137,19 +136,12 @@ export default function RentalPrices() {
       if (!useLoader.error) {
         setBack(`/opret-udlejning/${useLoader.parkingspot.id}/notes`);
         setPrices({
-          evening_price: useLoader.parkingspot.prices[0].evening_price || "",
-          morning_price: useLoader.parkingspot.prices[0].morning_price || "",
-          noon_price: useLoader.parkingspot.prices[0].noon_price || "",
-          weekend_price: useLoader.parkingspot.prices[0].weekend_price || "",
-          price_id: useLoader.parkingspot.prices[0].id || "",
+          evening_price: useLoader.parkingspot.prices.evening_price || "",
+          morning_price: useLoader.parkingspot.prices.morning_price || "",
+          noon_price: useLoader.parkingspot.prices.noon_price || "",
+          weekend_price: useLoader.parkingspot.prices.weekend_price || "",
         });
-        if (useLoader.priceId) {
-          setPrices((prevAttrs: any) => ({
-            ...prevAttrs,
-            price_id: useLoader.priceId,
-          }));
-        }
-      } else if(useLoader?.error) {
+      } else if (useLoader?.error) {
         toast.error(useLoader.error);
       }
     }
@@ -179,16 +171,11 @@ export default function RentalPrices() {
             <p>per time</p>
           </div>
           <Form>
-            <FormControl sx={{ width: "100% !important" }}>
+            <div className="w-full">
               <div className="set-custom-price">
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={isFormEnabled}
-                      onChange={handleCheckboxChange}
-                    />
-                  }
-                  label
+                <Checkbox
+                  checked={isFormEnabled}
+                  onChange={handleCheckboxChange}
                 />
                 <span>
                   <h4>Sæt tilpasset pris</h4>
@@ -248,7 +235,7 @@ export default function RentalPrices() {
                   disabled={!isFormEnabled}
                 />
               </div>
-            </FormControl>
+            </div>
           </Form>
         </div>
       </section>

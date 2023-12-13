@@ -175,14 +175,12 @@ export default function RentalReceipt() {
                     </div>
                     <div className="border-t border-gray-200 pt-16">
                       <h3 className="text-lg font-semibold">Prisdetaljer</h3>
-                      {useLoader.prices?.map((price, index) => (
-                        <div key={index} className="mt-2">
-                          <p>Morgenpris: {price.morning_price}</p>
-                          <p>Aftenpris: {price.evening_price}</p>
-                          <p>Weekendpris: {price.weekend_price}</p>
-                          <p>Anbefalet pris: {price.recommended_price}</p>
+                        <div className="mt-2">
+                          <p>Morgenpris: {useLoader.prices.morning_price}</p>
+                          <p>Aftenpris: {useLoader.prices.evening_price}</p>
+                          <p>Weekendpris: {useLoader.prices.weekend_price}</p>
+                          <p>Anbefalet pris: {useLoader.prices.recommended_price}</p>
                         </div>
-                      ))}
                     </div>
                   </div>
                 ) : (

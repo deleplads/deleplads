@@ -23,7 +23,7 @@ export default function ListingsCard({ spot }: ListingsCardProps) {
     navigate(`/parkeringsplads/${spot.id}`);
   };
   
-  const formattedPrice = spot.prices ? `${spot.prices[0].noon_price?.toFixed(2)} DKK per time` : "Price not available";
+  const formattedPrice = spot.prices ? `${spot.prices.noon_price?.toFixed(2)} DKK per time` : "Der er ikke sat en pris";
 
   return (
     <div onClick={navigateToSpot}>
