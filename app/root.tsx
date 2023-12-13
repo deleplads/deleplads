@@ -1,5 +1,5 @@
 import styles from "../app/styles/app.css";
-import { LoaderFunction, redirect, type LinksFunction, } from "@remix-run/node";
+import { LoaderFunction, type LinksFunction } from "@remix-run/node";
 import global from "../app/styles/css/global.css";
 import {
   Links,
@@ -14,6 +14,8 @@ import { getUser } from "utils/auth.server";
 import { Debug } from "utils/debug.server";
 import type { Profile } from "db_types";
 import Navbar from "./components/Navbar";
+import { downloadProfileImageAsBuffer } from "../utils/account/profile/profile.server";
+import Footer from "./components/Footer";
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -27,11 +29,14 @@ export const links: LinksFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
+
   Debug();
   try {
     const [user, profile] = await getUser(request);
-    
-    return {user, profile} ;
+
+    const { data } = await downloadProfileImageAsBuffer(request);
+
+    return { user, profile, profileImageBufferData: data };
   } catch (error) {
     // Handle error, maybe return a specific structure or status code
     return { error };
@@ -39,10 +44,17 @@ export const loader: LoaderFunction = async ({ request }) => {
 }
 
 
-
 export default function App() {
-  const  {user, profile } = useLoaderData();
-  
+  const { user, profile, profileImageBufferData } = useLoaderData();
+
+  if (profileImageBufferData) {
+    profile.profileImageBufferData = profileImageBufferData;
+  }
+
+  function updateProfileImageState(newProfileImageBuffer: ArrayBuffer) {
+    profile.profileImageBufferData = newProfileImageBuffer;
+  }
+
   return (
     <html lang="en">
       <head>
@@ -55,10 +67,13 @@ export default function App() {
         <header>
           <Navbar profile={profile}></Navbar>
         </header>
-        <Outlet/>
+        <Outlet context={{ updateProfileImageState, profileImageBufferData }}/>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <footer>
+          <Footer></Footer>
+        </footer>
       </body>
     </html>
   );

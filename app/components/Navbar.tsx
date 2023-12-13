@@ -9,6 +9,10 @@ import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
 import type { Profile } from "db_types";
 import { useMediaQuery } from "react-responsive";
 import { toast } from "react-hot-toast";
+import profilePicture from "public/profile-picture-placeholder.jpg"
+import { useSelector } from "react-redux";
+import { RootState } from "~/store/store";
+import { ImageContext } from "~/contexts/image.context";
 
 const style = {
   position: "absolute" as "absolute",
@@ -38,7 +42,8 @@ const TabletDiv = (tablet: any) => {
         <Avatar
           sx={{ width: "40px", height: "40px" }}
           alt="Remy Sharp"
-          src="../../profile-picture-placeholder.jpg"
+          // src={profilePicture}
+          src={profile.profile.profileImageUrl}
         />
       </IconButton>
     </Tooltip>
@@ -99,12 +104,24 @@ var styles = {
 };
 
 function Navbar(profile: any) {
+  // console.log(profile.profile)
   const tablet = useMediaQuery({ query: "(max-width: 600px)" });
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorRentning, setAnchorRentning] = useState(null);
   const navigate = useNavigate();
   const [isOpen, setisOpen] = useState({ menuOpen: false });
   const [scrolledPastTop, setScrolledPastTop] = useState(false);
+
+  const [profileImageUrl, setProfileImageUrl] = useState('');
+  useEffect(() => {
+    if (profile.profile?.profileImageBufferData?.data) {
+      const arrayBuffer = new Uint8Array(profile.profile.profileImageBufferData?.data).buffer;
+      const blob = new Blob([arrayBuffer], { type: 'image/*' });
+      const url = URL.createObjectURL(blob);
+      setProfileImageUrl(url);
+    }
+  }, [profile.profile?.profileImageBufferData?.data]);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -202,16 +219,16 @@ function Navbar(profile: any) {
             <Link to={"/blog"} id="contact" className="menu-item">
               Blog
             </Link>
-            <Link to={"/FAQ"} id="contact" className="menu-item">
+            <Link to={"/faq"} id="contact" className="menu-item">
               FAQ
             </Link>
-            <Link to={"/sign-in"} id="contact" className="menu-item MButton2">
+            <Link to={"/logind"} id="contact" className="menu-item MButton2">
               Log ind
             </Link>
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-              <Link to={"/locate/map"}>Find en parkeringsplads</Link>
+              <Link to={"/find-parkering/kort"}>Find en parkeringsplads</Link>
               <Link to={"/leje"}>For lejere</Link>
               <Link to={"/udleje"}>For udlejere</Link>
               <Link to={"/blog"}>Blog</Link>
@@ -226,8 +243,9 @@ function Navbar(profile: any) {
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar
                         sx={{ width: "40px", height: "40px" }}
-                        alt="Remy Sharp"
-                        src="./profile-picture-placeholder.jpg"
+                        alt="Bruger Profil Billede"
+                        // src={profilePicture}
+                        src={profileImageUrl}
                       />
                     </IconButton>
                   </Tooltip>
@@ -250,7 +268,7 @@ function Navbar(profile: any) {
                   >
                     <MenuItem
                       onClick={() => {
-                        navigate("/rental");
+                        navigate("/opret-udlejning");
                         handleCloseUserMenu();
                       }}
                     >
@@ -258,7 +276,7 @@ function Navbar(profile: any) {
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate("/account");
+                        navigate("/konto");
                         handleCloseUserMenu();
                       }}
                     >
@@ -276,7 +294,7 @@ function Navbar(profile: any) {
             ) : (
               <span>
                 <Button
-                  href="/sign-in"
+                  href="/logind"
                   sx={{
                     marginRight: "12px",
                     textTransform: "initial",
@@ -289,7 +307,7 @@ function Navbar(profile: any) {
                 </Button>
                 <Button
                   variant="contained"
-                  href="/sign-up"
+                  href="/opret"
                   sx={{
                     textTransform: "initial",
                     fontWeight: "700",

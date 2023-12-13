@@ -14,60 +14,48 @@ function Filtration() {
   return (
     <section className="filtration">
       <div className="inner">
-        <TextField
-          id="outlined-basic"
-          label="Hvor vil du gerne parkere?"
-          variant="outlined"
-          className="search"
-        />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <TimePicker ampm={false} label="Start tidspunkt" />
-        </LocalizationProvider>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <TimePicker ampm={false} label="Slut tidspunkt" />
-        </LocalizationProvider>
-        <Button
-          variant="outlined"
-          startIcon={<ListIcon />}
-          onClick={() => {
-            navigate("/locate/list");
-          }}
-          sx={{
-            textTransform: "capitalize",
-            color: "black",
-            padding: "15px",
-          }}
-        >
-          Liste
-        </Button>
-        <Button
-          variant="outlined"
-          startIcon={<AppsIcon />}
-          onClick={() => {
-            navigate("/locate/gallery");
-          }}
-          sx={{
-            textTransform: "capitalize",
-            color: "black",
-            padding: "15px",
-          }}
-        >
-          Galleri
-        </Button>
-        <Button
-          variant="outlined"
-          startIcon={<LocationOnOutlinedIcon />}
-          onClick={() => {
-            navigate("/locate/map");
-          }}
-          sx={{
-            textTransform: "capitalize",
-            color: "black",
-            padding: "15px",
-          }}
-        >
-          Kort
-        </Button>
+        <div className="search">
+          <TextField
+            id="outlined-basic"
+            label="Hvor vil du gerne parkere?"
+            variant="outlined"
+          />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <TimePicker ampm={false} label="Start tidspunkt" />
+          </LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <TimePicker ampm={false} label="Slut tidspunkt" />
+          </LocalizationProvider>
+        </div>
+        <span>
+          <Button
+            variant="outlined"
+            startIcon={<ListIcon />}
+            onClick={() => {
+              navigate("/find-parkering/liste");
+            }}
+          >
+            Liste
+          </Button>
+          <Button
+            variant="outlined"
+            startIcon={<AppsIcon />}
+            onClick={() => {
+              navigate("/find-parkering/galleri");
+            }}
+          >
+            Galleri
+          </Button>
+          <Button
+            variant="outlined"
+            startIcon={<LocationOnOutlinedIcon />}
+            onClick={() => {
+              navigate("/find-parkering/kort");
+            }}
+          >
+            Kort
+          </Button>
+        </span>
       </div>
     </section>
   );

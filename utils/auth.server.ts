@@ -73,7 +73,7 @@ function getUserSession(request: Request) {
   return storage.getSession(request.headers.get("Cookie"));
 }
 
-async function getUserId(request: Request) {
+export async function getUserId(request: Request) {
   const session = await getUserSession(request);
 
   const userId = session.get("userId");
@@ -146,6 +146,7 @@ export const createUser = async (user: RegisterForm) => {
           last_name: user.lastName,
         },
       },
+      marked_for_deletion_at: null
     },
   });
 

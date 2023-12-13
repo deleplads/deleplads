@@ -33,7 +33,7 @@ function Footer() {
         </div>
         <div className="FooterColumn">
           <h6>Overblik</h6>
-          <a href="/locate/mao">Find en parkeringsplads</a>
+          <a href="/find-parkering/kort">Find en parkeringsplads</a>
           <a href="/leje">For lejere</a>
           <a href="/udleje">For udlejere</a>
           <a href="#">Blog</a>
@@ -41,7 +41,7 @@ function Footer() {
         </div>
         <div className="FooterColumn">
           <h6>Legal</h6>
-          <a href="/privacy-policy">Persondatapolitik</a>
+          <a href="/privatpolitik">Persondatapolitik</a>
           <a href="/cookies">Cookiepolitik</a>
           <a href="/handelsbetingelser">Handelsbetingelser</a>
           <a href="#">Regler og vilkår</a>
@@ -56,7 +56,7 @@ function Footer() {
       <div className="FooterBottom">
         <p>Copyright © Deleplads.dk 2023</p>
         <span>
-          <a href="privacy-policy">Persondatapolitik</a>
+          <a href="privatpolitik">Persondatapolitik</a>
           <a href="cookies">Cookiepolitik</a>
         </span>
       </div>
