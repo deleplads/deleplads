@@ -8,7 +8,12 @@ import { Button, FormHelperText, TextField } from "@mui/material";
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import { Form, useActionData, useNavigation, useSubmit } from '@remix-run/react';
+import {
+  Form,
+  useActionData,
+  useNavigation,
+  useSubmit,
+} from "@remix-run/react";
 import { getYearsRange } from "utils/account/profile/profileUtils";
 import toast, { Toaster } from "react-hot-toast";
 import type { profiles } from "@prisma/client";
@@ -18,32 +23,32 @@ import {
   validateFirstName,
   validateLastName,
   validatePhoneNumber,
-  validatePostalCode
+  validatePostalCode,
 } from "helpers/profileValidations";
 import type { ProfileProps } from "../../../../utils/account/profile/profile.prop";
 
-
 type EditProfileProps = {
-  profile: profiles
+  profile: profiles;
 };
 
 function EditProfile(props: ProfileProps) {
-  const [profileImageUrl, setProfileImageUrl] = useState('');
+  const [profileImageUrl, setProfileImageUrl] = useState("");
 
   useEffect(() => {
     // This code will run only on the client side after component mounts
     if (props.profile.profile_image_buffer?.data) {
-      const arrayBuffer = new Uint8Array(props.profile.profile_image_buffer.data).buffer;
-      const blob = new Blob([arrayBuffer], { type: 'image/*' });
+      const arrayBuffer = new Uint8Array(
+        props.profile.profile_image_buffer.data
+      ).buffer;
+      const blob = new Blob([arrayBuffer], { type: "image/*" });
       const url = URL.createObjectURL(blob);
       setProfileImageUrl(url);
     }
   }, [props.profile.profile_image_buffer?.data]); // Dependency array ensures this runs only when the data changes
 
-
   const actionData = useActionData();
   const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
+  const isSubmitting = navigation.state === "submitting";
 
   // Show loading toast or dismiss it when the form is submitted
   useEffect(() => {
@@ -67,39 +72,49 @@ function EditProfile(props: ProfileProps) {
   const [formData, setFormData] = useState({
     firstName: props.profile.first_name,
     lastName: props.profile.last_name,
-    birthDay: props.profile.birth_date ? new Date(props.profile.birth_date).getDate().toString() : '',
-    birthMonth: props.profile.birth_date ? new Date(props.profile.birth_date).getMonth().toString() : '',
-    birthYear: props.profile.birth_date ? new Date(props.profile.birth_date).getFullYear().toString() : '',
-    address: props.profile.address || '',
-    city: props.profile.city || '',
-    postalCode: props.profile.postal_code ? props.profile.postal_code.toString() : '',
-    phoneNumber: props.profile.phone_number ? props.profile.phone_number.toString() : '',
-    profileImageUrl: profileImageUrl ? profileImageUrl : ''
+    birthDay: props.profile.birth_date
+      ? new Date(props.profile.birth_date).getDate().toString()
+      : "",
+    birthMonth: props.profile.birth_date
+      ? new Date(props.profile.birth_date).getMonth().toString()
+      : "",
+    birthYear: props.profile.birth_date
+      ? new Date(props.profile.birth_date).getFullYear().toString()
+      : "",
+    address: props.profile.address || "",
+    city: props.profile.city || "",
+    postalCode: props.profile.postal_code
+      ? props.profile.postal_code.toString()
+      : "",
+    phoneNumber: props.profile.phone_number
+      ? props.profile.phone_number.toString()
+      : "",
+    profileImageUrl: profileImageUrl ? profileImageUrl : "",
   });
-  const [firstNameError, setFirstNameError] = useState('');
-  const [lastNameError, setLastNameError] = useState('');
-  const [birthDateError, setBirthDateError] = useState('');
-  const [addressError, setAddressError] = useState('');
-  const [postalCodeError, setPostalCodeError] = useState('');
-  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [birthDateError, setBirthDateError] = useState("");
+  const [addressError, setAddressError] = useState("");
+  const [postalCodeError, setPostalCodeError] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState("");
 
-  const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
+  const handleInputChange = (event: { target: { name: any; value: any } }) => {
     const { name, value } = event.target;
-    setFormData(prevFormData => {
+    setFormData((prevFormData) => {
       const newFormData = {
         ...prevFormData,
-        [name]: value
-      }
+        [name]: value,
+      };
 
       // We need to perform form validation within this callback so we can ensure that we get the latest
       // form data and that we are not lagging behind the current state.
-      if (name === 'firstName') {
+      if (name === "firstName") {
         setFirstNameError(validateFirstName(value));
       }
-      if (name === 'lastName') {
+      if (name === "lastName") {
         setLastNameError(validateLastName(value));
       }
-      if (name === 'postalCode') {
+      if (name === "postalCode") {
         setPostalCodeError(validatePostalCode(newFormData.postalCode));
       }
 
@@ -119,51 +134,67 @@ function EditProfile(props: ProfileProps) {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const birthDateValidationError = validateBirthDateFields(formData.birthYear, formData.birthMonth, formData.birthDay);
+    const birthDateValidationError = validateBirthDateFields(
+      formData.birthYear,
+      formData.birthMonth,
+      formData.birthDay
+    );
     setBirthDateError(birthDateValidationError);
-    const addressValidationError = validateAddressFields(formData.address, formData.postalCode, formData.city);
+    const addressValidationError = validateAddressFields(
+      formData.address,
+      formData.postalCode,
+      formData.city
+    );
     setAddressError(addressValidationError);
-    const phoneNumberValidationError = validatePhoneNumber(formData.phoneNumber);
+    const phoneNumberValidationError = validatePhoneNumber(
+      formData.phoneNumber
+    );
     setPhoneNumberError(phoneNumberValidationError);
 
     // we check directly on the validation errors and not the React state because the state
     // is updated asynchronously and we won't catch the errors here
-    if (!firstNameError && !lastNameError && !birthDateValidationError && !addressValidationError
-      && !phoneNumberValidationError && !postalCodeError) {
-
+    if (
+      !firstNameError &&
+      !lastNameError &&
+      !birthDateValidationError &&
+      !addressValidationError &&
+      !phoneNumberValidationError &&
+      !postalCodeError
+    ) {
       const formDataToSend = new FormData();
-      formDataToSend.append('firstName', formData.firstName);
-      formDataToSend.append('lastName', formData.lastName);
-      formDataToSend.append('birthDay', formData.birthDay);
-      formDataToSend.append('birthMonth', formData.birthMonth);
-      formDataToSend.append('birthYear', formData.birthYear);
-      formDataToSend.append('address', formData.address);
-      formDataToSend.append('city', formData.city);
-      formDataToSend.append('postalCode', formData.postalCode);
-      formDataToSend.append('phoneNumber', formData.phoneNumber);
+      formDataToSend.append("firstName", formData.firstName);
+      formDataToSend.append("lastName", formData.lastName);
+      formDataToSend.append("birthDay", formData.birthDay);
+      formDataToSend.append("birthMonth", formData.birthMonth);
+      formDataToSend.append("birthYear", formData.birthYear);
+      formDataToSend.append("address", formData.address);
+      formDataToSend.append("city", formData.city);
+      formDataToSend.append("postalCode", formData.postalCode);
+      formDataToSend.append("phoneNumber", formData.phoneNumber);
       if (selectedFile) {
-        formDataToSend.append('profileImage', selectedFile);
+        formDataToSend.append("profileImage", selectedFile);
       }
-      formDataToSend.append('profileId', props.profile.id);
+      formDataToSend.append("profileId", props.profile.id);
 
-      submit(formDataToSend, { method: "post", action: "/konto/profil", encType: "multipart/form-data" });
+      submit(formDataToSend, {
+        method: "post",
+        action: "/konto/profil",
+        encType: "multipart/form-data",
+      });
     } else {
-      toast.error("Formularen har nogle fejl. Du kan rette dem og prøve at gemme igen.");
+      toast.error(
+        "Formularen har nogle fejl. Du kan rette dem og prøve at gemme igen."
+      );
     }
   };
 
   return (
     <div>
-      <Toaster position="top-right"/>
+      <Toaster position="top-right" />
       <Form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="angry-grid">
           <div id="item-0">
-            <div className="ProfileEditHeader">
-              <h1>Redigér profil</h1>
-              <Button variant="outlined" className="Button">
-                Vis profil
-              </Button>
-            </div>
+            <h1>Redigér profil</h1>
           </div>
           <div id="item-1">
             <InputLabel
@@ -260,7 +291,7 @@ function EditProfile(props: ProfileProps) {
                   <MenuItem value={31}>31</MenuItem>
                 </Select>
                 <FormHelperText className="FormHelperText">
-                  {!!birthDateError ? birthDateError : 'Vises ikke offentligt.'}
+                  {!!birthDateError ? birthDateError : "Vises ikke offentligt."}
                 </FormHelperText>
               </FormControl>
             </Box>
@@ -413,18 +444,43 @@ function EditProfile(props: ProfileProps) {
 
           <div id="item-10">
             <div className="EditProfilePicture">
-              <InputLabel className="InputLabel" variant="standard" htmlFor="uncontrolled-native">Billede</InputLabel>
-              <Avatar className="Avatar" alt="Bruger Profil Billede" src={profileImageUrl}/>
-              <input type="file" name="profileImage" accept="image/*" style={{ display: 'none' }}
-                     onChange={handleFileChange} id="image-input"/>
+              <InputLabel
+                className="InputLabel"
+                variant="standard"
+                htmlFor="uncontrolled-native"
+              >
+                Billede
+              </InputLabel>
+              <Avatar
+                className="Avatar"
+                alt="Bruger Profil Billede"
+                src={profileImageUrl}
+              />
+              <input
+                type="file"
+                name="profileImage"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+                id="image-input"
+              />
               <label htmlFor="image-input">
-                <Button variant="outlined" component="span">Vælg fil</Button>
-              </label>{selectedFile && <span>{selectedFile.name}</span>}
-              <input type="hidden" name="profileId" value={props.profile.id}/>
+                <Button variant="outlined" component="span">
+                  Vælg fil
+                </Button>
+              </label>
+              {selectedFile && <span>{selectedFile.name}</span>}
+              <input type="hidden" name="profileId" value={props.profile.id} />
             </div>
           </div>
           <div id="item-11">
-            <Button type="submit" variant="contained" name="_action" value="updateProfile" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              variant="contained"
+              name="_action"
+              value="updateProfile"
+              disabled={isSubmitting}
+            >
               Gem
             </Button>
           </div>

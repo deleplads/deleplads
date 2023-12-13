@@ -41,14 +41,9 @@ function ProfileSettings(profile: EditProfileProps) {
     <div>
       <Toaster position="top-right" />
       <Form onSubmit={handleSubmit}>
-        <div className="angry-grid">
-          <div id="item-0">
-            <div className="ProfileEditHeader">
-              <h1>Indstillinger</h1>
-              <Button variant="outlined" className="Button">Vis profil</Button>
-            </div>
-          </div>
-          <div id="item-1">
+        <section className="account">
+        <h1>Indstillinger</h1>
+        <div id="item-1">
             <Button onClick={handleOpen} color="error" variant="contained">Slet konto</Button>
           </div>
           <div>
@@ -71,7 +66,7 @@ function ProfileSettings(profile: EditProfileProps) {
               </Box>
             </Modal>
           </div>
-        </div>
+        </section>
       </Form>
     </div >
   )

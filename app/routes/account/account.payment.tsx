@@ -19,8 +19,8 @@ export default function Payment() {
 
  
     return (
-    <section className="">
-       <div className="bg-black">Benjamin er sej</div>
+    <section className="account">
+       <h1>Betalingskort</h1>
     </section>
   );
 }
