@@ -17,7 +17,7 @@ import {
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import { Suspense, useEffect, useState } from "react";
-import createOrUpdate from "utils/parkingspot/createOrUpdate.server";
+import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import type { parkingspots } from "@prisma/client";
 import toast, { Toaster } from "react-hot-toast";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
