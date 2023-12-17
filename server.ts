@@ -1,11 +1,7 @@
 import * as build from "@remix-run/dev/server-build";
-import { createRequestHandler } from "@netlify/remix-adapter";
+import { installGlobals } from "@remix-run/node";
+import { createRequestHandler } from "@remix-run/vercel";
 
-const handler = createRequestHandler({
-  build,
-  mode: process.env.NODE_ENV,
-});
+installGlobals();
 
-export default handler;
-
-export const config = { path: "/*", preferStatic: true }
+export default createRequestHandler({ build, mode: process.env.NODE_ENV });
