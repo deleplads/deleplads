@@ -26,7 +26,7 @@ import { requireUserId } from "utils/auth.server";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import rental from "~/styles/rental.css";
 import { price } from "@prisma/client";
-import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
+import createOrUpdatePrice from "utils/parkingspot/createOrUpdatePrices.server";
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
 };

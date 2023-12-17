@@ -20,7 +20,7 @@ import { Suspense, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { requireUserId } from "utils/auth.server";
 import { parkingspots } from "@prisma/client";
-import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
+import { createOrUpdate } from "../../../utils/parkingspot/createOrUpdate.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
