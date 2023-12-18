@@ -224,7 +224,6 @@ function Navbar(profile: any) {
             </div>
             {loading ? (
               <div></div>
-            // ) : userProfile?.profile ? (
             ) : profile.session ? (
               <span className="LogOutMenu">
                 <Box sx={{ flexGrow: 0 }}>
