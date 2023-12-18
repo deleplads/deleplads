@@ -35,7 +35,9 @@ export default function Profile() {
 
   const [value, setValue] = React.useState(0);
   const { profile } = useLoaderData() as ProfileProps;
-  profile.profile_image_buffer = outletData.profileImageBufferData;
+  if (profile) {
+    profile.profile_image_buffer = outletData.profileImageBufferData;
+  }
 
   const tabMapping = {
     "/konto": 0, // default path, e.g., /account
@@ -88,17 +90,17 @@ export default function Profile() {
             aria-label="scrollable auto tabs example"
             className="ProfileMenuSettingsMobile"
           >
-            <Tab label="Overblik" style={{ textTransform: "initial" }}/>
+            <Tab label="Overblik" style={{ textTransform: "initial" }} />
             <Tab
               label="Mine udlejninger"
               style={{ textTransform: "initial" }}
             />
-            <Tab label="Redigér profil" style={{ textTransform: "initial" }}/>
-            <Tab label="Betalingskort" style={{ textTransform: "initial" }}/>
-            <Tab label="Notifikationer" style={{ textTransform: "initial" }}/>
-            <Tab label="Indstillinger" style={{ textTransform: "initial" }}/>
-            <Tab label="Verificeringer" style={{ textTransform: "initial" }}/>
-            <Tab label="Aktivitet" style={{ textTransform: "initial" }}/>
+            <Tab label="Redigér profil" style={{ textTransform: "initial" }} />
+            <Tab label="Betalingskort" style={{ textTransform: "initial" }} />
+            <Tab label="Notifikationer" style={{ textTransform: "initial" }} />
+            <Tab label="Indstillinger" style={{ textTransform: "initial" }} />
+            <Tab label="Verificeringer" style={{ textTransform: "initial" }} />
+            <Tab label="Aktivitet" style={{ textTransform: "initial" }} />
           </Tabs>
           <div className="ProfileMenuSettingsDesktop">
             <Box>
@@ -111,7 +113,7 @@ export default function Profile() {
                         handleListItemClick(event, 0, "/konto")
                       }
                     >
-                      <ListItemText primary="Overblik"/>
+                      <ListItemText primary="Overblik" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -121,7 +123,7 @@ export default function Profile() {
                         handleListItemClick(event, 1, "/konto/mine-udlejninger")
                       }
                     >
-                      <ListItemText primary="Mine udlejninger"/>
+                      <ListItemText primary="Mine udlejninger" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -131,7 +133,7 @@ export default function Profile() {
                         handleListItemClick(event, 2, "/konto/profil")
                       }
                     >
-                      <ListItemText primary="Redigér profil"/>
+                      <ListItemText primary="Redigér profil" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -141,7 +143,7 @@ export default function Profile() {
                         handleListItemClick(event, 3, "/konto/betalingskort")
                       }
                     >
-                      <ListItemText primary="Betalingskort"/>
+                      <ListItemText primary="Betalingskort" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -151,7 +153,7 @@ export default function Profile() {
                         handleListItemClick(event, 4, "/konto/notifikationer")
                       }
                     >
-                      <ListItemText primary="Notifikationer"/>
+                      <ListItemText primary="Notifikationer" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -161,7 +163,7 @@ export default function Profile() {
                         handleListItemClick(event, 5, "/konto/indstillinger")
                       }
                     >
-                      <ListItemText primary="Indstillinger"/>
+                      <ListItemText primary="Indstillinger" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -171,7 +173,7 @@ export default function Profile() {
                         handleListItemClick(event, 6, "/konto/verificeringer")
                       }
                     >
-                      <ListItemText primary="Verificeringer"/>
+                      <ListItemText primary="Verificeringer" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -181,7 +183,7 @@ export default function Profile() {
                         handleListItemClick(event, 7, "/konto/aktivitet")
                       }
                     >
-                      <ListItemText primary="Aktivitet"/>
+                      <ListItemText primary="Aktivitet" />
                     </ListItemButton>
                   </ListItem>
                 </List>

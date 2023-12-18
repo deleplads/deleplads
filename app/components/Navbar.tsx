@@ -2,17 +2,12 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useEffect, useState } from "react";
-import ChevronDown from "../components/icons/ChevronDown";
 import { useNavigate, Link } from "@remix-run/react";
 import { slide as BurgerMenu } from "react-burger-menu";
-import { Avatar, Box, IconButton, Tooltip, Typography } from "@mui/material";
+import { Avatar, Box, IconButton, Tooltip } from "@mui/material";
 import type { Profile } from "db_types";
 import { useMediaQuery } from "react-responsive";
 import { toast } from "react-hot-toast";
-import profilePicture from "public/profile-picture-placeholder.jpg"
-import { useSelector } from "react-redux";
-import { RootState } from "~/store/store";
-import { ImageContext } from "~/contexts/image.context";
 
 const style = {
   position: "absolute" as "absolute",
@@ -104,7 +99,6 @@ var styles = {
 };
 
 function Navbar(profile: any) {
-  // console.log(profile.profile)
   const tablet = useMediaQuery({ query: "(max-width: 600px)" });
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorRentning, setAnchorRentning] = useState(null);
@@ -114,13 +108,13 @@ function Navbar(profile: any) {
 
   const [profileImageUrl, setProfileImageUrl] = useState('');
   useEffect(() => {
-    if (profile.profile?.profileImageBufferData?.data) {
-      const arrayBuffer = new Uint8Array(profile.profile.profileImageBufferData?.data).buffer;
+    if (profile.profile?.profile_image_buffer?.data) {
+      const arrayBuffer = new Uint8Array(profile.profile.profile_image_buffer?.data).buffer;
       const blob = new Blob([arrayBuffer], { type: 'image/*' });
       const url = URL.createObjectURL(blob);
       setProfileImageUrl(url);
     }
-  }, [profile.profile?.profileImageBufferData?.data]);
+  }, [profile.profile?.profile_image_buffer?.data]);
 
 
   useEffect(() => {
@@ -166,17 +160,11 @@ function Navbar(profile: any) {
       setLoading(false);
     };
     fetchSession();
-  }, [profile]);
+  }, [profile.session]);
 
   const handleSubmit = async () => {
-    const response = await fetch("/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
+    const {error} = profile.supabaseClientBrowser.auth.signOut();
+    if (!error) {
       navigate("/");
     } else {
       toast.error("Error logging out");
@@ -236,7 +224,8 @@ function Navbar(profile: any) {
             </div>
             {loading ? (
               <div></div>
-            ) : userProfile?.profile ? (
+            // ) : userProfile?.profile ? (
+            ) : profile.session ? (
               <span className="LogOutMenu">
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
@@ -244,7 +233,6 @@ function Navbar(profile: any) {
                       <Avatar
                         sx={{ width: "40px", height: "40px" }}
                         alt="Bruger Profil Billede"
-                        // src={profilePicture}
                         src={profileImageUrl}
                       />
                     </IconButton>
