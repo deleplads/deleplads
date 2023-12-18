@@ -20,18 +20,17 @@
   color: black;
   padding: 25px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   justify-content: space-between;
   border: 1px solid var(--BrandTertiary);
   border-radius: 4px;
 }
-.locate .avaliable-bookings .booking .left {
-  color: black;
+.locate .avaliable-bookings .booking .map-cards-attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-.locate .avaliable-bookings .booking .right {
-  color: black;
-  justify-content: right;
-  text-align: right;
+.locate .avaliable-bookings .booking .map-cards-attributes .map-cards-attribute {
+  display: flex;
 }
 .locate iframe {
   margin: 0;
@@ -39,4 +38,4 @@
   width: 100%;
 }
 
-/*# sourceMappingURL=locate.css.map */
+/*# sourceMappingURL=map.css.map */

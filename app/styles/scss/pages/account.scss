@@ -1,3 +1,137 @@
+// Grid for the entire profile page
+
+.angry-grid {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-rows: 0fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 50px;
+  column-gap: 15px;
+  .Textfield {
+    width: 100%;
+  }
+
+  .InputLabel {
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+  .FormHelperText {
+    margin: 15px 0 0 0 !important;
+  }
+}
+
+#item-0 {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 7;
+  height: fit-content;
+}
+#item-1 {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  grid-row-end: 3;
+  grid-column-end: 4;
+  height: fit-content;
+}
+#item-2 {
+  grid-row-start: 2;
+  grid-column-start: 4;
+
+  grid-row-end: 3;
+  grid-column-end: 7;
+  gap: 50px;
+  height: fit-content;
+}
+#item-3 {
+  grid-row-start: 3;
+  grid-column-start: 1;
+
+  grid-row-end: 4;
+  grid-column-end: 3;
+  height: fit-content;
+}
+#item-4 {
+  grid-row-start: 3;
+  grid-column-start: 3;
+
+  grid-row-end: 4;
+  grid-column-end: 5;
+  height: fit-content;
+}
+#item-5 {
+  grid-row-start: 3;
+  grid-column-start: 5;
+
+  grid-row-end: 4;
+  grid-column-end: 7;
+  height: fit-content;
+}
+#item-6 {
+  grid-row-start: 4;
+  grid-column-start: 1;
+
+  grid-row-end: 5;
+  grid-column-end: 7;
+  height: fit-content;
+}
+#item-7 {
+  grid-row-start: 5;
+  grid-column-start: 1;
+
+  grid-row-end: 6;
+  grid-column-end: 3;
+  height: fit-content;
+}
+#item-8 {
+  grid-row-start: 5;
+  grid-column-start: 3;
+
+  grid-row-end: 6;
+  grid-column-end: 7;
+  height: fit-content;
+}
+#item-9 {
+  grid-row-start: 6;
+  grid-column-start: 1;
+
+  grid-row-end: 7;
+  grid-column-end: 7;
+  height: fit-content;
+}
+#item-10 {
+  grid-row-start: 7;
+  grid-column-start: 1;
+
+  grid-row-end: 8;
+  grid-column-end: 7;
+  height: fit-content;
+  .Avatar {
+    height: 75px;
+    width: 75px;
+    margin-bottom: 25px;
+  }
+}
+#item-11 {
+  grid-row-start: 8;
+  grid-column-start: 1;
+
+  grid-row-end: 9;
+  grid-column-end: 3;
+  height: fit-content;
+}
+
+// Media queries
+
+@media only screen and (max-width: 600px) {
+  .angry-grid {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
 // Venstremenuen for account siden - skal på et tidspunkt gøres sticky for bedre UI/UX.
 
 .ProfileMenuSettings {
@@ -59,5 +193,74 @@
     font-weight: 700;
     text-align: center;
     margin: 16px 0px;
+  }
+}
+
+// Notifications
+
+.list-of-notifications {
+  .notification-group {
+    padding: 48px 0 0 0;
+    hr {
+      margin: 24px 0;
+    }
+    .notification-setting {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+// Verifications
+
+.list-of-verifications {
+  .verification-group {
+    padding: 48px 0 0 0;
+    hr {
+      margin: 24px 0;
+    }
+    .verification-setting {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+}
+
+// Password
+
+.password-options {
+  .inner {
+    padding: 48px 0 0 0;
+    hr {
+      margin: 24px 0;
+    }
+    .password-option {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      div {
+        display: flex;
+        flex-direction: column;
+        label {
+          color: #2d2d34;
+          margin-bottom: 8px;
+          font-weight: 700;
+          font-size: 20px;
+          font-family: "Urbanist", sans-serif !important;
+        }
+        input {
+          border: 1px solid #e5e5e5;
+          width: 75%;
+          padding: 16.5px 14px;
+          border-radius: 10px;
+        }
+      }
+    }
   }
 }

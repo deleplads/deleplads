@@ -5,6 +5,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
+  useParams,
 } from "@remix-run/react";
 import Switch from "@mui/material/Switch";
 import {
@@ -16,7 +17,7 @@ import {
 import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import { Suspense, useEffect, useState } from "react";
-import createOrUpdate from "utils/parkingspot/createOrUpdate.server";
+import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import type { parkingspots } from "@prisma/client";
 import toast, { Toaster } from "react-hot-toast";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
@@ -84,7 +85,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 export default function RentalLocation() {
   const useLoader = useLoaderData();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/type`);
   const fetcher = useFetcher();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";

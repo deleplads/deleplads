@@ -3,9 +3,9 @@ import { prisma } from "../prisma.server";
 
 async function createOrUpdatePrice(price: Partial<price>) {
 
-  if (price.id) {
+  if (price.spot_id) {
     return await prisma.price.update({
-      where: { id: price.id },
+      where: { spot_id: price.spot_id },
       data: { ...price, spot_id: price.spot_id, updated_at: new Date()},
     });
   } else {

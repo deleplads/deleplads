@@ -4,6 +4,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
+  useParams,
 } from "@remix-run/react";
 import {
   ActionFunction,
@@ -40,12 +41,13 @@ export const meta: V2_MetaFunction = () => {
 export const loader: LoaderFunction = async ({ request, params }) => {
   const parkingspot = await fetchParkingSpotData(request, params);
   const spotId = params.id;
-  if (typeof spotId === "string" && spotId && !parkingspot.prices) {
+
+  if (typeof spotId === "string" && spotId && parkingspot?.prices == null) {
     const newPrice = await createOrUpdatePrice({
       recommended_price: 23,
       spot_id: spotId,
     });
-    return json({ parkingspot: parkingspot, priceId: newPrice.id });
+    return json({ parkingspot: parkingspot, priceId: newPrice.spot_id });
   }
   return json({ parkingspot: parkingspot });
 };
@@ -67,7 +69,6 @@ export const action: ActionFunction = async ({ request, params }) => {
     weekend_price: formData.get("weekend_price")
       ? Number(formData.get("weekend_price"))
       : null,
-    price_id: formData.get("price_id")?.toString(),
   };
 
   const parkingspotId = params.id;
@@ -77,7 +78,6 @@ export const action: ActionFunction = async ({ request, params }) => {
     morning_price: formValues.morning_price,
     noon_price: formValues.noon_price,
     weekend_price: formValues.weekend_price,
-    id: formValues.price_id,
     spot_id: parkingspotId,
   };
 
@@ -86,14 +86,13 @@ export const action: ActionFunction = async ({ request, params }) => {
   return json({ success: true, parkingspotId: newParkingspot.spot_id });
 };
 
-export default function RentalNotes() {
+export default function RentalPrices() {
   const [isFormEnabled, setIsFormEnabled] = useState(false);
   const [prices, setPrices] = useState({
     noon_price: "",
     morning_price: "",
     evening_price: "",
     weekend_price: "",
-    price_id: "",
   });
 
   const handleCheckboxChange = () => {
@@ -111,12 +110,25 @@ export default function RentalNotes() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/notes`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
   const handleNext = () => {
-    fetcher.submit(prices, { method: "post" });
+    if (!isFormEnabled) {
+      fetcher.submit(
+        {
+          noon_price: "24",
+          morning_price: "24",
+          evening_price: "24",
+          weekend_price: "24",
+        },
+        { method: "post" }
+      );
+    } else {
+      fetcher.submit(prices, { method: "post" });
+    }
   };
 
   useEffect(() => {
@@ -124,19 +136,12 @@ export default function RentalNotes() {
       if (!useLoader.error) {
         setBack(`/opret-udlejning/${useLoader.parkingspot.id}/notes`);
         setPrices({
-          evening_price: useLoader.parkingspot.evening_price || "",
-          morning_price: useLoader.parkingspot.morning_price || "",
-          noon_price: useLoader.parkingspot.noon_price || "",
-          weekend_price: useLoader.parkingspot.weekend_price || "",
-          price_id: useLoader.parkingspot.id || "",
+          evening_price: useLoader.parkingspot.prices.evening_price || "",
+          morning_price: useLoader.parkingspot.prices.morning_price || "",
+          noon_price: useLoader.parkingspot.prices.noon_price || "",
+          weekend_price: useLoader.parkingspot.prices.weekend_price || "",
         });
-        if (useLoader.priceId) {
-          setPrices((prevAttrs: any) => ({
-            ...prevAttrs,
-            price_id: useLoader.priceId,
-          }));
-        }
-      } else if(useLoader?.error) {
+      } else if (useLoader?.error) {
         toast.error(useLoader.error);
       }
     }
@@ -166,16 +171,11 @@ export default function RentalNotes() {
             <p>per time</p>
           </div>
           <Form>
-            <FormControl sx={{ width: "100% !important" }}>
+            <div className="w-full">
               <div className="set-custom-price">
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={isFormEnabled}
-                      onChange={handleCheckboxChange}
-                    />
-                  }
-                  label
+                <Checkbox
+                  checked={isFormEnabled}
+                  onChange={handleCheckboxChange}
                 />
                 <span>
                   <h4>Sæt tilpasset pris</h4>
@@ -235,7 +235,7 @@ export default function RentalNotes() {
                   disabled={!isFormEnabled}
                 />
               </div>
-            </FormControl>
+            </div>
           </Form>
         </div>
       </section>

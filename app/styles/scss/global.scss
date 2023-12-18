@@ -10,7 +10,8 @@
 @import "./pages/udleje.scss";
 @import "./pages/kontakt.scss";
 @import "./pages/faq.scss";
-@import "./pages/locate.scss";
+@import "./pages/locate/map.scss";
+@import "./pages/locate/gallery.scss";
 @import "./pages/rental.scss";
 @import "./pages/regional-prices.scss";
 
@@ -34,7 +35,3 @@
 @import "./components/faqs/faq-leje.scss";
 @import "./components/faqs/faq-udleje.scss";
 @import "./components/faqs/faq-general.scss";
-
-// Profile edit page
-
-@import "./components/ProfileSettings/EditProfile.scss";

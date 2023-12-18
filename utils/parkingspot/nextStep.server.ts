@@ -36,7 +36,7 @@ export async function getNextStepForParkingSpotById(
   }  else if (!selectedSpot.prices || selectedSpot.prices.length === 0) {
     nextStep = `${spotId}/price`;
   } else {
-    nextStep =`${spotId}/recipt`; // Or return a default step if all fields are filled
+    nextStep =`${spotId}/receipt`; // Or return a default step if all fields are filled
   }
 
   return { nextStep };

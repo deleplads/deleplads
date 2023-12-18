@@ -1,56 +1,104 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+import React from "react";
 import { useNavigate } from "@remix-run/react";
+import { Card, CardContent, Box, Button } from "@mui/material";
 import EvStationOutlinedIcon from "@mui/icons-material/EvStationOutlined";
 import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
 import VpnKeyOffOutlinedIcon from "@mui/icons-material/VpnKeyOffOutlined";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import AccessibleOutlinedIcon from "@mui/icons-material/AccessibleOutlined";
+import LightOutlinedIcon from "@mui/icons-material/LightOutlined";
+import DirectionsSubwayFilledOutlinedIcon from "@mui/icons-material/DirectionsSubwayFilledOutlined";
+import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
+import AddRoadOutlinedIcon from "@mui/icons-material/AddRoadOutlined";
+import type { ParkingSpot } from "utils/types.server";
+interface ListingsCardProps {
+  spot: ParkingSpot;
+}
 
-export default function ListingsCard() {
+
+export default function ListingsCard({ spot }: ListingsCardProps) {
   const navigate = useNavigate();
+
+  const navigateToSpot = () => {
+    navigate(`/parkeringsplads/${spot.id}`);
+  };
+  
+  const formattedPrice = spot.prices ? `${spot.prices.noon_price?.toFixed(2)} DKK per time` : "Der er ikke sat en pris";
+
   return (
-    <div
-      onClick={() => {
-        navigate("parkeringsplads");
-      }}
-    >
+    <div onClick={navigateToSpot}>
       <Card className="listingsCard">
         <CardContent className="gallery-cards-content">
           <Box
             sx={{ width: "100%" }}
             component="img"
-            src="../parkeringsplads2.png"
+            src="../parkeringsplads2.png" // Replace with your image path
           />
           <div className="gallery-cards-content-info">
-            <h3>Ll. Blovstrødvej 33</h3>
-
-            <p>3450 Allerød, Hovedstaden</p>
+            <h3>{spot.street} {spot.street_nr}</h3>
+            <p>{`${spot.city}, ${spot.postal_code}`}</p>
             <div className="cardsAttributes">
-              <div className="cardsAttribute">
-                {<EvStationOutlinedIcon className="attribute-icon" />}{" "}
-                <p>El-ladestander</p>
-              </div>
-              <div className="cardsAttribute">
-                {<GarageOutlinedIcon className="attribute-icon" />}{" "}
-                <p>Overdækning</p>
-              </div>
-              <div className="cardsAttribute">
-                {<VpnKeyOffOutlinedIcon className="attribute-icon" />}{" "}
-                <p>Ingen kode</p>
-              </div>
-              <div className="cardsAttribute">
-                {<CameraAltOutlinedIcon className="attribute-icon" />}{" "}
-                <p>Overvågning</p>
-              </div>
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.electric && (
+                <div className="cardsAttribute">
+                  <EvStationOutlinedIcon className="attribute-icon" />
+                  <p>El-ladestander</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.code && (
+                <div className="cardsAttribute">
+                  <VpnKeyOffOutlinedIcon className="attribute-icon" />
+                  <p>Ingen kode</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.cover && (
+                <div className="cardsAttribute">
+                  <GarageOutlinedIcon className="attribute-icon" />
+                  <p>Overdækning</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.street_access && (
+                <div className="cardsAttribute">
+                  <AddRoadOutlinedIcon className="attribute-icon" />
+                  <p>Gadetilgængelig</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.surveillance && (
+                <div className="cardsAttribute">
+                  <CameraAltOutlinedIcon className="attribute-icon" />
+                  <p>Overvågning</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.handicap && (
+                <div className="cardsAttribute">
+                  <AccessibleOutlinedIcon className="attribute-icon" />
+                  <p>Handicapadgang</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.light && (
+                <div className="cardsAttribute">
+                  <LightOutlinedIcon className="attribute-icon" />
+                  <p>Belysning</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.public_transport && (
+                <div className="cardsAttribute">
+                  <DirectionsSubwayFilledOutlinedIcon className="attribute-icon" />
+                  <p>Tæt på offentlig transport</p>
+                </div>
+              )}
+              {spot.parkingspot_details_parkingspot_details_spot_idToparkingspots?.night_guards && (
+                <div className="cardsAttribute">
+                  <HealthAndSafetyOutlinedIcon className="attribute-icon" />
+                  <p>Aftenvagter</p>
+                </div>
+              )}
             </div>
-            <div className="price">1337 DKK per time</div>
+            <div className="price">{formattedPrice}</div>
             <Button
               className="SearchButton"
               variant="contained"
               size="large"
-              href="#"
+              onClick={navigateToSpot}
               sx={{
                 textTransform: "initial",
                 padding: "12px 20px",

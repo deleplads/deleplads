@@ -8,7 +8,8 @@ export function Benefits() {
       <div className="inner">
         <div className="benefit">
           <div className="text">
-            <h2>Byens bedste parkerings hemmelighed</h2>
+            {/* What is it */}
+            <h2>Byens bedste parkerings hemmelighed</h2> 
             <p>
               En deleøkonomisk platform, der matcher lejere og udlejere af
               private parkeringspladser — nemt, enkelt og billigt.
@@ -27,13 +28,14 @@ export function Benefits() {
               }}
               className="CallToActionButton"
             >
-              Tilmeld gratis
+              Find en parkeringsplads
             </Button>
           </div>
           <Box component="img" src="placeholder-image.jpg" />
         </div>
         <div className="benefit">
           <div className="text">
+            {/* How is it */}
             <h2>Sådan virker processen</h2>
             <p>
               På vores platform møder du lejere og udlejere, som deler en
@@ -54,13 +56,14 @@ export function Benefits() {
               }}
               className="CallToActionButton"
             >
-              Tilmeld gratis
+              Læs hvordan det virker
             </Button>
           </div>
           <Box component="img" src="placeholder-image.jpg" />
         </div>
         <div className="benefit">
           <div className="text">
+            {/* Why is it */}
             <h2>En platform med mange fordele</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo
@@ -81,7 +84,7 @@ export function Benefits() {
               }}
               className="CallToActionButton"
             >
-              Tilmeld gratis
+              Se spørgsmål og svar
             </Button>
           </div>
           <Box component="img" src="placeholder-image.jpg" />
