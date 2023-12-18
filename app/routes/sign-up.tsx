@@ -83,7 +83,6 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    console.log('action data initiated')
     if (actionData?.success) {
       toast.success("Tjek venligst din e-mail for at afslutte tilmeldingen!");
     } else if (actionData?.error) { // Check for formError and show toast if it exists
