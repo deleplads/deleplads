@@ -25,7 +25,10 @@ export const links: LinksFunction = () => {
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserId(request);
   try {
-    const parkingspots = await getParkingSpotsByUserWhereStatus(userId, ParkingStatus.InProgress);
+    const parkingspots = await getParkingSpotsByUserWhereStatus(
+      userId,
+      ParkingStatus.InProgress
+    );
 
     return json(parkingspots);
   } catch (error) {
@@ -56,16 +59,19 @@ export const action: ActionFunction = async ({ request }) => {
 
     const newParkingspot = await createOrUpdate(parkingspot);
 
-    return json({ success: true, type: "next" ,parkingspotId: newParkingspot.id });
+    return json({
+      success: true,
+      type: "next",
+      parkingspotId: newParkingspot.id,
+    });
   } else if (action === "selected") {
     const selectedSpotId = formData.get("selected");
     if (typeof selectedSpotId === "string" && selectedSpotId) {
-      const { nextStep } = await getNextStepForParkingSpotById(
-        selectedSpotId
-      );
+      const { nextStep } = await getNextStepForParkingSpotById(selectedSpotId);
 
       return json({ success: true, type: "selected", nextStep: nextStep });
     }
+    return json({ success: false });
   }
 };
 
@@ -89,8 +95,8 @@ export default function Rental() {
   React.useEffect(() => {
     if (fetcher.data?.type == "next") {
       navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/type`);
-    } else if(fetcher.data?.type == "selected") {
-      navigate(`/opret-udlejning/${fetcher.data.nextStep}`)
+    } else if (fetcher.data?.type == "selected") {
+      navigate(`/opret-udlejning/${fetcher.data.nextStep}`);
     }
   }, [fetcher.data, navigate]);
 

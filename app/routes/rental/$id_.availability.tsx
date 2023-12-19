@@ -90,6 +90,7 @@ export default function RentalAvailability() {
   const params = useParams();
   const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
   const [date, setDate] = useState(new DateObject());
+  const [currentSelectedDate, setCurrentSelectedDate] = useState(null);
   const calendarRef = useRef();
 
   const update = (key, value) => {
@@ -125,12 +126,30 @@ export default function RentalAvailability() {
 
   const handleChange = (selectedDates: DateObject[] | null) => {
     if (selectedDates) {
-      const formattedDates = selectedDates.map((date) =>
-        date.format("DD/MM/YYYY HH:mm")
+      const newDates = selectedDates.map(date => date.format("DD/MM/YYYY HH:mm"));
+
+      setHighlitedDays((prevDates) => {
+        // Filter out any dates that are already highlighted
+        const filteredNewDates = newDates.filter(date => !prevDates.includes(date));
+        return [...prevDates, ...filteredNewDates];
+      });
+    }
+  };
+
+  // Function to handle focused date change
+  const handleFocusedDateChange = (date) => {
+    if (date) {
+      const formattedDate = date.format("DD/MM/YYYY HH:mm");
+      setCurrentSelectedDate(formattedDate);
+    }
+  };
+
+  // Function to handle removal of a selected date
+  const handleRemoveDate = () => {
+    if (currentSelectedDate) {
+      setHighlitedDays((prevDates) => 
+        prevDates.filter(d => d !== currentSelectedDate)
       );
-      setHighlitedDays(formattedDates);
-    } else {
-      setHighlitedDays([]);
     }
   };
 
@@ -160,7 +179,23 @@ export default function RentalAvailability() {
                 Slut: 16 sep, 09:00
               </Button>
               <Button
-                disabled
+                variant="outlined"
+                size="large"
+                href="#"
+                sx={{ textTransform: "initial", height: "fit-content" }}
+              >
+               Flere dage
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                href="#"
+                sx={{ textTransform: "initial", height: "fit-content" }}
+              >
+               Samme tidspunkt
+              </Button>
+              <Button
+                onClick={handleRemoveDate} 
                 variant="outlined"
                 size="large"
                 href="#"
@@ -202,6 +237,7 @@ export default function RentalAvailability() {
                   multiple={true}
                   value={highlightedDays}
                   onChange={handleChange}
+                  onFocusedDateChange={handleFocusedDateChange}
                   format="DD/MM/YYYY HH:mm"
                   highlightToday
                   displayWeekNumbers={true}
