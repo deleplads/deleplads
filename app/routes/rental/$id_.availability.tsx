@@ -234,6 +234,7 @@ export default function RentalAvailability() {
                 </div>
                 <Calendar
                   ref={calendarRef}
+                  numberOfMonths={2}
                   multiple={true}
                   value={highlightedDays}
                   onChange={handleChange}
