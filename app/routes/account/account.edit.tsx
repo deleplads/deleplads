@@ -11,12 +11,13 @@ import {
 } from 'helpers/profileValidations';
 import type { updateProfiles } from "types/Profiles"
 import { updateProfile, uploadProfileImage } from "../../../utils/account/profile/profile.server";
+import { getUserId } from 'utils/auth.server';
 
 
 export default function Profile() {
   const data = useOutletContext();
   // at this point, we rerender the profile component, and if the profile image is updated, we want the navbar
-  // to also update its profile iamge
+  // to also update its profile image
   data.updateProfileImageState(data.profile.profile_image_buffer);
 
   return (
@@ -35,6 +36,7 @@ export default function Profile() {
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const profileForm = Object.fromEntries<updateProfiles>(formData);
+  
   const { error } = await uploadProfileImage(request, profileForm.profileImage);
 
   if (error) {
@@ -48,7 +50,8 @@ export const action: ActionFunction = async ({ request }) => {
   validateProfileForm(profileForm);
 
   const profileEntity = mapProfileDataToDatabaseEntity(profileForm);
-  await updateProfile(profileEntity);
+  const userId = await getUserId(request);
+  await updateProfile(userId, profileEntity);
 
   return { success: 'Profil opdateret!' };
 };

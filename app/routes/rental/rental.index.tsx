@@ -11,7 +11,7 @@ import { json } from "@remix-run/node";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import { ParkingStatus, type parkingspots } from "@prisma/client";
-import { getUser, requireUserId } from "utils/auth.server";
+import { getUserId, requireUserId } from "utils/auth.server";
 import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots.server";
 import NativeSelect from "@mui/material/NativeSelect";
 import { Button, InputLabel } from "@mui/material";
@@ -42,15 +42,11 @@ export const action: ActionFunction = async ({ request }) => {
   const action = formData.get("action");
 
   if (action === "next") {
-    const userArray = await getUser(request);
+    const userId = await getUserId(request);
     let ownerId: string | undefined;
 
-    if (userArray && userArray.length > 0) {
-      const user = userArray[0]; // Assuming 'user' is always the first element
-
-      if (user && "id" in user) {
-        ownerId = user.id;
-      }
+    if (userId) {
+      ownerId = userId;
     }
 
     const parkingspot: Partial<parkingspots> = {

@@ -9,7 +9,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { useActionData, useNavigate } from "@remix-run/react";
+import { useActionData, useNavigate, useOutletContext } from "@remix-run/react";
 import { Renderable, Toast, Toaster, ValueFunction, toast } from "react-hot-toast";
 import { login } from '../../utils/auth.server'
 import { validateEmail } from "../../utils/validators.server";
@@ -50,6 +50,28 @@ export default function SignIn() {
     email: "",
     password: "",
   });
+
+  const { supabaseClientBrowser } = useOutletContext();
+  const navigate = useNavigate();
+  
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = data.get("email");
+    const password = data.get("password");
+
+    if (email && password) {
+      const response = await supabaseClientBrowser.auth.signInWithPassword({
+        email: email.toString(),
+        password: password.toString(),
+      });
+      if (response.error) {
+        toast.error(response.error.message);
+      } else {
+        navigate("/");
+      }
+    }
+  }
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -93,7 +115,9 @@ export default function SignIn() {
         > 
           <Box
             component="form"
-            method="POST"
+            // FIXME: right now we are bypassing server validation of email and password values
+            // method="POST"
+            onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >

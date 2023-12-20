@@ -35,7 +35,9 @@ export default function Profile() {
   const [value, setValue] = React.useState(0);
 
   const { profile } = useLoaderData() as ProfileProps;
-  profile.profile_image_buffer = outletData.profileImageBufferData;
+  if (profile) {
+    profile.profile_image_buffer = outletData.profileImageBufferData;
+  }
 
   const tabMapping = {
     "/konto": 0, // default path, e.g., /account
@@ -88,7 +90,7 @@ export default function Profile() {
             aria-label="scrollable auto tabs example"
             className="ProfileMenuSettingsMobile"
           >
-            <Tab label="Overblik" style={{ textTransform: "initial" }}/>
+            <Tab label="Overblik" style={{ textTransform: "initial" }} />
             <Tab
               label="Mine udlejninger"
               style={{ textTransform: "initial" }}
@@ -111,7 +113,7 @@ export default function Profile() {
                         handleListItemClick(event, 0, "/konto")
                       }
                     >
-                      <ListItemText primary="Overblik"/>
+                      <ListItemText primary="Overblik" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -121,7 +123,7 @@ export default function Profile() {
                         handleListItemClick(event, 1, "/konto/udlejninger")
                       }
                     >
-                      <ListItemText primary="Mine udlejninger"/>
+                      <ListItemText primary="Mine udlejninger" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
@@ -131,7 +133,7 @@ export default function Profile() {
                         handleListItemClick(event, 2, "/konto/rediger")
                       }
                     >
-                      <ListItemText primary="Redigér profil"/>
+                      <ListItemText primary="Redigér profil" />
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
