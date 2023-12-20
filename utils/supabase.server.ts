@@ -1,9 +1,7 @@
-// import { createServerClient } from '@supabase/auth-helpers-remix';
-
 import { createServerClient, parse, serialize } from '@supabase/ssr';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-export default async function supabase(request: Request): Promise<SupabaseClient> {
+export default async function supabaseServerClient(request: Request): Promise<SupabaseClient> {
   const cookies = parse(request.headers.get('Cookie') ?? '');
   const headers = new Headers();
 
@@ -27,7 +25,3 @@ export default async function supabase(request: Request): Promise<SupabaseClient
 
   return supabase;
 };
-
-export function getBucketFilePublicUrl(){
-  
-}
