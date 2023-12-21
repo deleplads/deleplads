@@ -136,10 +136,10 @@ export default function RentalPrices() {
       if (!useLoader.error) {
         setBack(`/opret-udlejning/${useLoader.parkingspot.id}/notes`);
         setPrices({
-          evening_price: useLoader.parkingspot.prices.evening_price || "",
-          morning_price: useLoader.parkingspot.prices.morning_price || "",
-          noon_price: useLoader.parkingspot.prices.noon_price || "",
-          weekend_price: useLoader.parkingspot.prices.weekend_price || "",
+          evening_price: useLoader.parkingspot.prices?.evening_price || "",
+          morning_price: useLoader.parkingspot.prices?.morning_price || "",
+          noon_price: useLoader.parkingspot.prices?.noon_price || "",
+          weekend_price: useLoader.parkingspot.prices?.weekend_price || "",
         });
       } else if (useLoader?.error) {
         toast.error(useLoader.error);

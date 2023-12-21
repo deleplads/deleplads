@@ -5,11 +5,12 @@ import { requireUserId } from "utils/auth.server";
 import { getParkingSpotById } from "utils/parkingspot/getSport.server";
 
 async function fetchParkingSpotData(request: Request, params: any) {
-  // const userId = await requireUserId(request);
+  const userId = await requireUserId(request);
   const spotId = params.id;
-  
+
   try {
     if (typeof spotId === "string" && spotId) {
+      
       const parkingspots = await getParkingSpotById(spotId, userId);
       
       return parkingspots;

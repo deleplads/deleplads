@@ -32,7 +32,7 @@ export async function requireUserId(request: Request, redirectTo: string = new U
     throw redirect(`/logind?${searchParams}`);
   }
   console.log('session: present')
-
+  
   return session.user.id;
 }
 
