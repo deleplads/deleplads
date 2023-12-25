@@ -6,7 +6,7 @@ import type {
 } from "@remix-run/node";
 import React, { useState } from "react";
 
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import { json } from "@remix-run/node";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";

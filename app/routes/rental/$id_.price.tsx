@@ -13,7 +13,7 @@ import {
   LoaderFunction,
   type V2_MetaFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import React, { Suspense, useEffect, useState } from "react";
 import {
   FormControl,

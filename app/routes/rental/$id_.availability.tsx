@@ -5,7 +5,7 @@ import type {
   LoaderFunction,
   V2_MetaFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Calendar, DateObject } from "react-multi-date-picker";
@@ -16,6 +16,7 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
 } from "@mui/x-date-pickers";
+import TimePickerJs from "~/components/RentalCreation/Timepicker";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
@@ -32,56 +33,17 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return await fetchParkingSpotData(request, params);
 };
 
-const hourList = Array.from({ length: 24 }, (_, i) => i);
 
-const TimePickerJs = () => {
-  const [selectedHour, setSelectedHour] = useState(0);
-
-  const handleHourClick = (hour: number) => {
-    setSelectedHour(hour);
-  };
-
-  const rowRenderer = ({
-    index,
-    style,
-  }: {
-    index: number;
-    style: React.CSSProperties;
-  }) => {
-    const hour = hourList[index];
-    const formattedHour = hour < 10 ? `0${hour}` : hour; // Add leading zero if hour is single-digit
-    return (
-      <ListItem
-        button
-        key={hour}
-        style={style}
-        selected={hour === selectedHour}
-        onClick={() => handleHourClick(hour)}
-      >
-        <ListItemText primary={`${formattedHour}:00`} />
-      </ListItem>
-    );
-  };
-
-  const listHeight = 300; // Set your desired height
-  const rowHeight = 48; // Set your desired row height
-
-  return (
-    <div>
-      <div style={{ height: listHeight, width: "200px" }}>
-        <VariableSizeList
-          itemData={hourList}
-          height={listHeight}
-          width="100%"
-          itemSize={() => rowHeight}
-          itemCount={hourList.length}
-        >
-          {rowRenderer}
-        </VariableSizeList>
-      </div>
-    </div>
-  );
+const currentSelectedDateStyle = {
+  color: 'white',
+  backgroundColor: 'blue', // Color for the current selected date
 };
+
+const highlightedDateStyle = {
+  color: 'white',
+  backgroundColor: 'purple', // Color for other highlighted dates
+};
+
 
 export default function RentalAvailability() {
   const fetcher = useFetcher();
@@ -90,10 +52,12 @@ export default function RentalAvailability() {
   const params = useParams();
   const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
   const [date, setDate] = useState(new DateObject());
+  const [highlightedDays, setHighlitedDays] = useState([]);
+  const [dateHoursMap, setDateHoursMap] = useState<{ [key: string]: number[] }>({});
   const [currentSelectedDate, setCurrentSelectedDate] = useState(null);
   const calendarRef = useRef();
 
-  const update = (key, value) => {
+  const updateCalender = (key, value) => {
     let date = calendarRef.current.date;
 
     calendarRef.current.set(key, date[key] + value);
@@ -122,36 +86,66 @@ export default function RentalAvailability() {
     }
   }, [fetcher.data, navigate, useLoader]);
 
-  const [highlightedDays, setHighlitedDays] = useState([]);
 
   const handleChange = (selectedDates: DateObject[] | null) => {
+
     if (selectedDates) {
       const newDates = selectedDates.map(date => date.format("DD/MM/YYYY HH:mm"));
 
       setHighlitedDays((prevDates) => {
-        // Filter out any dates that are already highlighted
-        const filteredNewDates = newDates.filter(date => !prevDates.includes(date));
-        return [...prevDates, ...filteredNewDates];
+        if (newDates.length < prevDates.length) {
+          // Find the date that was removed
+          const removedDate = prevDates.find(date => !newDates.includes(date));
+          if (removedDate) {
+            setCurrentSelectedDate(removedDate);
+          }
+        } else if (newDates.length > prevDates.length) {
+          // Find the date that was newly added
+          const addedDate = newDates.find(date => !prevDates.includes(date));
+          if (addedDate) {
+            setCurrentSelectedDate(addedDate);
+          }
+        }
+
+        // Add only new dates to the highlightedDays, do not remove any
+        return [...new Set([...prevDates, ...newDates])];
       });
+    } else {
+      // Handle the case when all dates are deselected
+      setCurrentSelectedDate(null);
+      setHighlitedDays([]);
     }
   };
 
-  // Function to handle focused date change
-  const handleFocusedDateChange = (date) => {
-    if (date) {
-      const formattedDate = date.format("DD/MM/YYYY HH:mm");
-      setCurrentSelectedDate(formattedDate);
-    }
+
+  const updateDateHours = (date: string, hours: number[]) => {
+    setDateHoursMap(prevMap => ({
+      ...prevMap,
+      [date]: hours
+    }));
   };
 
-  // Function to handle removal of a selected date
   const handleRemoveDate = () => {
     if (currentSelectedDate) {
-      setHighlitedDays((prevDates) => 
-        prevDates.filter(d => d !== currentSelectedDate)
-      );
+      // Remove the selected date from highlightedDays
+      setHighlitedDays(prevDates => prevDates.filter(d => d !== currentSelectedDate));
+  
+      // Remove the corresponding hours entry from dateHoursMap
+      setDateHoursMap(prevMap => {
+        const newMap = { ...prevMap };
+        delete newMap[currentSelectedDate];
+        return newMap;
+      });
+  
+      // Update currentSelectedDate to the next date or null
+      const index = highlightedDays.indexOf(currentSelectedDate);
+      const nextDate = index >= 0 && index < highlightedDays.length - 1 
+          ? highlightedDays[index + 1] 
+          : (highlightedDays.length > 1 ? highlightedDays[0] : null);
+      setCurrentSelectedDate(nextDate);
     }
   };
+  
 
   return (
     <>
@@ -184,7 +178,7 @@ export default function RentalAvailability() {
                 href="#"
                 sx={{ textTransform: "initial", height: "fit-content" }}
               >
-               Flere dage
+                Flere dage
               </Button>
               <Button
                 variant="outlined"
@@ -192,10 +186,10 @@ export default function RentalAvailability() {
                 href="#"
                 sx={{ textTransform: "initial", height: "fit-content" }}
               >
-               Samme tidspunkt
+                Samme tidspunkt
               </Button>
               <Button
-                onClick={handleRemoveDate} 
+                onClick={handleRemoveDate}
                 variant="outlined"
                 size="large"
                 href="#"
@@ -214,21 +208,21 @@ export default function RentalAvailability() {
                         sx={{
                           transform: "rotate(180deg)",
                         }}
-                        onClick={() => update("year", 1)}
+                        onClick={() => updateCalender("year", 1)}
                       ></ArrowDropDownIcon>
                       <ArrowDropDownIcon
-                        onClick={() => update("year", -1)}
+                        onClick={() => updateCalender("year", -1)}
                       ></ArrowDropDownIcon>
                     </div>
                   </div>
                   <div className="flex gap-2">
                     <ArrowLeftIcon
                       className="cursor-pointer"
-                      onClick={() => update("month", -1)}
+                      onClick={() => updateCalender("month", -1)}
                     ></ArrowLeftIcon>
                     <ArrowRightIcon
                       className="cursor-pointer"
-                      onClick={() => update("month", 1)}
+                      onClick={() => updateCalender("month", 1)}
                     ></ArrowRightIcon>
                   </div>
                 </div>
@@ -238,17 +232,32 @@ export default function RentalAvailability() {
                   multiple={true}
                   value={highlightedDays}
                   onChange={handleChange}
-                  onFocusedDateChange={handleFocusedDateChange}
                   format="DD/MM/YYYY HH:mm"
                   highlightToday
                   displayWeekNumbers={true}
                   weekStartDayIndex={1}
                   shadow={false}
+                  mapDays={({ date }) => {
+                    let style = {};
+                    const formattedDate = date.format("DD/MM/YYYY HH:mm");
+
+                    if (formattedDate === currentSelectedDate) {
+                      style = currentSelectedDateStyle;
+                    } else if (highlightedDays.includes(formattedDate)) {
+                      style = highlightedDateStyle;
+                    }
+
+                    return { style };
+                  }}
                   weekDays={["S", "M", "T", "W", "T", "F", "S"]}
                 />
               </div>
               <div className="desktopTimePicker">
-                <TimePickerJs />
+                <TimePickerJs
+                  currentDate={currentSelectedDate}
+                  updateHighlightedHours={updateDateHours}
+                  highlightedHoursForDate={dateHoursMap}
+                />
               </div>
             </div>
           </section>

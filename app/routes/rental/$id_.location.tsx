@@ -14,7 +14,7 @@ import {
   type V2_MetaFunction,
   ActionFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import { Suspense, useEffect, useState } from "react";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";

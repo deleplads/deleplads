@@ -13,7 +13,7 @@ import {
   type LoaderFunction,
   type V2_MetaFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Suspense, useEffect, useState } from "react";

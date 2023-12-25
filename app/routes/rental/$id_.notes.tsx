@@ -14,7 +14,7 @@ import {
   type V2_MetaFunction,
   LinksFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import React, { Suspense, useEffect, useState } from "react";
 import { requireUserId } from "utils/auth.server";
