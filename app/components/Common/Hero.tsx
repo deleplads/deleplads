@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import SearchBar from "./SearchBar";
+import SearchBar from "../Parkingspots/SearchBar";
 
 function Hero() {
   return (

@@ -1,6 +1,6 @@
 "use client";
-import BasicCard from "./Cards";
-import SearchBar from "./SearchBar";
+import BasicCard from "./Parkingspots/Cards";
+import SearchBar from "./Parkingspots/SearchBar";
 
 function Gallery() {
   return (

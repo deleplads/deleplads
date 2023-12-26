@@ -4,7 +4,7 @@ import FAQGeneral from "~/components/FAQGeneral";
 import FAQLeje from "~/components/FaqLeje";
 import FAQUdleje from "~/components/FaqUdleje";
 import Footer from "~/components/Footer";
-import CallToAction from "~/components/CallToAction";
+import CallToAction from "~/components/Parkingspots/CallToAction";
 
 export const meta: V2_MetaFunction = () => {
   return [

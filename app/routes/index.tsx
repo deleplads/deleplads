@@ -1,7 +1,7 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import CallToAction from "~/components/CallToAction";
+import CallToAction from "~/components/Parkingspots/CallToAction";
 import Footer from "~/components/Footer";
-import Hero from "~/components/Hero";
+import Hero from "~/components/Common/Hero";
 import Popular from "~/components/Popular";
 import SocialProof from "~/components/blogTeaser";
 import FAQGeneral from "~/components/FAQGeneral";
