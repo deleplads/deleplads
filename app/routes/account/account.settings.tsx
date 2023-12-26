@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import type { ActionFunction } from "@remix-run/node";
 import { requireUserId, logout } from "utils/auth.server";
 import { Await, useOutletContext } from "@remix-run/react";
-import ProfileSettings from "~/components/Account/Settings/AccountSettings";
+import ProfileSettings from "~/components/Account/AccountSettings";
 import type { accountSettingsForm } from "types/AccountSettings";
 import { markUserForDeletion } from "utils/user/user.server";
 

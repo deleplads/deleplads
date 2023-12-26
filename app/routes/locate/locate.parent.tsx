@@ -1,6 +1,6 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
 import Footer from "~/components/Footer";
-import Filtration from "~/components/Parkingspots/filtration";
+import Filtration from "~/components/Parkingspots/Filtration";
 import { Outlet } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
