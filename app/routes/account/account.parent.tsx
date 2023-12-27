@@ -10,8 +10,8 @@ import { useNavigate, Outlet, useLoaderData, useLocation, useOutletContext } fro
 import { defer, type LoaderFunction } from "@remix-run/node";
 import { getProfileFromUserId } from "utils/account/profile/profile.server";
 import { requireUserId } from "utils/auth.server";
-import { mapProfileEntityToProfileProp } from "../../../utils/account/profile/profile.mapper";
-import type { ProfileProps } from "utils/account/profile/profile.prop";
+import { mapProfileEntityToProfileProp } from "../../../helpers/profile.mapper";
+import type { ProfileProps } from "types/profile.prop";
 
 export const loader: LoaderFunction = async ({ request }) => {
   try {

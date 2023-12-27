@@ -1,5 +1,4 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -11,37 +10,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { useActionData, useNavigate, useOutletContext } from "@remix-run/react";
 import { Renderable, Toast, Toaster, ValueFunction, toast } from "react-hot-toast";
-import { login } from '../../utils/auth.server'
-import { validateEmail } from "../../utils/validators.server";
-import type { ActionFunction} from "@remix-run/node";
-import { json } from "@remix-run/node";
 import { useEffect, useState } from "react";
-
-export const action: ActionFunction = async ({ request }) => {
-  const form = await request.formData();
-  
-  const email = form.get("email");
-  const password = form.get("password");
-  
-  if (
-    typeof email !== "string" ||
-    typeof password !== "string"
-  ) {
-    return json({ error: `Invalid Form Data`, form: action }, { status: 400 });
-  }
-  const errors = {
-    email: validateEmail(email),
-  };
-
-  if (Object.values(errors).some(Boolean))
-    return json(
-      { errors, fields: { email, password }, form: action },
-      { status: 400 }
-    );
-
-    return await login({ email, password })
-};
-
 
 
 export default function SignIn() {
@@ -66,7 +35,7 @@ export default function SignIn() {
         password: password.toString(),
       });
       if (response.error) {
-        toast.error(response.error.message);
+        toast.error("Ugyldige login detaljer");
       } else {
         navigate("/");
       }
@@ -115,8 +84,6 @@ export default function SignIn() {
         > 
           <Box
             component="form"
-            // FIXME: right now we are bypassing server validation of email and password values
-            // method="POST"
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}

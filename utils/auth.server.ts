@@ -25,13 +25,10 @@ export async function requireUserId(request: Request, redirectTo: string = new U
   const { data: { session } } = await supabaseClient.auth.getSession();
 
   if (!session) {
-    console.log('session: not present')
     const searchParams = new URLSearchParams([['redirectTo', redirectTo]]);
 
-    // FIXME: cannot redirect to sign-in. Fx when calling from account.parent route
     throw redirect(`/logind?${searchParams}`);
   }
-  console.log('session: present')
 
   return session.user.id;
 }

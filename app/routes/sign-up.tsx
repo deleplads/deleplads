@@ -8,7 +8,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { useActionData } from "@remix-run/react";
+import { useActionData, useSubmit } from "@remix-run/react";
 import type {
   Renderable,
   Toast,
@@ -21,7 +21,7 @@ import {
 import { register } from "../../utils/auth.server";
 import type { ActionFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import {
   validateEmail,
   validateName,
@@ -44,12 +44,13 @@ export const action: ActionFunction = async ({ request }) => {
   ) {
     return json({ error: `Invalid Form Data`, form: action }, { status: 400 });
   }
-  const errors = [
-    validateEmail(email),
-    validatePassword(password),
-    validateName((firstName as string) || ""),
-    validateName((lastName as string) || ""),
-  ];
+
+  const errors = {
+    email: validateEmail(email),
+    password: validatePassword(password),
+    // firstName: validateName((firstName as string) || ""), 
+    firstNameLastName: validateName((lastName as string) || ""),
+  };
 
   if (Object.values(errors).some(Boolean))
     return json(
@@ -61,12 +62,12 @@ export const action: ActionFunction = async ({ request }) => {
       { status: 400 }
     );
 
-  return await register({ email, password, firstName, lastName })
+  // return await register({ email, password, firstName, lastName })
+  return null;
 };
 
 export default function SignUp() {
   const actionData = useActionData();
-  console.log("SignUp rendered");
 
   const [formData, setFormData] = useState({
     email: "",
@@ -87,13 +88,21 @@ export default function SignUp() {
       toast.success("Tjek venligst din e-mail for at afslutte tilmeldingen!");
     } else if (actionData?.error) { // Check for formError and show toast if it exists
       toast.error(actionData.error);
-    } else if (actionData?.errors) { 
+    } else if (actionData?.errors) {
       // Check for errors (assuming it's an array of error messages)
-      actionData.errors.forEach((error: Renderable | ValueFunction<Renderable, Toast>) =>
-        toast.error(error)
-      );
+      Object.keys(actionData.errors).forEach((key) => {
+        const value = actionData.errors[key];
+        toast.error(value)
+      });
     }
   }, [actionData]);
+
+  const submit = useSubmit();
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    submit(formData, { method: "post", action: "/opret" });
+  }
 
   return (
     <>
@@ -110,7 +119,7 @@ export default function SignUp() {
             border: "1px solid #var(--BrandTertiary)",
           }}
         >
-          <Box component="form" noValidate method="POST" sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField

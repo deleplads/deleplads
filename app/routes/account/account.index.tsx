@@ -1,8 +1,12 @@
-import { Suspense } from "react";
-import { Await, useOutletContext  } from "@remix-run/react";
-import EditProfile from "~/components/Account/Profile/EditProfile";
+import { useOutletContext  } from "@remix-run/react";
+import { requireUserId } from "utils/auth.server";
+import { LoaderFunction } from "@remix-run/node";
 
-
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
+  
+  return null;
+};
 
 export default function Profile() {
   const data = useOutletContext();

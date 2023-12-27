@@ -1,4 +1,12 @@
 import { Button} from "@mui/material";
+import { LoaderFunction } from "@remix-run/node";
+import { requireUserId } from "utils/auth.server";
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
+
+  return null;
+};
 
 export default function Payment() {
   return (

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Await, useOutletContext } from '@remix-run/react';
 import EditProfile from '~/components/Account/Profile/EditProfile';
-import type { ActionFunction } from '@remix-run/node';
+import type { ActionFunction, LoaderFunction } from '@remix-run/node';
 import {
   validateAddressFields,
   validateBirthDateFields,
@@ -11,8 +11,13 @@ import {
 } from 'helpers/profileValidations';
 import type { updateProfiles } from "types/Profiles"
 import { updateProfile, uploadProfileImage } from "../../../utils/account/profile/profile.server";
-import { getUserId } from 'utils/auth.server';
+import { getUserId, requireUserId } from 'utils/auth.server';
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
+
+  return null;
+};
 
 export default function Profile() {
   const data = useOutletContext();

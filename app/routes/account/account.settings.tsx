@@ -1,11 +1,16 @@
-import React, { Suspense } from "react";
-import type { ActionFunction } from "@remix-run/node";
+import { Suspense } from "react";
+import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { requireUserId, logout } from "utils/auth.server";
 import { Await, useOutletContext } from "@remix-run/react";
 import ProfileSettings from "~/components/Account/Settings/AccountSettings";
 import type { accountSettingsForm } from "types/AccountSettings";
 import { markUserForDeletion } from "utils/user/user.server";
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
+
+  return null;
+};
 
 export default function Payment() {
   const data = useOutletContext();

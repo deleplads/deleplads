@@ -13,6 +13,11 @@ import { requireUserId } from "utils/auth.server";
 import { getProfileFromUserId } from "utils/account/profile/profile.server";
 import { useLoaderData } from "@remix-run/react";
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
+
+  return null;
+};
 
 
 export default function Payment() {

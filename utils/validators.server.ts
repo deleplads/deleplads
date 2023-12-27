@@ -16,6 +16,6 @@ export const validateEmail = (email: string): string | undefined => {
 
   export const validateName = (name: string): string | undefined => {
 
-    if (!name.length) return `Please enter a value`
+    if (!name.length) return `Please enter a value for first name and last name`
   
   }

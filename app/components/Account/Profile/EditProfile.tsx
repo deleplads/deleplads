@@ -25,7 +25,7 @@ import {
   validatePhoneNumber,
   validatePostalCode,
 } from "helpers/profileValidations";
-import type { ProfileProps } from "../../../../utils/account/profile/profile.prop";
+import type { ProfileProps } from "../../../../types/profile.prop";
 
 type EditProfileProps = {
   profile: profiles;

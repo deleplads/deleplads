@@ -1,7 +1,15 @@
 import Checkbox from "@mui/material/Checkbox";
 import { Button } from "@mui/material";
+import { LoaderFunction } from "@remix-run/node";
+import { requireUserId } from "utils/auth.server";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
+
+  return null;
+};
 
 export default function Payment() {
   return (

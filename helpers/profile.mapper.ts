@@ -1,5 +1,5 @@
 import type { profiles } from "@prisma/client";
-import type { ProfileProps } from "./profile.prop";
+import type { ProfileProps } from "../types/profile.prop";
 
 export function mapProfileEntityToProfileProp(profileEntity: profiles) {
   const mappedProfileProps:
