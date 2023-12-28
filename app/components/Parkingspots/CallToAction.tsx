@@ -10,7 +10,7 @@ function CallToAction() {
           <p>Kom i gang med at finde og udleje private parkeringspladser nu.</p>
           <Button
             variant="contained"
-            href="#"
+            href="/opret"
             size="large"
             sx={{ textTransform: "initial", background: "var(--BrandAccent)" }}
             className="CallToActionButton"

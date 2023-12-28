@@ -60,8 +60,8 @@ function ProductPerspective() {
               aria-label="basic tabs example"
               centered
             >
-              <Tab label="Lejere" {...a11yProps(0)} />
-              <Tab label="Udlejere" {...a11yProps(1)} />
+              <Tab label="For lejere" {...a11yProps(0)} />
+              <Tab label="For udlejere" {...a11yProps(1)} />
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
