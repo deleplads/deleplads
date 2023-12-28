@@ -63,7 +63,7 @@ export async function requireUserId(
   if (!userId || typeof userId !== "string") {
     const searchParams = new URLSearchParams([["redirectTo", redirectTo]]);
 
-    throw redirect(`/sign-in?${searchParams}`);
+    throw redirect(`/logind?${searchParams}`);
   }
 
   return userId;

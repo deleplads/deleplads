@@ -5,6 +5,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
+  useParams,
 } from "@remix-run/react";
 import {
   json,
@@ -18,7 +19,7 @@ import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import React, { Suspense, useEffect, useState } from "react";
 import { requireUserId } from "utils/auth.server";
 import { parkingspots } from "@prisma/client";
-import createOrUpdate from "utils/parkingspot/createOrUpdate.server";
+import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import toast, { Toaster } from "react-hot-toast";
 import rental from "~/styles/rental.css";
 export const links: LinksFunction = () => {
@@ -64,7 +65,8 @@ export default function RentalNotes() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 

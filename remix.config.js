@@ -52,6 +52,9 @@ module.exports = {
       route("/blog/artikel", "routes/blog/artikel.tsx");
       route("/blog/artikel2", "routes/blog/artikel2.tsx");
       route("/blog/artikel3", "routes/blog/artikel3.tsx");
+      
+      //Userstorie
+      route("userstorie", "routes/userstories/userstorie.tsx");
 
       //Locate
       route("/find-parkering", "routes/locate/locate.parent.tsx", () => {

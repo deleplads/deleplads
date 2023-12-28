@@ -1,5 +1,5 @@
-import { Form, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
-import React, { Suspense, useEffect, useState } from "react";
+import { useFetcher, useLoaderData, useNavigate, useParams } from "@remix-run/react";
+import React, { Suspense, useRef, useState } from "react";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -11,7 +11,11 @@ import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Calendar, DateObject } from "react-multi-date-picker";
 import { Button, ListItem, ListItemText } from "@mui/material";
 import { VariableSizeList } from "react-window";
-import TimePicker from "react-multi-date-picker/plugins/time_picker";
+import {
+  ArrowDropDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+} from "@mui/x-date-pickers";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
@@ -83,7 +87,18 @@ export default function RentalAvailability() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
-  const [back, setBack] = useState("");
+  const params = useParams();
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
+  const [date, setDate] = useState(new DateObject());
+  const calendarRef = useRef();
+
+  const update = (key, value) => {
+    let date = calendarRef.current.date;
+
+    calendarRef.current.set(key, date[key] + value);
+
+    setDate(new DateObject(date));
+  };
 
   const handleNext = () => {
     if (useLoader) {
@@ -97,16 +112,15 @@ export default function RentalAvailability() {
   React.useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/opret-udlejning/${useLoader.id}/availability/type`);
+        setBack(`/opret-udlejning/${useLoader.id}/location`);
       }
     }
 
     if (fetcher.data?.success) {
-      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/availability`);
+      console.log("test");
     }
   }, [fetcher.data, navigate, useLoader]);
 
-  const [value, setValue] = useState("");
   const [highlightedDays, setHighlitedDays] = useState([]);
 
   const handleChange = (selectedDates: DateObject[] | null) => {
@@ -126,59 +140,81 @@ export default function RentalAvailability() {
         <div className="inner">
           <h1>Hvornår er din parkeringsplads tilgængelig?</h1>
           <p>Fortæl os hvor lejerne kan finde din parkeringsplads.</p>
-          <Form>
-            <section className="booking">
-              <h2>Tilgængelighed</h2>
-              <div className="controls">
-                <Button
-                  variant="outlined"
-                  size="large"
-                  href="#"
-                  sx={{ textTransform: "initial", height: "fit-content" }}
-                >
-                  Start: 16 sep, 08:00
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  href="#"
-                  sx={{ textTransform: "initial", height: "fit-content" }}
-                >
-                  Slut: 16 sep, 09:00
-                </Button>
-                <Button
-                  disabled
-                  variant="outlined"
-                  size="large"
-                  href="#"
-                  sx={{ textTransform: "initial", height: "fit-content" }}
-                >
-                  Ryd dag
-                </Button>
-              </div>
-              <div className="bookingContents">
-                <div className="calenderPicker text-black">
-                  <Calendar
-                    multiple={true}
-                    value={highlightedDays}
-                    onChange={handleChange}
-                    format="DD/MM/YYYY HH:mm"
-                    plugins={[
-                      <TimePicker
-                        key={2}
-                        hideSeconds
-                        format="DD/MM/YYYY HH:mm"
-                      />,
-                    ]}
-                    displayWeekNumbers={true}
-                  />
+          <section className="booking">
+            <h2>Tilgængelighed</h2>
+            <div className="controls">
+              <Button
+                variant="outlined"
+                size="large"
+                href="#"
+                sx={{ textTransform: "initial", height: "fit-content" }}
+              >
+                Start: 16 sep, 08:00
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                href="#"
+                sx={{ textTransform: "initial", height: "fit-content" }}
+              >
+                Slut: 16 sep, 09:00
+              </Button>
+              <Button
+                disabled
+                variant="outlined"
+                size="large"
+                href="#"
+                sx={{ textTransform: "initial", height: "fit-content" }}
+              >
+                Ryd dag
+              </Button>
+            </div>
+            <div className="bookingContents">
+              <div className="calenderPicker text-black flex flex-col justify-center items-center">
+                <div className="pt-4 flex justify-between w-[85%] ">
+                  <div className="flex">
+                    <span className="font-semibold">{date.month.name + " " + date.year}</span>
+                    <div className="flex flex-col bottom-3 relative">
+                      <ArrowDropDownIcon
+                        sx={{
+                          transform: "rotate(180deg)",
+                        }}
+                        onClick={() => update("year", 1)}
+                      ></ArrowDropDownIcon>
+                      <ArrowDropDownIcon
+                        onClick={() => update("year", -1)}
+                      ></ArrowDropDownIcon>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <ArrowLeftIcon
+                      className="cursor-pointer"
+                      onClick={() => update("month", -1)}
+                    ></ArrowLeftIcon>
+                    <ArrowRightIcon
+                      className="cursor-pointer"
+                      onClick={() => update("month", 1)}
+                    ></ArrowRightIcon>
+                  </div>
                 </div>
-                <div className="desktopTimePicker">
-                  <TimePickerJs />
-                </div>
+                <Calendar
+                  ref={calendarRef}
+                  multiple={true}
+                  value={highlightedDays}
+                  onChange={handleChange}
+                  format="DD/MM/YYYY HH:mm"
+                  highlightToday
+                  displayWeekNumbers={true}
+                  weekStartDayIndex={1}
+                  shadow={false}
+                  weekDays={["S", "M", "T", "W", "T", "F", "S"]}
+                />
               </div>
-            </section>
-          </Form>
+              <div className="desktopTimePicker">
+                <TimePickerJs />
+              </div>
+            </div>
+          </section>
         </div>
       </section>
       <Suspense>
