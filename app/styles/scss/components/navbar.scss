@@ -7,12 +7,12 @@
   height: 80px;
   display: flex;
   justify-content: center;
-  z-index: 9999 !important;
+  z-index: 999 !important;
   margin-bottom: 1px;
   position: fixed;
   top: 0;
   width: 100%;
-  background: #F3F5FF;
+  background: #f3f5ff;
 
   .InnerNavigationBar {
     height: inherit;
@@ -59,6 +59,7 @@
 .LogOutMenu {
   display: flex;
 }
+
 // Mobile media query
 
 @media only screen and (max-width: 600px) {
@@ -152,4 +153,10 @@
       text-align: center;
     }
   }
+}
+
+// skal ikke være i denne fil lololol
+
+.hideAlert {
+  display: none;
 }

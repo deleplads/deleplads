@@ -1,5 +1,4 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Footer from "~/components/Footer";
 import type { SelectChangeEvent } from "@mui/material";
 import {
   Box,
@@ -221,7 +220,6 @@ export default function Parkeringsplads() {
         <ApprDrawer></ApprDrawer>
       </section>
       <CallToAction></CallToAction>
-      <Footer></Footer>
     </>
   );
 }

@@ -11,7 +11,7 @@ function Hero() {
           </h1>
           <SearchBar />
         </span>
-        <Box className="hero-content" component="img" src="../hihihhi.jpg" />
+        <Box className="hero-content" component="img" src="../phone-in-hand.png" />
       </div>
     </section>
   );

@@ -16,6 +16,7 @@ import type { Profile } from "db_types";
 import Navbar from "./components/Navbar";
 import { downloadProfileImageAsBuffer } from "../utils/account/profile/profile.server";
 import Footer from "./components/Footer";
+// import Alert from "~/components/Alert";
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -29,7 +30,6 @@ export const links: LinksFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
-
   Debug();
   try {
     const [user, profile] = await getUser(request);
@@ -41,8 +41,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     // Handle error, maybe return a specific structure or status code
     return { error };
   }
-}
-
+};
 
 export default function App() {
   const { user, profile, profileImageBufferData } = useLoaderData();
@@ -65,9 +64,11 @@ export default function App() {
       </head>
       <body>
         <header>
+          {/* <Alert></Alert> */}
           <Navbar profile={profile}></Navbar>
         </header>
-        <Outlet context={{ updateProfileImageState, profileImageBufferData }}/>
+
+        <Outlet context={{ updateProfileImageState, profileImageBufferData }} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

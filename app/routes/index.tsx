@@ -1,8 +1,8 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 import CallToAction from "~/components/CallToAction";
-import Footer from "~/components/Footer";
 import Hero from "~/components/Hero";
 import Popular from "~/components/Popular";
+import ProductPerspective from "~/components/ProductPerspective";
 import SocialProof from "~/components/blogTeaser";
 import FAQGeneral from "~/components/FAQGeneral";
 import swipercss from "node_modules/swiper/swiper-bundle.min.css";
@@ -28,6 +28,7 @@ export default function Index() {
     <>
       <Hero></Hero>
       <Popular></Popular>
+      <ProductPerspective></ProductPerspective>
       <Benefits></Benefits>
       <SocialProof></SocialProof>
       <FAQGeneral></FAQGeneral>

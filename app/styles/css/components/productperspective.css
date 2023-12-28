@@ -1,0 +1,44 @@
+.ProductPerspective {
+  background: #f3f5ff;
+}
+.ProductPerspective .inner {
+  width: var(--PageWidth);
+  margin: 0 auto;
+  padding: 96px 0;
+}
+.ProductPerspective .inner .heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ProductPerspective .inner .heading h1 {
+  font-size: 48px;
+}
+.ProductPerspective .inner .heading p {
+  margin: 24px 0 48px;
+  font-size: 18px;
+  line-height: 175%;
+}
+.ProductPerspective .inner .tabContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10%;
+}
+.ProductPerspective .inner .tabContent .bullets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ProductPerspective .inner .tabContent .bullets h2 {
+  font-size: 24px;
+}
+.ProductPerspective .inner .tabContent .bullets p {
+  margin: 8px 0px 0px 0px;
+  font-size: 18px;
+  line-height: 175%;
+}
+.ProductPerspective .MuiButtonBase-root .MuiTab-root .MuiTab-textColorPrimary .Mui-selected .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  background: red !important;
+}
+
+/*# sourceMappingURL=productperspective.css.map */

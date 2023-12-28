@@ -1,0 +1,43 @@
+.ProductPerspective {
+  background: #f3f5ff;
+  .inner {
+    width: var(--PageWidth);
+    margin: 0 auto;
+    padding: 96px 0;
+    .heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        font-size: 48px;
+      }
+      p {
+        margin: 24px 0 48px;
+        font-size: 18px;
+        line-height: 175%;
+      }
+    }
+    .tabContent {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 10%;
+      .bullets {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h2 {
+          font-size: 24px;
+        }
+        p {
+          margin: 8px 0px 0px 0px;
+          font-size: 18px;
+          line-height: 175%;
+        }
+      }
+    }
+  }
+
+    .MuiButtonBase-root .MuiTab-root .MuiTab-textColorPrimary .Mui-selected .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+      background: red !important;
+    }
+}

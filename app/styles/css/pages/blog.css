@@ -1,0 +1,43 @@
+.blog {
+  padding: 200px 0;
+  width: var(--PageWidth);
+  margin: 0 auto;
+}
+.blog .article {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 48px 0;
+}
+.blog .article span {
+  display: grid;
+  row-gap: 16px;
+}
+.blog .article span h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+.blog .article span p {
+  max-width: 90%;
+}
+.blog .article span .author {
+  display: flex;
+  width: fit-content;
+  gap: 16px;
+  margin-top: 8px;
+}
+.blog .article span .author span {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.blog .article span .author span p {
+  max-width: 100% !important;
+  gap: 0;
+}
+.blog .article span:hover h2 {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=blog.css.map */

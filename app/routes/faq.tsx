@@ -3,7 +3,6 @@ import Navbar from "~/components/Navbar";
 import FAQGeneral from "~/components/FAQGeneral";
 import FAQLeje from "~/components/FaqLeje";
 import FAQUdleje from "~/components/FaqUdleje";
-import Footer from "~/components/Footer";
 import CallToAction from "~/components/CallToAction";
 
 export const meta: V2_MetaFunction = () => {
@@ -28,7 +27,6 @@ export default function Faq() {
       <FAQLeje></FAQLeje>
       <FAQUdleje></FAQUdleje>
       <CallToAction></CallToAction>
-      <Footer></Footer>
     </main>
   );
 }

@@ -229,10 +229,11 @@ function Navbar(profile: any) {
           <div className="MobileMenuNavigation">
             <div className="items">
               <Link to={"/find-parkering/kort"}>Find en parkeringsplads</Link>
-              <Link to={"/leje"}>For lejere</Link>
-              <Link to={"/udleje"}>For udlejere</Link>
-              <Link to={"/blog"}>Blog</Link>
+              {/* <Link to={"/leje"}>For lejere</Link> */}
+              <Link to={"/#"}>Kundehistorier</Link>
               <Link to={"/faq"}>FAQ</Link>
+              <Link to={"/blog"}>Blog</Link>
+              <Link to={"/#"}>Kontakt</Link>
             </div>
             {loading ? (
               <div></div>

@@ -1201,6 +1201,48 @@
   background-color: #dddddd;
 }
 
+.blog {
+  padding: 200px 0;
+  width: var(--PageWidth);
+  margin: 0 auto;
+}
+.blog .article {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 48px 0;
+}
+.blog .article span {
+  display: grid;
+  row-gap: 16px;
+}
+.blog .article span h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+.blog .article span p {
+  max-width: 90%;
+}
+.blog .article span .author {
+  display: flex;
+  width: fit-content;
+  gap: 16px;
+  margin-top: 8px;
+}
+.blog .article span .author span {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.blog .article span .author span p {
+  max-width: 100% !important;
+  gap: 0;
+}
+.blog .article span:hover h2 {
+  text-decoration: underline;
+}
+
 .CallToAction {
   background-color: rgb(240, 243, 248) !important;
   border: 1px solid rgb(212, 224, 237);
@@ -1669,12 +1711,12 @@
   height: 80px;
   display: flex;
   justify-content: center;
-  z-index: 9999 !important;
+  z-index: 999 !important;
   margin-bottom: 1px;
   position: fixed;
   top: 0;
   width: 100%;
-  background: #F3F5FF;
+  background: #f3f5ff;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
@@ -1805,6 +1847,10 @@
     text-align: center;
   }
 }
+.hideAlert {
+  display: none;
+}
+
 .SearchBar {
   width: 100%;
   height: auto;
@@ -1868,7 +1914,7 @@
 .popular {
   display: flex;
   justify-content: center;
-  margin-bottom: 150px;
+  margin-bottom: 96px;
 }
 .popular .popularInner {
   width: var(--PageWidth);
@@ -2071,6 +2117,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 96px;
   margin-bottom: 192px;
 }
 .benefits .inner {
@@ -2095,6 +2142,49 @@
   margin: 24px 0px 32px 0px;
   font-size: 18px;
   line-height: 175%;
+}
+
+.ProductPerspective {
+  background: #f3f5ff;
+}
+.ProductPerspective .inner {
+  width: var(--PageWidth);
+  margin: 0 auto;
+  padding: 96px 0;
+}
+.ProductPerspective .inner .heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ProductPerspective .inner .heading h1 {
+  font-size: 48px;
+}
+.ProductPerspective .inner .heading p {
+  margin: 24px 0 48px;
+  font-size: 18px;
+  line-height: 175%;
+}
+.ProductPerspective .inner .tabContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10%;
+}
+.ProductPerspective .inner .tabContent .bullets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ProductPerspective .inner .tabContent .bullets h2 {
+  font-size: 24px;
+}
+.ProductPerspective .inner .tabContent .bullets p {
+  margin: 8px 0px 0px 0px;
+  font-size: 18px;
+  line-height: 175%;
+}
+.ProductPerspective .MuiButtonBase-root .MuiTab-root .MuiTab-textColorPrimary .Mui-selected .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  background: red !important;
 }
 
 .FAQLeje {
