@@ -2,7 +2,7 @@
 
 module.exports = {
   ignoredRouteFiles: ["**/.*"],
-  routes: async (defineRoutes) => {
+  routes: async defineRoutes => {
     return defineRoutes((route) => {
       route("/", "routes/index.tsx", { index: true });
 
