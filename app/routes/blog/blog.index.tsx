@@ -1,9 +1,9 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
 import Footer from "~/components/Footer";
-import Filtration from "~/components/filtration";
 import { Link, Outlet } from "@remix-run/react";
 import { Box } from "@mui/material";
-import CallToAction from "~/components/CallToAction";
+import CallToAction from "~/components/Parkingspots/CallToAction";
+
 
 export const meta: V2_MetaFunction = () => {
   return [

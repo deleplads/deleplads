@@ -48,7 +48,7 @@ module.exports = {
       });
 
       //Blog
-      route("/blog", "routes/blog/route.tsx");
+      route("/blog", "routes/blog/blog.index.tsx");
       route("/blog/artikel", "routes/blog/artikel.tsx");
       route("/blog/artikel2", "routes/blog/artikel2.tsx");
       route("/blog/artikel3", "routes/blog/artikel3.tsx");
