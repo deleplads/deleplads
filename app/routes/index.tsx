@@ -2,7 +2,6 @@ import type { V2_MetaFunction } from "@remix-run/node";
 import CallToAction from "~/components/Parkingspots/CallToAction";
 import Hero from "~/components/Common/Hero";
 import Popular from "~/components/Popular";
-
 import FAQGeneral from "~/components/FAQGeneral";
 import swipercss from "node_modules/swiper/swiper-bundle.min.css";
 import ProductPerspective from "~/components/ProductPerspective";
