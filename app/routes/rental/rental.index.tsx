@@ -6,12 +6,12 @@ import type {
 } from "@remix-run/node";
 import React, { useState } from "react";
 
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import { json } from "@remix-run/node";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import { ParkingStatus, type parkingspots } from "@prisma/client";
-import { getUser, requireUserId } from "utils/auth.server";
+import { getUserId, requireUserId } from "utils/auth.server";
 import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots.server";
 import NativeSelect from "@mui/material/NativeSelect";
 import { Button, InputLabel } from "@mui/material";
@@ -25,7 +25,10 @@ export const links: LinksFunction = () => {
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserId(request);
   try {
-    const parkingspots = await getParkingSpotsByUserWhereStatus(userId, ParkingStatus.InProgress);
+    const parkingspots = await getParkingSpotsByUserWhereStatus(
+      userId,
+      ParkingStatus.InProgress
+    );
 
     return json(parkingspots);
   } catch (error) {
@@ -39,15 +42,11 @@ export const action: ActionFunction = async ({ request }) => {
   const action = formData.get("action");
 
   if (action === "next") {
-    const userArray = await getUser(request);
+    const userId = await getUserId(request);
     let ownerId: string | undefined;
 
-    if (userArray && userArray.length > 0) {
-      const user = userArray[0]; // Assuming 'user' is always the first element
-
-      if (user && "id" in user) {
-        ownerId = user.id;
-      }
+    if (userId) {
+      ownerId = userId;
     }
 
     const parkingspot: Partial<parkingspots> = {
@@ -56,16 +55,19 @@ export const action: ActionFunction = async ({ request }) => {
 
     const newParkingspot = await createOrUpdate(parkingspot);
 
-    return json({ success: true, type: "next" ,parkingspotId: newParkingspot.id });
+    return json({
+      success: true,
+      type: "next",
+      parkingspotId: newParkingspot.id,
+    });
   } else if (action === "selected") {
     const selectedSpotId = formData.get("selected");
     if (typeof selectedSpotId === "string" && selectedSpotId) {
-      const { nextStep } = await getNextStepForParkingSpotById(
-        selectedSpotId
-      );
+      const { nextStep } = await getNextStepForParkingSpotById(selectedSpotId);
 
       return json({ success: true, type: "selected", nextStep: nextStep });
     }
+    return json({ success: false });
   }
 };
 
@@ -89,8 +91,8 @@ export default function Rental() {
   React.useEffect(() => {
     if (fetcher.data?.type == "next") {
       navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/type`);
-    } else if(fetcher.data?.type == "selected") {
-      navigate(`/opret-udlejning/${fetcher.data.nextStep}`)
+    } else if (fetcher.data?.type == "selected") {
+      navigate(`/opret-udlejning/${fetcher.data.nextStep}`);
     }
   }, [fetcher.data, navigate]);
 

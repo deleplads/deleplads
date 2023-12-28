@@ -1,126 +1,69 @@
 // app/utils/auth.server.ts
 
-import type { LoginForm, RegisterForm } from "./types.server";
-import { prisma } from "./prisma.server";
-import { json, createCookieSessionStorage, redirect } from "@remix-run/node";
-import bcrypt from "bcryptjs";
-
-const sessionSecret = process.env.SESSION_SECRET;
-
-if (!sessionSecret) {
-  throw new Error("SESSION_SECRET must be set");
-}
-
-const storage = createCookieSessionStorage({
-  cookie: {
-    name: "deleplads-session",
-    secure: process.env.NODE_ENV === "production",
-    secrets: [sessionSecret],
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 30,
-    httpOnly: true,
-  },
-});
-
-export async function createUserSession(userId: string, redirectTo: string) {
-  const session = await storage.getSession();
-
-  session.set("userId", userId);
-
-  return redirect(redirectTo, {
-    headers: {
-      "Set-Cookie": await storage.commitSession(session),
-    },
-  });
-}
+import type { LoginForm, RegisterForm } from './types.server';
+import { json, redirect } from '@remix-run/node';
+import { getSupabaseClient } from './supabaseSingleton.server';
+import supabaseServerClient from './supabase.server';
 
 export async function login({ email, password }: LoginForm) {
-  // 2
 
-  const user = await prisma.user.findUnique({
-    where: { email },
+  const supabaseClient = getSupabaseClient();
+  let { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password,
   });
-
-  // 3
-
-  if (!user || !(await bcrypt.compare(password, user.password)))
+  
+  if (error) {
     return json({ error: `Incorrect login` }, { status: 400 });
-
-  // 4
-
-  return createUserSession(user.id, "/");
-}
-
-export async function requireUserId(
-  request: Request,
-  redirectTo: string = new URL(request.url).pathname
-) {
-  const session = await getUserSession(request);
-
-  const userId = session.get("userId");
-
-  if (!userId || typeof userId !== "string") {
-    const searchParams = new URLSearchParams([["redirectTo", redirectTo]]);
-
-    throw redirect(`/logind?${searchParams}`);
   }
 
-  return userId;
+  return redirect('/');
 }
 
-function getUserSession(request: Request) {
-  return storage.getSession(request.headers.get("Cookie"));
+export async function requireUserId(request: Request, redirectTo: string = new URL(request.url).pathname) {
+  const supabaseClient = await supabaseServerClient(request);
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    console.log('session: not present')
+    const searchParams = new URLSearchParams([['redirectTo', redirectTo]]);
+
+    // FIXME: cannot redirect to sign-in. Fx when calling from account.parent route
+    throw redirect(`/logind?${searchParams}`);
+  }
+  console.log('session: present')
+  
+  return session.user.id;
 }
 
 export async function getUserId(request: Request) {
-  const session = await getUserSession(request);
+  const supabaseClient = await supabaseServerClient(request);
+  const {
+    data: {
+      session
+    },
+  } = await supabaseClient.auth.getSession();
 
-  const userId = session.get("userId");
+  if (!session) return null;
 
-  if (!userId || typeof userId !== "string") return null;
-
-  return userId;
-}
-
-export async function getUser(request: Request) {
-  const userId = await getUserId(request);
-
-  if (typeof userId !== "string") {
-    return null;
-  }
-  try {
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-
-      select: { id: true, email: true },
-    });
-
-    const profile = await prisma.profiles.findFirst({
-      where: { id: userId },
-
-      select: { first_name: true, last_name: true },
-    });
-
-    return [user, profile];
-  } catch {
-    throw logout(request);
-  }
+  return session.user.id;
 }
 
 export async function register(user: RegisterForm) {
-  const existingUser = await prisma.user.findFirst({ where: { email: user.email } });
+  const supabaseClient = getSupabaseClient();
 
-  if (existingUser) {
-    return json(
-      { error: `User already exists with that email` },
-      { status: 400 }
-    );
-  }
+  let { data, error } = await supabaseClient.auth.signUp({
+    email: user.email,
+    password: user.password,
+    options: {
+      data: {
+        first_name: user.firstName,
+        last_name: user.lastName
+      }
+    }
+  });
 
-  const newUser = await createUser(user);
-
-  if (!newUser) {
+  if (error) {
     return json(
       {
         error: `Something went wrong trying to create a new user. `,
@@ -128,37 +71,63 @@ export async function register(user: RegisterForm) {
       },
       { status: 400 }
     );
-  } else {
-    return await createUserSession(newUser.id, '/');
   }
+  // TODO: if success, what do we do?
+  // - create profile
+  // - show a toast saying that they need to check their email?
+  console.log('success')
+  console.log(data)
+  // data after user verified its account
+  // [1] {
+    // [1]   user: {
+    // [1]     id: 'd4a68933-aa1e-46bc-92c6-bff0027d5066',
+    // [1]     aud: 'authenticated',
+    // [1]     role: 'authenticated',
+    // [1]     email: 'cristianpand@yahoo.com',
+    // [1]     phone: '',
+    // [1]     confirmation_sent_at: '2023-12-18T19:23:04.976550169Z',
+    // [1]     app_metadata: { provider: 'email', providers: [Array] },
+    // [1]     user_metadata: { first_name: 'Cristian Florin', last_name: 'Pandele' },
+    // [1]     identities: [],
+    // [1]     created_at: '2023-12-18T19:23:04.976550169Z',
+    // [1]     updated_at: '2023-12-18T19:23:04.976550169Z'
+    // [1]   },
+    // [1]   session: null
+    // [1] }
+
+    // data when user didnt verify its account by email
+    // 1] {
+      // [1]   user: {
+      // [1]     id: '9d46c5de-5c42-4d0d-8d2b-88aa27b79741',
+      // [1]     aud: 'authenticated',
+      // [1]     role: 'authenticated',
+      // [1]     email: 'cristianpand@yahoo.com',
+      // [1]     phone: '',
+      // [1]     confirmation_sent_at: '2023-12-18T19:24:24.538240897Z',
+      // [1]     app_metadata: { provider: 'email', providers: [Array] },
+      // [1]     user_metadata: { first_name: 'Cristian Florin', last_name: 'Pandele' },
+      // [1]     identities: [ [Object] ],
+      // [1]     created_at: '2023-12-18T19:24:24.534174Z',
+      // [1]     updated_at: '2023-12-18T19:24:25.771378Z'
+      // [1]   },
+      // [1]   session: null
+      // [1] }
+      if (data.user?.identities?.length > 0) {
+        return json(
+          {
+            error: `You need to verify your account with the link provided in the email `,
+            fields: { email: user.email, password: user.password },
+          },
+          { status: 400 }
+        );
+      }
+  return json({ success: `Signed up successfully` }, { status: 200 });
+  // return redirect('/');
 }
 
-export const createUser = async (user: RegisterForm) => {
-  const passwordHash = await bcrypt.hash(user.password, 10);
-
-  const newUser = await prisma.user.create({
-    data: {
-      email: user.email,
-      password: passwordHash,
-      profiles: {
-        create: {
-          first_name: user.firstName,
-          last_name: user.lastName,
-        },
-      },
-      marked_for_deletion_at: null
-    },
-  });
-
-  return { id: newUser.id, email: user.email };
-};
-
 export async function logout(request: Request) {
-  const session = await getUserSession(request);
+  const sup = getSupabaseClient();
+  let { error } = await sup.auth.signOut();
 
-  return redirect("/", {
-    headers: {
-      "Set-Cookie": await storage.destroySession(session),
-    },
-  });
+  return redirect('/');
 }

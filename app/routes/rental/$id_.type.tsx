@@ -8,7 +8,7 @@ import {
   LinksFunction,
   LoaderFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import { CustomerType, parkingspots } from "@prisma/client";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import { getCustomerType } from "helpers/helpers";

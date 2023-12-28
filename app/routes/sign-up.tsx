@@ -8,18 +8,18 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { useActionData, useNavigate } from "@remix-run/react";
-
+import { useActionData } from "@remix-run/react";
 import type {
   Renderable,
   Toast,
-  ValueFunction} from "react-hot-toast";
+  ValueFunction
+} from "react-hot-toast";
 import {
   toast,
   Toaster
 } from "react-hot-toast";
-import {   register } from "../../utils/auth.server";
-import type { ActionFunction} from "@remix-run/node";
+import { register } from "../../utils/auth.server";
+import type { ActionFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useEffect, useState } from "react";
 import {
@@ -44,12 +44,12 @@ export const action: ActionFunction = async ({ request }) => {
   ) {
     return json({ error: `Invalid Form Data`, form: action }, { status: 400 });
   }
-  const errors = {
-    email: validateEmail(email),
-    password: validatePassword(password),
-    firstName: validateName((firstName as string) || ""),
-    lastName: validateName((lastName as string) || ""),
-  };
+  const errors = [
+    validateEmail(email),
+    validatePassword(password),
+    validateName((firstName as string) || ""),
+    validateName((lastName as string) || ""),
+  ];
 
   if (Object.values(errors).some(Boolean))
     return json(
@@ -60,14 +60,14 @@ export const action: ActionFunction = async ({ request }) => {
       },
       { status: 400 }
     );
-    
-    return await register({ email, password, firstName, lastName })
+
+  return await register({ email, password, firstName, lastName })
 };
 
 export default function SignUp() {
   const actionData = useActionData();
   console.log("SignUp rendered");
-  
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -83,13 +83,12 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    // Check for formError and show toast if it exists
-    if (actionData?.error) {
+    if (actionData?.success) {
+      toast.success("Tjek venligst din e-mail for at afslutte tilmeldingen!");
+    } else if (actionData?.error) { // Check for formError and show toast if it exists
       toast.error(actionData.error);
-    }
-
-    // Check for errors (assuming it's an array of error messages)
-    if (actionData?.errors) {
+    } else if (actionData?.errors) { 
+      // Check for errors (assuming it's an array of error messages)
       actionData.errors.forEach((error: Renderable | ValueFunction<Renderable, Toast>) =>
         toast.error(error)
       );

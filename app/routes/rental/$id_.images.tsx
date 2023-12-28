@@ -16,7 +16,7 @@ import {
   type V2_MetaFunction,
 } from "@remix-run/node";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
-import RentalNavigation from "~/components/RentalCreationNavigation/RentalNavigation";
+import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";

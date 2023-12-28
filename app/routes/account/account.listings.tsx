@@ -1,5 +1,5 @@
 import { useLoaderData, useOutletContext } from "@remix-run/react";
-import ListingsCard from "~/components/ListingsCard";
+import ListingsCard from "~/components/Parkingspots/ListingsCard";
 import { getParkingSpotsByUserWhereStatus } from "utils/parkingspot/getAllSpots.server";
 import { requireUserId } from "utils/auth.server";
 import type { LoaderFunction} from "@remix-run/node";
