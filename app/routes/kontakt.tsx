@@ -1,6 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 import Navbar from "~/components/Navbar";
-import Footer from "~/components/Footer";
 import { Box, Button } from "@mui/material";
 
 export const meta: V2_MetaFunction = () => {
@@ -85,8 +84,6 @@ export default function Leje() {
           </div>
         </div>
       </section>
-
-      <Footer></Footer>
     </main>
   );
 }

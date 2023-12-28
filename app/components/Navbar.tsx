@@ -218,10 +218,10 @@ function Navbar(profile: any) {
             <div className="items">
               <Link to={"/find-parkering/kort"}>Find en parkeringsplads</Link>
               {/* <Link to={"/leje"}>For lejere</Link> */}
-              <Link to={"/#"}>Kundehistorier</Link>
+              <Link to={"/userstorie"}>Kundehistorier</Link>
               <Link to={"/faq"}>FAQ</Link>
               <Link to={"/blog"}>Blog</Link>
-              <Link to={"/#"}>Kontakt</Link>
+              <Link to={"/kontakt"}>Kontakt</Link>
             </div>
             {loading ? (
               <div></div>

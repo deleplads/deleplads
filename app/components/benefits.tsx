@@ -16,7 +16,7 @@ export function Benefits() {
             </p>
             <Button
               variant="contained"
-              href="#"
+              href="/find-parkering/kort"
               size="large"
               sx={{
                 textTransform: "initial",
@@ -72,7 +72,7 @@ export function Benefits() {
             </p>
             <Button
               variant="contained"
-              href="#"
+              href="faq"
               size="large"
               sx={{
                 textTransform: "initial",
