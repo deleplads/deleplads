@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@mui/material";
-import { useNavigate  } from "@remix-run/react";
+import { useNavigation, useNavigate } from "@remix-run/react";
 import LinearWithValueLabel from "./Progress";
 
 type RentalNavigationProps = {
@@ -8,25 +8,24 @@ type RentalNavigationProps = {
   forward?: string;
   start: number;
   onNext: () => void; // Define onNext as a function prop
-  nextText?: string
+  nextText?: string;
 };
 
 function RentalNavigation(props: RentalNavigationProps): JSX.Element {
   const navigate = useNavigate();
- 
+  const navigation = useNavigation();
   const handleOnClick = () => {
-        if (!props.forward) {
-          props.onNext();
-        } else {
-          navigate(props.forward);
-        }
-  }
+    if (!props.forward) {
+      props.onNext();
+    } else {
+      navigate(props.forward);
+    }
+  };
 
-  
   return (
     <section>
       <div className="flex justify-center">
-        <LinearWithValueLabel value={props.start}/>
+        <LinearWithValueLabel value={props.start} />
       </div>
       <div className="rental-navigation">
         <div className="inner">
@@ -35,6 +34,7 @@ function RentalNavigation(props: RentalNavigationProps): JSX.Element {
               navigate(props.back + "?back=true");
             }}
             variant="outlined"
+            disabled={navigation.state === "loading"}
             style={{
               width: "fit-content",
               textTransform: "initial",
@@ -49,6 +49,7 @@ function RentalNavigation(props: RentalNavigationProps): JSX.Element {
           <Button
             onClick={handleOnClick}
             variant="contained"
+            disabled={navigation.state === "loading"}
             sx={{
               textTransform: "initial",
               fontWeight: "700",
@@ -57,9 +58,7 @@ function RentalNavigation(props: RentalNavigationProps): JSX.Element {
               borderRadius: "52px",
             }}
           >
-            {
-            props.nextText ? props.nextText : "Næste skridt"
-            }
+            {props.nextText ? props.nextText : "Næste skridt"}
           </Button>
         </div>
       </div>

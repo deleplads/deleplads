@@ -20,14 +20,13 @@ module.exports = {
 
       //Rental
       route("/opret-udlejning", "routes/rental/rental.index.tsx");
-      route("/opret-udlejning/:id/attributes", "routes/rental/$id_.attributes.tsx");
-      route("/opret-udlejning/:id/availability", "routes/rental/$id_.availability.tsx");
-      route("/opret-udlejning/:id/images", "routes/rental/$id_.images.tsx");
-      route("/opret-udlejning/:id/location", "routes/rental/$id_.location.tsx");
-      route("/opret-udlejning/:id/notes", "routes/rental/$id_.notes.tsx");
-      route("/opret-udlejning/:id/price", "routes/rental/$id_.price.tsx");
-      route("/opret-udlejning/:id/receipt", "routes/rental/$id_.receipt.tsx");
-      route("/opret-udlejning/:id/type", "routes/rental/$id_.type.tsx");
+      route("/opret-udlejning/:id/tilfoejelser", "routes/rental/$id_.attributes.tsx");
+      route("/opret-udlejning/:id/tilgaengelighed", "routes/rental/$id_.availability.tsx");
+      route("/opret-udlejning/:id/billeder", "routes/rental/$id_.images.tsx");
+      route("/opret-udlejning/:id/lokation", "routes/rental/$id_.location.tsx");
+      route("/opret-udlejning/:id/noter", "routes/rental/$id_.notes.tsx");
+      route("/opret-udlejning/:id/pris", "routes/rental/$id_.price.tsx");
+      route("/opret-udlejning/:id/kvittering", "routes/rental/$id_.receipt.tsx");
 
       //Account
       route("/konto", "routes/account/account.parent.tsx", () => {

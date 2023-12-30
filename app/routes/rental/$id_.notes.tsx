@@ -36,37 +36,13 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return await fetchParkingSpotData(request, params);
 };
 
-export const action: ActionFunction = async ({ request, params }) => {
-  await requireUserId(request);
-  const formData = await request.formData();
-  const selectedValue = formData.get("selectedValue");
-  let note: string | null = null;
-
-  // Check if selectedValue is a string and then call getCustomerType
-  if (typeof selectedValue === "string" && selectedValue) {
-    note = selectedValue;
-  } else {
-    return json({ error: "Du skal udfylde noten" });
-  }
-  const parkingspotId = params.id;
-
-  const parkingspot: Partial<parkingspots> = {
-    notes: note,
-    id: parkingspotId,
-  };
-
-  const newParkingspot = await createOrUpdate(parkingspot);
-
-  return json({ success: true, parkingspotId: newParkingspot.id });
-};
-
 export default function RentalNotes() {
   const [selectedValue, setSelectedValue] = useState("");
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/tilfoejelser`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
@@ -82,7 +58,7 @@ export default function RentalNotes() {
     if (useLoader) {
       if (!useLoader.error) {
         setSelectedValue(useLoader.notes || "");
-        setBack(`/opret-udlejning/${useLoader.id}/attributes`);
+        setBack(`/opret-udlejning/${useLoader.id}/tilfoejelser`);
       } else {
         toast.error(useLoader.error);
       }
@@ -94,12 +70,29 @@ export default function RentalNotes() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/images`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/billeder`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
 
-  return (
+  return navigation.state === "loading" ? (
+    <>
+      <div className="top-[30vh] relative flex justify-center">
+        <span className="loader"> </span>
+      </div>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            onNext={handleNext}
+            start={60}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
+    </>
+  ) : (
     <>
       <Toaster position="top-right"></Toaster>
       <section className="rentalLocation">
@@ -125,7 +118,7 @@ export default function RentalNotes() {
           <RentalNavigation
             back={back}
             onNext={handleNext}
-            start={62}
+            start={60}
           ></RentalNavigation>
         ) : (
           <div className="min-h-max"></div>
@@ -134,3 +127,26 @@ export default function RentalNotes() {
     </>
   );
 }
+
+
+export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  const formData = await request.formData();
+  const selectedValue = formData.get("selectedValue");
+  let note: string | null = null;
+
+  // Check if selectedValue is a string and then call getCustomerType
+  if (typeof selectedValue === "string" && selectedValue) {
+    note = selectedValue;
+  } 
+  const parkingspotId = params.id;
+
+  const parkingspot: Partial<parkingspots> = {
+    notes: note,
+    id: parkingspotId,
+  };
+
+  const newParkingspot = await createOrUpdate(parkingspot);
+
+  return json({ success: true, parkingspotId: newParkingspot.id });
+};

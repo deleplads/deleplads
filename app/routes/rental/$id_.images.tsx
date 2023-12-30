@@ -67,7 +67,7 @@ export default function RentalImages() {
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/noter`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
@@ -79,7 +79,7 @@ export default function RentalImages() {
     if (useLoader) {
       if (!useLoader.error) {
         setSelectedValue(useLoader.notes || "");
-        setBack(`/opret-udlejning/${useLoader.id}/attributes`);
+        setBack(`/opret-udlejning/${useLoader.id}/noter`);
       } else {
         toast.error(useLoader.error);
       }
@@ -91,7 +91,7 @@ export default function RentalImages() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/price`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/pris`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
