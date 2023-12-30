@@ -41,4 +41,8 @@ const faqData = [
     question: "Hvad sker der, hvis lejer overskrider udlejningsperioden?",
     answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
   },
+  {
+    question: "Hvorfor er Nicolas til mænd?",
+    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+  },
 ];

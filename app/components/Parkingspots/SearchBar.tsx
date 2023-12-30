@@ -60,7 +60,6 @@ function SearchBar() {
           textTransform: "initial",
           fontSize: "15px",
           padding: "12px 20px !important",
-          background: "#FF4F00",
           height: "fit-content",
           fontWeight: 700,
         }}

@@ -7,12 +7,12 @@
   height: 80px;
   display: flex;
   justify-content: center;
-  z-index: 9999 !important;
+  z-index: 999 !important;
   margin-bottom: 1px;
   position: fixed;
   top: 0;
   width: 100%;
-  background: #F3F5FF;
+  background: #f3f5ff;
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;
@@ -142,6 +142,9 @@
     padding: 20px 40px;
     text-align: center;
   }
+}
+.hideAlert {
+  display: none;
 }
 
 /*# sourceMappingURL=navbar.css.map */

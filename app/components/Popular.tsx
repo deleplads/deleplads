@@ -1,6 +1,6 @@
 "use client";
 import { Link } from "@remix-run/react";
-import BasicCard from "./Cards";
+import BasicCard from "./Parkingspots/Cards";
 
 function Popular() {
   return (

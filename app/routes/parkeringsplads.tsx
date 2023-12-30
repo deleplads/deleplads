@@ -1,5 +1,4 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Footer from "~/components/Footer";
 import type { SelectChangeEvent } from "@mui/material";
 import {
   Box,
@@ -21,10 +20,10 @@ import AddRoadOutlined from "@mui/icons-material/AddRoadOutlined";
 import GarageOutlined from "@mui/icons-material/GarageOutlined";
 import PersonOutlined from "@mui/icons-material/PersonOutlined";
 import VpnKeyOffOutlined from "@mui/icons-material/VpnKeyOffOutlined";
-import CallToAction from "~/components/CallToAction";
-import Booking from "~/components/booking";
+import CallToAction from "~/components/Parkingspots/CallToAction";
+import Booking from "~/components/Parkingspots/booking";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-import ApprDrawer from "~/components/AppDrawer";
+import ApprDrawer from "~/components/Common/AppDrawer";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -221,7 +220,6 @@ export default function Parkeringsplads() {
         <ApprDrawer></ApprDrawer>
       </section>
       <CallToAction></CallToAction>
-      <Footer></Footer>
     </>
   );
 }

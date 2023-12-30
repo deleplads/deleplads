@@ -32,7 +32,6 @@ export const links: LinksFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
-
   Debug();
   try {
 
@@ -55,8 +54,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     // Handle error, maybe return a specific structure or status code
     return { error };
   }
-}
-
+};
 
 export default function App() {
   const { env, session, profile, profileImageBufferData, profiles } = useLoaderData<typeof loader>();

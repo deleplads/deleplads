@@ -2,12 +2,12 @@
 
 module.exports = {
   ignoredRouteFiles: ["**/.*"],
-  routes: async (defineRoutes) => {
+  routes: async defineRoutes => {
     return defineRoutes((route) => {
       route("/", "routes/index.tsx", { index: true });
-      
+
       route("/cookies", "routes/cookies.tsx");
-      route("/faqs", "routes/faq.tsx");
+      route("/faq", "routes/faq.tsx");
       route("/handelsbetingelser", "routes/handelsbetingelser.tsx");
       route("/kommunale-priser", "routes/kommunale-priser.tsx");
       route("/kontakt", "routes/kontakt.tsx");
@@ -40,20 +40,18 @@ module.exports = {
         route("verificeringer", "routes/account/account.verification.tsx");
       });
 
-
       //Blog
-      route("/blog", "routes/blog/blog.index.tsx", () => {
-        route("artikel", "routes/blog/artikel.tsx");
-        route("artikel2", "routes/blog/artikel2.tsx");
-      });
+      route("/blog", "routes/blog/blog.index.tsx");
+      route("/blog/artikel", "routes/blog/artikel.tsx");
+      route("/blog/artikel2", "routes/blog/artikel2.tsx");
+      route("/blog/artikel3", "routes/blog/artikel3.tsx");
       
-
       //Userstorie
       route("userstorie", "routes/userstories/userstorie.tsx");
 
       //Locate
       route("/find-parkering", "routes/locate/locate.parent.tsx", () => {
-        route("galleri", "routes/locate/locate.gallery.tsx",  { index: true });
+        route("galleri", "routes/locate/locate.gallery.tsx", { index: true });
         route("liste", "routes/locate/locate.list.tsx");
         route("kort", "routes/locate/locate.map.tsx");
       });

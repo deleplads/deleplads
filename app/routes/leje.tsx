@@ -1,7 +1,6 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
-import CallToAction from "~/components/CallToAction";
+import CallToAction from "~/components/Parkingspots/CallToAction";
 import FAQLeje from "~/components/FaqLeje";
 
 export const meta: V2_MetaFunction = () => {
@@ -14,8 +13,6 @@ export const meta: V2_MetaFunction = () => {
 export default function Leje() {
   return (
     <main>
-      <Navbar></Navbar>
-
       <section className="leje">
       </section>
 

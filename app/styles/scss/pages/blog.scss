@@ -1,0 +1,45 @@
+.blog {
+  padding: 200px 0;
+  width: var(--PageWidth);
+  margin: 0 auto;
+  .header {
+  }
+  .article {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 48px 0;
+    span {
+      display: grid;
+      row-gap: 16px;
+      h2 {
+        font-size: 32px;
+        font-weight: 700;
+      }
+      p {
+        max-width: 90%;
+      }
+      .author {
+        display: flex;
+        width: fit-content;
+        gap: 16px;
+        margin-top: 8px;
+        span {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          p {
+            max-width: 100% !important;
+            gap: 0;
+          }
+        }
+      }
+      &:hover {
+        h2 {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
