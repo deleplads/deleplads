@@ -185,6 +185,8 @@ export const action: ActionFunction = async ({ request, params }) => {
         };
       }
     }
+  } else {
+    return json({ error: "Du skal vælge et billede til din parkeringsplads" });
   }
   return json({ success: true, parkingspotId: parkingspotId });
 };
