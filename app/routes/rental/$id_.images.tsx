@@ -22,6 +22,11 @@ import toast, { Toaster } from "react-hot-toast";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { requireUserId } from "utils/auth.server";
 import rental from "~/styles/rental.css";
+import {
+  downloadParkingspotImageAsBuffer,
+  uploadParkingspotImage,
+} from "utils/parkingspot/spotImage.server";
+import type { LoaderResponse } from "utils/types.server";
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
 };
@@ -33,36 +38,19 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ request, params }) => {
-  return await fetchParkingSpotData(request, params);
-};
+  const spot = await fetchParkingSpotData(request, params) as LoaderResponse;
 
-export const action: ActionFunction = async ({ request, params }) => {
-  await requireUserId(request);
-  // const formData = await request.formData();
-  // const selectedValue = formData.get('selectedValue');
-  // let note: string | null = null;
-
-  // // Check if selectedValue is a string and then call getCustomerType
-  // if (typeof selectedValue === 'string' && selectedValue) {
-  //   note = selectedValue;
-  // }else {
-  //   return json({error: "Du skal udfylde noten"})
-  // }
-  const parkingspotId = params.id;
-
-  return json({ success: true, parkingspotId: parkingspotId });
-  // const parkingspot: Partial<parkingspots> = {
-  //    notes: note,
-  //    id: parkingspotId
-  // }
-
-  //  const newParkingspot = await createOrUpdate(parkingspot);
-
-  // return json({ success: true, parkingspotId: newParkingspot.id });
+  if (spot && typeof spot.id === "string") {
+    const { data } = await downloadParkingspotImageAsBuffer(request, spot.id);
+    if (data) {
+      return json({ image: data, id: spot.id });
+    } else {
+      return json({ id: spot.id });
+    }
+  }
 };
 
 export default function RentalImages() {
-  const [selectedValue, setSelectedValue] = useState("");
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
@@ -70,15 +58,41 @@ export default function RentalImages() {
   const [back, setBack] = useState(`/opret-udlejning/${params.id}/noter`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    setProfileImageUrl(URL.createObjectURL(file));
+  };
 
   const handleNext = () => {
-    fetcher.submit({ selectedValue }, { method: "post" });
+    // Create a new FormData instance
+    const formData = new FormData();
+
+    // Append the selected file
+    if (selectedFile) {
+      formData.append("selectedFile", selectedFile);
+    }
+
+    // Use fetcher to submit the form data
+    fetcher.submit(formData, {
+      method: "post",
+      encType: "multipart/form-data",
+    });
   };
 
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setSelectedValue(useLoader.notes || "");
+        //Check if there is an image already
+        if (useLoader.image && useLoader.image.data) {
+          const arrayBuffer = new Uint8Array(useLoader.image.data).buffer;
+          const blob = new Blob([arrayBuffer], { type: "image/*" });
+          const url = URL.createObjectURL(blob);
+          setProfileImageUrl(url);
+        }
         setBack(`/opret-udlejning/${useLoader.id}/noter`);
       } else {
         toast.error(useLoader.error);
@@ -108,13 +122,30 @@ export default function RentalImages() {
           </p>
           <Form>
             <Button
-              variant="contained"
+              variant={profileImageUrl ? "text" : "contained"}
               component="label"
               className="upload-image"
             >
-              <h2>Upload fil</h2>
-              {<AddPhotoAlternateOutlinedIcon className="image-icon" />}
-              <input type="file" hidden />
+              {profileImageUrl ? (
+                <img
+                  className="max-w-[300px] max-h-[300px]"
+                  src={profileImageUrl}
+                  alt="parkingspot"
+                />
+              ) : (
+                <>
+                  <h2>Upload fil</h2>{" "}
+                  <AddPhotoAlternateOutlinedIcon className="image-icon" />{" "}
+                </>
+              )}
+              <input
+                type="file"
+                name="selectedFile"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+                id="image-input"
+              />
             </Button>
           </Form>
         </div>
@@ -127,3 +158,33 @@ export default function RentalImages() {
     </>
   );
 }
+
+export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  const formData = await request.formData();
+  const parkingspotId = params.id;
+  const file = formData.get("selectedFile");
+
+  if (file instanceof File && typeof parkingspotId === "string") {
+    const { error } = await uploadParkingspotImage(
+      request,
+      file,
+      parkingspotId
+    );
+    if (error) {
+      if (error.statusCode == "413") {
+        // Content too large
+        return {
+          error:
+            "Profilbilledet er for stort. Prøv at uploade et mindre billede.",
+        };
+      } else {
+        return {
+          error:
+            "Der opstod en fejl under upload af profilbilledet. Prøv venligst igen med et andet billede.",
+        };
+      }
+    }
+  }
+  return json({ success: true, parkingspotId: parkingspotId });
+};

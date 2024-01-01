@@ -55,6 +55,10 @@ module.exports = {
         route("liste", "routes/locate/locate.list.tsx");
         route("kort", "routes/locate/locate.map.tsx");
       });
+
+
+      //Api
+      route("/api/parkingspot/:id/image", "routes/api/parkingspot_$id_image.ts");
     });
   },
   // When running locally in development mode, we use the built-in remix
