@@ -16,8 +16,6 @@ import {
 import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import React, { Suspense, useEffect, useState } from "react";
 import {
-  FormControl,
-  FormControlLabel,
   Checkbox,
   TextField,
 } from "@mui/material";
@@ -52,47 +50,11 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return json({ parkingspot: parkingspot });
 };
 
-export const action: ActionFunction = async ({ request, params }) => {
-  await requireUserId(request);
-  const formData = await request.formData();
-
-  const formValues = {
-    noon_price: formData.get("noon_price")
-      ? Number(formData.get("noon_price"))
-      : null,
-    morning_price: formData.get("morning_price")
-      ? Number(formData.get("morning_price"))
-      : null,
-    evening_price: formData.get("evening_price")
-      ? Number(formData.get("evening_price"))
-      : null,
-    weekend_price: formData.get("weekend_price")
-      ? Number(formData.get("weekend_price"))
-      : null,
-  };
-
-  const parkingspotId = params.id;
-
-  const parkingspot: Partial<price> = {
-    evening_price: formValues.evening_price,
-    morning_price: formValues.morning_price,
-    noon_price: formValues.noon_price,
-    weekend_price: formValues.weekend_price,
-    spot_id: parkingspotId,
-  };
-
-  const newParkingspot = await createOrUpdatePrice(parkingspot);
-
-  return json({ success: true, parkingspotId: newParkingspot.spot_id });
-};
 
 export default function RentalPrices() {
   const [isFormEnabled, setIsFormEnabled] = useState(false);
   const [prices, setPrices] = useState({
-    noon_price: "",
-    morning_price: "",
-    evening_price: "",
-    weekend_price: "",
+    user_price: "",
   });
 
   const handleCheckboxChange = () => {
@@ -111,7 +73,7 @@ export default function RentalPrices() {
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/notes`);
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/billeder`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
@@ -119,10 +81,7 @@ export default function RentalPrices() {
     if (!isFormEnabled) {
       fetcher.submit(
         {
-          noon_price: "24",
-          morning_price: "24",
-          evening_price: "24",
-          weekend_price: "24",
+          user_price: "24",
         },
         { method: "post" }
       );
@@ -134,12 +93,9 @@ export default function RentalPrices() {
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/opret-udlejning/${useLoader.parkingspot.id}/notes`);
+        setBack(`/opret-udlejning/${useLoader.parkingspot.id}/billeder`);
         setPrices({
-          evening_price: useLoader.parkingspot.prices?.evening_price || "",
-          morning_price: useLoader.parkingspot.prices?.morning_price || "",
-          noon_price: useLoader.parkingspot.prices?.noon_price || "",
-          weekend_price: useLoader.parkingspot.prices?.weekend_price || "",
+          user_price: useLoader.parkingspot.prices?.user_price || "",
         });
       } else if (useLoader?.error) {
         toast.error(useLoader.error);
@@ -152,12 +108,29 @@ export default function RentalPrices() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/receipt`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/kvittering`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
 
-  return (
+  return navigation.state === "loading" ? (
+    <>
+      <div className="top-[30vh] relative flex justify-center">
+        <span className="loader"> </span>
+      </div>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            onNext={handleNext}
+            start={90}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
+    </>
+  ) : (
     <>
       <section className="rentalLocation">
         <div className="inner">
@@ -185,53 +158,14 @@ export default function RentalPrices() {
                 </span>
               </div>
               <div className="custom-price">
-                <h3>Morgentakst</h3>
+                <h3>Pris</h3>
                 <TextField
                   id="outlined-basic"
-                  label="Morgentakst"
+                  label="Pris"
                   variant="outlined"
-                  name="morning_price"
+                  name="user_price"
                   onChange={handleChange}
                   value={prices.morning_price}
-                  disabled={!isFormEnabled}
-                />
-              </div>
-              <hr />
-              <div className="custom-price">
-                <h3>Eftermiddagstakst</h3>
-                <TextField
-                  id="outlined-basic"
-                  label="Eftermiddagstakst"
-                  name="noon_price"
-                  onChange={handleChange}
-                  value={prices.noon_price}
-                  variant="outlined"
-                  disabled={!isFormEnabled}
-                />
-              </div>
-              <hr />
-              <div className="custom-price">
-                <h3>Aftentakst</h3>
-                <TextField
-                  id="outlined-basic"
-                  label="Aftentakst"
-                  onChange={handleChange}
-                  variant="outlined"
-                  name="evening_price"
-                  value={prices.evening_price}
-                  disabled={!isFormEnabled}
-                />
-              </div>
-              <hr />
-              <div className="custom-price">
-                <h3>WeekendsTakst</h3>
-                <TextField
-                  id="outlined-basic"
-                  label="WeekendsTakst"
-                  onChange={handleChange}
-                  name="weekend_price"
-                  value={prices.weekend_price}
-                  variant="outlined"
                   disabled={!isFormEnabled}
                 />
               </div>
@@ -244,7 +178,7 @@ export default function RentalPrices() {
           <RentalNavigation
             back={back}
             onNext={handleNext}
-            start={87}
+            start={90}
           ></RentalNavigation>
         ) : (
           <div className="min-h-max"></div>
@@ -253,3 +187,26 @@ export default function RentalPrices() {
     </>
   );
 }
+
+
+export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  const formData = await request.formData();
+
+  const formValues = {
+    user_price: formData.get("user_price")
+      ? Number(formData.get("user_price"))
+      : null,
+  };
+
+  const parkingspotId = params.id;
+
+  const parkingspot: Partial<price> = {
+    user_price: formValues.user_price,
+    spot_id: parkingspotId,
+  };
+
+  const newParkingspot = await createOrUpdatePrice(parkingspot);
+
+  return json({ success: true, parkingspotId: newParkingspot.spot_id });
+};

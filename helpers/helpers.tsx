@@ -22,3 +22,9 @@ export function getAvailabilityType(
 export function convertToBoolean(value: FormDataEntryValue | null) {
   return value === "true";
 }
+
+export function extractStreetName(address: string) {
+  const regex = /^([^\d]+)/;
+  const match = address.match(regex);
+  return match ? match[1].trim() : null;
+}

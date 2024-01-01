@@ -55,7 +55,7 @@ export default function RentalReceipt() {
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/price`);
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/pris`);
   const fetcher = useFetcher();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
@@ -63,7 +63,7 @@ export default function RentalReceipt() {
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/opret-udlejning/${useLoader.id}/price`);
+        setBack(`/opret-udlejning/${useLoader.id}/pris`);
       }
     } else if (useLoader?.error) {
       toast.error(useLoader.error);
@@ -84,7 +84,22 @@ export default function RentalReceipt() {
     fetcher.submit({}, { method: "post" });
   };
 
-  return (
+  return navigation.state === "loading" ? (
+    <>
+      <Suspense>
+        {useLoader != null && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            onNext={handleNext}
+            start={100}
+            nextText={"Afslut"}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
+    </>
+  ) : (
     <>
       <Toaster position="top-right" />
       <section className="rentalLocation">
@@ -176,9 +191,7 @@ export default function RentalReceipt() {
                     <div className="border-t border-gray-200 pt-16">
                       <h3 className="text-lg font-semibold">Prisdetaljer</h3>
                         <div className="mt-2">
-                          <p>Morgenpris: {useLoader.prices.morning_price}</p>
-                          <p>Aftenpris: {useLoader.prices.evening_price}</p>
-                          <p>Weekendpris: {useLoader.prices.weekend_price}</p>
+                          <p>Brugers pris: {useLoader.prices.user_price}</p>
                           <p>Anbefalet pris: {useLoader.prices.recommended_price}</p>
                         </div>
                     </div>

@@ -21,7 +21,7 @@ import GarageOutlined from "@mui/icons-material/GarageOutlined";
 import PersonOutlined from "@mui/icons-material/PersonOutlined";
 import VpnKeyOffOutlined from "@mui/icons-material/VpnKeyOffOutlined";
 import CallToAction from "~/components/Parkingspots/CallToAction";
-import Booking from "~/components/Parkingspots/Booking";
+import Booking from "~/components/Parkingspots/booking";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import ApprDrawer from "~/components/Common/AppDrawer";
 
