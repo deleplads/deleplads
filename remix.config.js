@@ -6,19 +6,43 @@ module.exports = {
     return defineRoutes((route) => {
       route("/", "routes/index.tsx", { index: true });
 
-      route("/cookies", "routes/cookies.tsx");
-      route("/faq", "routes/faq.tsx");
-      route("/handelsbetingelser", "routes/handelsbetingelser.tsx");
-      route("/kommunale-priser", "routes/kommunale-priser.tsx");
-      route("/kontakt", "routes/kontakt.tsx");
-      route("/leje", "routes/leje.tsx");
-      route("/logout", "routes/logout.tsx");
-      route("/parkeringsplads", "routes/parkeringsplads.tsx");
-      route("/privatpolitik", "routes/privacy-policy.tsx");
-      route("/logind", "routes/sign-in.tsx");
-      route("/opret", "routes/sign-up.tsx");
+      // Account
 
-      //Rental
+      route("/konto", "routes/account/account.parent.tsx", () => {
+        route("", "routes/account/account.index.tsx", { index: true });
+        route("kodeord", "routes/account/account.password.tsx");
+        route("udlejninger", "routes/account/account.listings.tsx");
+        route("notifikationer", "routes/account/account.notification.tsx");
+        route("betalingskort", "routes/account/account.payment.tsx");
+        route("rediger", "routes/account/account.edit.tsx");
+        route("indstillinger", "routes/account/account.settings.tsx");
+        route("verificeringer", "routes/account/account.verification.tsx");
+      });
+
+      // Blog
+
+      route("/blog", "routes/blog/blog.index.tsx");
+      route("/blog/artikel", "routes/blog/artikel.tsx");
+      route("/blog/artikel2", "routes/blog/artikel2.tsx");
+      route("/blog/artikel3", "routes/blog/artikel3.tsx");
+
+      // Legal
+
+      route("/cookies", "routes/legal/cookies.tsx");
+      route("/handelsbetingelser", "routes/legal/handelsbetingelser.tsx");
+      route("/privatpolitik", "routes/legal/privacy-policy.tsx");
+      route("/regler-og-vilkår", "routes/legal/terms-and-conditions.tsx");
+
+      // Locate
+
+      route("/find-parkering", "routes/locate/locate.parent.tsx", () => {
+        route("galleri", "routes/locate/locate.gallery.tsx", { index: true });
+        route("liste", "routes/locate/locate.list.tsx");
+        route("kort", "routes/locate/locate.map.tsx");
+      });
+
+      // Rental
+
       route("/opret-udlejning", "routes/rental/rental.index.tsx");
       route(
         "/opret-udlejning/:id/attributes",
@@ -35,38 +59,25 @@ module.exports = {
       route("/opret-udlejning/:id/receipt", "routes/rental/$id_.receipt.tsx");
       route("/opret-udlejning/:id/type", "routes/rental/$id_.type.tsx");
 
-      //Account
-      route("/konto", "routes/account/account.parent.tsx", () => {
-        route("", "routes/account/account.index.tsx", { index: true });
-        route("kodeord", "routes/account/account.password.tsx");
-        route("udlejninger", "routes/account/account.listings.tsx");
-        route("notifikationer", "routes/account/account.notification.tsx");
-        route("betalingskort", "routes/account/account.payment.tsx");
-        route("rediger", "routes/account/account.edit.tsx");
-        route("indstillinger", "routes/account/account.settings.tsx");
-        route("verificeringer", "routes/account/account.verification.tsx");
-      });
+      // User stories
 
-      //Blog
-      route("/blog", "routes/blog/blog.index.tsx");
-      route("/blog/artikel", "routes/blog/artikel.tsx");
-      route("/blog/artikel2", "routes/blog/artikel2.tsx");
-      route("/blog/artikel3", "routes/blog/artikel3.tsx");
-      
-      //Userstorie
-      route("userstorie", "routes/userstories/userstorie.tsx");
+      route("user-stories", "routes/user-stories/userstories.tsx");
 
-      //Locate
-      route("/find-parkering", "routes/locate/locate.parent.tsx", () => {
-        route("galleri", "routes/locate/locate.gallery.tsx", { index: true });
-        route("liste", "routes/locate/locate.list.tsx");
-        route("kort", "routes/locate/locate.map.tsx");
-      });
+      // Miscellaneous
+
+      route("/kommunale-priser", "routes/kommunale-priser.tsx");
+      route("/kontakt", "routes/kontakt.tsx");
+      route("/logout", "routes/logout.tsx");
+      route("/parkeringsplads", "routes/parkeringsplads.tsx");
+      route("/logind", "routes/sign-in.tsx");
+      route("/opret", "routes/sign-up.tsx");
     });
   },
+
   // When running locally in development mode, we use the built-in remix
   // server. This does not understand the vercel lambda module format,
   // so we default back to the standard build output.
+
   server: process.env.NODE_ENV === "development" ? undefined : "./server.ts",
   serverBuildPath: "api/index.js",
   serverDependenciesToBundle: [

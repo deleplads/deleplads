@@ -7,11 +7,14 @@
   margin: 0 auto;
   backface-visibility: hidden;
   justify-content: center;
+  width: var(--PageWidth);
+  border-radius: 6px;
   .inner {
     padding: 96px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     h1 {
       font-size: 40px;
       font-weight: 700;
