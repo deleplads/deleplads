@@ -1,10 +1,9 @@
 import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
-import Navbar from "~/components/Navbar";
-import FAQGeneral from "~/components/FAQGeneral";
-import FAQLeje from "~/components/FaqLeje";
-import FAQUdleje from "~/components/FaqUdleje";
-import Footer from "~/components/Footer";
-import CallToAction from "~/components/Parkingspots/CallToAction";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -24,10 +23,41 @@ export default function Faq() {
           distinctio?
         </p>
       </section>
-      <FAQGeneral></FAQGeneral>
-      <FAQLeje></FAQLeje>
-      <FAQUdleje></FAQUdleje>
-      <CallToAction></CallToAction>
+      <div className="accordion-group">
+        <h2>Generelle spørgsmål</h2>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>Accordion 1</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Accordion 2</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      </div>
     </main>
   );
 }

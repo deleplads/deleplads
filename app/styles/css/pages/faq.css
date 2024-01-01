@@ -43,17 +43,16 @@
   border: 1px solid var(--BrandTertiary);
   box-shadow: none !important;
 }
-.faq-accordions #panel1a-content,
-.faq-accordions #panel2a-content,
-.faq-accordions #panel3a-content,
-.faq-accordions #panel4a-content,
-.faq-accordions #panel5a-content,
-.faq-accordions #panel6a-content {
-  padding: 25px 0px 20px 0px !important;
-  padding-left: 20px !important;
-  margin: 0;
+
+.accordion-group {
+  width: var(--PageWidth);
+  margin: 0 auto;
+}
+.accordion-group .MuiPaper-root {
+  margin: 24px 0;
   width: auto;
   display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=faq.css.map */

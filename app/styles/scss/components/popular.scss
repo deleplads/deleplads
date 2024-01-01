@@ -2,19 +2,13 @@
   display: flex;
   justify-content: center;
   margin-bottom: 96px;
+  margin-top: 48px;
   .popularInner {
     width: var(--PageWidth);
-    .heading {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      h2 {
-        font-size: 24px;
-      }
-      .headingItem {
-        font-weight: 700;
-        font-size: 18px;
+    .region-group {
+      .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+        text-transform: initial !important;
+        font-size: 16px !important;
       }
     }
     span {
@@ -23,6 +17,11 @@
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 25px;
       grid-row-gap: 25px;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 48px 0 0 0;
     }
   }
 }

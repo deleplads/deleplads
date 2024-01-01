@@ -1,43 +1,38 @@
-.gallery-cards {
-  border: 1px solid var(--BrandTertiary);
-}
 .gallery-cards .gallery-cards-content {
   padding: 0;
   text-align: left;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info {
-  padding: 32px;
+  padding: 16px 0;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
-  font-size: 24px;
+  font-size: 18px;
 }
-.gallery-cards .gallery-cards-content .gallery-cards-content-info p {
-  color: black !important;
-}
-.gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 16px;
-  margin: 16px 0;
-}
-.gallery-cards .gallery-cards-content .gallery-cards-content-info .gallery-cards-attributes .gallery-cards-attribute {
+.gallery-cards .gallery-cards-content .gallery-cards-content-info span {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
   gap: 8px;
 }
-.gallery-cards .gallery-cards-content .price {
-  color: black;
-  background: var(--BrandTertiary);
+.gallery-cards .gallery-cards-content .gallery-cards-content-info span p {
+  color: black !important;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .price {
   display: flex;
-  justify-content: center;
-  font-size: 15;
-  font-weight: 600;
-  line-height: 24px;
-  padding: 12px 20px;
-  margin-bottom: 16px;
+  flex-direction: row;
+  align-items: baseline;
+  font-size: 16px;
+  margin-top: 16px;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .price p {
+  font-size: 18px;
 }
 .gallery-cards:hover {
-  cursor: pointer;
+  cursor: pointer !important;
+}
+.gallery-cards:hover h3 {
+  text-decoration: underline;
 }
 
 .css-bhp9pd-MuiPaper-root-MuiCard-root {

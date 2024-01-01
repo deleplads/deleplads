@@ -72,7 +72,7 @@ export function Benefits() {
             </p>
             <Button
               variant="contained"
-              href="faq"
+              href="#"
               size="large"
               sx={{
                 textTransform: "initial",
