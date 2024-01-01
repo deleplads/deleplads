@@ -43,16 +43,15 @@
     border: 1px solid var(--BrandTertiary);
     box-shadow: none !important;
   }
-  #panel1a-content,
-  #panel2a-content,
-  #panel3a-content,
-  #panel4a-content,
-  #panel5a-content,
-  #panel6a-content {
-    padding: 25px 0px 20px 0px !important;
-    padding-left: 20px !important;
-    margin: 0;
+}
+
+.accordion-group {
+  width: var(--PageWidth);
+  margin: 0 auto;
+  .MuiPaper-root {
+    margin: 24px 0;
     width: auto;
     display: flex;
+    flex-direction: column;
   }
 }

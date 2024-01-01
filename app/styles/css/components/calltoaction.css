@@ -5,6 +5,8 @@
   margin: 0 auto;
   backface-visibility: hidden;
   justify-content: center;
+  width: var(--PageWidth);
+  border-radius: 6px;
 }
 .CallToAction .inner {
   padding: 96px;

@@ -1,6 +1,5 @@
 .NavbarDropShadow {
-  background: #fffdf9;
-  border-bottom: 1px solid rgba(32, 33, 37, 0.12);
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 4px;
 }
 
 .NavigationBar {
@@ -12,7 +11,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #f3f5ff;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(32, 33, 37, 0.12);
 }
 .NavigationBar .InnerNavigationBar {
   height: inherit;

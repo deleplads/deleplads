@@ -2,12 +2,10 @@
 
 @import "./pages/account.scss";
 @import "./pages/cookies.scss";
-@import "./pages/leje.scss";
 @import "./pages/parkeringsplads.scss";
 @import "./pages/sign-in.scss";
 @import "./pages/sign-up.scss";
 @import "./pages/privacy.scss";
-@import "./pages/udleje.scss";
 @import "./pages/kontakt.scss";
 @import "./pages/faq.scss";
 @import "./pages/locate/map.scss";
@@ -15,6 +13,7 @@
 @import "./pages/rental.scss";
 @import "./pages/regional-prices.scss";
 @import "./pages/blog.scss";
+@import "./pages/userstories.scss";
 
 // Components
 
@@ -26,14 +25,6 @@
 @import "./components/searchbar.scss";
 @import "./components/popular.scss";
 @import "./components/filtration.scss";
-@import "./components/blogTeaser.scss";
 @import "./components/cards.scss";
 @import "./components/booking.scss";
 @import "./components/benefits.scss";
-@import "./components/productperspective.scss";
-
-// FAQ's
-
-@import "./components/faqs/faq-leje.scss";
-@import "./components/faqs/faq-udleje.scss";
-@import "./components/faqs/faq-general.scss";

@@ -106,16 +106,17 @@ function Navbar(profile: any) {
   const [isOpen, setisOpen] = useState({ menuOpen: false });
   const [scrolledPastTop, setScrolledPastTop] = useState(false);
 
-  const [profileImageUrl, setProfileImageUrl] = useState('');
+  const [profileImageUrl, setProfileImageUrl] = useState("");
   useEffect(() => {
     if (profile.profile?.profile_image_buffer?.data) {
-      const arrayBuffer = new Uint8Array(profile.profile.profile_image_buffer?.data).buffer;
-      const blob = new Blob([arrayBuffer], { type: 'image/*' });
+      const arrayBuffer = new Uint8Array(
+        profile.profile.profile_image_buffer?.data
+      ).buffer;
+      const blob = new Blob([arrayBuffer], { type: "image/*" });
       const url = URL.createObjectURL(blob);
       setProfileImageUrl(url);
     }
   }, [profile.profile?.profile_image_buffer?.data]);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -163,7 +164,7 @@ function Navbar(profile: any) {
   }, [profile.session]);
 
   const handleSubmit = async () => {
-    const {error} = profile.supabaseClientBrowser.auth.signOut();
+    const { error } = profile.supabaseClientBrowser.auth.signOut();
     if (!error) {
       navigate("/");
     } else {
@@ -198,12 +199,6 @@ function Navbar(profile: any) {
             <Link to={"/"} className="menu-item MLogo">
               Deleplads.dk
             </Link>
-            <Link to={"/leje"} id="about" className="menu-item">
-              Leje
-            </Link>
-            <Link to={"/udleje"} id="contact" className="menu-item">
-              Udleje
-            </Link>
             <Link to={"/blog"} id="contact" className="menu-item">
               Blog
             </Link>
@@ -218,10 +213,10 @@ function Navbar(profile: any) {
             <div className="items">
               <Link to={"/find-parkering/kort"}>Find en parkeringsplads</Link>
               {/* <Link to={"/leje"}>For lejere</Link> */}
-              <Link to={"/userstorie"}>Kundehistorier</Link>
-              <Link to={"/faq"}>FAQ</Link>
-              <Link to={"/blog"}>Blog</Link>
-              <Link to={"/kontakt"}>Kontakt</Link>
+              <Link to={"/#"}>Sådan virker det</Link>
+              {/* <Link to={"/userstorie"}>Brugerhistorier</Link> */}
+              {/* <Link to={"/blog"}>Blog</Link> */}
+              <Link to={"/faq"}>Spørgsmål og svar</Link>
             </div>
             {loading ? (
               <div></div>

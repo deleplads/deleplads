@@ -77,7 +77,6 @@ model parkingspot_details {
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model parkingspots {
   price                                                         Float?               @db.Real
-  street_nr                                                     Int?                 @db.SmallInt
   created_at                                                    DateTime             @default(now()) @db.Timestamptz(6)
   updated_at                                                    DateTime?            @default(now()) @db.Timestamp(6)
   street                                                        String?
