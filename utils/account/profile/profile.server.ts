@@ -2,7 +2,7 @@ import { profiles } from '@prisma/client';
 import { prisma } from '../../prisma.server';
 import supabaseServerClient from '../../supabase.server';
 import { getUserId } from '../../auth.server';
-import { forUser } from 'prisma/extension/rls.server';
+import { bypassRLS, forUser } from 'prisma/extension/rls.server';
 
 export async function getProfileFromUserId(userId: string) {
   const profile = await prisma.$extends(forUser(userId)).profiles.findFirst({
@@ -17,6 +17,13 @@ export async function getProfileFromUserId(userId: string) {
 
 export async function getAllProfiles(userId: string) {
   const profiles = await prisma.$extends(forUser(userId)).profiles.findMany();
+  return profiles;
+}
+
+export async function getAllProfilesBypass() {
+  const profiles = await prisma
+  .$extends(bypassRLS())
+  .profiles.findMany();
   return profiles;
 }
 

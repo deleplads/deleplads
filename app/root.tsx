@@ -14,7 +14,7 @@ import {
 import { Debug } from "utils/debug.server";
 import type { Profile } from "db_types";
 import Navbar from "./components/Navbar";
-import { downloadProfileImageAsBuffer, getAllProfiles, getProfileFromUserId } from "../utils/account/profile/profile.server";
+import { downloadProfileImageAsBuffer, getAllProfiles, getAllProfilesBypass, getProfileFromUserId } from "../utils/account/profile/profile.server";
 import Footer from "./components/Footer";
 import supabaseServerClient from "utils/supabase.server";
 import { useEffect, useState } from "react";
@@ -44,8 +44,11 @@ export const loader: LoaderFunction = async ({ request }) => {
     const supabaseClient = await supabaseServerClient(request);
     const { data: { session } } = await supabaseClient.auth.getSession();
     // const profiles = await getAllProfiles(session?.user.id);
-    // console.log('profiles')
-    // console.log(profiles)
+    console.log(1);
+    const profiles = getAllProfilesBypass();
+    console.log('profiles')
+    console.log(2);  
+    console.log(profiles)
 
     const { data } = await downloadProfileImageAsBuffer(request);
     const profile = session?.user.id ? getProfileFromUserId(session?.user.id) : null;
@@ -59,7 +62,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 
 export default function App() {
-  const { env, session, profile, profileImageBufferData, profiles } = useLoaderData<typeof loader>();
+  const { env, session, profile, profileImageBufferData } = useLoaderData<typeof loader>();
 
   const [supabaseClientBrowser] = useState(() => createBrowserClient(env.SUPABASE_URL!, env.SUPABASE_ANON_KEY!))
 
