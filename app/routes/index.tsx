@@ -58,8 +58,7 @@ export default function Index() {
       <Hero></Hero>
       <section ref={regionGroupRef} className="popular">
         <div className="popularInner">
-          <div className="region-group">
-            <span>test</span>
+          <div className="region-group">W
             <Stack spacing={2} direction="row">
               <Button variant="outlined">Alle regioner</Button>
               <Button variant="outlined">Region Hovedestaden</Button>
