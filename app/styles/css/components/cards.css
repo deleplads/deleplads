@@ -6,7 +6,7 @@
   padding: 16px 0;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
-  font-size: 18px;
+  font-size: 16px;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info span {
   display: flex;
@@ -23,10 +23,7 @@
   flex-direction: row;
   align-items: baseline;
   font-size: 16px;
-  margin-top: 16px;
-}
-.gallery-cards .gallery-cards-content .gallery-cards-content-info .price p {
-  font-size: 18px;
+  margin-top: 8px;
 }
 .gallery-cards:hover {
   cursor: pointer !important;

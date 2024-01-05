@@ -8,18 +8,51 @@ function Popular() {
   return (
     <section className="popular">
       <div className="popularInner">
-        <div className="region-group">
-          <Stack spacing={2} direction="row">
-            <Button variant="outlined">Alle regioner</Button>
-            <Button variant="outlined">Region Hovedestaden</Button>
-            <Button variant="outlined">Region Sjælland</Button>
-            <Button variant="outlined">Region Nordjylland</Button>
-            <Button variant="outlined">Region Midtjylland</Button>
-            <Button variant="outlined">Region Syddanmark</Button>
-            <Button variant="outlined">Filtre</Button>
-          </Stack>
+        <div className="buttonFiltration">
+          <Button
+            variant="outlined"
+            sx={{ fontSize: "16px", textTransform: "initial" }}
+          >
+            Alle regioner
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ fontSize: "16px", textTransform: "initial" }}
+          >
+            Region Hovedestaden
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ fontSize: "16px", textTransform: "initial" }}
+          >
+            Region Sjælland
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ fontSize: "16px", textTransform: "initial" }}
+          >
+            Region Nordjylland
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ fontSize: "16px", textTransform: "initial" }}
+          >
+            Region Midtjylland
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ fontSize: "16px", textTransform: "initial" }}
+          >
+            Region Syddanmark
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ fontSize: "16px", textTransform: "initial" }}
+          >
+            Filtre
+          </Button>
         </div>
-        <span>
+        <div className="gallery">
           <BasicCard></BasicCard>
           <BasicCard></BasicCard>
           <BasicCard></BasicCard>
@@ -29,7 +62,7 @@ function Popular() {
           <BasicCard></BasicCard>
           <BasicCard></BasicCard>
           <BasicCard></BasicCard>
-        </span>
+        </div>
         <div className="pagination">
           <Stack spacing={2}>
             <Pagination count={10} size="large" color="primary" />

@@ -236,32 +236,6 @@
   border-radius: 10px;
 }
 
-.cookies {
-  padding: 200px 0px 125px 0px;
-  width: 1080px;
-  margin: 0 auto;
-  color: #425466;
-  font-size: 16px;
-}
-.cookies h1 {
-  color: #0b3558;
-  font-size: 64px;
-}
-.cookies h5 {
-  font-size: 24px;
-  margin: 0;
-}
-.cookies h6 {
-  font-size: 20px;
-  margin: 0;
-}
-.cookies p {
-  color: #425466;
-}
-.cookies a {
-  color: #006bff;
-}
-
 .ParkingSpot {
   padding: 185px 0 200px 0;
   margin: 0 auto;
@@ -392,32 +366,6 @@
 }
 #sign-up-container .MuiFormControlLabel-label {
   font-size: 14px;
-}
-
-.privacy {
-  padding: 200px 0px 125px 0px;
-  width: 1080px;
-  margin: 0 auto;
-  color: #425466;
-  font-size: 16px;
-}
-.privacy h1 {
-  color: #0b3558;
-  font-size: 64px;
-}
-.privacy h5 {
-  font-size: 24px;
-  margin: 0;
-}
-.privacy h6 {
-  font-size: 20px;
-  margin: 0;
-}
-.privacy p {
-  color: #425466;
-}
-.privacy a {
-  color: #006bff;
 }
 
 .kontakt {
@@ -1715,11 +1663,12 @@
 .popular .popularInner {
   width: var(--PageWidth);
 }
-.popular .popularInner .region-group .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
-  text-transform: initial !important;
-  font-size: 16px !important;
+.popular .popularInner .buttonFiltration {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
-.popular .popularInner span {
+.popular .popularInner .gallery {
   padding: 50px 0 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1764,7 +1713,7 @@
   padding: 16px 0;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
-  font-size: 18px;
+  font-size: 16px;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info span {
   display: flex;
@@ -1781,10 +1730,7 @@
   flex-direction: row;
   align-items: baseline;
   font-size: 16px;
-  margin-top: 16px;
-}
-.gallery-cards .gallery-cards-content .gallery-cards-content-info .price p {
-  font-size: 18px;
+  margin-top: 8px;
 }
 .gallery-cards:hover {
   cursor: pointer !important;
@@ -1861,35 +1807,23 @@
     width: -webkit-fill-available !important;
   }
 }
-.benefits {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 96px;
-  margin-bottom: 192px;
-}
-.benefits .inner {
+.legal {
   width: var(--PageWidth);
-}
-.benefits .inner .benefit {
+  margin: 185px auto;
   display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
-  direction: rtl;
-  text-align: left;
-  column-gap: 10%;
+  grid-template-columns: 1fr 3fr;
+  gap: 24px;
+  color: black;
 }
-.benefits .inner .benefit:nth-child(2) {
-  margin: 96px 0px;
+.legal h1 {
+  font-size: 32px;
 }
-.benefits .inner .benefit .text h2 {
-  font-size: 48px;
-  line-height: 125%;
+.legal .menu {
+  position: relative;
 }
-.benefits .inner .benefit .text p {
-  margin: 24px 0px 32px 0px;
-  font-size: 18px;
-  line-height: 175%;
+.legal .menu .menuList {
+  position: sticky;
+  top: 96px;
 }
 
 /*# sourceMappingURL=global.css.map */

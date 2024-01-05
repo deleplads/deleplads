@@ -34,20 +34,18 @@ function Footer() {
         <div className="FooterColumn">
           <h6>Overblik</h6>
           <a href="/find-parkering/kort">Find en parkeringsplads</a>
-          <a href="#">Blog</a>
-          <a href="/#">FAQ</a>
+          <a href="#">Sådan virker det</a>
+          <a href="/#">Spørgsmål og svar</a>
         </div>
         <div className="FooterColumn">
           <h6>Legal</h6>
-          <a href="/privatpolitik">Persondatapolitik</a>
+          <a href="/persondatapolitik">Persondatapolitik</a>
           <a href="/cookies">Cookiepolitik</a>
-          <a href="/handelsbetingelser">Handelsbetingelser</a>
-          <a href="#">Regler og vilkår</a>
+          <a href="/terms-and-conditions">Regler og vilkår</a>
         </div>
         <div className="FooterColumn">
           <h6>Resourcer</h6>
-          <a href="/kontakt">Kontakt os</a>
-          <a href="#">Vejledninger</a>
+          <a href="/contact">Kontakt os</a>
           <a href="#">Sitemap</a>
         </div>
       </div>

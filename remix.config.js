@@ -29,8 +29,7 @@ module.exports = {
       // Legal
 
       route("/cookies", "routes/legal/cookies.tsx");
-      route("/handelsbetingelser", "routes/legal/handelsbetingelser.tsx");
-      route("/privatpolitik", "routes/legal/privacy-policy.tsx");
+      route("/persondatapolitik", "routes/legal/privacypolicy.tsx");
       route("/regler-og-vilkår", "routes/legal/terms-and-conditions.tsx");
 
       // Locate
@@ -66,7 +65,7 @@ module.exports = {
       // Miscellaneous
 
       route("/kommunale-priser", "routes/kommunale-priser.tsx");
-      route("/kontakt", "routes/kontakt.tsx");
+      route("/contact", "routes/contact.tsx");
       route("/logout", "routes/logout.tsx");
       route("/parkeringsplads", "routes/parkeringsplads.tsx");
       route("/logind", "routes/sign-in.tsx");
