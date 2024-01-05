@@ -69,7 +69,7 @@ export default function Index() {
               <Button variant="outlined">Filtre</Button>
             </Stack>
           </div>
-          <span >
+          <div >
             {parkingSpots.length > 0 ? (
               parkingSpots.map((spot: ParkingSpot) => (
                 <BasicCard key={spot.id} spot={spot} />
@@ -77,7 +77,7 @@ export default function Index() {
             ) : (
               <p>Du har ingen udlejninger.</p>
             )}
-          </span>
+          </div>
           <div className="pagination">
             <Stack spacing={2}>
                 <Pagination
