@@ -3,8 +3,9 @@ import BasicCard from "./Parkingspots/Cards";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import type { ParkingSpot } from "utils/types.server";
 
-function Popular() {
+function Popular(spots: any[]) {
   return (
     <section className="popular">
       <div className="popularInner">
@@ -20,15 +21,13 @@ function Popular() {
           </Stack>
         </div>
         <span>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
-          <BasicCard></BasicCard>
+        {spots.length > 0 ? (
+          spots.map((spot: ParkingSpot) => (
+            <BasicCard key={spot.id} spot={spot}/>
+          ))
+          ) : (
+            <p>Du har ingen udlejninger.</p>
+          )}
         </span>
         <div className="pagination">
           <Stack spacing={2}>
