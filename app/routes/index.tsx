@@ -42,10 +42,10 @@ export default function Index() {
   const [initPage, setPage] = useState(page ? page : 1);
 
   const handlePageChange = (event, value) => {
-    setPage(value); 
+    setPage(value);
     fetcher.load(`/?page=${value}`);
     if (regionGroupRef.current) {
-      regionGroupRef.current.scrollIntoView({ behavior: 'smooth'});
+      regionGroupRef.current.scrollIntoView({ behavior: "smooth" });
 
       setTimeout(() => {
         window.scrollBy(0, -400); // Adjust -100 to the desired offset
@@ -58,7 +58,7 @@ export default function Index() {
       <Hero></Hero>
       <section ref={regionGroupRef} className="popular">
         <div className="popularInner">
-          <div className="region-group">W
+          <div className="region-group">
             <Stack spacing={2} direction="row">
               <Button variant="outlined">Alle regioner</Button>
               <Button variant="outlined">Region Hovedestaden</Button>
@@ -69,7 +69,7 @@ export default function Index() {
               <Button variant="outlined">Filtre</Button>
             </Stack>
           </div>
-          <div >
+          <div>
             {parkingSpots.length > 0 ? (
               parkingSpots.map((spot: ParkingSpot) => (
                 <BasicCard key={spot.id} spot={spot} />
@@ -80,15 +80,15 @@ export default function Index() {
           </div>
           <div className="pagination">
             <Stack spacing={2}>
-                <Pagination
-                    count={totalPages}
-                    page={initPage}
-                    onChange={handlePageChange}
-                    size="large"
-                    color="primary"
-                />
+              <Pagination
+                count={totalPages}
+                page={initPage}
+                onChange={handlePageChange}
+                size="large"
+                color="primary"
+              />
             </Stack>
-        </div>
+          </div>
         </div>
       </section>
       <CallToAction></CallToAction>
