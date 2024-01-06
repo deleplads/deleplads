@@ -63,7 +63,7 @@ export default function Index() {
               <Button variant="outlined">Filtre</Button>
             </Stack>
           </div>
-          <div>
+          <div className="grid-cols-3 grid gap-10">
             {parkingSpots.length > 0 ? (
               parkingSpots.map((spot: ParkingSpot) => (
                 <BasicCard key={spot.id} spot={spot} />
