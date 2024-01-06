@@ -14,10 +14,9 @@ export type RegisterForm = {
 
 export interface ParkingSpot {
   price: number | null;
-  street_nr: number;
   created_at: Date;
   updated_at: Date | null;
-  street: string;
+  street?: string;
   postal_code: number;
   city: string;
   notes: string;
