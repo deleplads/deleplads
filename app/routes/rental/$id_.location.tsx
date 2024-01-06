@@ -5,9 +5,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
-  useParams,
 } from "@remix-run/react";
-import Switch from "@mui/material/Switch";
 import {
   LoaderFunction,
   type LinksFunction,
@@ -57,7 +55,7 @@ export default function RentalLocation() {
     street_nr: "",
     city: "",
     postal_code: "",
-    show_street_nr: true
+    show_street_nr: false
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,7 +92,7 @@ export default function RentalLocation() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/tilgaengelighed`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/beskrivelse`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);

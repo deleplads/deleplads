@@ -5,18 +5,17 @@ import {
   useNavigation,
   useParams,
 } from "@remix-run/react";
-import React, { Suspense, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import type {
   LinksFunction,
   LoaderFunction,
   V2_MetaFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Calendar, DateObject } from "react-multi-date-picker";
-import { Button, ListItem, ListItemText } from "@mui/material";
-import { VariableSizeList } from "react-window";
+import { Button } from "@mui/material";
+
 import {
   ArrowDropDownIcon,
   ArrowLeftIcon,
@@ -49,12 +48,11 @@ const highlightedDateStyle = {
   backgroundColor: "purple", // Color for other highlighted dates
 };
 
-export default function RentalAvailability() {
+export default function RentalSpotAvailability() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/lokation`);
   const [date, setDate] = useState(new DateObject());
   const [highlightedDays, setHighlitedDays] = useState([]);
   const [dateHoursMap, setDateHoursMap] = useState<{ [key: string]: number[] }>(
@@ -82,11 +80,6 @@ export default function RentalAvailability() {
   };
 
   React.useEffect(() => {
-    if (useLoader) {
-      if (!useLoader.error) {
-        setBack(`/opret-udlejning/${useLoader.id}/lokation`);
-      }
-    }
 
     if (fetcher.data?.success) {
       console.log("test");
@@ -159,24 +152,7 @@ export default function RentalAvailability() {
     }
   };
 
-  return navigation.state === "loading" ? (
-    <>
-      <div className="top-[30vh] relative flex justify-center">
-        <span className="loader"> </span>
-      </div>
-      <Suspense>
-        {useLoader && !useLoader.error ? (
-          <RentalNavigation
-            back={back}
-            start={30}
-            onNext={handleNext}
-          ></RentalNavigation>
-        ) : (
-          <div className="min-h-max"></div>
-        )}
-      </Suspense>
-    </>
-  ) : (
+  return (
     <>
       <section className="rental-avaliability">
         <div className="inner">
@@ -294,17 +270,6 @@ export default function RentalAvailability() {
           </section>
         </div>
       </section>
-      <Suspense>
-        {useLoader && !useLoader.error ? (
-          <RentalNavigation
-            back={back}
-            start={30}
-            onNext={handleNext}
-          ></RentalNavigation>
-        ) : (
-          <div className="min-h-max"></div>
-        )}
-      </Suspense>
     </>
   );
 }

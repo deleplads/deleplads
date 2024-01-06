@@ -62,7 +62,7 @@ export default function RentalAttributes() {
   const navigate = useNavigate();
   const params = useParams();
   const [back, setBack] = useState(
-    `/opret-udlejning/${params.id}/tilgaengelighed`
+    `/opret-udlejning/${params.id}/beskrivelse`
   );
   const navigation = useNavigation();
 
@@ -85,7 +85,7 @@ export default function RentalAttributes() {
         useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots !=
           null
       ) {
-        setBack(`/opret-udlejning/${useLoader.id}/tilgaengelighed`);
+        setBack(`/opret-udlejning/${useLoader.id}/beskrivelse`);
         const spotDetails =
           useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots;
 
@@ -104,7 +104,7 @@ export default function RentalAttributes() {
     }
 
     if (fetcher.data?.success) {
-      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/noter`);
+      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/billeder`);
     }
   }, [fetcher.data, navigate, useLoader]);
 

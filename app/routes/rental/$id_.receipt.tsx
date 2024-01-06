@@ -75,7 +75,7 @@ export default function RentalReceipt() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/`);
+        navigate(`/konto/udlejninger`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
@@ -121,10 +121,8 @@ export default function RentalReceipt() {
                         <div className="border-t border-gray-200 py-4">
                         <h3 className="text-lg font-semibold">Detaljer</h3>
                         <p>Gade: {useLoader.street}</p>
-                        <p>Husnummer: {useLoader.street_nr}</p>
                         <p>By: {useLoader.city}</p>
                         <p>Postnummer: {useLoader.postal_code}</p>
-                        <p>Kundetype: {useLoader.customer_type}</p>
                         <p>Noter: {useLoader.notes}</p>
                         <p>
                           Vis husnummer:{" "}

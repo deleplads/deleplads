@@ -18,7 +18,8 @@ module.exports = {
         route("indstillinger", "routes/account/account.settings.tsx");
         route("verificeringer", "routes/account/account.verification.tsx");
       });
-
+      route("/opdater/:id/tilgaengelighed", "routes/account/rentalspot/rentalspot.$id.availability.tsx");
+      
       // Blog
 
       route("/blog", "routes/blog/blog.index.tsx");
@@ -41,11 +42,16 @@ module.exports = {
         route("kort", "routes/locate/locate.map.tsx");
       });
 
+
+      //Api
+      
+      route("/api/parkingspot/:id/image", "routes/api/parkingspot_$id_image.ts");
+
       // Rental
 
       route("/opret-udlejning", "routes/rental/rental.index.tsx");
       route("/opret-udlejning/:id/tilfoejelser", "routes/rental/$id_.attributes.tsx");
-      route("/opret-udlejning/:id/tilgaengelighed", "routes/rental/$id_.availability.tsx");
+      route("/opret-udlejning/:id/beskrivelse", "routes/rental/$id_.description.tsx");
       route("/opret-udlejning/:id/billeder", "routes/rental/$id_.images.tsx");
       route("/opret-udlejning/:id/lokation", "routes/rental/$id_.location.tsx");
       route("/opret-udlejning/:id/noter", "routes/rental/$id_.notes.tsx");
