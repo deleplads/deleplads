@@ -80,10 +80,6 @@ module.exports = {
   server: process.env.NODE_ENV === "development" ? undefined : "./server.ts",
   serverBuildPath: "api/index.js",
   serverDependenciesToBundle: [
-    "swiper",
-    "swiper/react",
-    "swiper/react/swiper-react.js",
-    "swiper/modules",
     "ssr-window",
     "ssr-window/ssr-window.esm.js",
     "dom7",
