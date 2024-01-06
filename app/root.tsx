@@ -19,6 +19,7 @@ import Footer from "./components/Footer";
 import supabaseServerClient from "utils/supabase.server";
 import { useEffect, useState } from "react";
 import { createBrowserClient } from "@supabase/ssr";
+import { createHead } from 'remix-island';
 
 export type SupabaseOutletContext = {
   profile: Profile;
@@ -30,6 +31,13 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: global },
   ];
 };
+
+export const Head = createHead(() => (
+    <>
+      <Meta />
+      <Links />
+    </>
+  ));
 
 export const loader: LoaderFunction = async ({ request }) => {
   Debug();
@@ -89,14 +97,8 @@ export default function App() {
   }
 
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
+    <>
+        <Head />
         <header>
           <Navbar supabaseClientBrowser={supabaseClientBrowser} session={session} profile={profile}></Navbar>
         </header>
@@ -107,7 +109,6 @@ export default function App() {
         <footer>
           <Footer></Footer>
         </footer>
-      </body>
-    </html>
+    </>
   );
 }

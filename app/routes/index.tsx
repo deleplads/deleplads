@@ -1,16 +1,14 @@
 import type { LoaderFunction, V2_MetaFunction } from "@remix-run/node";
 import CallToAction from "~/components/Parkingspots/CallToAction";
 import Hero from "~/components/Common/Hero";
-import swipercss from "node_modules/swiper/swiper-bundle.min.css";
 import { getParkingSpotsWhereStatus } from "utils/parkingspot/getAllSpots.server";
-import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
-import {
+import { useFetcher, useLoaderData } from "@remix-run/react";
+import type {
   ParkingSpot,
-  ParkingSpotWithDetailsAndPrice,
 } from "utils/types.server";
 import { Button, Pagination, Stack } from "@mui/material";
 import BasicCard from "~/components/Parkingspots/Cards";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -18,10 +16,6 @@ export const meta: V2_MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
-
-export function links() {
-  return [{ rel: "stylesheet", href: swipercss }];
-}
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
