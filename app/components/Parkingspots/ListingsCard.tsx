@@ -31,7 +31,7 @@ export default function ListingsCard({ spot, image }: ListingsCardProps) {
   }, [image]);
 
   const navigateToSpot = () => {
-    navigate(`/parkeringsplads/${spot.id}`);
+    navigate(`/opdater/${spot.id}/tilgaengelighed`);
   };
 
   const formattedPrice = spot.prices
@@ -144,7 +144,7 @@ export default function ListingsCard({ spot, image }: ListingsCardProps) {
                 background: "var(--BrandAccent)",
               }}
             >
-              Lej parkeringsplads →
+              Opdater tilgængelighed →
             </Button>
           </div>
         </CardContent>

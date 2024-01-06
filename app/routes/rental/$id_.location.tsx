@@ -92,7 +92,7 @@ export default function RentalLocation() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/tilgaengelighed`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/beskrivelse`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);

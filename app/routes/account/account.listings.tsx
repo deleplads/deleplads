@@ -26,17 +26,17 @@ export default function Listings() {
   const [images, setImages] = useState({});
 
   useEffect(() => {
-    async function fetchImages() {
-      const newImages = {};
-      for (const spot of spots) {
-        const response = await fetch(`/api/parkingspot/${spot.id}/image`);
-        const imageData = await response.json();
-        newImages[spot.id] = imageData.image; // Assuming the endpoint returns an object with an 'image' property
-      }
-      setImages(newImages);
-    }
+    // async function fetchImages() {
+    //   const newImages = {};
+    //   for (const spot of spots) {
+    //     const response = await fetch(`/api/parkingspot/${spot.id}/image`);
+    //     const imageData = await response.json();
+    //     newImages[spot.id] = imageData.image; // Assuming the endpoint returns an object with an 'image' property
+    //   }
+    //   setImages(newImages);
+    // }
 
-    fetchImages();
+    // fetchImages();
   }, [spots]);
 
   return (

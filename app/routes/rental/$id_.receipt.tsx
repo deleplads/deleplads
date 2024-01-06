@@ -75,7 +75,7 @@ export default function RentalReceipt() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/`);
+        navigate(`/konto/udlejninger`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);

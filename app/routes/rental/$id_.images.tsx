@@ -55,11 +55,12 @@ export default function RentalImages() {
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/noter`);
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/tilfoejelser`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+  const [error, setError] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -93,7 +94,7 @@ export default function RentalImages() {
           const url = URL.createObjectURL(blob);
           setProfileImageUrl(url);
         }
-        setBack(`/opret-udlejning/${useLoader.id}/noter`);
+        setBack(`/opret-udlejning/${useLoader.id}/tilfoejelser`);
       } else {
         toast.error(useLoader.error);
       }
@@ -103,16 +104,16 @@ export default function RentalImages() {
   useEffect(() => {
     if (fetcher.data) {
       if (!isSubmitting && fetcher.data.error) {
-        toast.error(fetcher.data.error);
+        setError(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/pris`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/noter`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
 
   return (
     <>
-      <Toaster position="top-right"></Toaster>
+    <Toaster position="top-right"/>
       <section className="rentalLocation">
         <div className="inner">
           <h1>Hvordan ser din parkeringsplads ud?</h1>
@@ -147,12 +148,13 @@ export default function RentalImages() {
                 id="image-input"
               />
             </Button>
+            {error ? <small className="text-red-600">{error}</small> : null}
           </Form>
         </div>
       </section>
       <RentalNavigation
         back={back}
-        start={75}
+        start={60}
         onNext={handleNext}
       ></RentalNavigation>
     </>

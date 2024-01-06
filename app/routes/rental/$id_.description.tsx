@@ -1,4 +1,3 @@
-import { TextField } from "@mui/material";
 import {
   Form,
   useFetcher,
@@ -7,27 +6,30 @@ import {
   useNavigation,
   useParams,
 } from "@remix-run/react";
+import React, { Suspense, useEffect, useState } from "react";
 import {
   json,
   type ActionFunction,
+  type LinksFunction,
   type LoaderFunction,
   type V2_MetaFunction,
-  LinksFunction,
 } from "@remix-run/node";
 import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
-import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
-import React, { Suspense, useEffect, useState } from "react";
-import { requireUserId } from "utils/auth.server";
-import { parkingspots } from "@prisma/client";
-import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
-import toast, { Toaster } from "react-hot-toast";
 import rental from "~/styles/rental.css";
+import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
+import {  TextField } from "@mui/material";
+import toast, { Toaster } from "react-hot-toast";
+import { requireUserId } from "utils/auth.server";
+import type { parkingspots } from "@prisma/client";
+import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
+
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
 };
+
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Deleplads.dk - Note til udlejning" },
+    { title: "Deleplads.dk - Hvornår er din parkeringsplads ledig?" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
@@ -36,13 +38,14 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return await fetchParkingSpotData(request, params);
 };
 
-export default function RentalNotes() {
+
+export default function RentalDescription() {
   const [selectedValue, setSelectedValue] = useState("");
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/billeder`);
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/lokation`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
@@ -58,7 +61,7 @@ export default function RentalNotes() {
     if (useLoader) {
       if (!useLoader.error) {
         setSelectedValue(useLoader.notes || "");
-        setBack(`/opret-udlejning/${useLoader.id}/billeder`);
+        setBack(`/opret-udlejning/${useLoader.id}/lokation`);
       } else {
         toast.error(useLoader.error);
       }
@@ -70,10 +73,11 @@ export default function RentalNotes() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/pris`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/tilfoejelser`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
+
 
   return navigation.state === "loading" ? (
     <>
@@ -84,8 +88,8 @@ export default function RentalNotes() {
         {useLoader && !useLoader.error ? (
           <RentalNavigation
             back={back}
+            start={30}
             onNext={handleNext}
-            start={75}
           ></RentalNavigation>
         ) : (
           <div className="min-h-max"></div>
@@ -94,12 +98,12 @@ export default function RentalNotes() {
     </>
   ) : (
     <>
-      <Toaster position="top-right"></Toaster>
+        <Toaster position="top-right"></Toaster>
       <section className="rentalLocation">
         <div className="inner">
-          <h1>Hvad skal folk være opmærksomme på?</h1>
+          <h1>Beskrivelse af parkeringspladsen</h1>
           <p>
-            Er din parkeringsplads svær at finde? Skriv en note til lejerne.
+            Er din parkeringsplads med opbvarmning? Skriv en beskrivelse til lejerne.
           </p>
           <Form>
             <TextField
@@ -117,8 +121,8 @@ export default function RentalNotes() {
         {useLoader && !useLoader.error ? (
           <RentalNavigation
             back={back}
+            start={30}
             onNext={handleNext}
-            start={75}
           ></RentalNavigation>
         ) : (
           <div className="min-h-max"></div>
@@ -128,21 +132,20 @@ export default function RentalNotes() {
   );
 }
 
-
 export const action: ActionFunction = async ({ request, params }) => {
   await requireUserId(request);
   const formData = await request.formData();
   const selectedValue = formData.get("selectedValue");
-  let note: string | null = null;
+  let description_public: string | null = null;
 
   // Check if selectedValue is a string and then call getCustomerType
   if (typeof selectedValue === "string" && selectedValue) {
-    note = selectedValue;
+    description_public = selectedValue;
   } 
   const parkingspotId = params.id;
 
   const parkingspot: Partial<parkingspots> = {
-    notes: note,
+    description_public: description_public,
     id: parkingspotId,
   };
 

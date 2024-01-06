@@ -89,6 +89,7 @@ model parkingspots {
   id                                                            String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   availability_type                                             AvaliabilityType?
   customer_type                                                 CustomerType?
+  description_public                                            String?
   parkingspot_details_parkingspot_details_spot_idToparkingspots parkingspot_details? @relation("parkingspot_details_spot_idToparkingspots")
   user                                                          users?               @relation(fields: [owner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   prices                                                        price?

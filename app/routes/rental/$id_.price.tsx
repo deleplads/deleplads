@@ -73,7 +73,7 @@ export default function RentalPrices() {
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/billeder`);
+  const [back, setBack] = useState(`/opret-udlejning/${params.id}/noter`);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
@@ -93,7 +93,7 @@ export default function RentalPrices() {
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/opret-udlejning/${useLoader.parkingspot.id}/billeder`);
+        setBack(`/opret-udlejning/${useLoader.parkingspot.id}/noter`);
         setPrices({
           user_price: useLoader.parkingspot.prices?.user_price || "",
         });
