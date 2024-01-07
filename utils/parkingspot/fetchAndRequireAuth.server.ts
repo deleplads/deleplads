@@ -2,7 +2,7 @@
 
 import { json, redirect } from "@remix-run/node";
 import { requireUserId } from "utils/auth.server";
-import { getParkingSpotById } from "utils/parkingspot/getSport.server";
+import { getParkingSpotByOwnerAndSpotId } from "utils/parkingspot/getSport.server";
 
 async function fetchParkingSpotData(request: Request, params: any) {
   const userId = await requireUserId(request);
@@ -11,7 +11,7 @@ async function fetchParkingSpotData(request: Request, params: any) {
   try {
     if (typeof spotId === "string" && spotId) {
       
-      const parkingspots = await getParkingSpotById(spotId, userId);
+      const parkingspots = await getParkingSpotByOwnerAndSpotId(spotId, userId);
       
       return parkingspots;
     } else {

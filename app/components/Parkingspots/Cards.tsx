@@ -11,7 +11,7 @@ export default function BasicCard(spot: ParkingSpot) {
   return (
     <div
       onClick={() => {
-        navigate("parkeringsplads");
+        navigate(`/parkeringsplads/${parkingspot.id}`);
       }}
     >
       <Card className="gallery-cards">
