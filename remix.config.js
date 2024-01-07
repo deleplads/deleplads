@@ -31,14 +31,13 @@ module.exports = {
 
       route("/cookies", "routes/legal/cookies.tsx");
       route("/persondatapolitik", "routes/legal/privacypolicy.tsx");
-      route("/regler-og-vilkår", "routes/legal/terms-and-conditions.tsx");
+      route("/regler-og-vilkaar", "routes/legal/terms-and-conditions.tsx");
 
       // Locate
 
-      route("/find-parkering", "routes/locate/locate.parent.tsx", () => {
-        route("galleri", "routes/locate/locate.gallery.tsx", { index: true });
-        route("liste", "routes/locate/locate.list.tsx");
-        route("kort", "routes/locate/locate.map.tsx");
+      route("/find-parkering", "routes/results/results.parent.tsx", () => {
+        route("galleri", "routes/results/results.gallery.tsx", { index: true });
+        route("kort", "routes/results/results.map.tsx");
       });
 
         

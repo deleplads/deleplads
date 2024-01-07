@@ -522,6 +522,7 @@
   height: 100vh;
   padding: 170px 0 0 0;
   width: var(--PageWidth);
+  position: relative;
 }
 .locate .avaliable-bookings {
   display: flex;
@@ -530,47 +531,115 @@
   overflow-y: scroll;
   padding: 25px 0;
 }
-.locate .avaliable-bookings .booking {
+.locate .avaliable-bookings .results {
   width: 95%;
   background: white;
   color: black;
-  padding: 25px;
+  padding: 24px;
   display: grid;
   grid-template-columns: 1fr;
   justify-content: space-between;
   border: 1px solid var(--BrandTertiary);
-  border-radius: 4px;
-}
-.locate .avaliable-bookings .booking .map-cards-attributes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.locate .avaliable-bookings .booking .map-cards-attributes .map-cards-attribute {
-  display: flex;
+  border-radius: 8px;
+  gap: 8px;
 }
 .locate iframe {
   margin: 0;
   padding: 0;
   width: 100%;
 }
+.locate .showOnMap {
+  display: none;
+}
 
+@media only screen and (max-width: 600px) {
+  .locate {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    position: relative !important;
+  }
+  .locate .avaliable-bookings {
+    display: none;
+  }
+  .locate iframe {
+    margin-top: -10px;
+  }
+  .locate .showOnMap {
+    display: inline-flex !important;
+    font-size: 16px;
+    text-transform: initial;
+    color: white;
+    background: #1b2530 !important;
+    position: fixed !important;
+    padding: 12px 16px;
+    bottom: 24px;
+    z-index: 99;
+    position: sticky;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+  }
+  .locate .showOnMap .css-1d6wzja-MuiButton-startIcon > *:nth-of-type(1) {
+    color: white !important;
+  }
+}
 .mapGallery {
-  background: red;
   padding: 165px 0 0 0;
+  position: relative;
 }
 .mapGallery .inner {
   width: var(--PageWidth);
   margin: 48px auto 48px auto;
-  background: green;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   column-gap: 24px;
   row-gap: 24px;
 }
-.mapGallery .inner .listing {
-  border: 1px solid #e5e5e5;
+.mapGallery .inner .gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+.mapGallery .showOnMap {
+  display: none;
 }
 
+@media only screen and (max-width: 600px) {
+  .mapGallery {
+    padding: 165px 0 0 0;
+  }
+  .mapGallery .inner {
+    width: 90%;
+    margin: 48px auto 48px auto;
+    column-gap: 24px;
+    row-gap: 24px;
+  }
+  .mapGallery .inner .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .mapGallery iframe {
+    width: 100% !important;
+  }
+  .mapGallery .showOnMap {
+    display: inline-block;
+    font-size: 16px;
+    text-transform: initial;
+    color: white;
+    background: #1b2530 !important;
+    position: fixed;
+    padding: 12px 16px;
+    bottom: 24px;
+    z-index: 99;
+    position: sticky;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+  }
+  .mapGallery .showOnMap .css-1d6wzja-MuiButton-startIcon > *:nth-of-type(1) {
+    color: white !important;
+  }
+}
 .rentalIntroduction {
   height: 50vh;
   display: flex;
@@ -1681,30 +1750,80 @@
   margin: 48px 0 0 0;
 }
 
-.filtration {
+.resultsFiltration {
   margin: 80px 0 0 0;
   width: 100%;
   height: 85px;
   position: fixed;
-  display: flex;
-  border-top: 1px solid var(--BrandTertiary);
   border-bottom: 1px solid var(--BrandTertiary);
   background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 90;
 }
-.filtration .inner {
+.resultsFiltration .inner {
   width: var(--PageWidth);
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 16px;
 }
-.filtration .inner .search {
-  display: flex;
-  gap: 16px;
-  width: max-content;
-  flex: 1;
+.resultsFiltration .inner .MuiFormLabel-root {
+  font-family: "Urbanist", sans-serif;
+}
+.resultsFiltration .inner .MuiFormControl-root:nth-child(1) {
+  width: 30% !important;
+}
+.resultsFiltration .inner .MuiButtonBase-root {
+  height: auto;
+  color: black;
+  text-transform: initial;
+  font-size: 16px;
+  font-family: "Urbanist", sans-serif;
+}
+.resultsFiltration .mobileResultsFiltration {
+  display: none;
 }
 
+@media only screen and (max-width: 600px) {
+  .resultsFiltration {
+    margin: 75px 0 0 0;
+    position: absolute;
+    z-index: 99;
+  }
+  .resultsFiltration .inner {
+    display: none;
+  }
+  .mobileResultsFiltration {
+    display: block !important;
+    width: 90%;
+    margin: 0 auto;
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+  }
+  .mobileResultsFiltration .MuiButtonBase-root {
+    text-transform: initial;
+    color: black;
+    font-size: 16px;
+    font-family: "Urbanist", sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+  }
+  .mobileResultsAppDrawer {
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .mobileResultsAppDrawer .MuiButtonBase-root {
+    padding: 12px 16px;
+    text-transform: initial;
+  }
+}
 .gallery-cards .gallery-cards-content {
   padding: 0;
   text-align: left;
@@ -1714,16 +1833,14 @@
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
   font-size: 16px;
+  text-transform: capitalize;
+  margin-bottom: 8px;
 }
-.gallery-cards .gallery-cards-content .gallery-cards-content-info span {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  gap: 8px;
-}
-.gallery-cards .gallery-cards-content .gallery-cards-content-info span p {
+.gallery-cards .gallery-cards-content .gallery-cards-content-info p {
   color: black !important;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .city {
+  text-transform: capitalize !important;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info .price {
   display: flex;

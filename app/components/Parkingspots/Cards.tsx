@@ -6,7 +6,7 @@ import type { ParkingSpot } from "utils/types.server";
 
 export default function BasicCard(spot: ParkingSpot) {
   const navigate = useNavigate();
-  const parkingspot = spot.spot
+  const parkingspot = spot.spot;
   const adress = extractStreetName(parkingspot?.street);
   return (
     <div
@@ -27,12 +27,20 @@ export default function BasicCard(spot: ParkingSpot) {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
           <div className="gallery-cards-content-info">
-            <span>
-            <h3>{adress}</h3>
-            <p>{parkingspot.postal_code}, {parkingspot.city}</p>
-            </span>
+              <h3>{adress}</h3>
+              <div className="city">
+                <p>
+                  {parkingspot.postal_code},&nbsp;{parkingspot.city}
+                </p>
+              </div>
             <div className="price">
-              <p>fra {parkingspot.prices?.user_price ?parkingspot.prices?.user_price : parkingspot.prices?.recommended_price} DKK / time</p>
+              <p>
+                fra{" "}
+                {parkingspot.prices?.user_price
+                  ? parkingspot.prices?.user_price
+                  : parkingspot.prices?.recommended_price}{" "}
+                DKK / time
+              </p>
             </div>
           </div>
         </CardContent>

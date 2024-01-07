@@ -9,9 +9,9 @@ import React, { useEffect } from "react";
 function LegalMenu() {
   const location = useLocation();
   const tabMapping = {
-    "/privatlivspolitik": 0,
+    "/persondatapolitik": 0,
     "/cookies": 1,
-    "/regler-og-vilkår": 2,
+    "/regler-og-vilkaar": 2,
   };
 
   const [selectedIndex, setSelectedIndex] = React.useState();
@@ -20,7 +20,8 @@ function LegalMenu() {
 
   const updateSelectedIndexFromURL = () => {
     const path = location.pathname;
-
+    console.log(path);
+    
     const index = tabMapping[path] ?? null;
     setSelectedIndex(index);
   };
@@ -51,9 +52,9 @@ function LegalMenu() {
         <ListItem disablePadding>
           <ListItemButton
             selected={selectedIndex === 2}
-            onClick={() => navigate("/regler-og-vilkår")}
+            onClick={() => navigate("/regler-og-vilkaar")}
           >
-            <ListItemText primary="Vilkår og betingelser" />
+            <ListItemText primary="Regler og vilkår" />
           </ListItemButton>
         </ListItem>
       </List>

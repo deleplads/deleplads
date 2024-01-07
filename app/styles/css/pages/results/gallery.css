@@ -1,0 +1,58 @@
+.mapGallery {
+  padding: 165px 0 0 0;
+  position: relative;
+}
+.mapGallery .inner {
+  width: var(--PageWidth);
+  margin: 48px auto 48px auto;
+  column-gap: 24px;
+  row-gap: 24px;
+}
+.mapGallery .inner .gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+.mapGallery .showOnMap {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .mapGallery {
+    padding: 165px 0 0 0;
+  }
+  .mapGallery .inner {
+    width: 90%;
+    margin: 48px auto 48px auto;
+    column-gap: 24px;
+    row-gap: 24px;
+  }
+  .mapGallery .inner .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .mapGallery iframe {
+    width: 100% !important;
+  }
+  .mapGallery .showOnMap {
+    display: inline-block;
+    font-size: 16px;
+    text-transform: initial;
+    color: white;
+    background: #1b2530 !important;
+    position: fixed;
+    padding: 12px 16px;
+    bottom: 24px;
+    z-index: 99;
+    position: sticky;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+  }
+  .mapGallery .showOnMap .css-1d6wzja-MuiButton-startIcon > *:nth-of-type(1) {
+    color: white !important;
+  }
+}
+
+/*# sourceMappingURL=gallery.css.map */

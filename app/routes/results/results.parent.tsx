@@ -1,5 +1,4 @@
-import type { V2_MetaFunction, LinksFunction } from "@remix-run/node";
-import Footer from "~/components/Footer";
+import type { V2_MetaFunction } from "@remix-run/node";
 import Filtration from "~/components/Parkingspots/filtration";
 import { Outlet } from "@remix-run/react";
 
@@ -15,7 +14,6 @@ export default function Locate() {
     <main>
       <Filtration></Filtration>
       <Outlet></Outlet>
-      <Footer></Footer>
     </main>
   );
 }

@@ -178,7 +178,7 @@ function EditProfile(props: ProfileProps) {
 
       submit(formDataToSend, {
         method: "post",
-        action: "/konto/profil",
+        action: "/konto/rediger",
         encType: "multipart/form-data",
       });
     } else {
