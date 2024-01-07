@@ -91,6 +91,7 @@ export default function RentalImages() {
         if (useLoader.image && useLoader.image.data) {
           const arrayBuffer = new Uint8Array(useLoader.image.data).buffer;
           const blob = new Blob([arrayBuffer], { type: "image/*" });
+          setSelectedFile(blob);
           const url = URL.createObjectURL(blob);
           setProfileImageUrl(url);
         }

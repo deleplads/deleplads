@@ -79,12 +79,7 @@ export default function RentalPrices() {
 
   const handleNext = () => {
     if (!isFormEnabled) {
-      fetcher.submit(
-        {
-          user_price: "24",
-        },
-        { method: "post" }
-      );
+      navigate(`/opret-udlejning/${params.id}/kvittering`);
     } else {
       fetcher.submit(prices, { method: "post" });
     }
@@ -165,7 +160,7 @@ export default function RentalPrices() {
                   variant="outlined"
                   name="user_price"
                   onChange={handleChange}
-                  value={prices.morning_price}
+                  value={prices.user_price}
                   disabled={!isFormEnabled}
                 />
               </div>
