@@ -2,7 +2,7 @@
 
 module.exports = {
   ignoredRouteFiles: ["**/.*"],
-  routes: async (defineRoutes) => {
+  routes: async defineRoutes => {
     return defineRoutes((route) => {
       route("/", "routes/index.tsx", { index: true });
 
@@ -18,6 +18,7 @@ module.exports = {
         route("indstillinger", "routes/account/account.settings.tsx");
         route("verificeringer", "routes/account/account.verification.tsx");
       });
+      route("/opdater/:id/tilgaengelighed", "routes/account/rentalspot/rentalspot.$id.availability.tsx");
 
       // Blog
 
@@ -40,23 +41,23 @@ module.exports = {
         route("kort", "routes/locate/locate.map.tsx");
       });
 
+        
+      //Api
+      
+      route("/api/parkingspot/:id/image", "routes/api/parkingspot_$id_image.ts");
+
+
       // Rental
 
       route("/opret-udlejning", "routes/rental/rental.index.tsx");
-      route(
-        "/opret-udlejning/:id/attributes",
-        "routes/rental/$id_.attributes.tsx"
-      );
-      route(
-        "/opret-udlejning/:id/availability",
-        "routes/rental/$id_.availability.tsx"
-      );
-      route("/opret-udlejning/:id/images", "routes/rental/$id_.images.tsx");
-      route("/opret-udlejning/:id/location", "routes/rental/$id_.location.tsx");
-      route("/opret-udlejning/:id/notes", "routes/rental/$id_.notes.tsx");
-      route("/opret-udlejning/:id/price", "routes/rental/$id_.price.tsx");
-      route("/opret-udlejning/:id/receipt", "routes/rental/$id_.receipt.tsx");
-      route("/opret-udlejning/:id/type", "routes/rental/$id_.type.tsx");
+      route("/opret-udlejning/:id/tilfoejelser", "routes/rental/$id_.attributes.tsx");
+      route("/opret-udlejning/:id/beskrivelse", "routes/rental/$id_.description.tsx");
+      route("/opret-udlejning/:id/billeder", "routes/rental/$id_.images.tsx");
+      route("/opret-udlejning/:id/lokation", "routes/rental/$id_.location.tsx");
+      route("/opret-udlejning/:id/noter", "routes/rental/$id_.notes.tsx");
+      route("/opret-udlejning/:id/pris", "routes/rental/$id_.price.tsx");
+      route("/opret-udlejning/:id/kvittering", "routes/rental/$id_.receipt.tsx");
+
 
       // User stories
 
@@ -80,10 +81,6 @@ module.exports = {
   server: process.env.NODE_ENV === "development" ? undefined : "./server.ts",
   serverBuildPath: "api/index.js",
   serverDependenciesToBundle: [
-    "swiper",
-    "swiper/react",
-    "swiper/react/swiper-react.js",
-    "swiper/modules",
     "ssr-window",
     "ssr-window/ssr-window.esm.js",
     "dom7",

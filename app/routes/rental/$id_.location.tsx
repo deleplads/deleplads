@@ -5,9 +5,7 @@ import {
   useLoaderData,
   useNavigate,
   useNavigation,
-  useParams,
 } from "@remix-run/react";
-import Switch from "@mui/material/Switch";
 import {
   LoaderFunction,
   type LinksFunction,
@@ -38,46 +36,6 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export const action: ActionFunction = async ({ request, params }) => {
-  const formData = await request.formData();
-
-  const formValues = {
-    street: formData.get("street")?.toString() || null,
-    street_nr: formData.get("street_nr")
-      ? Number(formData.get("street_nr"))
-      : null,
-    city: formData.get("city")?.toString() || null,
-    postal_code: formData.get("postal_code")
-      ? Number(formData.get("postal_code"))
-      : null,
-    show_street_nr: convertToBoolean(formData.get("show_street_nr")),
-  };
-
-  if (!formValues.street || !formValues.city || formValues.street_nr === null) {
-    return { error: "Street, city, and street number are required." };
-  }
-
-  if (
-    formValues.postal_code === null ||
-    formValues.postal_code.toString().length < 4
-  ) {
-    return { error: "Postal code must be at least 4 digits." };
-  }
-  const parkingspotId = params.id;
-
-  const parkingspot: Partial<parkingspots> = {
-    city: formValues.city,
-    street: formValues.street,
-    street_nr: formValues.street_nr,
-    postal_code: formValues.postal_code,
-    show_street_nr: formValues.show_street_nr,
-    id: parkingspotId,
-  };
-
-  const newParkingspot = await createOrUpdate(parkingspot);
-
-  return { success: true, parkingspotId: newParkingspot.id }; // or other appropriate response
-};
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   return await fetchParkingSpotData(request, params);
@@ -85,8 +43,6 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 export default function RentalLocation() {
   const useLoader = useLoaderData();
-  const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/type`);
   const fetcher = useFetcher();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
@@ -117,8 +73,6 @@ export default function RentalLocation() {
   useEffect(() => {
     if (useLoader) {
       if (!useLoader.error) {
-        setBack(`/opret-udlejning/${useLoader.id}/type`);
-
         setFormData({
           street: useLoader.street || "",
           street_nr: useLoader.street_nr ? useLoader.street_nr.toString() : "",
@@ -138,7 +92,7 @@ export default function RentalLocation() {
       if (!isSubmitting && fetcher.data.error) {
         toast.error(fetcher.data.error);
       } else if (!isSubmitting && fetcher.data.success) {
-        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/availability`);
+        navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/beskrivelse`);
       }
     }
   }, [fetcher.data, isSubmitting, navigate]);
@@ -148,7 +102,6 @@ export default function RentalLocation() {
       formData.street,
       formData.postal_code,
       formData.city,
-      formData.street_nr
     );
     const postalCodevaldiation = validatePostalCode(formData.postal_code);
     setPostalCodeError(postalCodevaldiation);
@@ -158,7 +111,24 @@ export default function RentalLocation() {
       fetcher.submit(formData, { method: "post" });
     }
   };
-  return (
+  return navigation.state === "loading" ? (
+    <>
+      <div className="top-[30vh] relative flex justify-center">
+        <span className="loader"> </span>
+      </div>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={"/opret-udlejning"}
+            onNext={handleNext}
+            start={15}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
+    </>
+  ) : (
     <>
       <Toaster position="top-right" />
       <section className="rentalLocation">
@@ -174,15 +144,6 @@ export default function RentalLocation() {
               onChange={handleChange}
               error={!!addressError}
               helperText={addressError}
-              variant="outlined"
-              className="rental-input"
-            />
-            <TextField
-              id="outlined-basic"
-              label="Husnummer"
-              name="street_nr"
-              value={formData.street_nr}
-              onChange={handleChange}
               variant="outlined"
               className="rental-input"
             />
@@ -217,21 +178,14 @@ export default function RentalLocation() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </Form>
-          <div className="specific-location">
-            <span>
-              <h3>Vis din specifikke adresse</h3>
-              <p>Vælg om dit husnummer skal være synligt eller ej.</p>
-            </span>
-            <Switch  inputProps={{ "aria-label": "Switch demo" }} value={formData.show_street_nr} name="show_street_nr" checked={formData.show_street_nr} onChange={handleChange}/>
-          </div>
         </div>
       </section>
       <Suspense>
         {useLoader && !useLoader.error ? (
           <RentalNavigation
-            back={back ? back : "/opret-udlejning"}
+            back={"/opret-udlejning"}
             onNext={handleNext}
-            start={25}
+            start={15}
           ></RentalNavigation>
         ) : (
           <div className="min-h-max"></div>
@@ -240,3 +194,42 @@ export default function RentalLocation() {
     </>
   );
 }
+
+
+
+export const action: ActionFunction = async ({ request, params }) => {
+  const formData = await request.formData();
+
+  const formValues = {
+    street: formData.get("street")?.toString() || null,
+    city: formData.get("city")?.toString() || null,
+    postal_code: formData.get("postal_code")
+      ? Number(formData.get("postal_code"))
+      : null,
+    show_street_nr: convertToBoolean(formData.get("show_street_nr")),
+  };
+
+  if (!formValues.street || !formValues.city) {
+    return { error: "Street, city, and street number are required." };
+  }
+
+  if (
+    formValues.postal_code === null ||
+    formValues.postal_code.toString().length < 4
+  ) {
+    return { error: "Postal code must be at least 4 digits." };
+  }
+  const parkingspotId = params.id;
+
+  const parkingspot: Partial<parkingspots> = {
+    city: formValues.city,
+    street: formValues.street,
+    postal_code: formValues.postal_code,
+    show_street_nr: formValues.show_street_nr,
+    id: parkingspotId,
+  };
+
+  const newParkingspot = await createOrUpdate(parkingspot);
+
+  return { success: true, parkingspotId: newParkingspot.id }; // or other appropriate response
+};

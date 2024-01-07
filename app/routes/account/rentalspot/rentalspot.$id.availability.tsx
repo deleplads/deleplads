@@ -1,16 +1,21 @@
-import { useFetcher, useLoaderData, useNavigate, useParams } from "@remix-run/react";
-import React, { Suspense, useRef, useState } from "react";
+import {
+  useFetcher,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+  useParams,
+} from "@remix-run/react";
+import React, { useRef, useState } from "react";
 import type {
   LinksFunction,
   LoaderFunction,
   V2_MetaFunction,
 } from "@remix-run/node";
-import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
 import { Calendar, DateObject } from "react-multi-date-picker";
-import { Button, ListItem, ListItemText } from "@mui/material";
-import { VariableSizeList } from "react-window";
+import { Button } from "@mui/material";
+
 import {
   ArrowDropDownIcon,
   ArrowLeftIcon,
@@ -33,29 +38,29 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return await fetchParkingSpotData(request, params);
 };
 
-
 const currentSelectedDateStyle = {
-  color: 'white',
-  backgroundColor: 'blue', // Color for the current selected date
+  color: "white",
+  backgroundColor: "blue", // Color for the current selected date
 };
 
 const highlightedDateStyle = {
-  color: 'white',
-  backgroundColor: 'purple', // Color for other highlighted dates
+  color: "white",
+  backgroundColor: "purple", // Color for other highlighted dates
 };
 
-
-export default function RentalAvailability() {
+export default function RentalSpotAvailability() {
   const fetcher = useFetcher();
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/attributes`);
   const [date, setDate] = useState(new DateObject());
   const [highlightedDays, setHighlitedDays] = useState([]);
-  const [dateHoursMap, setDateHoursMap] = useState<{ [key: string]: number[] }>({});
+  const [dateHoursMap, setDateHoursMap] = useState<{ [key: string]: number[] }>(
+    {}
+  );
   const [currentSelectedDate, setCurrentSelectedDate] = useState(null);
   const calendarRef = useRef();
+  const navigation = useNavigation();
 
   const updateCalender = (key, value) => {
     let date = calendarRef.current.date;
@@ -68,40 +73,37 @@ export default function RentalAvailability() {
   const handleNext = () => {
     if (useLoader) {
       if (!useLoader.error) {
-        navigate(`/opret-udlejning/${useLoader.id}/attributes`);
+        navigate(`/opret-udlejning/${useLoader.id}/tilfoejelser`);
       }
     }
     // fetcher.submit({  }, { method: "post" });
   };
 
   React.useEffect(() => {
-    if (useLoader) {
-      if (!useLoader.error) {
-        setBack(`/opret-udlejning/${useLoader.id}/location`);
-      }
-    }
 
     if (fetcher.data?.success) {
       console.log("test");
     }
   }, [fetcher.data, navigate, useLoader]);
 
-
   const handleChange = (selectedDates: DateObject[] | null) => {
-
     if (selectedDates) {
-      const newDates = selectedDates.map(date => date.format("DD/MM/YYYY HH:mm"));
+      const newDates = selectedDates.map((date) =>
+        date.format("DD/MM/YYYY HH:mm")
+      );
 
       setHighlitedDays((prevDates) => {
         if (newDates.length < prevDates.length) {
           // Find the date that was removed
-          const removedDate = prevDates.find(date => !newDates.includes(date));
+          const removedDate = prevDates.find(
+            (date) => !newDates.includes(date)
+          );
           if (removedDate) {
             setCurrentSelectedDate(removedDate);
           }
         } else if (newDates.length > prevDates.length) {
           // Find the date that was newly added
-          const addedDate = newDates.find(date => !prevDates.includes(date));
+          const addedDate = newDates.find((date) => !prevDates.includes(date));
           if (addedDate) {
             setCurrentSelectedDate(addedDate);
           }
@@ -117,35 +119,38 @@ export default function RentalAvailability() {
     }
   };
 
-
   const updateDateHours = (date: string, hours: number[]) => {
-    setDateHoursMap(prevMap => ({
+    setDateHoursMap((prevMap) => ({
       ...prevMap,
-      [date]: hours
+      [date]: hours,
     }));
   };
 
   const handleRemoveDate = () => {
     if (currentSelectedDate) {
       // Remove the selected date from highlightedDays
-      setHighlitedDays(prevDates => prevDates.filter(d => d !== currentSelectedDate));
-  
+      setHighlitedDays((prevDates) =>
+        prevDates.filter((d) => d !== currentSelectedDate)
+      );
+
       // Remove the corresponding hours entry from dateHoursMap
-      setDateHoursMap(prevMap => {
+      setDateHoursMap((prevMap) => {
         const newMap = { ...prevMap };
         delete newMap[currentSelectedDate];
         return newMap;
       });
-  
+
       // Update currentSelectedDate to the next date or null
       const index = highlightedDays.indexOf(currentSelectedDate);
-      const nextDate = index >= 0 && index < highlightedDays.length - 1 
-          ? highlightedDays[index + 1] 
-          : (highlightedDays.length > 1 ? highlightedDays[0] : null);
+      const nextDate =
+        index >= 0 && index < highlightedDays.length - 1
+          ? highlightedDays[index + 1]
+          : highlightedDays.length > 1
+          ? highlightedDays[0]
+          : null;
       setCurrentSelectedDate(nextDate);
     }
   };
-  
 
   return (
     <>
@@ -202,7 +207,9 @@ export default function RentalAvailability() {
               <div className="calenderPicker text-black flex flex-col justify-center items-center">
                 <div className="pt-4 flex justify-between w-[85%] ">
                   <div className="flex">
-                    <span className="font-semibold">{date.month.name + " " + date.year}</span>
+                    <span className="font-semibold">
+                      {date.month.name + " " + date.year}
+                    </span>
                     <div className="flex flex-col bottom-3 relative">
                       <ArrowDropDownIcon
                         sx={{
@@ -263,17 +270,6 @@ export default function RentalAvailability() {
           </section>
         </div>
       </section>
-      <Suspense>
-        {useLoader && !useLoader.error ? (
-          <RentalNavigation
-            back={back}
-            start={37}
-            onNext={handleNext}
-          ></RentalNavigation>
-        ) : (
-          <div className="min-h-max"></div>
-        )}
-      </Suspense>
     </>
   );
 }

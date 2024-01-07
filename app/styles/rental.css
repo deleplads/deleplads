@@ -18,3 +18,68 @@ footer {
 .rmdp-border{
     border: none !important;
 }
+
+.loader1 {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+  }
+  .loader1::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid black;
+    animation: prixClipFix 2s linear infinite ;
+  }
+
+  @keyframes rotate {
+    100%   {transform: rotate(360deg)}
+  }
+
+  @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  }
+
+  .loader {
+    min-width: 715px;
+    height: 1015px;
+    display: block;
+    margin: auto;
+    position: relative;
+    background: #FFF;
+    box-sizing: border-box;
+  }
+  .loader::after {
+    content: '';
+    width: calc(100% - 30px);
+    height: calc(100% - 15px);
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+     linear-gradient(#DDD 200px, transparent 0),
+     linear-gradient(#DDD 50px, transparent 0),
+     linear-gradient(#DDD 50px, transparent 0),
+     linear-gradient(#DDD 20px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 75px 250px, 100% 100px, 100% 30px, 100% 30px, 100% 16px;
+    background-position: -185px 0, center 0, center 125px, center 176px, center 226px;
+    box-sizing: border-box;
+    animation: animloader 2s linear infinite;
+  }
+  
+  @keyframes animloader {
+    to {
+      background-position: 715px 0, center 0, center 125px, center 176px, center 226px;
+    }
+  }
+  
+  

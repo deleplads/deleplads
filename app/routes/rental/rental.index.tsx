@@ -8,7 +8,12 @@ import React, { useState } from "react";
 
 import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import { json } from "@remix-run/node";
-import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
+import {
+  useFetcher,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "@remix-run/react";
 import { createOrUpdate } from "utils/parkingspot/createOrUpdate.server";
 import { ParkingStatus, type parkingspots } from "@prisma/client";
 import { getUserId, requireUserId } from "utils/auth.server";
@@ -20,6 +25,13 @@ import rental from "~/styles/rental.css";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: rental }];
+};
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Deleplads.dk - Opret udlejning" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -36,61 +48,20 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 };
 
-export const action: ActionFunction = async ({ request }) => {
-  await requireUserId(request);
-  const formData = await request.formData();
-  const action = formData.get("action");
-
-  if (action === "next") {
-    const userId = await getUserId(request);
-    let ownerId: string | undefined;
-
-    if (userId) {
-      ownerId = userId;
-    }
-
-    const parkingspot: Partial<parkingspots> = {
-      owner_id: ownerId,
-    };
-
-    const newParkingspot = await createOrUpdate(parkingspot);
-
-    return json({
-      success: true,
-      type: "next",
-      parkingspotId: newParkingspot.id,
-    });
-  } else if (action === "selected") {
-    const selectedSpotId = formData.get("selected");
-    if (typeof selectedSpotId === "string" && selectedSpotId) {
-      const { nextStep } = await getNextStepForParkingSpotById(selectedSpotId);
-
-      return json({ success: true, type: "selected", nextStep: nextStep });
-    }
-    return json({ success: false });
-  }
-};
-
-export const meta: V2_MetaFunction = () => {
-  return [
-    { title: "Deleplads.dk - Opret udlejning" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
-
 export default function Rental() {
   const [selected, setSelected] = useState("");
   const fetcher = useFetcher(); // useFetcher hook from Remix
   const navigate = useNavigate();
+  const navigation = useNavigation();
   const useLoader = useLoaderData();
 
-  const handleNext = () => {
-    fetcher.submit({ action: "next" }, { method: "post" });
+  const handleNext = () => {   
+      fetcher.submit({ action: "next" }, { method: "post" });
   };
 
   React.useEffect(() => {
     if (fetcher.data?.type == "next") {
-      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/type`);
+      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/lokation`);
     } else if (fetcher.data?.type == "selected") {
       navigate(`/opret-udlejning/${fetcher.data.nextStep}`);
     }
@@ -106,7 +77,11 @@ export default function Rental() {
   const handleChange = (event: { target: { value: string } }) => {
     setSelected(event.target.value);
   };
-  return (
+  return navigation.state === "loading" ? (
+    <div className="top-[40vh] relative flex justify-center">
+      <span className="loader"> </span>
+    </div>
+  ) : (
     <>
       <section>
         <div className="text-black mt-32 mx-auto flex items-center flex-col">
@@ -195,3 +170,40 @@ export default function Rental() {
     </>
   );
 }
+
+export const action: ActionFunction = async ({ request }) => {
+  await requireUserId(request);
+
+  const formData = await request.formData();
+  const action = formData.get("action");
+
+  if (action === "next") {
+    const userId = await getUserId(request);
+    let ownerId: string | undefined;
+
+    if (userId) {
+      ownerId = userId;
+    }
+
+    const parkingspot: Partial<parkingspots> = {
+      owner_id: ownerId,
+    };
+
+    const newParkingspot = await createOrUpdate(parkingspot);
+
+    return json({
+      success: true,
+      type: "next",
+      parkingspotId: newParkingspot.id,
+    });
+  } else if (action === "selected") {
+    const selectedSpotId = formData.get("selected");
+    if (typeof selectedSpotId === "string" && selectedSpotId) {
+      const { nextStep } = await getNextStepForParkingSpotById(selectedSpotId);
+      
+      return json({ success: true, type: "selected", nextStep: nextStep });
+    }
+    return json({ success: false });
+  }
+ 
+};

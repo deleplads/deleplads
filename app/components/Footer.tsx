@@ -35,7 +35,7 @@ function Footer() {
           <h6>Overblik</h6>
           <a href="/find-parkering/kort">Find en parkeringsplads</a>
           <a href="#">Sådan virker det</a>
-          <a href="/#">Spørgsmål og svar</a>
+          <a href="/faq">Spørgsmål og svar</a>
         </div>
         <div className="FooterColumn">
           <h6>Legal</h6>

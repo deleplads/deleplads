@@ -1,6 +1,6 @@
-export function validateAddressFields(street: string, postal_code: string, city: string, street_nr: string): string {
-    const allFieldsFilled = street && postal_code && city && street_nr;
-    const allFieldsEmpty = !street && !postal_code && !city && street_nr;
+export function validateAddressFields(street: string, postal_code: string, city: string): string {
+    const allFieldsFilled = street && postal_code && city;
+    const allFieldsEmpty = !street && !postal_code && !city;
     
     if (!(allFieldsFilled || allFieldsEmpty)) {
         return 'Udfyld venligst alle adressefelter.';

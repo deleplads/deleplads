@@ -18,8 +18,14 @@ import {
 import RentalNavigation from "~/components/RentalCreation/RentalNavigation";
 import rental from "~/styles/rental.css";
 import fetchParkingSpotData from "utils/parkingspot/fetchAndRequireAuth.server";
-import { useFetcher, useLoaderData, useNavigate, useParams } from "@remix-run/react";
-import { parkingspot_details } from "@prisma/client";
+import {
+  useFetcher,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+  useParams,
+} from "@remix-run/react";
+import type { parkingspot_details } from "@prisma/client";
 import { requireUserId } from "utils/auth.server";
 import createOrUpdateParkingspotDetails from "utils/parkingspot/createOrUpdateParkingDetails.server";
 import Checkbox from "@mui/material/Checkbox";
@@ -33,31 +39,6 @@ export const meta: V2_MetaFunction = () => {
     { title: "Deleplads.dk - Vælg fordele ved din parkeringsplads" },
     { name: "description", content: "Welcome to Remix!" },
   ];
-};
-export const action: ActionFunction = async ({ request, params }) => {
-  await requireUserId(request);
-  const spotId = params.id;
-  const formData = await request.formData();
-  const convertToBoolean = (value: FormDataEntryValue | null) => value === "true";
-
-  const attributes: Partial<parkingspot_details> = {
-    electric: convertToBoolean(formData.get("electric")),
-    surveillance: convertToBoolean(formData.get("surveillance")),
-    street_access: convertToBoolean(formData.get("street_access")),
-    cover: convertToBoolean(formData.get("cover")),
-    light: convertToBoolean(formData.get("light")),
-    night_guards: convertToBoolean(formData.get("night_guards")),
-    public_transport: convertToBoolean(formData.get("public_transport")),
-    handicap: convertToBoolean(formData.get("handicap")),
-    code: convertToBoolean(formData.get("code")),
-    spot_id: spotId
-  };
-  
-
-  const newParkingspot = await createOrUpdateParkingspotDetails(attributes);
-  
-
-  return json({ success: true, parkingspotId: newParkingspot.spot_id });
 };
 
 export const loader: LoaderFunction = async ({ request, params }) => {
@@ -80,9 +61,11 @@ export default function RentalAttributes() {
   const useLoader = useLoaderData();
   const navigate = useNavigate();
   const params = useParams();
-  const [back, setBack] = useState(`/opret-udlejning/${params.id}/availability`);
-  
-  
+  const [back, setBack] = useState(
+    `/opret-udlejning/${params.id}/beskrivelse`
+  );
+  const navigation = useNavigation();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
     setAttributes((prevAttrs: any) => ({
@@ -92,15 +75,20 @@ export default function RentalAttributes() {
   };
 
   const handleNext = () => {
-    fetcher.submit( attributes , { method: "post" });
+    fetcher.submit(attributes, { method: "post" });
   };
 
   React.useEffect(() => {
     if (useLoader) {
-      if (!useLoader.error && useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots != null) {
-        setBack(`/opret-udlejning/${useLoader.id}/availability`);
-        const spotDetails = useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots;
-        
+      if (
+        !useLoader.error &&
+        useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots !=
+          null
+      ) {
+        setBack(`/opret-udlejning/${useLoader.id}/beskrivelse`);
+        const spotDetails =
+          useLoader.parkingspot_details_parkingspot_details_spot_idToparkingspots;
+
         setAttributes({
           code: spotDetails.code,
           cover: spotDetails.cover,
@@ -112,16 +100,32 @@ export default function RentalAttributes() {
           street_access: spotDetails.street_access,
           surveillance: spotDetails.surveillance,
         });
-
       }
     }
 
     if (fetcher.data?.success) {
-      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/notes`);
+      navigate(`/opret-udlejning/${fetcher.data.parkingspotId}/billeder`);
     }
   }, [fetcher.data, navigate, useLoader]);
 
-  return (
+  return navigation.state === "loading" ? (
+    <>
+      <div className="top-[30vh] relative flex justify-center">
+        <span className="loader"> </span>
+      </div>
+      <Suspense>
+        {useLoader && !useLoader.error ? (
+          <RentalNavigation
+            back={back}
+            onNext={handleNext}
+            start={45}
+          ></RentalNavigation>
+        ) : (
+          <div className="min-h-max"></div>
+        )}
+      </Suspense>
+    </>
+  ) : (
     <>
       <section className="rental-attributes">
         <h1>Fortæl os mere om din parkeringsplads</h1>
@@ -254,3 +258,28 @@ export default function RentalAttributes() {
     </>
   );
 }
+
+export const action: ActionFunction = async ({ request, params }) => {
+  await requireUserId(request);
+  const spotId = params.id;
+  const formData = await request.formData();
+  const convertToBoolean = (value: FormDataEntryValue | null) =>
+    value === "true";
+
+  const attributes: Partial<parkingspot_details> = {
+    electric: convertToBoolean(formData.get("electric")),
+    surveillance: convertToBoolean(formData.get("surveillance")),
+    street_access: convertToBoolean(formData.get("street_access")),
+    cover: convertToBoolean(formData.get("cover")),
+    light: convertToBoolean(formData.get("light")),
+    night_guards: convertToBoolean(formData.get("night_guards")),
+    public_transport: convertToBoolean(formData.get("public_transport")),
+    handicap: convertToBoolean(formData.get("handicap")),
+    code: convertToBoolean(formData.get("code")),
+    spot_id: spotId,
+  };
+
+  const newParkingspot = await createOrUpdateParkingspotDetails(attributes);
+
+  return json({ success: true, parkingspotId: newParkingspot.spot_id });
+};
