@@ -1,5 +1,9 @@
-import type { V2_MetaFunction } from "@remix-run/node";
-import type { SelectChangeEvent } from "@mui/material";
+import {
+  json,
+  type LoaderFunction,
+  type V2_MetaFunction,
+} from "@remix-run/node";
+import type { SelectChangeEvent, SvgIconTypeMap } from "@mui/material";
 import {
   Box,
   Button,
@@ -15,16 +19,29 @@ import {
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState, type ReactNode, useEffect } from "react";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import EvStationOutlinedIcon from "@mui/icons-material/EvStationOutlined";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
-import AddRoadOutlined from "@mui/icons-material/AddRoadOutlined";
-import GarageOutlined from "@mui/icons-material/GarageOutlined";
-import PersonOutlined from "@mui/icons-material/PersonOutlined";
-import VpnKeyOffOutlined from "@mui/icons-material/VpnKeyOffOutlined";
+import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
+import VpnKeyOffOutlinedIcon from "@mui/icons-material/VpnKeyOffOutlined";
+import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import AccessibleOutlinedIcon from "@mui/icons-material/AccessibleOutlined";
+import LightOutlinedIcon from "@mui/icons-material/LightOutlined";
+import DirectionsSubwayFilledOutlinedIcon from "@mui/icons-material/DirectionsSubwayFilledOutlined";
+import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
+import AddRoadOutlinedIcon from "@mui/icons-material/AddRoadOutlined";
 import CallToAction from "~/components/Parkingspots/CallToAction";
 import Booking from "~/components/Parkingspots/booking";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import ApprDrawer from "~/components/Common/AppDrawer";
+import { getParkingSpotById } from "utils/parkingspot/getSport.server";
+import { useLoaderData } from "@remix-run/react";
+import type { OverridableComponent } from "@mui/material/OverridableComponent";
 
+interface ParkingFeatureProps {
+  icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
+  title: string;
+  description: string;
+}
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "Deleplads.dk - Leje" },
@@ -32,7 +49,34 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const spotId = params.id;
+  if (typeof spotId === "string" && spotId) {
+    const spots = await getParkingSpotById(spotId);
+    return json({ spot: spots });
+  }
+  return json({ error: "Ingen parkingsplads med dette id" });
+};
+
+const ParkingFeature: React.FC<ParkingFeatureProps> = ({
+  icon: Icon,
+  title,
+  description,
+}) => (
+  <div className="ParkingSpotDetails">
+    <Icon sx={{ fontSize: "30px", color: "#2d2d34" }} />
+    <span>
+      <h4>{title}</h4>
+      <p>{description}</p>
+    </span>
+  </div>
+);
+
 export default function Parkeringsplads() {
+  const { spot } = useLoaderData();
+  const details =
+    spot.parkingspot_details_parkingspot_details_spot_idToparkingspots;
+
   function handleChange(event: SelectChangeEvent<any>, child: ReactNode): void {
     throw new Error("Function not implemented.");
   }
@@ -60,8 +104,8 @@ export default function Parkeringsplads() {
       <section className="ParkingSpot">
         <div className="ParkingSpotInformationHeader">
           <span>
-            <h1>Ll. Blovstrødvej</h1>
-            <p>3450 Allerød, Region Hovedstaden</p>
+            <h1>{spot.street}</h1>
+            <p>{spot.postal_code + ", " + spot.city}</p>
           </span>
           <span className="shareAndBugs">
             <Button
@@ -94,7 +138,7 @@ export default function Parkeringsplads() {
               borderRadius: "4px",
             }}
             component="img"
-            src="./parkeringsplads2.png"
+            src="../parkeringsplads2.png"
           />
 
           <Booking></Booking>
@@ -115,33 +159,77 @@ export default function Parkeringsplads() {
 
           <h2>Fordele ved denne parkeringsplads</h2>
           <div className="ParkingSpotInformationDetails">
-            <div className="ParkingSpotDetails">
-              <PersonOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
-              <span>
-                <h4>Privat person</h4>
-                <p>Parkeringsplads udlejes af en privat ejer.</p>
-              </span>
-            </div>
-            <div className="ParkingSpotDetails">
-              <AddRoadOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
-              <span>
-                <h4>Gadetilgængelig</h4>
-                <p>Indkørsel til parkeringspladsen fra gaden.</p>
-              </span>
-            </div>
-            <div className="ParkingSpotDetails">
-              <GarageOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
-              <span>
-                <h4>Carport</h4>
-                <p>Parkeringspladsen har tilknyttet carport.</p>
-              </span>
-            </div>
-            <div className="ParkingSpotDetails">
-              <VpnKeyOffOutlined sx={{ fontSize: "30px", color: "#2d2d34" }} />
-              <span>
-                <h4>Ingen kode</h4>
-                <p>Ingen behov for kode ved parkering.</p>
-              </span>
+            {details.electric && (
+              <ParkingFeature
+                icon={EvStationOutlinedIcon}
+                title="El-ladestander"
+                description="Denne parkeringsplads har el-ladestander."
+              />
+            )}
+            {details.code && (
+              <ParkingFeature
+                icon={VpnKeyOffOutlinedIcon}
+                title="Kode"
+                description="Der kræves en kode for at tilgå parkeringspladsen."
+              />
+            )}
+            {details.surveillance && (
+              <ParkingFeature
+                icon={CameraAltOutlinedIcon}
+                title="Overvågning"
+                description="Parkeringspladsen er overvåget."
+              />
+            )}
+            {details.street_access && (
+              <ParkingFeature
+                icon={AddRoadOutlinedIcon}
+                title="Gadetilgængelig"
+                description="Indkørsel til parkeringspladsen fra gaden."
+              />
+            )}
+            {details.cover && (
+              <ParkingFeature
+                icon={GarageOutlinedIcon}
+                title="Carport"
+                description="Parkeringspladsen har tilknyttet carport."
+              />
+            )}
+            {details.light && (
+              <ParkingFeature
+                icon={LightOutlinedIcon}
+                title="Belysning"
+                description="Parkeringspladsen er belyst."
+              />
+            )}
+            {details.night_guards && (
+              <ParkingFeature
+                icon={HealthAndSafetyOutlinedIcon}
+                title="Natvagt"
+                description="Parkeringspladsen har natvagt."
+              />
+            )}
+            {details.public_transport && (
+              <ParkingFeature
+                icon={DirectionsSubwayFilledOutlinedIcon}
+                title="Offentlig transport"
+                description="Nær offentlig transport."
+              />
+            )}
+            {details.handicap && (
+              <ParkingFeature
+                icon={AccessibleOutlinedIcon}
+                title="Handicapvenlig"
+                description="Parkeringspladsen er handicapvenlig."
+              />
+            )}
+          </div>
+
+          <div>
+            <h2 className="pb-5">Parkingspladsen beskrivelse</h2>
+            <div className="w-full border border-gray-300 text-black h-56 rounded-lg">
+              <div className="pl-2 pt-2">
+                {spot.description ? spot.description : "Ingen beskrivelse"}
+              </div>
             </div>
           </div>
         </div>
@@ -180,7 +268,13 @@ export default function Parkeringsplads() {
                 <TimePicker ampm={false} label="Slut tidspunkt" />
               </LocalizationProvider>
             </span>
-            <h2 className="price">Pris: 629,-</h2>
+            <h2 className="price">
+              Pris:{" "}
+              {spot.prices.user_price
+                ? spot.prices.user_price
+                : spot.prices.recommended_price}
+              ,-
+            </h2>
             <Button
               size="large"
               variant="contained"

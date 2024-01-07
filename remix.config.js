@@ -67,7 +67,7 @@ module.exports = {
       route("/kommunale-priser", "routes/kommunale-priser.tsx");
       route("/contact", "routes/contact.tsx");
       route("/logout", "routes/logout.tsx");
-      route("/parkeringsplads", "routes/parkeringsplads.tsx");
+      route("/parkeringsplads/:id", "routes/parkeringsplads.$id.tsx");
       route("/logind", "routes/sign-in.tsx");
       route("/opret", "routes/sign-up.tsx");
     });
