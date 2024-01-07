@@ -7,16 +7,14 @@
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info h3 {
   font-size: 16px;
+  text-transform: capitalize;
+  margin-bottom: 8px;
 }
-.gallery-cards .gallery-cards-content .gallery-cards-content-info span {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  gap: 8px;
-}
-.gallery-cards .gallery-cards-content .gallery-cards-content-info span p {
+.gallery-cards .gallery-cards-content .gallery-cards-content-info p {
   color: black !important;
+}
+.gallery-cards .gallery-cards-content .gallery-cards-content-info .city {
+  text-transform: capitalize !important;
 }
 .gallery-cards .gallery-cards-content .gallery-cards-content-info .price {
   display: flex;

@@ -211,11 +211,8 @@ function Navbar(profile: any) {
           </BurgerMenu>
           <div className="MobileMenuNavigation">
             <div className="items">
-              <Link to={"/find-parkering/kort"}>Find en parkeringsplads</Link>
-              {/* <Link to={"/leje"}>For lejere</Link> */}
+              <Link to={"/find-parkering/galleri"}>Find en parkeringsplads</Link>
               <Link to={"/#"}>Sådan virker det</Link>
-              {/* <Link to={"/userstorie"}>Brugerhistorier</Link> */}
-              {/* <Link to={"/blog"}>Blog</Link> */}
               <Link to={"/faq"}>Spørgsmål og svar</Link>
             </div>
             {loading ? (

@@ -1,0 +1,72 @@
+.locate {
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  height: 100vh;
+  padding: 170px 0 0 0;
+  width: var(--PageWidth);
+  position: relative;
+  .avaliable-bookings {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow-y: scroll;
+    padding: 25px 0;
+    .results {
+      width: 95%;
+      background: white;
+      color: black;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: space-between;
+      border: 1px solid var(--BrandTertiary);
+      border-radius: 8px;
+      gap: 8px;
+    }
+  }
+  iframe {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .showOnMap {
+    display: none;
+  }
+}
+
+// Mobile css
+
+@media only screen and (max-width: 600px) {
+  .locate {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    position: relative !important;
+    .avaliable-bookings {
+      display: none;
+    }
+    iframe {
+      margin-top: -10px;
+    }
+    .showOnMap {
+      display: inline-flex !important;
+      font-size: 16px;
+      text-transform: initial;
+      color: white;
+      background: #1b2530 !important;
+      position: fixed !important;
+      padding: 12px 16px;
+      bottom: 24px;
+      z-index: 99;
+      position: sticky;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 8px;
+      .css-1d6wzja-MuiButton-startIcon > *:nth-of-type(1) {
+        color: white !important;
+      }
+    }
+  }
+}
