@@ -3,9 +3,7 @@ import CallToAction from "~/components/Parkingspots/CallToAction";
 import Hero from "~/components/Common/Hero";
 import { getParkingSpotsWhereStatus } from "utils/parkingspot/getAllSpots.server";
 import { useFetcher, useLoaderData } from "@remix-run/react";
-import type {
-  ParkingSpot,
-} from "utils/types.server";
+import type { ParkingSpot } from "utils/types.server";
 import { Button, Pagination, Stack } from "@mui/material";
 import BasicCard from "~/components/Parkingspots/Cards";
 import { useRef, useState } from "react";
@@ -52,18 +50,51 @@ export default function Index() {
       <Hero></Hero>
       <section ref={regionGroupRef} className="popular">
         <div className="popularInner">
-          <div className="region-group">
-            <Stack spacing={2} direction="row">
-              <Button variant="outlined">Alle regioner</Button>
-              <Button variant="outlined">Region Hovedestaden</Button>
-              <Button variant="outlined">Region Sjælland</Button>
-              <Button variant="outlined">Region Nordjylland</Button>
-              <Button variant="outlined">Region Midtjylland</Button>
-              <Button variant="outlined">Region Syddanmark</Button>
-              <Button variant="outlined">Filtre</Button>
-            </Stack>
+          <div className="buttonFiltration">
+            <Button
+              variant="outlined"
+              sx={{ fontSize: "16px", textTransform: "initial" }}
+            >
+              Alle regioner
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{ fontSize: "16px", textTransform: "initial" }}
+            >
+              Region Hovedestaden
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{ fontSize: "16px", textTransform: "initial" }}
+            >
+              Region Sjælland
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{ fontSize: "16px", textTransform: "initial" }}
+            >
+              Region Nordjylland
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{ fontSize: "16px", textTransform: "initial" }}
+            >
+              Region Midtjylland
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{ fontSize: "16px", textTransform: "initial" }}
+            >
+              Region Syddanmark
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{ fontSize: "16px", textTransform: "initial" }}
+            >
+              Filtre
+            </Button>
           </div>
-          <div className="grid-cols-3 grid gap-10">
+          <div className="gallery">
             {parkingSpots.length > 0 ? (
               parkingSpots.map((spot: ParkingSpot) => (
                 <BasicCard key={spot.id} spot={spot} />

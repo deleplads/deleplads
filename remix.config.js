@@ -19,7 +19,7 @@ module.exports = {
         route("verificeringer", "routes/account/account.verification.tsx");
       });
       route("/opdater/:id/tilgaengelighed", "routes/account/rentalspot/rentalspot.$id.availability.tsx");
-      
+
       // Blog
 
       route("/blog", "routes/blog/blog.index.tsx");
@@ -30,8 +30,7 @@ module.exports = {
       // Legal
 
       route("/cookies", "routes/legal/cookies.tsx");
-      route("/handelsbetingelser", "routes/legal/handelsbetingelser.tsx");
-      route("/privatpolitik", "routes/legal/privacy-policy.tsx");
+      route("/persondatapolitik", "routes/legal/privacypolicy.tsx");
       route("/regler-og-vilkår", "routes/legal/terms-and-conditions.tsx");
 
       // Locate
@@ -42,10 +41,11 @@ module.exports = {
         route("kort", "routes/locate/locate.map.tsx");
       });
 
-
+        
       //Api
       
       route("/api/parkingspot/:id/image", "routes/api/parkingspot_$id_image.ts");
+
 
       // Rental
 
@@ -58,6 +58,7 @@ module.exports = {
       route("/opret-udlejning/:id/pris", "routes/rental/$id_.price.tsx");
       route("/opret-udlejning/:id/kvittering", "routes/rental/$id_.receipt.tsx");
 
+
       // User stories
 
       route("user-stories", "routes/user-stories/userstories.tsx");
@@ -65,7 +66,7 @@ module.exports = {
       // Miscellaneous
 
       route("/kommunale-priser", "routes/kommunale-priser.tsx");
-      route("/kontakt", "routes/kontakt.tsx");
+      route("/contact", "routes/contact.tsx");
       route("/logout", "routes/logout.tsx");
       route("/parkeringsplads", "routes/parkeringsplads.tsx");
       route("/logind", "routes/sign-in.tsx");

@@ -1,0 +1,91 @@
+.kontakt {
+  padding: 185px 0 100px 0;
+  display: flex;
+  justify-content: center;
+}
+.kontakt .inner {
+  width: var(--PageWidth);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 25px;
+}
+.kontakt .inner .information h1 {
+  font-size: 50px;
+  line-height: 120%;
+}
+.kontakt .inner .information p {
+  font-size: 16px;
+  line-height: 150%;
+  margin: 32px 0 0 0;
+}
+.kontakt .inner .message {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid var(--BrandTertiary);
+  border-radius: 8px;
+}
+.kontakt .inner .message span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5%;
+}
+.kontakt .inner .message .message-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  width: -webkit-fill-available !important;
+}
+.kontakt .inner .message .message-contents label {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 8px;
+}
+.kontakt .inner .message .message-contents ::placeholder {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+.kontakt .inner .message .message-contents input,
+.kontakt .inner .message .message-contents select {
+  padding: 16px 10px;
+  border: 1px solid var(--BrandTertiary);
+  border-radius: 4px;
+}
+.kontakt .inner .message .message-contents textarea {
+  padding: 16px 10px;
+  height: 150px;
+  border: 1px solid var(--BrandTertiary);
+  border-radius: 4px;
+  resize: vertical;
+  max-height: 500px;
+}
+.kontakt .inner .message p {
+  font-size: 14px;
+  line-height: 150%;
+  margin: 12px 0 24px 0;
+}
+.kontakt .inner .message a:nth-child(1) {
+  color: #006bff;
+}
+
+@media only screen and (max-width: 600px) {
+  .kontakt .inner {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+  .kontakt .inner .information h1 {
+    font-size: 32px;
+  }
+  .kontakt .inner .message {
+    margin-top: 32px;
+  }
+  .kontakt .inner .message span {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=contact.css.map */

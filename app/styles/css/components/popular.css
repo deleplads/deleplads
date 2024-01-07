@@ -7,11 +7,12 @@
 .popular .popularInner {
   width: var(--PageWidth);
 }
-.popular .popularInner .region-group .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
-  text-transform: initial !important;
-  font-size: 16px !important;
+.popular .popularInner .buttonFiltration {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
-.popular .popularInner span {
+.popular .popularInner .gallery {
   padding: 50px 0 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

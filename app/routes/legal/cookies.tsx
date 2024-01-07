@@ -1,5 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import Cookies from "~/components/CookiesSite";
+import LegalMenu from "~/components/LegalMenu";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -10,8 +10,19 @@ export const meta: V2_MetaFunction = () => {
 
 export default function CookiesRoute() {
   return (
-    <main>
-      <Cookies></Cookies>
-    </main>
+    <section className="legal">
+      <div className="menu">
+        <div className="menuList">
+          <LegalMenu></LegalMenu>
+        </div>
+      </div>
+      <div className="content">
+        <h1>Cookies</h1>
+        Sidst opdateret: 28. Juli, 2023 (Version 1.0.0)
+        <br></br>
+        <br></br>
+        <p>Kommer snarest.</p>
+      </div>
+    </section>
   );
 }
