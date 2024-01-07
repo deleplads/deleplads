@@ -25,6 +25,7 @@ export type SupabaseOutletContext = {
   profile: Profile;
 };
 
+
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: styles },

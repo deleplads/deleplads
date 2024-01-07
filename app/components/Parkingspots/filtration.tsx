@@ -54,8 +54,7 @@ function Filtration() {
           <TimePicker ampm={false} label="Slut tidspunkt" />
         </LocalizationProvider>
         <Button
-          variant="contained"
-          color="warning"
+          variant="outlined"
           startIcon={<AppsIcon />}
           onClick={() => {
             navigate("/find-parkering/galleri");

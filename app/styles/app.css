@@ -16,6 +16,7 @@
   font-family: "Urbanist", sans-serif;
 }
 
+
 h1 {
   letter-spacing: -2px;
 }
@@ -62,6 +63,11 @@ a {
   color: #2d2d34;
   font-family: "Urbanist", sans-serif !important;
 }
+
+.MuiButton-contained {
+  background-color: #1976d2;
+}
+
 
 @font-face {
   font-family: "Gilroy";
